@@ -1,4 +1,4 @@
-# grupo_8_nombre
+# grupo_8_ecofood
 
 # Descripción del sitio
 En este sitio podrás encontrar opciones de alimentación acordes a tu condición dietaria. Como por ejemplo alimentos libres de glúten, bajo en sodio, para veganos, vegetariana, orgánico, entre otros.
