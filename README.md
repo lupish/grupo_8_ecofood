@@ -31,3 +31,17 @@ Lo que nos llamó la atención de este sitio y algo que nos gustaría imitar ser
 - Amazon https://www.amazon.com/;
 Al ser uno de los sitios mas importantes a nivel mundial nos pareció apropiado tenerlo en cuenta, además la forma de mostrar los productos es distinta a las otras opciones.
 
+
+# Wireframes
+
+. (home) https://marvelapp.com/project/6542299/screen/89833300
+
+. (detalle de producto) https://marvelapp.com/project/6542299/screen/89834880
+
+. (login) https://marvelapp.com/project/6542299/screen/89833939
+
+. (formulario de registro) https://marvelapp.com/project/6542299/screen/89833230
+
+. (carrito de compras) https://marvelapp.com/project/6542299/screen/89834078
+
+
