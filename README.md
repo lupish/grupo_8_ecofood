@@ -44,4 +44,7 @@ Al ser uno de los sitios mas importantes a nivel mundial nos pareció apropiado 
 
 . (carrito de compras) https://marvelapp.com/project/6542299/screen/89834078
 
+# Trello
+Link de trello del equipo: https://trello.com/b/yjbdtPOq/dhgrupo8
+
 
