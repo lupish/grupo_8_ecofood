@@ -44,6 +44,14 @@ Al ser uno de los sitios mas importantes a nivel mundial nos pareció apropiado 
 
 . (carrito de compras) https://marvelapp.com/project/6542299/screen/89834078
 
+. (home para mobile) https://marvelapp.com/project/6542299/screen/89850293
+
+. (home para tablet) https://marvelapp.com/project/6542299/screen/89852121
+
+. (carrito de compras para mobile) https://marvelapp.com/project/6542299/screen/89850513
+
+. (carrito de compras para tablet) https://marvelapp.com/project/6542299/screen/89852180
+
 # Trello
 Link de trello del equipo: https://trello.com/b/yjbdtPOq/dhgrupo8
 
