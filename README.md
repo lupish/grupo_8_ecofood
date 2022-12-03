@@ -53,15 +53,15 @@ Al ser uno de los sitios mas importantes a nivel mundial nos pareció apropiado 
 - Home: https://marvelapp.com/project/6542299/screen/89850293.
 - Detalle de producto: https://marvelapp.com/project/6542299/screen/89850983.
 - Carrito de compras: https://marvelapp.com/project/6542299/screen/89850513.
-- Formulario de registro: .
-- Formulario de login: https://marvelapp.com/project/6542299/screen/89867412.
+- Formulario de registro: https://marvelapp.com/project/6542299/screen/89894882.
+- Formulario de login: https://marvelapp.com/project/6542299/screen/89895757.
 
 **Tablet**
 
 - Home: https://marvelapp.com/project/6542299/screen/89852121.
 - Detalle de producto: https://marvelapp.com/project/6542299/screen/89894459.
 - Carrito de compras: https://marvelapp.com/project/6542299/screen/89852180.
-- Formulario de registro: .
+- Formulario de registro: https://marvelapp.com/project/6542299/screen/89894937.
 - Formulario de login: https://marvelapp.com/project/6542299/screen/89867590.
 
 <br />
