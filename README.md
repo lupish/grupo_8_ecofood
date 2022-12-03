@@ -40,23 +40,29 @@ Al ser uno de los sitios mas importantes a nivel mundial nos pareció apropiado 
 
 ### __Wireframes__
 
-. (home) https://marvelapp.com/project/6542299/screen/89833300
+**Desktop**
 
-. (detalle de producto) https://marvelapp.com/project/6542299/screen/89834880
+- Home: https://marvelapp.com/project/6542299/screen/89833300.
+- Detalle de producto: https://marvelapp.com/project/6542299/screen/89834880.
+- Carrito de compras: https://marvelapp.com/project/6542299/screen/89834078.
+- Formulario de registro: https://marvelapp.com/project/6542299/screen/89833230.
+- Formulario de login: https://marvelapp.com/project/6542299/screen/89833939.
 
-. (login) https://marvelapp.com/project/6542299/screen/89833939
+**Mobile**
 
-. (formulario de registro) https://marvelapp.com/project/6542299/screen/89833230
+- Home: https://marvelapp.com/project/6542299/screen/89850293.
+- Detalle de producto: https://marvelapp.com/project/6542299/screen/89850983.
+- Carrito de compras: https://marvelapp.com/project/6542299/screen/89850513.
+- Formulario de registro: .
+- Formulario de login: https://marvelapp.com/project/6542299/screen/89867412.
 
-. (carrito de compras) https://marvelapp.com/project/6542299/screen/89834078
+**Tablet**
 
-. (home para mobile) https://marvelapp.com/project/6542299/screen/89850293
-
-. (home para tablet) https://marvelapp.com/project/6542299/screen/89852121
-
-. (carrito de compras para mobile) https://marvelapp.com/project/6542299/screen/89850513
-
-. (carrito de compras para tablet) https://marvelapp.com/project/6542299/screen/89852180
+- Home: https://marvelapp.com/project/6542299/screen/89852121.
+- Detalle de producto: https://marvelapp.com/project/6542299/screen/89894459.
+- Carrito de compras: https://marvelapp.com/project/6542299/screen/89852180.
+- Formulario de registro: .
+- Formulario de login: https://marvelapp.com/project/6542299/screen/89867590.
 
 <br />
 
