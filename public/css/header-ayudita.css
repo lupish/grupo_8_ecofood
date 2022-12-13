@@ -1,0 +1,94 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+display: flex;
+width: 100%;
+min-height: 120px;
+overflow: hidden;
+justify-content: center;
+align-items: center;
+align-content: center;
+
+gap: 10px;
+
+}
+.logo{
+max-width: 15%;
+display: flex;
+justify-content: center;
+align-items: center;
+align-content: center;
+height: 100%;
+}
+
+.buscador{
+width: 60%;
+height: 40px;
+display: flex;
+justify-content: space-around;
+align-items: center;
+align-content: center;
+border-radius:10px;
+background-color: rgba(155, 155, 155, 0.534);
+overflow: hidden;
+}
+.buscador form{
+
+width: 70%;
+height: 100%;
+}
+.buscador i{
+width: 20%;
+display: flex;
+justify-content: center;
+align-items: center;
+align-content: center;
+}
+.buscador form input{
+width: 90%;
+height: 100%;
+border: none;
+outline: 0;
+background: none;
+line-height: 50%;
+
+}
+.buscador form input,.buscador form input::placeholder{
+
+color: black !important;
+}
+
+.iconitos{
+width: 20%;
+display: flex;
+gap: 10px;
+height: 120px;
+justify-content: center;
+align-items: center;
+align-content: center;
+}
+.iconitos i{
+font-size: 20px;
+}
+.logo-web{
+display: block;
+width: 60%;
+}
+.logo-mobile-tablet{
+display: none;
+}
+@media(max-width:700px){
+.logo-web{
+display: none;
+
+}
+.logo-mobile-tablet{
+display: block;
+width: 60%;
+}
+
+}
+
