@@ -14,11 +14,14 @@
 }
 
 header {
-    display: flex;
-    justify-content: space-around;
     border-bottom: solid 1px gray;
     padding: 5px;
     box-shadow: 0px 0px 8px rgba(150, 171, 97,.7);
+}
+
+header div {
+    display: flex;
+    justify-content: space-around;
 }
 
 header .logo {
@@ -64,7 +67,15 @@ header .iconos {
 }
 
 header .iconos i {
-    color: #96AB61
+    color: #96AB61;
+}
+
+header .iconos #estrella, #usuario {
+    display: none;
+}
+
+header nav {
+    display: none;
 }
 
 /* inicio main */
@@ -99,3 +110,33 @@ h3 {
 }
 
 /* fin footer */
+
+/****** MEDIA QUERY ******/
+
+@media (min-width: 769px) {
+
+}
+
+@media (min-width: 1280px) {
+    header .iconos {
+        font-size: 1.5em;
+    }
+    
+    header .iconos #menu {
+        display: none;
+    }
+
+    header .iconos #estrella, #usuario {
+        display: block;
+    }
+
+    header nav {
+        display: block
+    }
+
+    header nav ul {
+        display: flex;
+        justify-content: space-around;
+        font-size: 20px;
+    }
+}
