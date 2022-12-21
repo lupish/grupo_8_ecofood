@@ -83,18 +83,24 @@ header nav {
 main {
     width: 100vw;
 }
-.contenedor-productos {
+section .contenedor-productos {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-article {
+section .contenedor-productos article {
     width: 90%;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px;  
+    transition: all 1s; 
 }
- article img {
+
+section .contenedor-productos article:hover .info-de-producto{
+    box-shadow: 0px 0px 10px #96AB61(100, 100, 100);
+}
+
+section article .info-de-producto img {
     width: 90%;
  }
  .info-de-producto {
@@ -105,6 +111,14 @@ article {
     flex-wrap: wrap;
     align-items: center;
     box-sizing: border-box;
+    position: relative;
+}
+.info-de-producto #estrella {
+    position: absolute;
+    right: 5px;
+    top:5px;
+    color:#96AB61;
+    font-size: 25px;
 }
 .info-de-producto div {
     width: 100%;
@@ -182,6 +196,11 @@ h3 {
         text-decoration: none;
         color: #EB947A;
     }
+    /* inicio main */
+    section .contenedor-productos article {
+        width: 22%;
+    }
+    /* fin main */
     /* inicio footer  */
     footer {
         border: solid 2px #96AB61;
