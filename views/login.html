@@ -4,11 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/register.css">
+    <script src="https://kit.fontawesome.com/287f20f5bd.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
+        <!-- inicio header -->
+        <header>
+            <div>
+                <div class="logo">
+                    <img src="/img/EcoFood Logo Curvas mobile.jpg" alt="Logo Ecofood">
+                </div>
+                <div class="buscador">
+                    <form action="#">
+                        <input type="text" name="buscador" id="buscador" placeholder= "Buscar producto">
+                    </form>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="iconos">
+                    <i id="menu" class="fa-solid fa-bars"></i>
+                    <i id ="estrella" class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-solid fa-cart-shopping"></i>
+                    <i id="usuario" class="fa-solid fa-user"></i>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li type="none"><a href="">Vegetarianos</a></li>
+                    <li type="none"><a href="">Veganos</a></li>
+                    <li type="none"><a href="">Celíacos</a></li>
+                    <li type="none"><a href="">Libre de glúten</a></li>
+                    <li type="none"><a href="">Bajo en sodio</a></li>
+                    <li type="none"><a href="">Orgánico</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- fin header -->
+        <!-- inicio main -->
+        <main>
+            <img src="/img/EcoFood Logo Curvas web.jpg" alt="imagen de ejemplo" width="360">
+            <h2>Iniciá seción</h2>
+            <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p>
+            <form action="/login.html" method=post>
+                <div>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div>
+                    <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña" required>
+                </div>
+                <div>
+                    <button type="submit">Iniciar seción</button>
+                <p>Olvidé mi contraseña</p>
+                </div>
+            </form>
+            
+            <a href="/login.html">¿No tenés cuenta aún? Crear cuenta</a>
+        </main>
+        <!-- fin main -->
+        <!-- inicio footer -->
+        <footer>
+            <h3>Avenida Olivos 4109</h3>
+            <div class="iconos-footer">
+                <i class="fa-brands fa-whatsapp"></i> 
+                <i class="fa-regular fa-envelope"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-facebook-f"></i>
+            </div>
+        </footer>
+        <!-- fin footer -->
 </body>
 </html>
