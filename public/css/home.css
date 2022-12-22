@@ -21,8 +21,9 @@ section .contenedor-productos article:hover .info-de-producto{
 
 section article .info-de-producto img {
     width: 90%;
- }
- .info-de-producto {
+}
+
+.info-de-producto {
     border: 2px solid #ebebeb;
     padding: 15px;
     background-color: #FFF;
@@ -32,6 +33,12 @@ section article .info-de-producto img {
     box-sizing: border-box;
     position: relative;
 }
+
+.info-de-producto:hover {
+    box-shadow: 0px 0px 10px #96ab61ff;
+    transition: all 0.3s;
+}
+
 .info-de-producto #estrella {
     position: absolute;
     right: 5px;
@@ -39,6 +46,12 @@ section article .info-de-producto img {
     color:#96AB61;
     font-size: 25px;
 }
+
+.info-de-producto #estrella:hover {
+    color: #EB947A;
+    transition: all 0.3s;
+}
+
 .info-de-producto div {
     width: 100%;
     margin: 5px;
