@@ -72,7 +72,11 @@ h3{
 /****** MEDIA QUERY ******/
 
 @media (min-width: 769px) {
-
+    /* inicio main */
+    section .contenedor-productos article {
+        width: 40%;
+    }
+    /* fin main */
 }
 
 @media (min-width: 1280px) {
