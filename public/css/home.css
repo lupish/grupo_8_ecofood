@@ -97,6 +97,10 @@ h3{
         width: 40%;
     }
     /* fin main */
+
+    .carrusel-prods img {
+        height: 20vh;
+    }
 }
 
 @media (min-width: 1280px) {
@@ -105,5 +109,9 @@ h3{
         width: 22%;
     }
     /* fin main */
+
+    .carrusel-prods img {
+        height: 20vh;
+    }
 
 }
