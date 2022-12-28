@@ -12,6 +12,7 @@ main img {
 main p {
  margin: 10px;
 }
+
 main form {
     width: 80%;
     margin: 0% 10% 2% 10%;
@@ -51,4 +52,9 @@ main a {
     text-decoration: none;
     color: #96AB61;
     font-weight: bold;
+}
+
+main a:hover {
+    color: #EB947A;
+    transition: all 0.3s;
 }
