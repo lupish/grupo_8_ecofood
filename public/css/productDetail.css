@@ -1,5 +1,9 @@
 main {
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .nom-producto {
@@ -79,4 +83,23 @@ main .section-carrusel-un-prod #estrella:hover {
 .agregar-carrito button:hover {
     color: #EB947A;
     transition: all 0.3s;
+}
+
+.precio-prod {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media (min-width: 769px) {
+    main .section-carrusel-un-prod {
+        width: 50%;
+    }
+
+}
+
+
+@media (min-width: 1280px) {
+    main .section-carrusel-un-prod {
+        width: 30%;
+    }
 }
