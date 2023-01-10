@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle de producto</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="/img/EcoFood Logo Curvas mobile.jpg">
     <script src="https://kit.fontawesome.com/287f20f5bd.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -13,7 +14,7 @@
         <header>
             <div>
                 <div class="logo">
-                    <img src="/img/EcoFood Logo Curvas mobile.jpg" alt="Logo Ecofood">
+                    <a href="/"><img src="/img/EcoFood Logo Curvas mobile.jpg" alt="Logo Ecofood"></a>
                 </div>
                 <div class="buscador">
                     <form action="#">
@@ -24,7 +25,7 @@
                 <div class="iconos">
                     <i id="menu" class="fa-solid fa-bars"></i>
                     <i id ="estrella" class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-solid fa-cart-shopping"></i>
+                    <a href="/productCart"><i class="fa-solid fa-solid fa-cart-shopping"> </i></a>
                     <i id="usuario" class="fa-solid fa-user"></i>
                 </div>
             </div>
@@ -44,19 +45,26 @@
     <main>
         <h3 class="nom-producto">Leche de Almendras y Chocolate - Silk</h3>
         <!-- inicio carrusel -->
-        <section class="section-carrusel-prod">
-            <div class="carrusel-detalleDeProd">
-                <img src="/img/lecheDeAlmendraYchocolate.jpg" alt="Leche de almendras y chocolate" width="360">
-                <img src="/img/imgCarrusel.jpeg" alt="Leche de almendras y chocolate" width="360">
+        <section class="section-carrusel-un-prod">
+            <div class="carrusel-un-prod">
+                <img src="/img/lecheDeAlmendraYchocolate.jpg" alt="Leche de almendras y chocolate">
+                <img src="/img/imgCarrusel.jpeg" alt="Leche de almendras y chocolate">
             </div>
             <i id ="estrella" class="fa-solid fa-star"></i>
+            <div class="agregar-carrito">
+                <button class="boton-carrito"><i class="fa-solid fa-plus"></i></button>
+                <p>1</p>
+                <button class="boton-carrito"><i class="fa-solid fa-minus"></i></button>
+                <button type="submit" class="boton-agregar-carrito">Agregar al carrito</button>
+            </div>
         </section>
         <!-- fin carrusel -->
-        <p>$699</p>
+        <p class="precio-prod">$699</p>
         <p>Descripción del producto</p>
         <h3>Bebida a base de almendra chocolate SILK. 1lt.</h3>
         <p>SILK leche vegetal, almendra y cacao, chocolate. ?Un sabor riquísimo, una cremosidad única, y la tranquilidad de consumir una bebida 100% de origen vegetal. Una opción ideal para disfrutarla con tu cereal en el desayuno o tu bebida favorita en smoothie, café o té. BEBIBLE 1lt.?Producto vegetal bebida a base de almendras y cacao, sabor chocolate fortificada con calcio, zinc y vitaminas A, B2, B12, D y E. Libre de gluten. Sin TACC.</p>
-        <button type="submit">Agregar al carrito</button>
+        
+        
     </main>
         <!-- fin main -->
         <!-- inicio footer -->

@@ -87,6 +87,15 @@ h3{
     font-size: 16px;
 }
 
+.checkbox-recordar-usuario {
+    width: 10px;
+}
+
+.label-recordar-usuario {
+    color: #96AB61;
+    font-weight: bold;
+}
+
 /* fin main */
 
 /****** MEDIA QUERY ******/
@@ -97,6 +106,10 @@ h3{
         width: 40%;
     }
     /* fin main */
+
+    .carrusel-prods img {
+        height: 20vh;
+    }
 }
 
 @media (min-width: 1280px) {
@@ -105,5 +118,9 @@ h3{
         width: 22%;
     }
     /* fin main */
+
+    .carrusel-prods img {
+        height: 20vh;
+    }
 
 }
