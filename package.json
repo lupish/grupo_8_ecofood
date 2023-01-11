@@ -4,7 +4,7 @@
   "description": "En este sitio podrás encontrar opciones de alimentación acordes a tu condición dietaria. Como por ejemplo alimentos libres de glúten, bajo en sodio, para veganos, vegetariana, orgánico, entre otros.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./app.js"
+    "start": "nodemon ./src/app.js"
   },
   "repository": {
     "type": "git",
