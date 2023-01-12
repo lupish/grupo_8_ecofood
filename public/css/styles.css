@@ -21,7 +21,7 @@
 /* inicio header */
 header {
     border-bottom: solid 1px gray;
-    padding: 5px;
+    padding-top: 5px;
     box-shadow: 0px 0px 8px rgba(150, 171, 97,.7);
     width: 100vw;
 }
@@ -93,6 +93,10 @@ header .iconos #estrella, #usuario {
 
 header nav {
     display: none;
+    background-color: rgba(150, 171, 97, 0.9);
+    height: 32px;
+	box-shadow: 0px 0px 3px #96ab61ff;
+	width: 100%
 }
 
 /* fin header */
@@ -101,8 +105,9 @@ header nav {
 
 footer{
     width: 100vw;
-    background-color: #96AB61;
+    background-color: rgba(150, 171, 97, 0.9);
     text-align: center;
+    box-shadow: 0px 0px 3px #96ab61ff;
 }
 
 footer h3 {
@@ -117,6 +122,7 @@ footer h3 {
 footer .iconos-footer i:hover {
     color: #EB947A;
     transition: all 0.3s;
+    text-shadow: black 1px 0 10px;
 }
 
 /* fin footer */
@@ -151,33 +157,33 @@ footer .iconos-footer i:hover {
         display: flex;
         justify-content: space-around;
         font-size: 20px;
+        align-items: center;
+	    height: 100%;
     }
 
     header nav ul li a {
         text-decoration: none;
-        color: #96AB61;
+        color: white;
         font-weight: bold;
     }
 
     header nav ul li a:hover {
-        text-decoration: none;
         color: #EB947A;
+        text-shadow: black 1px 0 10px;
     }
     /* fin header */
 
     /* inicio footer  */
     footer {
-        border: solid 2px #96AB61;
-        background-color: white;
-        border-radius: 5px;
         display: flex;
         flex-wrap: wrap;
-        align-content: space-between;
+        align-items: center;
         width: 100vw;
-        margin: 5px 5px 0px 5px;
+        margin-top: 5px;
+        height: 32px;
+        justify-content: center;
     }
     footer h3 {
-        color: #96AB61;
         padding: 3px;
         width: 49%;
         text-align: left;
@@ -185,7 +191,6 @@ footer .iconos-footer i:hover {
     
     
     .iconos-footer{
-        color: #96AB61;
         padding: 3px;
         width: 49%;
         text-align: right;
