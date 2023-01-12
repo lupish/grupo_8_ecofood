@@ -17,15 +17,17 @@ app.get('/',(req,res)=>{
     res.render('home');
 })
 app.get('/login',(req,res)=>{
-    res.render('login');
+    res.render('users/login');
 })
 app.get('/register',(req,res)=>{
-    res.render('register')
+    res.render('users/register')
 })
 app.get('/productDetail',(req,res)=>{
-    res.render('productDetail')
+    res.render('products/productDetail')
 })
 app.get('/productCart',(req,res)=>{
-    res.render('productCart')
+    res.render('products/productCart')
 })
-
+app.get('/newProduct',(req,res)=>{
+    res.render('products/newProduct')
+})
