@@ -1,6 +1,7 @@
-let express=require('express');
+const express=require('express');
 const path=require('path')
-let app=express();
+const app=express();
+const methodOverride = require("method-override")
 
 app.use(express.static('public'));
 console.log(app)
@@ -10,6 +11,13 @@ app.set('views', path.join(__dirname, './views'));
 
 // set engine
 app.set('view engine', 'ejs');
+
+// POST
+app.use(express.json());
+app.use(express.urlencoded({ extended : false}));
+
+//PUT
+app.use(methodOverride("_method"));
 
 app.listen(3000,()=>{console.log("Servidor Corriendo")})
 

@@ -12,5 +12,10 @@ let productController = {
        }
 
        res.redirect("/home.ejs")
+    },
+
+    edit : function(req, res){
+       let idProduct = req.params.idProduct;
+       res.send(idProduct);
     }
 }
