@@ -10,14 +10,23 @@
         ],
         "marca": "Silk",
         "precio": 699,
-        "descripcion": "VER",
+        "descripcionCorta": "Bebida a base de almendra chocolate SILK. 1lt.",
+        "descripcionLarga": "SILK leche vegetal, almendra y cacao, chocolate. ?Un sabor riquísimo, una cremosidad única, y la tranquilidad de consumir una bebida 100% de origen vegetal. Una opción ideal para disfrutarla con tu cereal en el desayuno o tu bebida favorita en smoothie, café o té. BEBIBLE 1lt.?Producto vegetal bebida a base de almendras y cacao, sabor chocolate fortificada con calcio, zinc y vitaminas A, B2, B12, D y E. Libre de gluten. Sin TACC.",
         "imgs": [
             {
                 "id": 1,
                 "img": "/img/lecheDeAlmendraYchocolate.jpg",
                 "alt": "Leche de almendras y chocolate"
+            },
+            {
+                "id": 2,
+                "img": "/img/imgCarrusel.jpeg",
+                "alt": "Leche de almendras y chocolate 2"
             }
-        ]
+        ],
+        "novedad": true,
+        "preferido": false,
+        "buscados": false
     },
     {
         "id": 2,
@@ -30,14 +39,18 @@
         ],
         "marca": "Silk",
         "precio": 599,
-        "descripcion": "VER",
+        "descripcionCorta": "VER",
+        "descripcionLarga": "VEEER",
         "imgs": [
             {
                 "id": 1,
                 "img": "/img/lecheDeAlmendraYcoco.jpg",
                 "alt": "Leche de almendras y coco"
             }
-        ]
+        ],
+        "novedad": true,
+        "preferido": false,
+        "buscados": false
     },
     {
         "id": 3,
@@ -50,14 +63,18 @@
         ],
         "marca": "Silk",
         "precio": 499,
-        "descripcion": "VER",
+        "descripcionCorta": "VER",
+        "descripcionLarga": "VEEER",
         "imgs": [
             {
                 "id": 1,
                 "img": "/img/lecheDeCoco.jpg",
                 "alt": "Leche de coco"
             }
-        ]
+        ],
+        "novedad": true,
+        "preferido": false,
+        "buscados": false
     },
     {
         "id": 4,
@@ -70,14 +87,18 @@
         ],
         "marca": "Biba",
         "precio": 525,
-        "descripcion": "VER",
+        "descripcionCorta": "VER",
+        "descripcionLarga": "VEEER",
         "imgs": [
             {
                 "id": 1,
                 "img": "/img/lecheDeQuinoa.jpg",
                 "alt": "Leche de Quinoa"
             }
-        ]
+        ],
+        "novedad": true,
+        "preferido": false,
+        "buscados": false
     },
     {
         "id": 5,
@@ -90,14 +111,18 @@
         ],
         "marca": "Laddubar",
         "precio": 185,
-        "descripcion": "VER",
+        "descripcionCorta": "VER",
+        "descripcionLarga": "VEEER",
         "imgs": [
             {
                 "id": 1,
                 "img": "/img/barritasCocoChoco.jpg",
                 "alt": "Barrita coco choco Laddubar"
             }
-        ] 
+        ],
+        "novedad": false,
+        "preferido": true,
+        "buscados": false
     },
     {
         "id": 6,
@@ -110,14 +135,18 @@
         ],
         "marca": "Laddubar",
         "precio": 185,
-        "descripcion": "VER",
+        "descripcionCorta": "VER",
+        "descripcionLarga": "VEEER",
         "imgs": [
             {
                 "id": 1,
                 "img": "/img/barritasArandanos.jpg",
                 "alt": "Barrita de arándanos Laddubar"
             }
-        ]
+        ],
+        "novedad": false,
+        "preferido": true,
+        "buscados": false
     },
     {
         "id": 7,
@@ -137,7 +166,10 @@
                 "img": "/img/barritasFrutosRojos.jpg",
                 "alt": "barrita frutos rojos Laddubar"
             }
-        ]
+        ],
+        "novedad": false,
+        "preferido": true,
+        "buscados": false
     },
     {
         "id": 8,
@@ -150,14 +182,18 @@
         ],
         "marca": "Laddubar",
         "precio": 185,
-        "descripcion": "VER",
+        "descripcionCorta": "VER",
+        "descripcionLarga": "VEEER",
         "imgs": [
             {
                 "id": 1,
                 "img": "/img/barritasBrownie.jpg",
                 "alt": "barrita brownie Laddubar"
             }
-        ]
+        ],
+        "novedad": false,
+        "preferido": true,
+        "buscados": false
     },
     {
         "id": 9,
@@ -170,14 +206,18 @@
         ],
         "marca": "KOS FOOD",
         "precio": 650,
-        "descripcion": "VER",
+        "descripcionCorta": "VER",
+        "descripcionLarga": "VEEER",
         "imgs": [
             {
                 "id": 1,
                 "img": "/img/granolaTradicional.webp",
                 "alt": "granola tradicional"
             }
-        ] 
+        ],
+        "novedad": false,
+        "preferido": false,
+        "buscados": true
     },
     {
         "id": 10,
@@ -190,14 +230,18 @@
         ],
         "marca": "INTEGRA",
         "precio": 1130,
-        "descripcion": "VER",
+        "descripcionCorta": "VER",
+        "descripcionLarga": "VEEER",
         "imgs": [
             {
                 "id": 1,
                 "img": "/img/granolaConChocolate.jpg",
                 "alt": "Granola con Chocolate Integra"
             }
-        ]
+        ],
+        "novedad": false,
+        "preferido": false,
+        "buscados": true
     },
     {
         "id": 11,
@@ -210,14 +254,18 @@
         ],
         "marca": "INTEGRA",
         "precio": 1100,
-        "descripcion": "VER",
+        "descripcionCorta": "VER",
+        "descripcionLarga": "VEEER",
         "imgs": [
             {
                 "id": 1,
                 "img": "/img/granolaAlmendraYarandanos.jpg",
                 "alt": "Granola alemndras y arándanos"
             }
-        ]
+        ],
+        "novedad": false,
+        "preferido": false,
+        "buscados": true
     },
     {
         "id": 12,
@@ -237,6 +285,9 @@
                 "img": "/img/granolaEnergetica.webp",
                 "alt": "Granola energetica"
             }
-        ]
+        ],
+        "novedad": false,
+        "preferido": false,
+        "buscados": true
     }
 ]

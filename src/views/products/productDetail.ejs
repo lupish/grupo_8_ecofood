@@ -7,12 +7,16 @@
         <!-- fin header -->
         <!-- inicio main -->
     <main>
-        <h3 class="nom-producto">Leche de Almendras y Chocolate - Silk</h3>
+        <h3 class="nom-producto"><%= prod.nombre %> - <%= prod.marca %></h3>
         <!-- inicio carrusel -->
         <section class="section-carrusel-un-prod">
             <div class="carrusel-un-prod">
-                <img src="/img/lecheDeAlmendraYchocolate.jpg" alt="Leche de almendras y chocolate">
-                <img src="/img/imgCarrusel.jpeg" alt="Leche de almendras y chocolate">
+                <% for(let i = 0; i < prod.imgs.length; i ++) { %>
+                    <img src="<%= prod.imgs[i].img %>" alt="<%= prod.imgs[i].alt %> ">           
+                <% } %>
+                <% if (prod.imgs.length == 0) { %>
+                    <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
+                <% } %>
             </div>
             <i id ="estrella" class="fa-solid fa-star"></i>
             <div class="agregar-carrito">
@@ -23,11 +27,9 @@
             </div>
         </section>
         <!-- fin carrusel -->
-        <p class="precio-prod">$699</p>
-        <p>Descripción del producto</p>
-        <h3>Bebida a base de almendra chocolate SILK. 1lt.</h3>
-        <p>SILK leche vegetal, almendra y cacao, chocolate. ?Un sabor riquísimo, una cremosidad única, y la tranquilidad de consumir una bebida 100% de origen vegetal. Una opción ideal para disfrutarla con tu cereal en el desayuno o tu bebida favorita en smoothie, café o té. BEBIBLE 1lt.?Producto vegetal bebida a base de almendras y cacao, sabor chocolate fortificada con calcio, zinc y vitaminas A, B2, B12, D y E. Libre de gluten. Sin TACC.</p>
-        
+        <p class="precio-prod">$ <%= prod.precio %> </p>
+        <h3><%= prod.descripcionCorta %></h3>
+        <p><%= prod.descripcionLarga %></p>
         
     </main>
         <!-- fin main -->
