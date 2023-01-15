@@ -1,7 +1,7 @@
 const express=require('express');
 const path=require('path')
 const app=express();
-const methodOverride = require("method-override")
+const methodOverride = require("method-override");
 
 app.use(express.static('public'));
 console.log(app)
@@ -21,21 +21,13 @@ app.use(methodOverride("_method"));
 
 app.listen(3000,()=>{console.log("Servidor Corriendo")})
 
-app.get('/',(req,res)=>{
-    res.render('home');
-})
-app.get('/login',(req,res)=>{
-    res.render('users/login');
-})
-app.get('/register',(req,res)=>{
-    res.render('users/register')
-})
-app.get('/productDetail',(req,res)=>{
-    res.render('products/productDetail')
-})
-app.get('/productCart',(req,res)=>{
-    res.render('products/productCart')
-})
-app.get('/newProduct',(req,res)=>{
-    res.render('products/newProduct')
-})
+
+/*** ROUTES ***/
+const mainRouter = require('./routes/mainRouter');
+app.use('/', mainRouter);
+
+const userRouter = require('./routes/userRouter');
+app.use('/users', userRouter);
+
+const productRouter = require('./routes/productRouter');
+app.use('/products', productRouter);
