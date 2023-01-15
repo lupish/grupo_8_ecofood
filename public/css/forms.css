@@ -26,7 +26,7 @@ main form div{
     box-sizing: border-box;
 }
 
-main form div input {
+main form div input, textarea {
     width: 98%;
     text-align: left;
     border-radius: 5px;

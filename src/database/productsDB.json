@@ -1,0 +1,242 @@
+[
+    {
+        "id": 1,
+        "nombre": "Leche Almendras y Chocolate",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "Silk",
+        "precio": 699,
+        "descripcion": "VER",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/lecheDeAlmendraYchocolate.jpg",
+                "alt": "Leche de almendras y chocolate"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "nombre": "Leche Almendras y Coco",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "Silk",
+        "precio": 599,
+        "descripcion": "VER",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/lecheDeAlmendraYcoco.jpg",
+                "alt": "Leche de almendras y coco"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "nombre": "Leche de Coco",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "Silk",
+        "precio": 499,
+        "descripcion": "VER",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/lecheDeCoco.jpg",
+                "alt": "Leche de coco"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "nombre": "Leche de Quinoa",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "Biba",
+        "precio": 525,
+        "descripcion": "VER",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/lecheDeQuinoa.jpg",
+                "alt": "Leche de Quinoa"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "nombre": "Barrita COCO CHOCO",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "Laddubar",
+        "precio": 185,
+        "descripcion": "VER",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/barritasCocoChoco.jpg",
+                "alt": "Barrita coco choco Laddubar"
+            }
+        ] 
+    },
+    {
+        "id": 6,
+        "nombre": "Barrita Arándanos",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "Laddubar",
+        "precio": 185,
+        "descripcion": "VER",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/barritasArandanos.jpg",
+                "alt": "Barrita de arándanos Laddubar"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "nombre": "Barrita Frutos Rojos",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "Laddubar",
+        "precio": 499,
+        "descripcion": "185",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/barritasFrutosRojos.jpg",
+                "alt": "barrita frutos rojos Laddubar"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "nombre": "Barrita Brownie",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "Laddubar",
+        "precio": 185,
+        "descripcion": "VER",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/barritasBrownie.jpg",
+                "alt": "barrita brownie Laddubar"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "nombre": "Granola Tradicional",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "KOS FOOD",
+        "precio": 650,
+        "descripcion": "VER",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/granolaTradicional.webp",
+                "alt": "granola tradicional"
+            }
+        ] 
+    },
+    {
+        "id": 10,
+        "nombre": "Granola Chocolate",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "INTEGRA",
+        "precio": 1130,
+        "descripcion": "VER",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/granolaConChocolate.jpg",
+                "alt": "Granola con Chocolate Integra"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "nombre": "Granola Almendra y Aándanos",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "INTEGRA",
+        "precio": 1100,
+        "descripcion": "VER",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/granolaAlmendraYarandanos.jpg",
+                "alt": "Granola alemndras y arándanos"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "nombre": "Granola Energética",
+        "categorias": [
+            {
+                "id": "VER ID",
+                "nombre": "VER NOMBRE"
+            }
+        ],
+        "marca": "KOS FOOD",
+        "precio": 680,
+        "descripcion": "185",
+        "imgs": [
+            {
+                "id": 1,
+                "img": "/img/granolaEnergetica.webp",
+                "alt": "Granola energetica"
+            }
+        ]
+    }
+]
