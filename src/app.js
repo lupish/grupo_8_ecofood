@@ -27,7 +27,7 @@ const mainRouter = require('./routes/mainRouter');
 app.use('/', mainRouter);
 
 const userRouter = require('./routes/userRouter');
-app.use('/user', userRouter);
+app.use('/users', userRouter);
 
 const productRouter = require('./routes/productRouter');
-app.use('/product', productRouter);
+app.use('/products', productRouter);
