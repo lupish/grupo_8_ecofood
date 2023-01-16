@@ -159,7 +159,8 @@
         ],
         "marca": "Laddubar",
         "precio": 499,
-        "descripcion": "185",
+        "descripcionCorta": "...",
+        "descripcionLarga": "...",
         "imgs": [
             {
                 "id": 1,
@@ -200,14 +201,18 @@
         "nombre": "Granola Tradicional",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": "1",
+                "nombre": "Vegetariano"
+            },
+            {
+                "id": "2",
+                "nombre": "Vegano"
             }
         ],
         "marca": "KOS FOOD",
         "precio": 650,
-        "descripcionCorta": "VER",
-        "descripcionLarga": "VEEER",
+        "descripcionCorta": "Granola Tradicional x 400 gr",
+        "descripcionLarga": "Avena arrollada gruesa - Pepita de girasol - Azúcar invertida - Maní tostado - Copos de maíz - Almendras - Manzana deshidratada. Presentación:  400 gr.",
         "imgs": [
             {
                 "id": 1,
@@ -230,8 +235,8 @@
         ],
         "marca": "INTEGRA",
         "precio": 1130,
-        "descripcionCorta": "VER",
-        "descripcionLarga": "VEEER",
+        "descripcionCorta": "Granola con Chocolate x 350gr",
+        "descripcionLarga": "Hablemos de la felicidad de comer LA MEJOR GRANOLA de chocolate y que sea así de nutritiva :) recién salida del horno! crocante, riquiiiisima y chocolatosa. TE VAS A ENAMORAR, posta!!",
         "imgs": [
             {
                 "id": 1,
@@ -254,8 +259,8 @@
         ],
         "marca": "INTEGRA",
         "precio": 1100,
-        "descripcionCorta": "VER",
-        "descripcionLarga": "VEEER",
+        "descripcionCorta": "NUEVA Granola ÍNTEGRA x 350gr",
+        "descripcionLarga": "Hecha solamente con ingredientes reales, nada de nombres raros: avena, miel, almendra, clara de huevo, arándanos, fibra de salvado de avena, coco y vainilla",
         "imgs": [
             {
                 "id": 1,
@@ -272,13 +277,18 @@
         "nombre": "Granola Energética",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": "1",
+                "nombre": "Vegetariano"
+            },
+            {
+                "id": "2",
+                "nombre": "Vegano"
             }
         ],
         "marca": "KOS FOOD",
         "precio": 680,
-        "descripcion": "185",
+        "descripcionCorta": "Granola Energética x 400gr",
+        "descripcionLarga": "Avena arrollada gruesa - Pepita de girasol - Azúcar invertida - Pasas de uva - Maní tostado - Copos de maíz - Almendras - Nueces. Presentación:  400 gr.",
         "imgs": [
             {
                 "id": 1,
