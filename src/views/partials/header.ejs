@@ -18,12 +18,9 @@
     </div>
     <nav>
         <ul>
-            <li type="none"><a href="">Vegetarianos</a></li>
-            <li type="none"><a href="">Veganos</a></li>
-            <li type="none"><a href="">Celíacos</a></li>
-            <li type="none"><a href="">Libre de glúten</a></li>
-            <li type="none"><a href="">Bajo en sodio</a></li>
-            <li type="none"><a href="">Orgánico</a></li>
+            <% for(let i = 0; i < categorias.length; i ++) { %>
+                <li type="none"><a href=""><%= categorias[i].nombre %> </a></li>
+            <% } %>
         </ul>
     </nav>
 </header>

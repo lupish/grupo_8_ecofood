@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "nombre": "Celíacos"
+    },
+    {
+        "id": 2,
+        "nombre": "Diabéticos"
+    },
+    {
+        "id": 3,
+        "nombre": "Fit"
+    },
+    {
+        "id": 4,
+        "nombre": "Gourmet"
+    },
+    {
+        "id": 5,
+        "nombre": "Kosher"
+    },
+    {
+        "id": 6,
+        "nombre": "Orgánicos"
+    },
+    {
+        "id": 7,
+        "nombre": "Veganos"
+    }
+]

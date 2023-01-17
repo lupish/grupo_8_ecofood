@@ -1,7 +1,13 @@
 const path = require('path')
 const fs = require('fs');
+
+// bd productos
 const productsJSON = path.join(__dirname,'../database/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
+
+// bd categorias
+const categoriasJSON = path.join(__dirname,'../database/categoriasDB.json');
+const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
 
 const controller = {
     home: (req, res) => {
@@ -11,7 +17,8 @@ const controller = {
         res.render('home', {
             prodsNovedades: prodsNovedades,
             prodsPreferidos: prodsPreferidos,
-            prodsBuscados: prodsBuscados
+            prodsBuscados: prodsBuscados,
+            categorias: categorias
         });
     }
 }
