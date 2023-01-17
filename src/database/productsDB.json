@@ -4,8 +4,7 @@
         "nombre": "Leche Almendras y Chocolate",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": "7"
             }
         ],
         "marca": "Silk",
@@ -33,14 +32,16 @@
         "nombre": "Leche Almendras y Coco",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": "1"
+            },
+            {
+                "id": "7"
             }
         ],
         "marca": "Silk",
         "precio": 599,
-        "descripcionCorta": "VER",
-        "descripcionLarga": "VEEER",
+        "descripcionCorta": "Leche de Coco Sin Azúcar x 946 ml",
+        "descripcionLarga": "Silk es un alimento líquido de origen vegetal. Es delicioso, bajo en calorías, no tiene saborizantes ni colorantes artificiales y contiene 50% más calcio que la leche de vaca. Además, es libre de lactosa por su origen. ¡Disfruta de nuestra variedad y combínalo con todo lo que se te ocurra!",
         "imgs": [
             {
                 "id": 1,
@@ -57,14 +58,16 @@
         "nombre": "Leche de Coco",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": 1
+            },
+            {
+                "id": 7
             }
         ],
         "marca": "Silk",
         "precio": 499,
-        "descripcionCorta": "VER",
-        "descripcionLarga": "VEEER",
+        "descripcionCorta": "Leche de Coco Sin Azúcar x 946 ml",
+        "descripcionLarga": "Silk es un alimento líquido de origen vegetal. Es delicioso, bajo en calorías, no tiene saborizantes ni colorantes artificiales y contiene 50% más calcio que la leche de vaca. Además, es libre de lactosa por su origen. ¡Disfruta de nuestra variedad y combínalo con todo lo que se te ocurra! \n ORIGEN VEGETAL, FUENTE DE CALCIO, SIN LACTOSA, ENVASE RECICLABLE.",
         "imgs": [
             {
                 "id": 1,
@@ -81,14 +84,16 @@
         "nombre": "Leche de Quinoa",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": "1"
+            },
+            {
+                "id": "7"
             }
         ],
         "marca": "Biba",
         "precio": 525,
-        "descripcionCorta": "VER",
-        "descripcionLarga": "VEEER",
+        "descripcionCorta": "Leche de Quinoa Agroecológica x 1 Lt",
+        "descripcionLarga": "Bebida Vegetal a base de quinoa  de origen nacional, cultivada en forma agroecológica en la provincia de San Juan por productores locales, asistidos tecnológicamente por el Instituto Nacional de Tecnología Agropecuaria (INTA). Fortificada con Vitaminas A, D2. E Y B12. Sin Lactosa. Sin TACC. Gran aporte de Calcio. Sin Conservantes",
         "imgs": [
             {
                 "id": 1,
@@ -105,14 +110,19 @@
         "nombre": "Barrita COCO CHOCO",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": "1"
+            },
+            {
+                "id": "5"
+            },
+            {
+                "id": "7"
             }
         ],
         "marca": "Laddubar",
         "precio": 185,
-        "descripcionCorta": "VER",
-        "descripcionLarga": "VEEER",
+        "descripcionCorta": "Barras COCO CHOCO Dátiles Coco Cacao Nibs x 30gr Sin Tacc/Kosher",
+        "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, coco, caco nibis, sin TACC, Ajdut Kosher, Vegano",
         "imgs": [
             {
                 "id": 1,
@@ -129,14 +139,19 @@
         "nombre": "Barrita Arándanos",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": "1"
+            },
+            {
+                "id": "5"
+            },
+            {
+                "id": "7"
             }
         ],
         "marca": "Laddubar",
         "precio": 185,
-        "descripcionCorta": "VER",
-        "descripcionLarga": "VEEER",
+        "descripcionCorta": "ARÁNDANOS Dátiles Arándanos Caju x 30gr Sin Tacc/Kosher",
+        "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, arándanos, castañas de cajú, sin TACC, Ajdut Kosher, vegano.",
         "imgs": [
             {
                 "id": 1,
@@ -153,14 +168,19 @@
         "nombre": "Barrita Frutos Rojos",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": "1"
+            },
+            {
+                "id": "5"
+            },
+            {
+                "id": "7"
             }
         ],
         "marca": "Laddubar",
         "precio": 499,
-        "descripcionCorta": "...",
-        "descripcionLarga": "...",
+        "descripcionCorta": "Barras FRUTOS ROJOS Dátiles Arándanos Rojos Cacao x 30gr Sin Tacc/Kosher",
+        "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, arándanos rojos, cacao, sin TACC, Adjut Kosher, vegano.",
         "imgs": [
             {
                 "id": 1,
@@ -177,14 +197,19 @@
         "nombre": "Barrita Brownie",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": "1"
+            },
+            {
+                "id": "5"
+            },
+            {
+                "id": "7"
             }
         ],
         "marca": "Laddubar",
         "precio": 185,
-        "descripcionCorta": "VER",
-        "descripcionLarga": "VEEER",
+        "descripcionCorta": "Barras BROWNIES Dátiles Caju Cacao x 30 g Sin Tacc/Kosher",
+        "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, Castañas de cajú, cacao, sin TACC, Ajdut Kosher, vegano.",
         "imgs": [
             {
                 "id": 1,
@@ -201,11 +226,7 @@
         "nombre": "Granola Tradicional",
         "categorias": [
             {
-                "id": "1",
-                "nombre": "Vegetariano"
-            },
-            {
-                "id": "2",
+                "id": "7",
                 "nombre": "Vegano"
             }
         ],
@@ -229,8 +250,10 @@
         "nombre": "Granola Chocolate",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": 2
+            }
+            ,{
+                "id": 3
             }
         ],
         "marca": "INTEGRA",
@@ -253,8 +276,10 @@
         "nombre": "Granola Almendra y Aándanos",
         "categorias": [
             {
-                "id": "VER ID",
-                "nombre": "VER NOMBRE"
+                "id": 2
+            }
+            ,{
+                "id": 3
             }
         ],
         "marca": "INTEGRA",
@@ -277,12 +302,10 @@
         "nombre": "Granola Energética",
         "categorias": [
             {
-                "id": "1",
-                "nombre": "Vegetariano"
-            },
-            {
-                "id": "2",
-                "nombre": "Vegano"
+                "id": 2
+            }
+            ,{
+                "id": 3
             }
         ],
         "marca": "KOS FOOD",
