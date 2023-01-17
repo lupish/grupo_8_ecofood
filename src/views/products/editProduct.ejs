@@ -11,53 +11,22 @@
             </div>
             <div class="div-prod-categorias">
                 <p>Categorías del producto:</p>
-                <div>
-                    <input type="checkbox" name="prod-categorias" id="prod-categorias" value="categ1">
-                    <label for="prod-categorias">Vegetarianos</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="prod-categorias" id="prod-categorias" value="categ2">
-                    <label for="prod-categorias">Veganos</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="prod-categorias" id="prod-categorias" value="categ3">
-                    <label for="prod-categorias">Celíacos</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="prod-categorias" id="prod-categorias" value="categ4">
-                    <label for="prod-categorias">Libre de glúten</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="prod-categorias" id="prod-categorias" value="categ5">
-                    <label for="prod-categorias">Bajo en sodio</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="prod-categorias" id="prod-categorias" value="categ6">
-                    <label for="prod-categorias">Orgánico</label>
-                </div>
+                <% for(let i = 0 ; i < categorias.length; i ++) { %>
+                    <div>
+                        <input type="checkbox" name="prod-categorias" id="prod-categorias" value="<%= categorias[i].id %> ">
+                        <label for="prod-categorias"><%= categorias[i].nombre %> </label>
+                    </div>
+                <% } %>
+                <a class="crear-nueva-categoria" href="">Crear nueva categoría</a>
             </div>
             <div class="div-prod-marca">
                 <p>Marca del producto:</p>
-                <div>
-                    <input type="radio" name="prod-marca" id="prod-marca" value="marca1">
-                    <label for="prod-marca">Silk</label>
-                </div>
-                <div>
-                    <input type="radio" name="prod-marca" id="prod-marca" value="marca2">
-                    <label for="prod-marca">Biba</label>
-                </div>
-                <div>
-                    <input type="radio" name="prod-marca" id="prod-marca" value="marca3">
-                    <label for="prod-marca">Laddubar</label>
-                </div>
-                <div>
-                    <input type="radio" name="prod-marca" id="prod-marca" value="marca4">
-                    <label for="prod-marca">Kos Food</label>
-                </div>
-                <div>
-                    <input type="radio" name="prod-marca" id="prod-marca" value="marca5">
-                    <label for="prod-marca">Integra</label>
-                </div>
+                <% for(let i = 0; i < marcas.length; i ++) { %>
+                    <div>
+                        <input type="radio" name="prod-marca" id="prod-marca" value="<%= marcas[i].id %> ">
+                        <label for="prod-marca"><%= marcas[i].nombre %> </label>
+                    </div>
+                <% } %>
                 <a class="editar-marca" href="">Crear nueva marca</a>
             </div>
             <div class="div-prod-precio">

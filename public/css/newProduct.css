@@ -27,7 +27,7 @@
     width: 40%;
 }
 
-.form-prod-nuevo .crear-nueva-marca {
+.form-prod-nuevo .crear-nueva-marca, .crear-nueva-categoria {
     padding-left: 5px;
 }
 
