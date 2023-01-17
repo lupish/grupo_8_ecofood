@@ -7,28 +7,30 @@
     <!-- fin header -->
     <!-- inicio main -->
     <main>
-        <img src="/img/EcoFood Logo Curvas web.jpg" alt="imagen de ejemplo" width="360">
-        <h2>Creá tu cuenta</h2>
-        <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p>
-        <form action="/users/register" method="POST">
-            <div>
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre" required> 
-            </div>
-            <div>
-                <input type="email" name="email" id="email" placeholder="Email" required>
-            </div>
-            <div>
-                <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña" required>
-            </div>
-    
-            <div>
-                <input type="password" name="confirmarContrasenia" id="confirmar-contrasenia" placeholder="Confirmar contarseña" required>
-            </div>
-            <div>
-                <button type="submit">Crear cuenta</button>
-            </div>
-        </form>
-        <a href="/users/login">¿Yá tenés una cuenta? Iniciá sesión</a>
+        <div class="div-form">
+            <img src="/img/EcoFood Logo Curvas web.jpg" alt="imagen de ejemplo" width="360">
+            <h2>Creá tu cuenta</h2>
+            <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p>
+            <form action="/users/register" method="POST">
+                <div>
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required> 
+                </div>
+                <div>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div>
+                    <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña" required>
+                </div>
+        
+                <div>
+                    <input type="password" name="confirmarContrasenia" id="confirmar-contrasenia" placeholder="Confirmar contarseña" required>
+                </div>
+                <div>
+                    <button type="submit">Crear cuenta</button>
+                </div>
+            </form>
+            <a href="/users/login">¿Yá tenés una cuenta? Iniciá sesión</a>
+        </div>
     </main>
     <!-- fin main -->
     <!-- inicio footer -->

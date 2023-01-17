@@ -5,6 +5,7 @@ main {
     padding: 2%;
     box-sizing: border-box;
 }
+
 main img {
     width: 80%;
 }
@@ -57,4 +58,18 @@ main a {
 main a:hover {
     color: #EB947A;
     transition: all 0.3s;
+}
+
+@media (min-width: 769px) {
+
+    main .div-form {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    main .div-form {
+        width: 50%;
+    }
 }
