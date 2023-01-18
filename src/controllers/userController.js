@@ -20,7 +20,8 @@ const controller = {
            confirmarContrasenia: req.body.confirmarContrasenia
        }
     //GUARDAR
-    let archivoUsuario = fs.readFileSync('usersDB.json', {encoding: 'utf-8'});
+    const usersJSON = path.join(__dirname,'../database/usersDB.json');
+    let archivoUsuario = fs.readFileSync(usersJSON, {encoding: 'utf-8'});
     let usuarios;
     if(archivoUsuario==""){
         usuarios = [];
@@ -29,9 +30,9 @@ const controller = {
     }
     usuarios.push(usuario);
     usuariosJSON = JSON.stringify(usuarios);
-    fs.writeFileSync('usersDB.json', usuariosJSON);
+    fs.writeFileSync(usersJSON, usuariosJSON);
    
-    res.redirect('/home');
+    res.redirect('/');
  }
 }
 
