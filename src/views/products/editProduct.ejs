@@ -13,8 +13,8 @@
                 <p>Categorías del producto:</p>
                 <% for(let i = 0 ; i < categorias.length; i ++) { %>
                     <div>
-                        <input type="checkbox" name="prod-categorias" id="prod-categorias" value="<%= categorias[i].id %> ">
-                        <label for="prod-categorias"><%= categorias[i].nombre %> </label>
+                        <input type="checkbox" name="prod-categorias" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %> ">
+                        <label for="<%= categorias[i].nombre %>"><%= categorias[i].nombre %></label>
                     </div>
                 <% } %>
                 <a class="crear-nueva-categoria" href="">Crear nueva categoría</a>
@@ -23,8 +23,8 @@
                 <p>Marca del producto:</p>
                 <% for(let i = 0; i < marcas.length; i ++) { %>
                     <div>
-                        <input type="radio" name="prod-marca" id="prod-marca" value="<%= marcas[i].id %> ">
-                        <label for="prod-marca"><%= marcas[i].nombre %> </label>
+                        <input type="radio" name="prod-marca" id="<%= marcas[i].nombre %>" value="<%= marcas[i].id %> ">
+                        <label for="<%= marcas[i].nombre %>"><%= marcas[i].nombre %> </label>
                     </div>
                 <% } %>
                 <a class="editar-marca" href="">Crear nueva marca</a>
