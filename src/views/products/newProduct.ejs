@@ -5,15 +5,15 @@
     <%- include('../partials/header') %>  
     <main>
         <h1 class="label-crear-prod">Crear producto</h1>
-        <form class="form-prod-nuevo" method="POST" action="/products/newProduct">
+        <form class="form-prod-nuevo" method="POST" action="/products/newProduct" enctype="multipart/form-data">
             <div>
-                <input type="text" name="prod-nombre" id="prod-nombre" placeholder="Nombre del producto" required> 
+                <input type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" required> 
             </div>
             <div class="div-prod-categorias">
                 <p>Categorías del producto:</p>
                 <% for(let i = 0 ; i < categorias.length; i ++) { %>
                     <div>
-                        <input type="checkbox" name="prod-categorias" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %> ">
+                        <input type="checkbox" name="prod_categorias" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (i == 0) { %> <%= 'checked' %> <% } %> >
                         <label for="<%= categorias[i].nombre %>"><%= categorias[i].nombre %> </label>
                     </div>
                 <% } %>
@@ -23,24 +23,24 @@
                 <p>Marca del producto:</p>
                 <% for(let i = 0; i < marcas.length; i ++) { %>
                     <div>
-                        <input type="radio" name="prod-marca" id="<%= marcas[i].nombre %>" value="<%= marcas[i].id %> ">
+                        <input type="radio" name="prod_marca" id="<%= marcas[i].nombre %>" value="<%= marcas[i].id %>" <% if (i == 0) { %> <%= 'checked' %> <% } %> >
                         <label for="<%= marcas[i].nombre %>"><%= marcas[i].nombre %></label>
                     </div>
                 <% } %>
                 <a class="crear-nueva-marca" href="">Crear nueva marca</a>
             </div>
             <div class="div-prod-precio">
-                <p>$</p> <input type="number" name="prod-precio" id="prod-precio" placeholder="Precio del producto" required>
+                <p>$</p> <input type="number" name="prod_precio" id="prod-precio" placeholder="Precio del producto" required>
             </div>
             <div>
-                <input type="text" name="prod-descripcion-corta" id="prod-nombre" placeholder="Descripción corta del producto" required> 
+                <input type="text" name="prod_descripcion_corta" id="prod-nombre" placeholder="Descripción corta del producto" required> 
             </div>
             <div>
-                <textarea name="prod-descripcion-larga" id="prod-descripcion-larga" cols="30" rows="5" placeholder="Decripción larga del producto"></textarea>
+                <textarea name="prod_descripcion_larga" id="prod-descripcion-larga" cols="30" rows="5" placeholder="Decripción larga del producto"></textarea>
             </div>            
             <div class="div-prod-fotos">
                 <label class="label-prod-fotos" for="prod-fotos">Fotos del producto: </label>
-                <input class="input-prod-fotos" type="file" name="prod-fotos" id="prod-fotos" multiple>
+                <input class="input-prod-fotos" type="file" name="prod_fotos" id="prod-fotos" multiple>
             </div>
             <div>
                 <button type="submit">Crear producto</button>

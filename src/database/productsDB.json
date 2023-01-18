@@ -1,326 +1,355 @@
 [
-    {
+  {
+    "id": 1,
+    "nombre": "Leche Almendras y Chocolate",
+    "categorias": [
+      {
+        "id": "7"
+      }
+    ],
+    "marca": "Silk",
+    "precio": 699,
+    "descripcionCorta": "Bebida a base de almendra chocolate SILK. 1lt.",
+    "descripcionLarga": "SILK leche vegetal, almendra y cacao, chocolate. ?Un sabor riquísimo, una cremosidad única, y la tranquilidad de consumir una bebida 100% de origen vegetal. Una opción ideal para disfrutarla con tu cereal en el desayuno o tu bebida favorita en smoothie, café o té. BEBIBLE 1lt.?Producto vegetal bebida a base de almendras y cacao, sabor chocolate fortificada con calcio, zinc y vitaminas A, B2, B12, D y E. Libre de gluten. Sin TACC.",
+    "imgs": [
+      {
         "id": 1,
-        "nombre": "Leche Almendras y Chocolate",
-        "categorias": [
-            {
-                "id": "7"
-            }
-        ],
-        "marca": "Silk",
-        "precio": 699,
-        "descripcionCorta": "Bebida a base de almendra chocolate SILK. 1lt.",
-        "descripcionLarga": "SILK leche vegetal, almendra y cacao, chocolate. ?Un sabor riquísimo, una cremosidad única, y la tranquilidad de consumir una bebida 100% de origen vegetal. Una opción ideal para disfrutarla con tu cereal en el desayuno o tu bebida favorita en smoothie, café o té. BEBIBLE 1lt.?Producto vegetal bebida a base de almendras y cacao, sabor chocolate fortificada con calcio, zinc y vitaminas A, B2, B12, D y E. Libre de gluten. Sin TACC.",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/lecheDeAlmendraYchocolate.jpg",
-                "alt": "Leche de almendras y chocolate"
-            },
-            {
-                "id": 2,
-                "img": "/img/imgCarrusel.jpeg",
-                "alt": "Leche de almendras y chocolate 2"
-            }
-        ],
-        "novedad": true,
-        "preferido": false,
-        "buscados": false
-    },
-    {
+        "img": "/img/products/lecheDeAlmendraYchocolate.jpg",
+        "alt": "Leche de almendras y chocolate"
+      },
+      {
         "id": 2,
-        "nombre": "Leche Almendras y Coco",
-        "categorias": [
-            {
-                "id": "1"
-            },
-            {
-                "id": "7"
-            }
-        ],
-        "marca": "Silk",
-        "precio": 599,
-        "descripcionCorta": "Leche de Coco Sin Azúcar x 946 ml",
-        "descripcionLarga": "Silk es un alimento líquido de origen vegetal. Es delicioso, bajo en calorías, no tiene saborizantes ni colorantes artificiales y contiene 50% más calcio que la leche de vaca. Además, es libre de lactosa por su origen. ¡Disfruta de nuestra variedad y combínalo con todo lo que se te ocurra!",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/lecheDeAlmendraYcoco.jpg",
-                "alt": "Leche de almendras y coco"
-            }
-        ],
-        "novedad": true,
-        "preferido": false,
-        "buscados": false
-    },
-    {
-        "id": 3,
-        "nombre": "Leche de Coco",
-        "categorias": [
-            {
-                "id": 1
-            },
-            {
-                "id": 7
-            }
-        ],
-        "marca": "Silk",
-        "precio": 499,
-        "descripcionCorta": "Leche de Coco Sin Azúcar x 946 ml",
-        "descripcionLarga": "Silk es un alimento líquido de origen vegetal. Es delicioso, bajo en calorías, no tiene saborizantes ni colorantes artificiales y contiene 50% más calcio que la leche de vaca. Además, es libre de lactosa por su origen. ¡Disfruta de nuestra variedad y combínalo con todo lo que se te ocurra! \n ORIGEN VEGETAL, FUENTE DE CALCIO, SIN LACTOSA, ENVASE RECICLABLE.",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/lecheDeCoco.jpg",
-                "alt": "Leche de coco"
-            }
-        ],
-        "novedad": true,
-        "preferido": false,
-        "buscados": false
-    },
-    {
-        "id": 4,
-        "nombre": "Leche de Quinoa",
-        "categorias": [
-            {
-                "id": "1"
-            },
-            {
-                "id": "7"
-            }
-        ],
-        "marca": "Biba",
-        "precio": 525,
-        "descripcionCorta": "Leche de Quinoa Agroecológica x 1 Lt",
-        "descripcionLarga": "Bebida Vegetal a base de quinoa  de origen nacional, cultivada en forma agroecológica en la provincia de San Juan por productores locales, asistidos tecnológicamente por el Instituto Nacional de Tecnología Agropecuaria (INTA). Fortificada con Vitaminas A, D2. E Y B12. Sin Lactosa. Sin TACC. Gran aporte de Calcio. Sin Conservantes",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/lecheDeQuinoa.jpg",
-                "alt": "Leche de Quinoa"
-            }
-        ],
-        "novedad": true,
-        "preferido": false,
-        "buscados": false
-    },
-    {
-        "id": 5,
-        "nombre": "Barrita COCO CHOCO",
-        "categorias": [
-            {
-                "id": "1"
-            },
-            {
-                "id": "5"
-            },
-            {
-                "id": "7"
-            }
-        ],
-        "marca": "Laddubar",
-        "precio": 185,
-        "descripcionCorta": "Barras COCO CHOCO Dátiles Coco Cacao Nibs x 30gr Sin Tacc/Kosher",
-        "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, coco, caco nibis, sin TACC, Ajdut Kosher, Vegano",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/barritasCocoChoco.jpg",
-                "alt": "Barrita coco choco Laddubar"
-            }
-        ],
-        "novedad": false,
-        "preferido": true,
-        "buscados": false
-    },
-    {
-        "id": 6,
-        "nombre": "Barrita Arándanos",
-        "categorias": [
-            {
-                "id": "1"
-            },
-            {
-                "id": "5"
-            },
-            {
-                "id": "7"
-            }
-        ],
-        "marca": "Laddubar",
-        "precio": 185,
-        "descripcionCorta": "ARÁNDANOS Dátiles Arándanos Caju x 30gr Sin Tacc/Kosher",
-        "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, arándanos, castañas de cajú, sin TACC, Ajdut Kosher, vegano.",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/barritasArandanos.jpg",
-                "alt": "Barrita de arándanos Laddubar"
-            }
-        ],
-        "novedad": false,
-        "preferido": true,
-        "buscados": false
-    },
-    {
-        "id": 7,
-        "nombre": "Barrita Frutos Rojos",
-        "categorias": [
-            {
-                "id": "1"
-            },
-            {
-                "id": "5"
-            },
-            {
-                "id": "7"
-            }
-        ],
-        "marca": "Laddubar",
-        "precio": 499,
-        "descripcionCorta": "Barras FRUTOS ROJOS Dátiles Arándanos Rojos Cacao x 30gr Sin Tacc/Kosher",
-        "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, arándanos rojos, cacao, sin TACC, Adjut Kosher, vegano.",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/barritasFrutosRojos.jpg",
-                "alt": "barrita frutos rojos Laddubar"
-            }
-        ],
-        "novedad": false,
-        "preferido": true,
-        "buscados": false
-    },
-    {
-        "id": 8,
-        "nombre": "Barrita Brownie",
-        "categorias": [
-            {
-                "id": "1"
-            },
-            {
-                "id": "5"
-            },
-            {
-                "id": "7"
-            }
-        ],
-        "marca": "Laddubar",
-        "precio": 185,
-        "descripcionCorta": "Barras BROWNIES Dátiles Caju Cacao x 30 g Sin Tacc/Kosher",
-        "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, Castañas de cajú, cacao, sin TACC, Ajdut Kosher, vegano.",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/barritasBrownie.jpg",
-                "alt": "barrita brownie Laddubar"
-            }
-        ],
-        "novedad": false,
-        "preferido": true,
-        "buscados": false
-    },
-    {
-        "id": 9,
-        "nombre": "Granola Tradicional",
-        "categorias": [
-            {
-                "id": "7",
-                "nombre": "Vegano"
-            }
-        ],
-        "marca": "KOS FOOD",
-        "precio": 650,
-        "descripcionCorta": "Granola Tradicional x 400 gr",
-        "descripcionLarga": "Avena arrollada gruesa - Pepita de girasol - Azúcar invertida - Maní tostado - Copos de maíz - Almendras - Manzana deshidratada. Presentación:  400 gr.",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/granolaTradicional.webp",
-                "alt": "granola tradicional"
-            }
-        ],
-        "novedad": false,
-        "preferido": false,
-        "buscados": true
-    },
-    {
-        "id": 10,
-        "nombre": "Granola Chocolate",
-        "categorias": [
-            {
-                "id": 2
-            }
-            ,{
-                "id": 3
-            }
-        ],
-        "marca": "INTEGRA",
-        "precio": 1130,
-        "descripcionCorta": "Granola con Chocolate x 350gr",
-        "descripcionLarga": "Hablemos de la felicidad de comer LA MEJOR GRANOLA de chocolate y que sea así de nutritiva :) recién salida del horno! crocante, riquiiiisima y chocolatosa. TE VAS A ENAMORAR, posta!!",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/granolaConChocolate.jpg",
-                "alt": "Granola con Chocolate Integra"
-            }
-        ],
-        "novedad": false,
-        "preferido": false,
-        "buscados": true
-    },
-    {
-        "id": 11,
-        "nombre": "Granola Almendra y Aándanos",
-        "categorias": [
-            {
-                "id": 2
-            }
-            ,{
-                "id": 3
-            }
-        ],
-        "marca": "INTEGRA",
-        "precio": 1100,
-        "descripcionCorta": "NUEVA Granola ÍNTEGRA x 350gr",
-        "descripcionLarga": "Hecha solamente con ingredientes reales, nada de nombres raros: avena, miel, almendra, clara de huevo, arándanos, fibra de salvado de avena, coco y vainilla",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/granolaAlmendraYarandanos.jpg",
-                "alt": "Granola alemndras y arándanos"
-            }
-        ],
-        "novedad": false,
-        "preferido": false,
-        "buscados": true
-    },
-    {
-        "id": 12,
-        "nombre": "Granola Energética",
-        "categorias": [
-            {
-                "id": 2
-            }
-            ,{
-                "id": 3
-            }
-        ],
-        "marca": "KOS FOOD",
-        "precio": 680,
-        "descripcionCorta": "Granola Energética x 400gr",
-        "descripcionLarga": "Avena arrollada gruesa - Pepita de girasol - Azúcar invertida - Pasas de uva - Maní tostado - Copos de maíz - Almendras - Nueces. Presentación:  400 gr.",
-        "imgs": [
-            {
-                "id": 1,
-                "img": "/img/granolaEnergetica.webp",
-                "alt": "Granola energetica"
-            }
-        ],
-        "novedad": false,
-        "preferido": false,
-        "buscados": true
-    }
+        "img": "/img/products/imgCarrusel.jpeg",
+        "alt": "Leche de almendras y chocolate 2"
+      }
+    ],
+    "novedad": true,
+    "preferido": false,
+    "buscados": false
+  },
+  {
+    "id": 2,
+    "nombre": "Leche Almendras y Coco",
+    "categorias": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "7"
+      }
+    ],
+    "marca": "Silk",
+    "precio": 599,
+    "descripcionCorta": "Leche de Coco Sin Azúcar x 946 ml",
+    "descripcionLarga": "Silk es un alimento líquido de origen vegetal. Es delicioso, bajo en calorías, no tiene saborizantes ni colorantes artificiales y contiene 50% más calcio que la leche de vaca. Además, es libre de lactosa por su origen. ¡Disfruta de nuestra variedad y combínalo con todo lo que se te ocurra!",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/lecheDeAlmendraYcoco.jpg",
+        "alt": "Leche de almendras y coco"
+      }
+    ],
+    "novedad": true,
+    "preferido": false,
+    "buscados": false
+  },
+  {
+    "id": 3,
+    "nombre": "Leche de Coco",
+    "categorias": [
+      {
+        "id": 1
+      },
+      {
+        "id": 7
+      }
+    ],
+    "marca": "Silk",
+    "precio": 499,
+    "descripcionCorta": "Leche de Coco Sin Azúcar x 946 ml",
+    "descripcionLarga": "Silk es un alimento líquido de origen vegetal. Es delicioso, bajo en calorías, no tiene saborizantes ni colorantes artificiales y contiene 50% más calcio que la leche de vaca. Además, es libre de lactosa por su origen. ¡Disfruta de nuestra variedad y combínalo con todo lo que se te ocurra! \n ORIGEN VEGETAL, FUENTE DE CALCIO, SIN LACTOSA, ENVASE RECICLABLE.",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/lecheDeCoco.jpg",
+        "alt": "Leche de coco"
+      }
+    ],
+    "novedad": true,
+    "preferido": false,
+    "buscados": false
+  },
+  {
+    "id": 4,
+    "nombre": "Leche de Quinoa",
+    "categorias": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "7"
+      }
+    ],
+    "marca": "Biba",
+    "precio": 525,
+    "descripcionCorta": "Leche de Quinoa Agroecológica x 1 Lt",
+    "descripcionLarga": "Bebida Vegetal a base de quinoa  de origen nacional, cultivada en forma agroecológica en la provincia de San Juan por productores locales, asistidos tecnológicamente por el Instituto Nacional de Tecnología Agropecuaria (INTA). Fortificada con Vitaminas A, D2. E Y B12. Sin Lactosa. Sin TACC. Gran aporte de Calcio. Sin Conservantes",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/lecheDeQuinoa.jpg",
+        "alt": "Leche de Quinoa"
+      }
+    ],
+    "novedad": true,
+    "preferido": false,
+    "buscados": false
+  },
+  {
+    "id": 5,
+    "nombre": "Barrita COCO CHOCO",
+    "categorias": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "5"
+      },
+      {
+        "id": "7"
+      }
+    ],
+    "marca": "Laddubar",
+    "precio": 185,
+    "descripcionCorta": "Barras COCO CHOCO Dátiles Coco Cacao Nibs x 30gr Sin Tacc/Kosher",
+    "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, coco, caco nibis, sin TACC, Ajdut Kosher, Vegano",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/barritasCocoChoco.jpg",
+        "alt": "Barrita coco choco Laddubar"
+      }
+    ],
+    "novedad": false,
+    "preferido": true,
+    "buscados": false
+  },
+  {
+    "id": 6,
+    "nombre": "Barrita Arándanos",
+    "categorias": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "5"
+      },
+      {
+        "id": "7"
+      }
+    ],
+    "marca": "Laddubar",
+    "precio": 185,
+    "descripcionCorta": "ARÁNDANOS Dátiles Arándanos Caju x 30gr Sin Tacc/Kosher",
+    "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, arándanos, castañas de cajú, sin TACC, Ajdut Kosher, vegano.",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/barritasArandanos.jpg",
+        "alt": "Barrita de arándanos Laddubar"
+      }
+    ],
+    "novedad": false,
+    "preferido": true,
+    "buscados": false
+  },
+  {
+    "id": 7,
+    "nombre": "Barrita Frutos Rojos",
+    "categorias": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "5"
+      },
+      {
+        "id": "7"
+      }
+    ],
+    "marca": "Laddubar",
+    "precio": 499,
+    "descripcionCorta": "Barras FRUTOS ROJOS Dátiles Arándanos Rojos Cacao x 30gr Sin Tacc/Kosher",
+    "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, arándanos rojos, cacao, sin TACC, Adjut Kosher, vegano.",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/barritasFrutosRojos.jpg",
+        "alt": "barrita frutos rojos Laddubar"
+      }
+    ],
+    "novedad": false,
+    "preferido": true,
+    "buscados": false
+  },
+  {
+    "id": 8,
+    "nombre": "Barrita Brownie",
+    "categorias": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "5"
+      },
+      {
+        "id": "7"
+      }
+    ],
+    "marca": "Laddubar",
+    "precio": 185,
+    "descripcionCorta": "Barras BROWNIES Dátiles Caju Cacao x 30 g Sin Tacc/Kosher",
+    "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, Castañas de cajú, cacao, sin TACC, Ajdut Kosher, vegano.",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/barritasBrownie.jpg",
+        "alt": "barrita brownie Laddubar"
+      }
+    ],
+    "novedad": false,
+    "preferido": true,
+    "buscados": false
+  },
+  {
+    "id": 9,
+    "nombre": "Granola Tradicional",
+    "categorias": [
+      {
+        "id": "7",
+        "nombre": "Vegano"
+      }
+    ],
+    "marca": "KOS FOOD",
+    "precio": 650,
+    "descripcionCorta": "Granola Tradicional x 400 gr",
+    "descripcionLarga": "Avena arrollada gruesa - Pepita de girasol - Azúcar invertida - Maní tostado - Copos de maíz - Almendras - Manzana deshidratada. Presentación:  400 gr.",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/granolaTradicional.webp",
+        "alt": "granola tradicional"
+      }
+    ],
+    "novedad": false,
+    "preferido": false,
+    "buscados": true
+  },
+  {
+    "id": 10,
+    "nombre": "Granola Chocolate",
+    "categorias": [
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      }
+    ],
+    "marca": "INTEGRA",
+    "precio": 1130,
+    "descripcionCorta": "Granola con Chocolate x 350gr",
+    "descripcionLarga": "Hablemos de la felicidad de comer LA MEJOR GRANOLA de chocolate y que sea así de nutritiva :) recién salida del horno! crocante, riquiiiisima y chocolatosa. TE VAS A ENAMORAR, posta!!",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/granolaConChocolate.jpg",
+        "alt": "Granola con Chocolate Integra"
+      }
+    ],
+    "novedad": false,
+    "preferido": false,
+    "buscados": true
+  },
+  {
+    "id": 11,
+    "nombre": "Granola Almendra y Aándanos",
+    "categorias": [
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      }
+    ],
+    "marca": "INTEGRA",
+    "precio": 1100,
+    "descripcionCorta": "NUEVA Granola ÍNTEGRA x 350gr",
+    "descripcionLarga": "Hecha solamente con ingredientes reales, nada de nombres raros: avena, miel, almendra, clara de huevo, arándanos, fibra de salvado de avena, coco y vainilla",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/granolaAlmendraYarandanos.jpg",
+        "alt": "Granola alemndras y arándanos"
+      }
+    ],
+    "novedad": false,
+    "preferido": false,
+    "buscados": true
+  },
+  {
+    "id": 12,
+    "nombre": "Granola Energética",
+    "categorias": [
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      }
+    ],
+    "marca": "KOS FOOD",
+    "precio": 680,
+    "descripcionCorta": "Granola Energética x 400gr",
+    "descripcionLarga": "Avena arrollada gruesa - Pepita de girasol - Azúcar invertida - Pasas de uva - Maní tostado - Copos de maíz - Almendras - Nueces. Presentación:  400 gr.",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/granolaEnergetica.webp",
+        "alt": "Granola energetica"
+      }
+    ],
+    "novedad": false,
+    "preferido": false,
+    "buscados": true
+  },
+  {
+    "id": 14,
+    "nombre": "Lino Dorado ORGÁNICO",
+    "categorias": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "6"
+      },
+      {
+        "id": "7"
+      }
+    ],
+    "marca": "1",
+    "precio": "560",
+    "descripcionCorta": "Lino Dorado ORGÁNICO x 250 gr SIN TACC - AIKEN FOODS",
+    "descripcionLarga": "Lino Dorado Orgánico Aiken \r\n\r\n- Es la fuente vegetal más rica en omega 3.\r\n- Tiene efectos positivos sobre el corazón y el sistema vascular. Contiene lignanos y anioxidantes naturales. Ayuda a combatir los problemas de atención y de memoria.\r\n- Es rico en fibras.\r\n- Puede consumirse en ensaladas, mezclado con cereales, con yogur o batidos y licuados de frutas. Puede agregarse a preparaciones horneadas, como panes y galletitas.\r\n- Las semillas del lino dorado pueden consumirse enteras remojadas, licuadas o molidas en el momento para mantener sus cualidades naurales.\r\n- Orgánico.\r\n- Sin TACC.\r\n- Vegano.\r\n- 100 % Natural.",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/prod-lino_dorado_kos_food_1674084577677.webp",
+        "alt": "lino_dorado_kos_food.webp"
+      }
+    ],
+    "novedad": false,
+    "preferido": false,
+    "buscados": false
+  }
 ]

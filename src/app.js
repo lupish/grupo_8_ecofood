@@ -33,6 +33,11 @@ const productRouter = require('./routes/productRouter');
 app.use('/products', productRouter);
 
 //ERROR 404
- app.use((req, res, next) => {
-    res.status(404).render('./products/product-not-found');
- });
+// bd categorias
+const fs = require('fs');
+const categoriasJSON = path.join(__dirname,'./database/categoriasDB.json');
+const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
+
+app.use((req, res, next) => {
+   res.status(404).render('./products/product-not-found', {categorias: categorias});
+});
