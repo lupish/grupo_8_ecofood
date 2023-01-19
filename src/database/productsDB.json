@@ -226,8 +226,7 @@
     "nombre": "Granola Tradicional",
     "categorias": [
       {
-        "id": "7",
-        "nombre": "Vegano"
+        "id": "7"
       }
     ],
     "marca": 4,
@@ -250,10 +249,10 @@
     "nombre": "Granola Chocolate",
     "categorias": [
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       }
     ],
     "marca": 5,
@@ -341,6 +340,29 @@
     "precio": "560",
     "descripcionCorta": "Lino Dorado ORGÁNICO x 250 gr SIN TACC - AIKEN FOODS",
     "descripcionLarga": "Lino Dorado Orgánico Aiken \r\n\r\n- Es la fuente vegetal más rica en omega 3.\r\n- Tiene efectos positivos sobre el corazón y el sistema vascular. Contiene lignanos y anioxidantes naturales. Ayuda a combatir los problemas de atención y de memoria.\r\n- Es rico en fibras.\r\n- Puede consumirse en ensaladas, mezclado con cereales, con yogur o batidos y licuados de frutas. Puede agregarse a preparaciones horneadas, como panes y galletitas.\r\n- Las semillas del lino dorado pueden consumirse enteras remojadas, licuadas o molidas en el momento para mantener sus cualidades naurales.\r\n- Orgánico.\r\n- Sin TACC.\r\n- Vegano.\r\n- 100 % Natural.",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/prod-lino_dorado_kos_food_1674084577677.webp",
+        "alt": "lino_dorado_kos_food.webp"
+      }
+    ],
+    "novedad": false,
+    "preferido": false,
+    "buscados": false
+  },
+  {
+    "id": 19,
+    "nombre": "PRUEBA IMG 1",
+    "categorias": [
+      {
+        "id": "1"
+      }
+    ],
+    "marca": "1",
+    "precio": "1",
+    "descripcionCorta": "1",
+    "descripcionLarga": "1",
     "imgs": [
       {
         "id": 1,

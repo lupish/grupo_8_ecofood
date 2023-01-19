@@ -21,10 +21,15 @@ const uploadFile = multer({storage: multerDiskStorage});
 const productController = require('../controllers/productController')
 
 router.get('/productDetail/:idProd', productController.productDetail);
+
 router.get('/productCart', productController.productCart);
+
 router.get('/newProduct', productController.newProduct);
 router.post('/newProduct', uploadFile.array("prod_fotos"), productController.processCreate);
+
 router.get('/editProduct/:idProd', productController.editProduct);
+router.put('/editProduct/:idProd', uploadFile.array("prod_fotos"), productController.processEdit);
+
 router.get('/listProducts', productController.listProducts);
 
 module.exports = router;
