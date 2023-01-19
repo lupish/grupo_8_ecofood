@@ -25,7 +25,11 @@ const controller = {
         res.render('products/newProduct', {categorias: categorias, marcas: marcas});
     },
     editProduct: (req, res) => {
-        res.render('products/editProduct', {categorias: categorias, marcas: marcas});
+        console.log("EDIT PRODUCT");
+        console.log(req.params);
+        let prod = products.find(elem => elem.id == req.params.idProd);
+        console.log(prod);
+        res.render('products/editProduct', {categorias: categorias, marcas: marcas, prod: prod});
     },
     listProducts: (req, res) => {
         res.render('products/listProducts', {categorias: categorias, prods: products, marcas: marcas})
