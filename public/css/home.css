@@ -64,6 +64,7 @@ section article .info-de-producto img {
     top:5px;
     color:#96AB61;
     font-size: 25px;
+    z-index: 1;
 }
 
 .info-de-producto #estrella:hover {

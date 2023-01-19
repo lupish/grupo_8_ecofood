@@ -7,7 +7,7 @@
         "id": "7"
       }
     ],
-    "marca": "Silk",
+    "marca": 1,
     "precio": 699,
     "descripcionCorta": "Bebida a base de almendra chocolate SILK. 1lt.",
     "descripcionLarga": "SILK leche vegetal, almendra y cacao, chocolate. ?Un sabor riquísimo, una cremosidad única, y la tranquilidad de consumir una bebida 100% de origen vegetal. Una opción ideal para disfrutarla con tu cereal en el desayuno o tu bebida favorita en smoothie, café o té. BEBIBLE 1lt.?Producto vegetal bebida a base de almendras y cacao, sabor chocolate fortificada con calcio, zinc y vitaminas A, B2, B12, D y E. Libre de gluten. Sin TACC.",
@@ -38,7 +38,7 @@
         "id": "7"
       }
     ],
-    "marca": "Silk",
+    "marca": 1,
     "precio": 599,
     "descripcionCorta": "Leche de Coco Sin Azúcar x 946 ml",
     "descripcionLarga": "Silk es un alimento líquido de origen vegetal. Es delicioso, bajo en calorías, no tiene saborizantes ni colorantes artificiales y contiene 50% más calcio que la leche de vaca. Además, es libre de lactosa por su origen. ¡Disfruta de nuestra variedad y combínalo con todo lo que se te ocurra!",
@@ -64,7 +64,7 @@
         "id": 7
       }
     ],
-    "marca": "Silk",
+    "marca": 1,
     "precio": 499,
     "descripcionCorta": "Leche de Coco Sin Azúcar x 946 ml",
     "descripcionLarga": "Silk es un alimento líquido de origen vegetal. Es delicioso, bajo en calorías, no tiene saborizantes ni colorantes artificiales y contiene 50% más calcio que la leche de vaca. Además, es libre de lactosa por su origen. ¡Disfruta de nuestra variedad y combínalo con todo lo que se te ocurra! \n ORIGEN VEGETAL, FUENTE DE CALCIO, SIN LACTOSA, ENVASE RECICLABLE.",
@@ -90,7 +90,7 @@
         "id": "7"
       }
     ],
-    "marca": "Biba",
+    "marca": 2,
     "precio": 525,
     "descripcionCorta": "Leche de Quinoa Agroecológica x 1 Lt",
     "descripcionLarga": "Bebida Vegetal a base de quinoa  de origen nacional, cultivada en forma agroecológica en la provincia de San Juan por productores locales, asistidos tecnológicamente por el Instituto Nacional de Tecnología Agropecuaria (INTA). Fortificada con Vitaminas A, D2. E Y B12. Sin Lactosa. Sin TACC. Gran aporte de Calcio. Sin Conservantes",
@@ -119,7 +119,7 @@
         "id": "7"
       }
     ],
-    "marca": "Laddubar",
+    "marca": 3,
     "precio": 185,
     "descripcionCorta": "Barras COCO CHOCO Dátiles Coco Cacao Nibs x 30gr Sin Tacc/Kosher",
     "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, coco, caco nibis, sin TACC, Ajdut Kosher, Vegano",
@@ -148,7 +148,7 @@
         "id": "7"
       }
     ],
-    "marca": "Laddubar",
+    "marca": 3,
     "precio": 185,
     "descripcionCorta": "ARÁNDANOS Dátiles Arándanos Caju x 30gr Sin Tacc/Kosher",
     "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, arándanos, castañas de cajú, sin TACC, Ajdut Kosher, vegano.",
@@ -177,7 +177,7 @@
         "id": "7"
       }
     ],
-    "marca": "Laddubar",
+    "marca": 3,
     "precio": 499,
     "descripcionCorta": "Barras FRUTOS ROJOS Dátiles Arándanos Rojos Cacao x 30gr Sin Tacc/Kosher",
     "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, arándanos rojos, cacao, sin TACC, Adjut Kosher, vegano.",
@@ -206,7 +206,7 @@
         "id": "7"
       }
     ],
-    "marca": "Laddubar",
+    "marca": 3,
     "precio": 185,
     "descripcionCorta": "Barras BROWNIES Dátiles Caju Cacao x 30 g Sin Tacc/Kosher",
     "descripcionLarga": "¡Barritas totalmente saludables, no son una simple barrita, son más que eso, probalas! Dátiles, Castañas de cajú, cacao, sin TACC, Ajdut Kosher, vegano.",
@@ -230,7 +230,7 @@
         "nombre": "Vegano"
       }
     ],
-    "marca": "KOS FOOD",
+    "marca": 4,
     "precio": 650,
     "descripcionCorta": "Granola Tradicional x 400 gr",
     "descripcionLarga": "Avena arrollada gruesa - Pepita de girasol - Azúcar invertida - Maní tostado - Copos de maíz - Almendras - Manzana deshidratada. Presentación:  400 gr.",
@@ -256,7 +256,7 @@
         "id": 3
       }
     ],
-    "marca": "INTEGRA",
+    "marca": 5,
     "precio": 1130,
     "descripcionCorta": "Granola con Chocolate x 350gr",
     "descripcionLarga": "Hablemos de la felicidad de comer LA MEJOR GRANOLA de chocolate y que sea así de nutritiva :) recién salida del horno! crocante, riquiiiisima y chocolatosa. TE VAS A ENAMORAR, posta!!",
@@ -282,7 +282,7 @@
         "id": 3
       }
     ],
-    "marca": "INTEGRA",
+    "marca": 5,
     "precio": 1100,
     "descripcionCorta": "NUEVA Granola ÍNTEGRA x 350gr",
     "descripcionLarga": "Hecha solamente con ingredientes reales, nada de nombres raros: avena, miel, almendra, clara de huevo, arándanos, fibra de salvado de avena, coco y vainilla",
@@ -308,7 +308,7 @@
         "id": 3
       }
     ],
-    "marca": "KOS FOOD",
+    "marca": 4,
     "precio": 680,
     "descripcionCorta": "Granola Energética x 400gr",
     "descripcionLarga": "Avena arrollada gruesa - Pepita de girasol - Azúcar invertida - Pasas de uva - Maní tostado - Copos de maíz - Almendras - Nueces. Presentación:  400 gr.",
@@ -337,7 +337,7 @@
         "id": "7"
       }
     ],
-    "marca": "1",
+    "marca": 1,
     "precio": "560",
     "descripcionCorta": "Lino Dorado ORGÁNICO x 250 gr SIN TACC - AIKEN FOODS",
     "descripcionLarga": "Lino Dorado Orgánico Aiken \r\n\r\n- Es la fuente vegetal más rica en omega 3.\r\n- Tiene efectos positivos sobre el corazón y el sistema vascular. Contiene lignanos y anioxidantes naturales. Ayuda a combatir los problemas de atención y de memoria.\r\n- Es rico en fibras.\r\n- Puede consumirse en ensaladas, mezclado con cereales, con yogur o batidos y licuados de frutas. Puede agregarse a preparaciones horneadas, como panes y galletitas.\r\n- Las semillas del lino dorado pueden consumirse enteras remojadas, licuadas o molidas en el momento para mantener sus cualidades naurales.\r\n- Orgánico.\r\n- Sin TACC.\r\n- Vegano.\r\n- 100 % Natural.",

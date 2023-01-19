@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/head') %> 
+<%- include('./partials/head', {title: "EcoFood"}) %> 
 <body>
     <%- include('./partials/header') %>
     <main>
@@ -29,7 +29,7 @@
                                 <% } else { %>
                                     <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
                                 <% } %>
-                                <div><p><%= prodsNovedades[i].nombre %> - <%= prodsNovedades[i].marca %></p></div> 
+                                <div><p><%= prodsNovedades[i].nombre %> - <%= marcas[prodsNovedades[i].marca-1].nombre %></p></div> 
                                 <div><p>$<%= prodsNovedades[i].precio %></p></div>
                             </div>
                         </a>
@@ -50,7 +50,7 @@
                                 <% } else { %>
                                     <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
                                 <% } %>
-                                <div><p><%= prodsPreferidos[i].nombre %> - <%= prodsPreferidos[i].marca %></p></div> 
+                                <div><p><%= prodsPreferidos[i].nombre %> - <%= marcas[prodsPreferidos[i].marca-1].nombre %></p></div> 
                                 <div><p>$<%= prodsPreferidos[i].precio %></p></div>
                             </div>
                         </a>
@@ -71,7 +71,7 @@
                                 <% } else { %>
                                     <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
                                 <% } %>
-                                <div><p><%= prodsBuscados[i].nombre %> - <%= prodsBuscados[i].marca %></p></div> 
+                                <div><p><%= prodsBuscados[i].nombre %> - <%= marcas[prodsBuscados[i].marca-1].nombre %></p></div> 
                                 <div><p>$<%= prodsBuscados[i].precio %></p></div>
                             </div>
                         </a>

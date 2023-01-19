@@ -1,0 +1,19 @@
+.article-prod {
+    position: relative;
+    margin-top: 20px;
+}
+
+
+.article-prod #icon-edit {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    color:#96AB61;
+    font-size: 25px;
+    z-index: 1;
+}
+
+.article-prod #icon-edit:hover {
+    color: #EB947A;
+    transition: all 0.3s;
+}

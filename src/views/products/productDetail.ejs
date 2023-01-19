@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head') %>
+<%- include('../partials/head', {title: "Detalle de producto"}) %>
 <body>
         <!-- inicio header -->
         <%- include('../partials/header') %>
         <!-- fin header -->
         <!-- inicio main -->
     <main>
-        <h3 class="nom-producto"><%= prod.nombre %> - <%= prod.marca %></h3>
+        <h3 class="nom-producto"><%= prod.nombre %> - <%= marcas[prod.marca-1].nombre %></h3>
         <!-- inicio carrusel -->
         <section class="section-carrusel-un-prod">
             <div class="carrusel-un-prod">

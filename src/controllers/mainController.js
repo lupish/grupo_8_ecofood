@@ -9,6 +9,10 @@ const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
 const categoriasJSON = path.join(__dirname,'../database/categoriasDB.json');
 const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
 
+// bd marcas
+const marcasJSON = path.join(__dirname,'../database/marcasDB.json');
+const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
+
 const controller = {
     home: (req, res) => {
         let prodsNovedades = products.filter(elem => elem.novedad);
@@ -18,7 +22,8 @@ const controller = {
             prodsNovedades: prodsNovedades,
             prodsPreferidos: prodsPreferidos,
             prodsBuscados: prodsBuscados,
-            categorias: categorias
+            categorias: categorias,
+            marcas: marcas
         });
     }
 }

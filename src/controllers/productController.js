@@ -16,7 +16,7 @@ const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
 const controller = {
     productDetail: (req, res) => {
         let prod = products.find(elem => elem.id == req.params.idProd);
-        res.render('products/productDetail', {prod: prod, categorias: categorias});
+        res.render('products/productDetail', {prod: prod, categorias: categorias, marcas: marcas});
     },
     productCart: (req, res) => {
         res.render('products/productCart', {categorias: categorias});
@@ -28,7 +28,7 @@ const controller = {
         res.render('products/editProduct', {categorias: categorias, marcas: marcas});
     },
     listProducts: (req, res) => {
-        res.render('products/listProducts', {categorias: categorias})
+        res.render('products/listProducts', {categorias: categorias, prods: products, marcas: marcas})
     },
     processCreate: (req, res) => {        
         let prodId = products[products.length-1].id + 1;
