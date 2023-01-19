@@ -33,14 +33,25 @@
                 <p>$</p> <input type="number" name="prod_precio" id="prod-precio" placeholder="Precio del producto" value=<%= prod.precio %>  required>
             </div>
             <div>
-                <input type="text" name="prod_descripcion_corta" id="prod-nombre" placeholder="Descripción corta del producto" value="<%= prod.descripcionCorta %> " required> 
+                <input type="text" name="prod_descripcion_corta" id="prod-descripcion-corta" placeholder="Descripción corta del producto" value="<%= prod.descripcionCorta %> " required> 
             </div>
             <div>
                 <textarea name="prod_descripcion_larga" id="prod-descripcion-larga" cols="30" rows="5" placeholder="Decripción larga del producto"><%= prod.descripcionLarga %></textarea>
-            </div>            
+            </div>
             <div class="div-prod-fotos">
-                <label class="label-prod-fotos" for="prod-fotos">Fotos del producto: </label>
-                <input class="input-prod-fotos" type="file" name="prod-fotos" id="prod-fotos" multiple>
+                <div class="carrusel-un-prod-center">
+                    <p>Fotos actuales del producto:</p>
+                    <div class="carrusel-un-prod">
+                        <% for(let i = 0; i < prod.imgs.length; i ++) { %>
+                            <img src="<%= prod.imgs[i].img %>" alt="<%= prod.imgs[i].alt %> ">           
+                        <% } %>
+                        <% if (prod.imgs.length == 0) { %>
+                            <img src="/img/img-not-found.webp" alt="Producto sin imagen">
+                        <% } %>
+                    </div>
+                </div>
+                <label class="label-prod-fotos" for="prod-fotos">Nuevas fotos del producto: </label>
+                <input class="input-prod-fotos" type="file" name="prod_fotos" id="prod-fotos" multiple>
             </div>
             <div>
                 <button type="submit">Editar producto</button>

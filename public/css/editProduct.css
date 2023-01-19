@@ -63,6 +63,17 @@ main form div.div-prod-categorias, div.div-prod-marca {
     border: none;
 }
 
+.form-editar-prod .carrusel-un-prod-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-editar-prod .carrusel-un-prod {
+    width: 50%;
+}
+
 @media (min-width: 769px) {
     main .form-editar-prod {
         width: 50%;
