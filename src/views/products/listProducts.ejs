@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', {title: "Productos"}) %>
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <section>
+            <h2>Productos</h2>
+            <div class="contenedor-productos">
+                <% for(let i = 0; i < prods.length; i++) { %>
+                    <article class="article-prod">
+                        <a href="/products/editProduct/<%= prods[i].id %>"><i id="icon-edit" class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="/products/productDetail/<%= prods[i].id %>">
+                            <div class="info-de-producto">
+                                <i id="estrella" class="fa-solid fa-star"></i>
+                                
+                                <% if (prods[i].imgs.length > 0) { %>
+                                    <img src="<%= prods[i].imgs[0].img %>" alt="<%= prods[i].imgs[0].alt %>" width="360">    
+                                <% } else { %>
+                                    <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
+                                <% } %>
+                                <div><p><%= prods[i].nombre %> - <%= marcas[prods[i].marca-1].nombre %></p></div> 
+                                <div><p>$<%= prods[i].precio %></p></div>
+                            </div>
+                        </a>
+                    </article>
+                <% } %>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h3>Avenida Olivos 4109</h3>
+        <div class="iconos-footer">
+            <i class="fa-brands fa-whatsapp"></i> 
+            <i class="fa-regular fa-envelope"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+        </div>
+    </footer>
+</body>
+</html>
