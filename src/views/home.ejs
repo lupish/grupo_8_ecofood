@@ -17,6 +17,28 @@
         <!-- inicio productos  -->
             
         <section>
+            <div class="categorias-imgs">
+                <a href="/products/listProducts">
+                    <div class="una-categoria">
+                        <!-- <img src="/img/categorias/img-celiacos.png" alt="Todos los productos"></a>-->
+                        <i class="fa-solid fa-utensils"></i>
+                        <p>Todos</p>
+                    </div>
+                </a>
+                
+                <% for(let i = 0; i < categorias.length; i ++) { %>
+                    <a href="/products/listProducts">
+                        <div class="una-categoria">
+                            <!-- <img src="<%= categorias[i].img %>" alt="<%= categorias[i].alt %>"> -->
+                            <i class="<%= categorias[i].iClass %>"></i>
+                            <p><%= categorias[i].nombre %></p>
+                        </div>
+                    </a>
+                <% } %>
+            </div>
+        </section>
+        
+        <section>
             <h2>Novedades</h2>
             <div class="contenedor-productos">
                 <% for(let i = 0; i < prodsNovedades.length; i++) { %>

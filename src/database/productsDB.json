@@ -373,5 +373,47 @@
     "novedad": false,
     "preferido": false,
     "buscados": false
+  },
+  {
+    "id": 20,
+    "nombre": "PRUEBA IMG 2 EDITADA 2",
+    "categorias": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "2"
+      },
+      {
+        "id": "3"
+      },
+      {
+        "id": "5"
+      }
+    ],
+    "marca": "3",
+    "precio": "923",
+    "descripcionCorta": "Koble test ",
+    "descripcionLarga": "KOBLE",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/prod-kolbe_1_1674168259588.PNG",
+        "alt": "kolbe_1.PNG"
+      },
+      {
+        "id": 1,
+        "img": "/img/products/prod-koble_6_1674168478306.PNG",
+        "alt": "koble_6.PNG"
+      },
+      {
+        "id": 1,
+        "img": "/img/products/prod-kolbe_2_1674168623122.PNG",
+        "alt": "kolbe_2.PNG"
+      }
+    ],
+    "novedad": false,
+    "preferido": false,
+    "buscados": false
   }
 ]
