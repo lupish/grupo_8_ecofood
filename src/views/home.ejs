@@ -17,6 +17,28 @@
         <!-- inicio productos  -->
             
         <section>
+            <div class="categorias-imgs">
+                <a href="/products/listProducts">
+                    <div class="una-categoria">
+                        <!-- <img src="/img/categorias/img-celiacos.png" alt="Todos los productos"></a>-->
+                        <i class="fa-solid fa-utensils"></i>
+                        <p>Todos</p>
+                    </div>
+                </a>
+                
+                <% for(let i = 0; i < categorias.length; i ++) { %>
+                    <a href="/products/listProducts">
+                        <div class="una-categoria">
+                            <!-- <img src="<%= categorias[i].img %>" alt="<%= categorias[i].alt %>"> -->
+                            <i class="<%= categorias[i].iClass %>"></i>
+                            <p><%= categorias[i].nombre %></p>
+                        </div>
+                    </a>
+                <% } %>
+            </div>
+        </section>
+        
+        <section>
             <h2>Novedades</h2>
             <div class="contenedor-productos">
                 <% for(let i = 0; i < prodsNovedades.length; i++) { %>
@@ -27,7 +49,7 @@
                                 <% if (prodsNovedades[i].imgs.length > 0) { %>
                                     <img src="<%= prodsNovedades[i].imgs[0].img %>" alt="<%= prodsNovedades[i].imgs[0].alt %>" width="360">    
                                 <% } else { %>
-                                    <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
+                                    <img src="/img/products/img-not-found.webp" alt="Producto sin imagen" width="360">
                                 <% } %>
                                 <div><p><%= prodsNovedades[i].nombre %> - <%= marcas[prodsNovedades[i].marca-1].nombre %></p></div> 
                                 <div><p>$<%= prodsNovedades[i].precio %></p></div>
@@ -48,7 +70,7 @@
                                 <% if (prodsPreferidos[i].imgs.length > 0) { %>
                                     <img src="<%= prodsPreferidos[i].imgs[0].img %>" alt="<%= prodsPreferidos[i].imgs[0].alt %>" width="360">    
                                 <% } else { %>
-                                    <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
+                                    <img src="/img/products/img-not-found.webp" alt="Producto sin imagen" width="360">
                                 <% } %>
                                 <div><p><%= prodsPreferidos[i].nombre %> - <%= marcas[prodsPreferidos[i].marca-1].nombre %></p></div> 
                                 <div><p>$<%= prodsPreferidos[i].precio %></p></div>
@@ -69,7 +91,7 @@
                                 <% if (prodsBuscados[i].imgs.length > 0) { %>
                                     <img src="<%= prodsBuscados[i].imgs[0].img %>" alt="<%= prodsBuscados[i].imgs[0].alt %>" width="360">    
                                 <% } else { %>
-                                    <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
+                                    <img src="/img/products/img-not-found.webp" alt="Producto sin imagen" width="360">
                                 <% } %>
                                 <div><p><%= prodsBuscados[i].nombre %> - <%= marcas[prodsBuscados[i].marca-1].nombre %></p></div> 
                                 <div><p>$<%= prodsBuscados[i].precio %></p></div>

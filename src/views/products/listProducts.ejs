@@ -17,7 +17,7 @@
                                 <% if (prods[i].imgs.length > 0) { %>
                                     <img src="<%= prods[i].imgs[0].img %>" alt="<%= prods[i].imgs[0].alt %>" width="360">    
                                 <% } else { %>
-                                    <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
+                                    <img src="/img/products/img-not-found.webp" alt="Producto sin imagen" width="360">
                                 <% } %>
                                 <div><p><%= prods[i].nombre %> - <%= marcas[prods[i].marca-1].nombre %></p></div> 
                                 <div><p>$<%= prods[i].precio %></p></div>

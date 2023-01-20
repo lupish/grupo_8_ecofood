@@ -1,30 +1,52 @@
 [
     {
         "id": 1,
-        "nombre": "Celíacos"
+        "nombre": "Celíacos",
+        "img": "/img/categorias/img-celiacos.png",
+        "alt": "lino_dorado_kos_food.webp",
+        "iClass": "fa-solid fa-seedling"
     },
     {
         "id": 2,
-        "nombre": "Diabéticos"
+        "nombre": "Diabéticos",
+        "img": "/img/categorias/img-celiacos.png",
+        "alt": "lino_dorado_kos_food.webp",
+        "iClass": "fa-solid fa-seedling"
+        
     },
     {
         "id": 3,
-        "nombre": "Fit"
+        "nombre": "Fit",
+        "img": "/img/categorias/img-celiacos.png",
+        "alt": "lino_dorado_kos_food.webp",
+        "iClass": "fa-solid fa-dumbbell"
     },
     {
         "id": 4,
-        "nombre": "Gourmet"
+        "nombre": "Gourmet",
+        "img": "/img/categorias/img-celiacos.png",
+        "alt": "lino_dorado_kos_food.webp",
+        "iClass": "fa-solid fa-seedling"
     },
     {
         "id": 5,
-        "nombre": "Kosher"
+        "nombre": "Kosher",
+        "img": "/img/categorias/img-celiacos.png",
+        "alt": "lino_dorado_kos_food.webp",
+        "iClass": "fa-solid fa-star-of-david"
     },
     {
         "id": 6,
-        "nombre": "Orgánicos"
+        "nombre": "Orgánicos",
+        "img": "/img/categorias/img-celiacos.png",
+        "alt": "lino_dorado_kos_food.webp",
+        "iClass": "fa-solid fa-seedling"
     },
     {
         "id": 7,
-        "nombre": "Veganos"
+        "nombre": "Veganos",
+        "img": "/img/categorias/img-celiacos.png",
+        "alt": "lino_dorado_kos_food.webp",
+        "iClass": "fa-solid fa-seedling"
     }
 ]
