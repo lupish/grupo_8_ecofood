@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head', {title: "Detalle de producto"}) %>
-<body>
+<body class="detalle-producto">
         <!-- inicio header -->
         <%- include('../partials/header') %>
         <!-- fin header -->
-        <!-- inicio main -->
-    <main>
-        <h3 class="nom-producto"><%= prod.nombre %> - <%= marcas[prod.marca-1].nombre %></h3>
-        <!-- inicio carrusel -->
-        <section class="section-carrusel-un-prod">
-            <div class="carrusel-un-prod">
-                <% for(let i = 0; i < prod.imgs.length; i ++) { %>
-                    <img src="<%= prod.imgs[i].img %>" alt="<%= prod.imgs[i].alt %> ">           
-                <% } %>
-                <% if (prod.imgs.length == 0) { %>
-                    <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
-                <% } %>
-            </div>
-            <i id ="estrella" class="fa-solid fa-star"></i>
-            <div class="agregar-carrito">
-                <button class="boton-carrito"><i class="fa-solid fa-plus"></i></button>
-                <p>1</p>
-                <button class="boton-carrito"><i class="fa-solid fa-minus"></i></button>
-                <button type="submit" class="boton-agregar-carrito">Agregar al carrito</button>
-            </div>
-        </section>
-        <!-- fin carrusel -->
+
+<!-- inicio main -->
+<main>
+
+    <section class="prod-carrusel">
+        <div class="carrusel-un-prod">
+            <% for(let i = 0; i < prod.imgs.length; i ++) { %>
+                <img src="<%= prod.imgs[i].img %>" alt="<%= prod.imgs[i].alt %> ">           
+            <% } %>
+            <% if (prod.imgs.length == 0) { %>
+                <img src="/img/img-not-found.webp" alt="Producto sin imagen" width="360">
+            <% } %>
+        </div>
+        <i id ="estrella" class="fa-solid fa-star"></i>
+    </section>
+
+    <section class="prod-info">
+
+        <div class="info">
+        <h2 class="nom-producto"><%= prod.nombre %> - <%= marcas[prod.marca-1].nombre %></h2>
         <p class="precio-prod">$ <%= prod.precio %> </p>
-        <h3><%= prod.descripcionCorta %></h3>
-        <p><%= prod.descripcionLarga %></p>
-        
-    </main>
-        <!-- fin main -->
+        <p class="descripcion-corta"><%= prod.descripcionCorta %></p>
+        <p class="descripcion-larga"><%= prod.descripcionLarga %></p>
+        </div>
+
+        <div class="agregar-carrito">
+                       <p>Unidades:</p> 
+                        <div class="cantidad"> 
+                        <button class="cant"><i class="fa-solid fa-plus"></i></button>
+                        <p>1</p>
+                        <button class="cant"><i class="fa-solid fa-minus"></i></button>
+                        </div>
+                       <!-- <div class="botones"> -->
+                        <button type="submit" class="boton-carrito-comprar">Comprar ahora</button>
+                        <button type="submit" class="boton-carrito-agregar">Agregar al carrito</button>
+                      <!-- </div> -->
+        </div>
+    </section>
+</main>
+<!-- fin main -->
+
+
+        <!-- inicio footer -->
         <%- include('../partials/footer') %> 
+        <!-- fin footer -->
 </body>
 </html>
