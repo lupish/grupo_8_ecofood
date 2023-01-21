@@ -4,60 +4,62 @@
 <body>
     <%- include('../partials/header') %>  
     <main>
-        <h1 class="label-editar-prod">Editar producto</h1>
-        <form class="form-editar-prod" method="POST" action="/products/editProduct/<%= prod.id %>?_method=PUT" enctype="multipart/form-data">
-            <div>
-                <input type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" value="<%= prod.nombre %>"  required> 
-            </div>
-            <div class="div-prod-categorias">
-                <p>Categorías del producto:</p>
-                <% for(let i = 0 ; i < categorias.length; i ++) { %>
-                    <div>
-                        <input type="checkbox" name="prod_categorias" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (prod.categorias.find(elem => elem.id == categorias[i].id)) { %> <%= 'checked' %> <% } %> >
-                        <label for="<%= categorias[i].nombre %>"><%= categorias[i].nombre %></label>
-                    </div>
-                <% } %>
-                <a class="crear-nueva-categoria" href="">Crear nueva categoría</a>
-            </div>
-            <div class="div-prod-marca">
-                <p>Marca del producto:</p>
-                <% for(let i = 0; i < marcas.length; i ++) { %>
-                    <div>
-                        <input type="radio" name="prod_marca" id="<%= marcas[i].nombre %>" value="<%= marcas[i].id %>" <% if (marcas[prod.marca-1].nombre == marcas[i].nombre) { %> <%= 'checked' %> <% } %> >
-                        <label for="<%= marcas[i].nombre %>"><%= marcas[i].nombre %> </label>
-                    </div>
-                <% } %>
-                <a class="editar-marca" href="">Crear nueva marca</a>
-            </div>
-            <div class="div-prod-precio">
-                <p>$</p> <input type="number" name="prod_precio" id="prod-precio" placeholder="Precio del producto" value=<%= prod.precio %>  required>
-            </div>
-            <div>
-                <input type="text" name="prod_descripcion_corta" id="prod-descripcion-corta" placeholder="Descripción corta del producto" value="<%= prod.descripcionCorta %> " required> 
-            </div>
-            <div>
-                <textarea name="prod_descripcion_larga" id="prod-descripcion-larga" cols="30" rows="5" placeholder="Decripción larga del producto"><%= prod.descripcionLarga %></textarea>
-            </div>
-            <div class="div-prod-fotos">
-                <div class="carrusel-un-prod-center">
-                    <p>Fotos actuales del producto:</p>
-                    <div class="carrusel-un-prod">
-                        <% for(let i = 0; i < prod.imgs.length; i ++) { %>
-                            <img src="<%= prod.imgs[i].img %>" alt="<%= prod.imgs[i].alt %> ">           
-                        <% } %>
-                        <% if (prod.imgs.length == 0) { %>
-                            <img src="/img/products/img-not-found.webp" alt="Producto sin imagen">
-                        <% } %>
-                    </div>
+        <section class="section-common">
+            <form class="form-editar-prod" method="POST" action="/products/editProduct/<%= prod.id %>?_method=PUT" enctype="multipart/form-data">
+                <h1 class="label-editar-prod">Editar producto</h1>
+                <div>
+                    <input type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" value="<%= prod.nombre %>"  required> 
                 </div>
-                <label class="label-prod-fotos" for="prod-fotos">Nuevas fotos del producto: </label>
-                <input class="input-prod-fotos" type="file" name="prod_fotos" id="prod-fotos" multiple>
-            </div>
-            <div>
-                <button type="submit">Editar producto</button>
-                <button type="reset">Borrar</button>
-            </div>
-        </form>
+                <div class="div-prod-estilosVida">
+                    <p>Estilos de vida acorde al producto:</p>
+                    <% for(let i = 0 ; i < estilosVida.length; i ++) { %>
+                        <div>
+                            <input type="checkbox" name="prod_estilosVida" id="<%= estilosVida[i].nombre %>" value="<%= estilosVida[i].id %>" <% if (prod.estilosVida.find(elem => elem.id == estilosVida[i].id)) { %> <%= 'checked' %> <% } %> >
+                            <label for="<%= estilosVida[i].nombre %>"><%= estilosVida[i].nombre %></label>
+                        </div>
+                    <% } %>
+                    <a class="crear-nueva-categoria" href="">Crear nueva categoría</a>
+                </div>
+                <div class="div-prod-marca">
+                    <p>Marca del producto:</p>
+                    <% for(let i = 0; i < marcas.length; i ++) { %>
+                        <div>
+                            <input type="radio" name="prod_marca" id="<%= marcas[i].nombre %>" value="<%= marcas[i].id %>" <% if (marcas[prod.marca-1].nombre == marcas[i].nombre) { %> <%= 'checked' %> <% } %> >
+                            <label for="<%= marcas[i].nombre %>"><%= marcas[i].nombre %> </label>
+                        </div>
+                    <% } %>
+                    <a class="editar-marca" href="">Crear nueva marca</a>
+                </div>
+                <div class="div-prod-precio">
+                    <p>$</p> <input type="number" name="prod_precio" id="prod-precio" placeholder="Precio del producto" value=<%= prod.precio %>  required>
+                </div>
+                <div>
+                    <input type="text" name="prod_descripcion_corta" id="prod-descripcion-corta" placeholder="Descripción corta del producto" value="<%= prod.descripcionCorta %> " required> 
+                </div>
+                <div>
+                    <textarea name="prod_descripcion_larga" id="prod-descripcion-larga" cols="30" rows="5" placeholder="Decripción larga del producto"><%= prod.descripcionLarga %></textarea>
+                </div>
+                <div class="div-prod-fotos">
+                    <div class="carrusel-un-prod-center">
+                        <p>Fotos actuales del producto:</p>
+                        <div class="carrusel-un-prod">
+                            <% for(let i = 0; i < prod.imgs.length; i ++) { %>
+                                <img src="<%= prod.imgs[i].img %>" alt="<%= prod.imgs[i].alt %> ">           
+                            <% } %>
+                            <% if (prod.imgs.length == 0) { %>
+                                <img src="/img/products/img-not-found.webp" alt="Producto sin imagen">
+                            <% } %>
+                        </div>
+                    </div>
+                    <label class="label-prod-fotos" for="prod-fotos">Nuevas fotos del producto: </label>
+                    <input class="input-prod-fotos" type="file" name="prod_fotos" id="prod-fotos" multiple>
+                </div>
+                <div>
+                    <button type="submit">Editar producto</button>
+                    <button type="reset">Borrar</button>
+                </div>
+            </form>
+        </section>
     </main>  
     <%- include('../partials/footer') %> 
 </body>

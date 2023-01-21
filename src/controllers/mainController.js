@@ -6,8 +6,8 @@ const productsJSON = path.join(__dirname,'../database/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
 
 // bd categorias
-const categoriasJSON = path.join(__dirname,'../database/categoriasDB.json');
-const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
+const estilosVidaJSON = path.join(__dirname,'../database/estilosVidaDB.json');
+const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
 
 // bd marcas
 const marcasJSON = path.join(__dirname,'../database/marcasDB.json');
@@ -22,7 +22,7 @@ const controller = {
             prodsNovedades: prodsNovedades,
             prodsPreferidos: prodsPreferidos,
             prodsBuscados: prodsBuscados,
-            categorias: categorias,
+            estilosVida: estilosVida,
             marcas: marcas
         });
     }

@@ -2,7 +2,7 @@
   {
     "id": 1,
     "nombre": "Leche Almendras y Chocolate",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "7"
       }
@@ -30,7 +30,7 @@
   {
     "id": 2,
     "nombre": "Leche Almendras y Coco",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -56,7 +56,7 @@
   {
     "id": 3,
     "nombre": "Leche de Coco",
-    "categorias": [
+    "estilosVida": [
       {
         "id": 1
       },
@@ -82,7 +82,7 @@
   {
     "id": 4,
     "nombre": "Leche de Quinoa",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -108,7 +108,7 @@
   {
     "id": 5,
     "nombre": "Barrita COCO CHOCO",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -137,7 +137,7 @@
   {
     "id": 6,
     "nombre": "Barrita Arándanos",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -166,7 +166,7 @@
   {
     "id": 7,
     "nombre": "Barrita Frutos Rojos",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -195,7 +195,7 @@
   {
     "id": 8,
     "nombre": "Barrita Brownie",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -224,7 +224,7 @@
   {
     "id": 9,
     "nombre": "Granola Tradicional",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "7"
       }
@@ -247,7 +247,7 @@
   {
     "id": 10,
     "nombre": "Granola Chocolate",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "2"
       },
@@ -273,7 +273,7 @@
   {
     "id": 11,
     "nombre": "Granola Almendra y Aándanos",
-    "categorias": [
+    "estilosVida": [
       {
         "id": 2
       },
@@ -299,7 +299,7 @@
   {
     "id": 12,
     "nombre": "Granola Energética",
-    "categorias": [
+    "estilosVida": [
       {
         "id": 2
       },
@@ -325,7 +325,7 @@
   {
     "id": 14,
     "nombre": "Lino Dorado ORGÁNICO",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -354,7 +354,7 @@
   {
     "id": 19,
     "nombre": "PRUEBA IMG 1",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "1"
       }
@@ -377,7 +377,7 @@
   {
     "id": 20,
     "nombre": "PRUEBA IMG 2 EDITADA 2",
-    "categorias": [
+    "estilosVida": [
       {
         "id": "1"
       },

@@ -7,31 +7,33 @@
     <!-- fin header -->
     <!-- inicio main -->
     <main>
-        <div class="div-form">
-            <img src="/img/EcoFood Logo Curvas web.jpg" alt="imagen de ejemplo" width="360">
-            <h2>Iniciá sesión</h2>
-            <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p>
-            <form action="/users/login" method="POST">
-                <div>
-                    <input type="email" name="email" id="email" placeholder="Email" required>
-                </div>
-                <div>
-                    <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña" required>
-                </div>
-                <div>
-                    <button type="submit">Iniciar sesión</button>
+        <section class="section-common">
+            <div class="div-form">
+                <img src="/img/EcoFood Logo Curvas web.jpg" alt="imagen de ejemplo" width="360">
+                <h2>Iniciá sesión</h2>
+                <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p>
+                <form action="/users/login" method="POST">
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div>
+                        <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña" required>
+                    </div>
+                    <div>
+                        <button type="submit">Iniciar sesión</button>
+                        
+                        <input class="checkbox-recordar-usuario" type="checkbox" name="recordar-usuario" id="recordar-usuario" value="recordar-usuario">
                     
-                    <input class="checkbox-recordar-usuario" type="checkbox" name="recordar-usuario" id="recordar-usuario" value="recordar-usuario">
+                        <label class="label-recordar-usuario" for="recordar-usuario">Recordarme</label>
+                    
+                        <a href="/"><p>Olvidé mi contraseña</p></a>
+                    </div>
+                </form>
                 
-                    <label class="label-recordar-usuario" for="recordar-usuario">Recordarme</label>
-                
-                    <a href="/"><p>Olvidé mi contraseña</p></a>
-                </div>
-            </form>
-            
-            <a href="/users/register">¿No tenés cuenta aún? Crear cuenta</a>
+                <a href="/users/register">¿No tenés cuenta aún? Crear cuenta</a>
 
-        </div>
+            </div>
+        </section>
     </main>
     <!-- fin main -->
     <!-- inicio footer -->

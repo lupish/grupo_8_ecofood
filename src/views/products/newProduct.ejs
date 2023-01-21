@@ -4,17 +4,19 @@
 <body>
     <%- include('../partials/header') %>  
     <main>
-        <h1 class="label-crear-prod">Crear producto</h1>
+        <section class="section-common">
+        
         <form class="form-prod-nuevo" method="POST" action="/products/newProduct" enctype="multipart/form-data">
+            <h1 class="label-crear-prod">Crear producto</h1>
             <div>
                 <input type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" required> 
             </div>
-            <div class="div-prod-categorias">
+            <div class="div-prod-estilosVida">
                 <p>Categorías del producto:</p>
                 <% for(let i = 0 ; i < categorias.length; i ++) { %>
                     <div>
-                        <input type="checkbox" name="prod_categorias" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (i == 0) { %> <%= 'checked' %> <% } %> >
-                        <label for="<%= categorias[i].nombre %>"><%= categorias[i].nombre %> </label>
+                        <input type="checkbox" name="prod_estilosVida" id="<%= estilosVida[i].nombre %>" value="<%= estilosVida[i].id %>" <% if (i == 0) { %> <%= 'checked' %> <% } %> >
+                        <label for="<%= estilosVida[i].nombre %>"><%= estilosVida[i].nombre %> </label>
                     </div>
                 <% } %>
                 <a class="crear-nueva-categoria" href="">Crear nueva categoría</a>
@@ -47,6 +49,7 @@
                 <button type="reset">Borrar</button>
             </div>
         </form>
+    </section>
     </main>  
     <%- include('../partials/footer') %> 
 </body>

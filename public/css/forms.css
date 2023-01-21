@@ -2,7 +2,7 @@ main {
     width: 100vw;
     font-size: 14px;
     text-align: center;
-    padding: 2%;
+    /*padding: 2%;*/
     box-sizing: border-box;
 }
 
@@ -12,6 +12,15 @@ main img {
 
 main p {
  margin: 10px;
+}
+
+main section div.div-form {
+    background-color: white;
+    border: 2px solid #ebebeb;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #fff;
+    margin: 5px;
 }
 
 main form {

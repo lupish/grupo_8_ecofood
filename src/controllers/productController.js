@@ -6,8 +6,8 @@ const productsJSON = path.join(__dirname,'../database/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
 
 // bd categorias
-const categoriasJSON = path.join(__dirname,'../database/categoriasDB.json');
-const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
+const estilosVidaJSON = path.join(__dirname,'../database/estilosVidaDB.json');
+const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
 
 // bd marcas
 const marcasJSON = path.join(__dirname,'../database/marcasDB.json');
@@ -17,11 +17,11 @@ function createProd(prodId, req) {
     // Categorias del producto
     let prodCateg = [];
     let categ = {};
-    if (typeof(req.body.prod_categorias) == "string") {
-        categ = {id: req.body.prod_categorias};
+    if (typeof(req.body.prod_estilosVida) == "string") {
+        categ = {id: req.body.prod_estilosVida};
         prodCateg.push(categ);
     } else {
-        req.body.prod_categorias.forEach(elem => {
+        req.body.prod_estilosVida.forEach(elem => {
             categ = {id: elem};
             prodCateg.push(categ);
         });
@@ -62,20 +62,31 @@ function createProd(prodId, req) {
 const controller = {
     productDetail: (req, res) => {
         let prod = products.find(elem => elem.id == req.params.idProd);
-        res.render('products/productDetail', {prod: prod, categorias: categorias, marcas: marcas});
+        
+        if (prod) {
+            res.render('products/productDetail', {prod: prod, estilosVida: estilosVida, marcas: marcas});
+        } else {
+            return res.redirect('/products/product-not-found');
+        }
+        
     },
     productCart: (req, res) => {
-        res.render('products/productCart', {categorias: categorias});
+        res.render('products/productCart', {estilosVida: estilosVida});
     },
     newProduct: (req, res) => {
-        res.render('products/newProduct', {categorias: categorias, marcas: marcas});
+        res.render('products/newProduct', {estilosVida: estilosVida, marcas: marcas});
     },
     editProduct: (req, res) => {
         let prod = products.find(elem => elem.id == req.params.idProd);
-        res.render('products/editProduct', {categorias: categorias, marcas: marcas, prod: prod});
+
+        if (prod) {
+            res.render('products/editProduct', {estilosVida: estilosVida, marcas: marcas, prod: prod});
+        } else {
+            return res.redirect('/products/product-not-found');
+        }
     },
     listProducts: (req, res) => {
-        res.render('products/listProducts', {categorias: categorias, prods: products, marcas: marcas})
+        res.render('products/listProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
     },
     processCreate: (req, res) => {        
         let prodId = products[products.length-1].id + 1;
