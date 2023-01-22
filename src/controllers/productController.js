@@ -6,6 +6,10 @@ const productsJSON = path.join(__dirname,'../database/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
 
 // bd categorias
+const categoriasJSON = path.join(__dirname,'../database/categoriasDB.json');
+const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
+
+// bd estilosVida
 const estilosVidaJSON = path.join(__dirname,'../database/estilosVidaDB.json');
 const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
 
@@ -14,7 +18,7 @@ const marcasJSON = path.join(__dirname,'../database/marcasDB.json');
 const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
 
 function createProd(prodId, req) {
-    // Categorias del producto
+    // estilosVida del producto
     let prodCateg = [];
     let categ = {};
     if (typeof(req.body.prod_estilosVida) == "string") {
@@ -45,7 +49,7 @@ function createProd(prodId, req) {
     let prod = {
         id: prodId,
         nombre: req.body.prod_nombre,
-        categorias: prodCateg,
+        estilosVida: prodCateg,
         marca: req.body.prod_marca,
         precio: req.body.prod_precio,
         descripcionCorta: req.body.prod_descripcion_corta,
@@ -64,7 +68,7 @@ const controller = {
         let prod = products.find(elem => elem.id == req.params.idProd);
         
         if (prod) {
-            res.render('products/productDetail', {prod: prod, estilosVida: estilosVida, marcas: marcas});
+            res.render('products/productDetail', {prod: prod, estilosVida: estilosVida, marcas: marcas, estilosVida: estilosVida});
         } else {
             return res.redirect('/products/product-not-found');
         }
@@ -74,13 +78,13 @@ const controller = {
         res.render('products/productCart', {estilosVida: estilosVida});
     },
     newProduct: (req, res) => {
-        res.render('products/newProduct', {estilosVida: estilosVida, marcas: marcas});
+        res.render('products/newProduct', {categorias: categorias, estilosVida: estilosVida, marcas: marcas});
     },
     editProduct: (req, res) => {
         let prod = products.find(elem => elem.id == req.params.idProd);
 
         if (prod) {
-            res.render('products/editProduct', {estilosVida: estilosVida, marcas: marcas, prod: prod});
+            res.render('products/editProduct', {categorias: categorias, estilosVida: estilosVida, marcas: marcas, prod: prod});
         } else {
             return res.redirect('/products/product-not-found');
         }
@@ -106,7 +110,7 @@ const controller = {
         products.forEach(elem => {
             if (elem.id == idProd) {
                 elem.nombre = prod.nombre;
-                elem.categorias = prod.categorias;
+                elem.estilosVida = prod.estilosVida;
                 elem.marca = prod.marca;
                 elem.precio = prod.precio;
                 elem.descripcionCorta = prod.descripcionCorta;

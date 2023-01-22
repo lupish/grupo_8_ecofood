@@ -5,7 +5,7 @@ const fs = require('fs');
 const productsJSON = path.join(__dirname,'../database/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
 
-// bd categorias
+// bd estilosVida
 const estilosVidaJSON = path.join(__dirname,'../database/estilosVidaDB.json');
 const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
 

@@ -10,6 +10,16 @@
                 <div>
                     <input type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" value="<%= prod.nombre %>"  required> 
                 </div>
+                <div class="div-prod-radio">
+                    <p>Categoría del producto:</p>
+                    <% for(let i = 0; i < categorias.length; i ++) { %>
+                        <div>
+                            <input type="radio" name="prod_categorias" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (categorias[prod.categoria-1].nombre == categorias[i].nombre) { %> <%= 'checked' %> <% } %> >
+                            <label for="<%= categorias[i].nombre %>"><%= categorias[i].nombre %></label>
+                        </div>
+                    <% } %>
+                    <a class="crear-nueva-categorias" href="">Crear nueva categoria</a>
+                </div>
                 <div class="div-prod-estilosVida">
                     <p>Estilos de vida acorde al producto:</p>
                     <% for(let i = 0 ; i < estilosVida.length; i ++) { %>
@@ -20,7 +30,7 @@
                     <% } %>
                     <a class="crear-nueva-categoria" href="">Crear nueva categoría</a>
                 </div>
-                <div class="div-prod-marca">
+                <div class="div-prod-radio">
                     <p>Marca del producto:</p>
                     <% for(let i = 0; i < marcas.length; i ++) { %>
                         <div>

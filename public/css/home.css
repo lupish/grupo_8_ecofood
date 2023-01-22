@@ -97,7 +97,7 @@ h3{
     font-weight: bold;
 }
 
-.categorias-imgs {
+.estilosVida-imgs {
     margin: 20px;
     display: flex;
     justify-content: center;
@@ -105,19 +105,19 @@ h3{
     flex-wrap: wrap;
 }
 
-.categorias-imgs img {
+.estilosVida-imgs img {
     width: 50px;
     padding: 5px;
 }
 
-.categorias-imgs .una-categoria {
+.estilosVida-imgs .una-categoria {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 10px;
 }
 
-.categorias-imgs i {
+.estilosVida-imgs i {
     font-size: 1em;
     border-radius: 60px;
     box-shadow: 0 0 2px #96AB61;
@@ -125,16 +125,28 @@ h3{
     color: #96AB61;
 }
 
-.categorias-imgs p {
+.estilosVida-imgs p {
     color: black;
     font-weight: bold;
     display: none;
 }
 
-.categorias-imgs .una-categoria:hover {
+.estilosVida-imgs .una-categoria:hover {
     color: #EB947A;
     transition: all 0.3s;
 }
+
+div.estilosVida-imgs i:hover {
+    color: #EB947A;
+    transition: all 0.3s;
+
+    display: block;
+}
+
+div.estilosVida-imgs i:hover + p {
+    display: block;
+}
+
 
 /* fin main */
 
@@ -150,6 +162,11 @@ h3{
     .carrusel-prods img {
         height: 20vh;
     }
+    
+    .estilosVida-imgs i {
+        font-size: 2em;
+        padding: 0.5em 0.6em;
+    }
 }
 
 @media (min-width: 1280px) {
@@ -163,12 +180,9 @@ h3{
         height: 20vh;
     }
 
-    .categorias-imgs i {
-        font-size: 2em;
-        padding: 0.5em 0.6em;
-    }
     
-    .categorias-imgs p {
+    
+    .estilosVida-imgs p {
         display: block;
     }
 

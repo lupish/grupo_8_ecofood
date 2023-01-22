@@ -22,22 +22,31 @@
     </section>
 
     <section class="prod-info">
-
         <div class="info">
-        <h2 class="nom-producto"><%= prod.nombre %> - <%= marcas[prod.marca-1].nombre %></h2>
-        <p class="precio-prod">$ <%= prod.precio %> </p>
-        <p class="descripcion-corta"><%= prod.descripcionCorta %></p>
-        <p class="descripcion-larga"><%= prod.descripcionLarga %></p>
+            <h2 class="nom-producto"><%= prod.nombre %> - <%= marcas[prod.marca-1].nombre %></h2>
+            <p class="precio-prod">$ <%= prod.precio %> </p>
+            <p class="descripcion-corta"><%= prod.descripcionCorta %></p>
+            <p class="descripcion-larga"><%= prod.descripcionLarga %></p>
+        </div>
+
+        <div class="estilosVida-imgs">
+            
+            <% for(let i = 0; i < prod.estilosVida.length; i ++) { %>
+                <div class="una-categoria">
+                    <i class="<%= estilosVida[prod.estilosVida[i].id-1].iClass %>"></i>
+                    <p><%= estilosVida[prod.estilosVida[i].id-1].nombre %></p>
+                </div>
+            <% } %>
         </div>
 
         <div class="agregar-carrito">
-                        <div class="cantidad"> 
-                        <button class="cant"><i class="fa-solid fa-plus"></i></button>
-                        <p>1</p>
-                        <button class="cant"><i class="fa-solid fa-minus"></i></button>
-                        </div>
-                        <button type="submit" class="boton-carrito-comprar">Comprar ahora</button>
-                        <button type="submit" class="boton-carrito-agregar">Agregar al carrito</button>
+            <div class="cantidad"> 
+                <button class="cant"><i class="fa-solid fa-plus"></i></button>
+                <p>1</p>
+                <button class="cant"><i class="fa-solid fa-minus"></i></button>
+            </div>
+            <button type="submit" class="boton-carrito-comprar">Comprar ahora</button>
+            <button type="submit" class="boton-carrito-agregar">Agregar al carrito</button>
         </div>
     </section>
 </main>

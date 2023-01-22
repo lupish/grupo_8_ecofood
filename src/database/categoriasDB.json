@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "nombre": "Alacena"
+    },
+    {
+        "id": 2,
+        "nombre": "Bebidas"
+    },
+    {
+        "id": 3,
+        "nombre": "Congelados"
+    },
+    {
+        "id": 4,
+        "nombre": "Snacks"
+    }
+]

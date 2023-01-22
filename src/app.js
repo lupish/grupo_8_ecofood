@@ -33,7 +33,7 @@ const productRouter = require('./routes/productRouter');
 app.use('/products', productRouter);
 
 //ERROR 404
-// bd categorias
+// bd estilosVida
 const fs = require('fs');
 const estilosVidaJSON = path.join(__dirname,'./database/estilosVidaDB.json');
 const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
