@@ -108,9 +108,13 @@ const controller = {
         let idProd = req.params.idProd;
         let prod = createProd(idProd, req);
 
+        console.log("------------- processEdit -------------")
+        console.log(prod);
+
         products.forEach(elem => {
             if (elem.id == idProd) {
                 elem.nombre = prod.nombre;
+                elem.categoria = prod.categoria;
                 elem.estilosVida = prod.estilosVida;
                 elem.marca = prod.marca;
                 elem.precio = prod.precio;
@@ -118,6 +122,8 @@ const controller = {
                 elem.descripcionLarga = prod.descripcionLarga;
                 elem.imgs = elem.imgs.concat(prod.imgs);
             }
+
+            console.log(elem);
         })
 
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2))

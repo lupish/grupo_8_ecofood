@@ -14,11 +14,11 @@
                     <p>Categoría del producto:</p>
                     <% for(let i = 0; i < categorias.length; i ++) { %>
                         <div>
-                            <input type="radio" name="prod_categorias" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (categorias[prod.categoria-1].nombre == categorias[i].nombre) { %> <%= 'checked' %> <% } %> >
+                            <input type="radio" name="prod_categoria" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (categorias[prod.categoria-1].nombre == categorias[i].nombre) { %> <%= 'checked' %> <% } %> >
                             <label for="<%= categorias[i].nombre %>"><%= categorias[i].nombre %></label>
                         </div>
                     <% } %>
-                    <a class="crear-nueva-categorias" href="">Crear nueva categoria</a>
+                    <a class="crear-nueva-categoria" href="">Crear nueva categoria</a>
                 </div>
                 <div class="div-prod-estilosVida">
                     <p>Estilos de vida acorde al producto:</p>
