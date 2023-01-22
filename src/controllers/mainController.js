@@ -2,15 +2,15 @@ const path = require('path')
 const fs = require('fs');
 
 // bd productos
-const productsJSON = path.join(__dirname,'../database/productsDB.json');
+const productsJSON = path.join(__dirname,'../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
 
 // bd estilosVida
-const estilosVidaJSON = path.join(__dirname,'../database/estilosVidaDB.json');
+const estilosVidaJSON = path.join(__dirname,'../data/estilosVidaDB.json');
 const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
 
 // bd marcas
-const marcasJSON = path.join(__dirname,'../database/marcasDB.json');
+const marcasJSON = path.join(__dirname,'../data/marcasDB.json');
 const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
 
 const controller = {

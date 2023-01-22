@@ -35,7 +35,7 @@ app.use('/products', productRouter);
 //ERROR 404
 // bd estilosVida
 const fs = require('fs');
-const estilosVidaJSON = path.join(__dirname,'./database/estilosVidaDB.json');
+const estilosVidaJSON = path.join(__dirname,'./data/estilosVidaDB.json');
 const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
 
 app.use((req, res, next) => {

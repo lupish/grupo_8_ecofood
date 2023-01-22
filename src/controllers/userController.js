@@ -16,7 +16,7 @@ const controller = {
            confirmarContrasenia: req.body.confirmarContrasenia
        }
     //GUARDAR
-    const usersJSON = path.join(__dirname,'../database/usersDB.json');
+    const usersJSON = path.join(__dirname,'../data/usersDB.json');
     let archivoUsuario = fs.readFileSync(usersJSON, {encoding: 'utf-8'});
     let usuarios;
     if(archivoUsuario==""){
