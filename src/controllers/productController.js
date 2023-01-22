@@ -19,15 +19,15 @@ const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
 
 function createProd(prodId, req) {
     // estilosVida del producto
-    let prodCateg = [];
+    let prodEstilosVida = [];
     let categ = {};
     if (typeof(req.body.prod_estilosVida) == "string") {
         categ = {id: req.body.prod_estilosVida};
-        prodCateg.push(categ);
+        prodEstilosVida.push(categ);
     } else {
         req.body.prod_estilosVida.forEach(elem => {
             categ = {id: elem};
-            prodCateg.push(categ);
+            prodEstilosVida.push(categ);
         });
     }
     
@@ -49,7 +49,8 @@ function createProd(prodId, req) {
     let prod = {
         id: prodId,
         nombre: req.body.prod_nombre,
-        estilosVida: prodCateg,
+        categoria: req.body.prod_categoria,
+        estilosVida: prodEstilosVida,
         marca: req.body.prod_marca,
         precio: req.body.prod_precio,
         descripcionCorta: req.body.prod_descripcion_corta,

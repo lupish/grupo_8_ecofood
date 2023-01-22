@@ -15,7 +15,7 @@
                 <p>Categoría del producto:</p>
                 <% for(let i = 0; i < categorias.length; i ++) { %>
                     <div>
-                        <input type="radio" name="prod_categorias" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (i == 0) { %> <%= 'checked' %> <% } %> >
+                        <input type="radio" name="prod_categoria" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (i == 0) { %> <%= 'checked' %> <% } %> >
                         <label for="<%= categorias[i].nombre %>"><%= categorias[i].nombre %></label>
                     </div>
                 <% } %>
