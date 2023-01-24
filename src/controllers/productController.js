@@ -66,7 +66,7 @@ function createProd(prodId, req) {
 
 const controller = {
     productDetail: (req, res) => {
-        let prod = products.find(elem => elem.id == req.params.idProd);
+        let prod = products.find(elem => elem.id == req.params.id);
         
         if (prod) {
             res.render('products/productDetail', {prod: prod, estilosVida: estilosVida, marcas: marcas, estilosVida: estilosVida});
@@ -79,10 +79,10 @@ const controller = {
         res.render('products/productCart', {estilosVida: estilosVida});
     },
     create: (req, res) => {
-        res.render('products/newProduct', {categorias: categorias, estilosVida: estilosVida, marcas: marcas});
+        res.render('products/create', {categorias: categorias, estilosVida: estilosVida, marcas: marcas});
     },
     edit: (req, res) => {
-        let prod = products.find(elem => elem.id == req.params.idProd);
+        let prod = products.find(elem => elem.id == req.params.id);
 
         if (prod) {
             res.render('products/edit', {categorias: categorias, estilosVida: estilosVida, marcas: marcas, prod: prod});
@@ -105,14 +105,14 @@ const controller = {
         return res.redirect('/products/products')
     },
     processEdit: (req, res) => {
-        let idProd = req.params.idProd;
-        let prod = createProd(idProd, req);
+        let id = req.params.id;
+        let prod = createProd(id, req);
 
         console.log("------------- processEdit -------------")
         console.log(prod);
 
         products.forEach(elem => {
-            if (elem.id == idProd) {
+            if (elem.id == id) {
                 elem.nombre = prod.nombre;
                 elem.categoria = prod.categoria;
                 elem.estilosVida = prod.estilosVida;
@@ -128,7 +128,7 @@ const controller = {
 
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2))
 
-        return res.redirect('/products/productDetail/' + idProd)
+        return res.redirect('/products/productDetail/' + id)
     }
     
 }

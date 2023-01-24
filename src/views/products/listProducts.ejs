@@ -9,7 +9,7 @@
             <div class="contenedor-productos">
                 <% for(let i = 0; i < prods.length; i++) { %>
                     <article class="article-prod">
-                        <a href="/products/editProduct/<%= prods[i].id %>"><i id="icon-edit" class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="/products/edit/<%= prods[i].id %>"><i id="icon-edit" class="fa-solid fa-pen-to-square"></i></a>
                         <a href="/products/productDetail/<%= prods[i].id %>">
                             <div class="info-de-producto">
                                 <i id="estrella" class="fa-solid fa-star"></i>
