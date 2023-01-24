@@ -2,14 +2,14 @@
     {
         "id": 1,
         "nombre": "Celíacos",
-        "img": "/img/estilosVida/img-celiacos.png",
+        "img": "/img/estilosVida/sin-gluten.webp",
         "alt": "lino_dorado_kos_food.webp",
         "iClass": "fa-solid fa-seedling"
     },
     {
         "id": 2,
         "nombre": "Diabéticos",
-        "img": "/img/estilosVida/img-celiacos.png",
+        "img": "/img/estilosVida/diabetes.webp",
         "alt": "lino_dorado_kos_food.webp",
         "iClass": "fa-solid fa-seedling"
         
@@ -17,35 +17,35 @@
     {
         "id": 3,
         "nombre": "Fit",
-        "img": "/img/estilosVida/img-celiacos.png",
+        "img": "/img/estilosVida/fit.webp",
         "alt": "lino_dorado_kos_food.webp",
         "iClass": "fa-solid fa-dumbbell"
     },
     {
         "id": 4,
         "nombre": "Gourmet",
-        "img": "/img/estilosVida/img-celiacos.png",
+        "img": "/img/estilosVida/gourmet.webp",
         "alt": "lino_dorado_kos_food.webp",
         "iClass": "fa-solid fa-seedling"
     },
     {
         "id": 5,
         "nombre": "Kosher",
-        "img": "/img/estilosVida/img-celiacos.png",
+        "img": "/img/estilosVida/kosher.webp",
         "alt": "lino_dorado_kos_food.webp",
         "iClass": "fa-solid fa-star-of-david"
     },
     {
         "id": 6,
         "nombre": "Orgánicos",
-        "img": "/img/estilosVida/img-celiacos.png",
+        "img": "/img/estilosVida/organico.webp",
         "alt": "lino_dorado_kos_food.webp",
         "iClass": "fa-solid fa-seedling"
     },
     {
         "id": 7,
         "nombre": "Veganos",
-        "img": "/img/estilosVida/img-celiacos.png",
+        "img": "/img/estilosVida/vegano.webp",
         "alt": "lino_dorado_kos_food.webp",
         "iClass": "fa-solid fa-seedling"
     }

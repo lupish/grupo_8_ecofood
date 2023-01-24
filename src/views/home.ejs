@@ -8,9 +8,9 @@
         <!-- inicio carrusel -->
         <section class="section-carrusel-prod">
             <div class="carrusel-prods">
-                <img class="gris" src="/img/banner/banner_1.jpg" alt="Leche de almendras y chocolate">
-                <img class="gris" src="/img/banner/banner_2.webp" alt="Leche de almendras y coco">
-                <img class="gris" src="/img/banner/banner_3.jpg" alt="Leche de almendras y chocolate">
+                <img src="/img/banner/banner_1.jpg" alt="Leche de almendras y chocolate">
+                <img src="/img/banner/banner_2.webp" alt="Leche de almendras y coco">
+                <img src="/img/banner/banner_3.jpg" alt="Leche de almendras y chocolate">
             </div>
         </section>
         <!-- fin carrusel  -->
@@ -20,8 +20,8 @@
             <div class="estilosVida-imgs">
                 <a href="/products/listProducts">
                     <div class="una-categoria">
-                        <!-- <img src="/img/estilosVida/img-celiacos.png" alt="Todos los productos"></a>-->
-                        <i class="fa-solid fa-utensils"></i>
+                        <img class="gris" src="/img/estilosVida/todosEV.webp" alt="Todos los productos"></a>
+                        <!--<i class="fa-solid fa-utensils"></i> -->
                         <p>Todos</p>
                     </div>
                 </a>
@@ -29,8 +29,8 @@
                 <% for(let i = 0; i < estilosVida.length; i ++) { %>
                     <a href="/products/listProducts">
                         <div class="una-categoria">
-                            <!-- <img src="<%= estilosVida[i].img %>" alt="<%= estilosVida[i].alt %>"> -->
-                            <i class="<%= estilosVida[i].iClass %>"></i>
+                            <img class="gris" src="<%= estilosVida[i].img %>" alt="<%= estilosVida[i].alt %>"> 
+                            <!-- <i class="<%= estilosVida[i].iClass %>"></i>-->
                             <p><%= estilosVida[i].nombre %></p>
                         </div>
                     </a>
