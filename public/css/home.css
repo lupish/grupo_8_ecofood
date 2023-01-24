@@ -14,7 +14,16 @@ main {
     overflow-x: scroll;
 
 }
-
+.gris{
+   
+        filter: grayscale(1);
+     
+}
+.gris:hover{
+   
+        filter: none;
+     
+}
 .carrusel-prods img {
     flex: 0 0 100%;
     width: 100%;
