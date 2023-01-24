@@ -37,6 +37,6 @@ router.put('/edit/:id', uploadFile.array("prod_fotos"), productController.proces
 router.get('/edit/:id', productController.edit);
 router.delete()
 //LISTA DE PRODUCT0S
-router.get('/products', productController.products);
+router.get('/plistProducts', productController.listProducts);
 
 module.exports = router;

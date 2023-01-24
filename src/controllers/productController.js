@@ -2,28 +2,32 @@ const path = require('path')
 const fs = require('fs');
 
 // bd productos
-const productsJSON = path.join(__dirname,'../database/productsDB.json');
+const productsJSON = path.join(__dirname,'../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
 
 // bd categorias
-const categoriasJSON = path.join(__dirname,'../database/categoriasDB.json');
+const categoriasJSON = path.join(__dirname,'../data/categoriasDB.json');
 const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
 
+// bd estilosVida
+const estilosVidaJSON = path.join(__dirname,'../data/estilosVidaDB.json');
+const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
+
 // bd marcas
-const marcasJSON = path.join(__dirname,'../database/marcasDB.json');
+const marcasJSON = path.join(__dirname,'../data/marcasDB.json');
 const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
 
 function createProd(prodId, req) {
-    // Categorias del producto
-    let prodCateg = [];
+    // estilosVida del producto
+    let prodEstilosVida = [];
     let categ = {};
-    if (typeof(req.body.prod_categorias) == "string") {
-        categ = {id: req.body.prod_categorias};
-        prodCateg.push(categ);
+    if (typeof(req.body.prod_estilosVida) == "string") {
+        categ = {id: req.body.prod_estilosVida};
+        prodEstilosVida.push(categ);
     } else {
-        req.body.prod_categorias.forEach(elem => {
+        req.body.prod_estilosVida.forEach(elem => {
             categ = {id: elem};
-            prodCateg.push(categ);
+            prodEstilosVida.push(categ);
         });
     }
     
@@ -45,7 +49,8 @@ function createProd(prodId, req) {
     let prod = {
         id: prodId,
         nombre: req.body.prod_nombre,
-        categorias: prodCateg,
+        categoria: req.body.prod_categoria,
+        estilosVida: prodEstilosVida,
         marca: req.body.prod_marca,
         precio: req.body.prod_precio,
         descripcionCorta: req.body.prod_descripcion_corta,
@@ -61,21 +66,32 @@ function createProd(prodId, req) {
 
 const controller = {
     productDetail: (req, res) => {
-        let prod = products.find(elem => elem.id == req.params.id);
-        res.render('products/productDetail', {prod: prod, categorias: categorias, marcas: marcas});
+        let prod = products.find(elem => elem.id == req.params.idProd);
+        
+        if (prod) {
+            res.render('products/productDetail', {prod: prod, estilosVida: estilosVida, marcas: marcas, estilosVida: estilosVida});
+        } else {
+            return res.redirect('/products/product-not-found');
+        }
+        
     },
     productCart: (req, res) => {
-        res.render('products/productCart', {categorias: categorias});
+        res.render('products/productCart', {estilosVida: estilosVida});
     },
     create: (req, res) => {
-        res.render('products/create', {categorias: categorias, marcas: marcas});
+        res.render('products/newProduct', {categorias: categorias, estilosVida: estilosVida, marcas: marcas});
     },
     edit: (req, res) => {
-        let prod = products.find(elem => elem.id == req.params.id);
-        res.render('products/edit', {categorias: categorias, marcas: marcas, prod: prod});
+        let prod = products.find(elem => elem.id == req.params.idProd);
+
+        if (prod) {
+            res.render('products/edit', {categorias: categorias, estilosVida: estilosVida, marcas: marcas, prod: prod});
+        } else {
+            return res.redirect('/products/product-not-found');
+        }
     },
-    products: (req, res) => {
-        res.render('products/products', {categorias: categorias, prods: products, marcas: marcas})
+    listProducts: (req, res) => {
+        res.render('products/listProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
     },
     processCreate: (req, res) => {        
         let prodId = products[products.length-1].id + 1;
@@ -92,16 +108,22 @@ const controller = {
         let idProd = req.params.idProd;
         let prod = createProd(idProd, req);
 
+        console.log("------------- processEdit -------------")
+        console.log(prod);
+
         products.forEach(elem => {
             if (elem.id == idProd) {
                 elem.nombre = prod.nombre;
-                elem.categorias = prod.categorias;
+                elem.categoria = prod.categoria;
+                elem.estilosVida = prod.estilosVida;
                 elem.marca = prod.marca;
                 elem.precio = prod.precio;
                 elem.descripcionCorta = prod.descripcionCorta;
                 elem.descripcionLarga = prod.descripcionLarga;
                 elem.imgs = elem.imgs.concat(prod.imgs);
             }
+
+            console.log(elem);
         })
 
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2))
@@ -112,4 +134,3 @@ const controller = {
 }
 
 module.exports = controller;
-

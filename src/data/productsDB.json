@@ -2,7 +2,8 @@
   {
     "id": 1,
     "nombre": "Leche Almendras y Chocolate",
-    "categorias": [
+    "categoria": 2,
+    "estilosVida": [
       {
         "id": "7"
       }
@@ -30,7 +31,8 @@
   {
     "id": 2,
     "nombre": "Leche Almendras y Coco",
-    "categorias": [
+    "categoria": 2,
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -56,7 +58,8 @@
   {
     "id": 3,
     "nombre": "Leche de Coco",
-    "categorias": [
+    "categoria": 2,
+    "estilosVida": [
       {
         "id": 1
       },
@@ -82,7 +85,8 @@
   {
     "id": 4,
     "nombre": "Leche de Quinoa",
-    "categorias": [
+    "categoria": 2,
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -108,7 +112,8 @@
   {
     "id": 5,
     "nombre": "Barrita COCO CHOCO",
-    "categorias": [
+    "categoria": 4,
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -137,7 +142,8 @@
   {
     "id": 6,
     "nombre": "Barrita Arándanos",
-    "categorias": [
+    "categoria": 4,
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -166,7 +172,8 @@
   {
     "id": 7,
     "nombre": "Barrita Frutos Rojos",
-    "categorias": [
+    "categoria": 4,
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -195,7 +202,8 @@
   {
     "id": 8,
     "nombre": "Barrita Brownie",
-    "categorias": [
+    "categoria": 4,
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -224,7 +232,8 @@
   {
     "id": 9,
     "nombre": "Granola Tradicional",
-    "categorias": [
+    "categoria": 4,
+    "estilosVida": [
       {
         "id": "7"
       }
@@ -247,7 +256,8 @@
   {
     "id": 10,
     "nombre": "Granola Chocolate",
-    "categorias": [
+    "categoria": 4,
+    "estilosVida": [
       {
         "id": "2"
       },
@@ -273,7 +283,8 @@
   {
     "id": 11,
     "nombre": "Granola Almendra y Aándanos",
-    "categorias": [
+    "categoria": 4,
+    "estilosVida": [
       {
         "id": 2
       },
@@ -299,7 +310,8 @@
   {
     "id": 12,
     "nombre": "Granola Energética",
-    "categorias": [
+    "categoria": 4,
+    "estilosVida": [
       {
         "id": 2
       },
@@ -325,7 +337,8 @@
   {
     "id": 14,
     "nombre": "Lino Dorado ORGÁNICO",
-    "categorias": [
+    "categoria": 1,
+    "estilosVida": [
       {
         "id": "1"
       },
@@ -345,71 +358,6 @@
         "id": 1,
         "img": "/img/products/prod-lino_dorado_kos_food_1674084577677.webp",
         "alt": "lino_dorado_kos_food.webp"
-      }
-    ],
-    "novedad": false,
-    "preferido": false,
-    "buscados": false
-  },
-  {
-    "id": 19,
-    "nombre": "PRUEBA IMG 1",
-    "categorias": [
-      {
-        "id": "1"
-      }
-    ],
-    "marca": "1",
-    "precio": "1",
-    "descripcionCorta": "1",
-    "descripcionLarga": "1",
-    "imgs": [
-      {
-        "id": 1,
-        "img": "/img/products/prod-lino_dorado_kos_food_1674084577677.webp",
-        "alt": "lino_dorado_kos_food.webp"
-      }
-    ],
-    "novedad": false,
-    "preferido": false,
-    "buscados": false
-  },
-  {
-    "id": 20,
-    "nombre": "PRUEBA IMG 2 EDITADA 2",
-    "categorias": [
-      {
-        "id": "1"
-      },
-      {
-        "id": "2"
-      },
-      {
-        "id": "3"
-      },
-      {
-        "id": "5"
-      }
-    ],
-    "marca": "3",
-    "precio": "923",
-    "descripcionCorta": "Koble test ",
-    "descripcionLarga": "KOBLE",
-    "imgs": [
-      {
-        "id": 1,
-        "img": "/img/products/prod-kolbe_1_1674168259588.PNG",
-        "alt": "kolbe_1.PNG"
-      },
-      {
-        "id": 1,
-        "img": "/img/products/prod-koble_6_1674168478306.PNG",
-        "alt": "koble_6.PNG"
-      },
-      {
-        "id": 1,
-        "img": "/img/products/prod-kolbe_2_1674168623122.PNG",
-        "alt": "kolbe_2.PNG"
       }
     ],
     "novedad": false,
