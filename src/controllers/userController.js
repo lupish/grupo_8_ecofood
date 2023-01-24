@@ -1,16 +1,12 @@
 const path = require('path')
 const fs = require('fs');
 
-// bd categorias
-const categoriasJSON = path.join(__dirname,'../database/categoriasDB.json');
-const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
-
 const controller = {
     login: (req, res) => {
-        res.render('users/login', {categorias: categorias})
+        res.render('users/login')
     },
     register: (req, res) => {
-        res.render('users/register', {categorias: categorias})
+        res.render('users/register')
     },
     createAcount: (req, res) => {
        let usuario = {
@@ -20,7 +16,7 @@ const controller = {
            confirmarContrasenia: req.body.confirmarContrasenia
        }
     //GUARDAR
-    const usersJSON = path.join(__dirname,'../database/usersDB.json');
+    const usersJSON = path.join(__dirname,'../data/usersDB.json');
     let archivoUsuario = fs.readFileSync(usersJSON, {encoding: 'utf-8'});
     let usuarios;
     if(archivoUsuario==""){

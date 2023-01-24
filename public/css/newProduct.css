@@ -2,20 +2,30 @@
     padding: 10px;
 }
 
+.form-prod-nuevo h1 {
+    text-align: center;
+}
+
 .form-prod-nuevo {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     text-align: left;
-    
+
+    border: 2px solid #ebebeb;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #fff;
+    margin: 5px;
+    text-align: center;
 }
 
 .form-prod-nuevo div {
     margin-bottom: 10px;
 }
 
-.form-prod-nuevo .div-prod-categorias input,
-                 .div-prod-marca input {
+.form-prod-nuevo .div-prod-estilosVida input,
+                 .div-prod-radio input {
     width: 10px;
 }
 
@@ -36,7 +46,7 @@
 }
 
 
-main form div.div-prod-categorias, div.div-prod-marca {
+main form div.div-prod-estilosVida, div.div-prod-radio {
     width: 98%;
     text-align: left;
     border-radius: 5px;
@@ -66,5 +76,11 @@ main form div.div-prod-categorias, div.div-prod-marca {
 @media (min-width: 769px) {
     main .form-prod-nuevo {
         width: 50%;
+    }
+}
+
+@media (min-width: 769px) {
+    main .form-prod-nuevo {
+        width: 70%;
     }
 }
