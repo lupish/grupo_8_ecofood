@@ -61,21 +61,21 @@ function createProd(prodId, req) {
 
 const controller = {
     productDetail: (req, res) => {
-        let prod = products.find(elem => elem.id == req.params.idProd);
+        let prod = products.find(elem => elem.id == req.params.id);
         res.render('products/productDetail', {prod: prod, categorias: categorias, marcas: marcas});
     },
     productCart: (req, res) => {
         res.render('products/productCart', {categorias: categorias});
     },
-    newProduct: (req, res) => {
-        res.render('products/newProduct', {categorias: categorias, marcas: marcas});
+    create: (req, res) => {
+        res.render('products/create', {categorias: categorias, marcas: marcas});
     },
-    editProduct: (req, res) => {
-        let prod = products.find(elem => elem.id == req.params.idProd);
-        res.render('products/editProduct', {categorias: categorias, marcas: marcas, prod: prod});
+    edit: (req, res) => {
+        let prod = products.find(elem => elem.id == req.params.id);
+        res.render('products/edit', {categorias: categorias, marcas: marcas, prod: prod});
     },
-    listProducts: (req, res) => {
-        res.render('products/listProducts', {categorias: categorias, prods: products, marcas: marcas})
+    products: (req, res) => {
+        res.render('products/products', {categorias: categorias, prods: products, marcas: marcas})
     },
     processCreate: (req, res) => {        
         let prodId = products[products.length-1].id + 1;
@@ -86,7 +86,7 @@ const controller = {
         products.push(prod);
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
 
-        return res.redirect('/products/listProducts')
+        return res.redirect('/products/products')
     },
     processEdit: (req, res) => {
         let idProd = req.params.idProd;

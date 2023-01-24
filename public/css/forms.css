@@ -64,6 +64,9 @@ main a:hover {
 
     main .div-form {
         width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
 }
 
@@ -71,5 +74,6 @@ main a:hover {
 
     main .div-form {
         width: 50%;
+        margin: 20px 10%;
     }
 }

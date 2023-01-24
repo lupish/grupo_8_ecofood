@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-// multer
+//MULTER
 const multer = require('multer');
 const multerDiskStorage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -18,18 +18,25 @@ const multerDiskStorage = multer.diskStorage({
 });
 const uploadFile = multer({storage: multerDiskStorage});
 
-const productController = require('../controllers/productController')
+//CONTROLADOR
+const productController = require('../controllers/productController');
 
-router.get('/productDetail/:idProd', productController.productDetail);
+//RUTAS
 
+//DETALLE DE PRODUCTO
+router.get('/productDetail/:id', productController.productDetail);
+//CARRITO DE COMPRAS
 router.get('/productCart', productController.productCart);
-
-router.get('/newProduct', productController.newProduct);
-router.post('/newProduct', uploadFile.array("prod_fotos"), productController.processCreate);
-
-router.get('/editProduct/:idProd', productController.editProduct);
-router.put('/editProduct/:idProd', uploadFile.array("prod_fotos"), productController.processEdit);
-
-router.get('/listProducts', productController.listProducts);
+//CREAR UN NUEVO PRODUCTO
+router.get('/create', productController.create);
+router.post('/create', uploadFile.array("prod_fotos"), productController.processCreate);
+//EDCION DE UN  PRODUCTO
+router.get('/edit/:id', productController.edit);
+router.put('/edit/:id', uploadFile.array("prod_fotos"), productController.processEdit);
+//ELIMINAR UN PRODUCTO
+router.get('/edit/:id', productController.edit);
+router.delete()
+//LISTA DE PRODUCT0S
+router.get('/products', productController.products);
 
 module.exports = router;
