@@ -35,8 +35,7 @@ router.get('/edit/:id', productController.edit);
 router.put('/edit/:id', uploadFile.array("prod_fotos"), productController.processEdit);
 //ELIMINAR UN PRODUCTO
 router.get('/edit/:id', productController.edit);
-router.delete()
 //LISTA DE PRODUCT0S
-router.get('/plistProducts', productController.listProducts);
+router.get('/listProducts', productController.listProducts);
 
 module.exports = router;
