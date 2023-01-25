@@ -112,7 +112,7 @@ h3{
 }
 
 .estilosVida-imgs img {
-    width: 50px;
+    width: 35px;
     padding: 5px;
 }
 
@@ -183,6 +183,10 @@ div.estilosVida-imgs img:hover + p {
     .estilosVida-imgs i {
         font-size: 2em;
         padding: 0.5em 0.6em;
+    }
+
+    .estilosVida-imgs img {
+        width: 50px;
     }
 }
 
