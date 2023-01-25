@@ -145,8 +145,6 @@ h3{
 div.estilosVida-imgs i:hover {
     color: #EB947A;
     transition: all 0.3s;
-
-    display: block;
 }
 
 div.estilosVida-imgs i:hover + p {
@@ -156,8 +154,6 @@ div.estilosVida-imgs i:hover + p {
 div.estilosVida-imgs img:hover {
     color: #EB947A;
     transition: all 0.3s;
-
-    display: block;
 }
 
 div.estilosVida-imgs img:hover + p {

@@ -129,6 +129,10 @@ const controller = {
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2))
 
         return res.redirect('/products/productDetail/' + id)
+    },
+    manageProducts: (req, res) => {
+        console.log("manageProducts")
+        res.render('products/manageProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
     }
     
 }
