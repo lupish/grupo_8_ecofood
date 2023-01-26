@@ -58,7 +58,8 @@ function createProd(prodId, req) {
         imgs: imgs,
         novedad: false,
         preferido: false,
-        buscados: false
+        buscados: false,
+        delete: false
     }
 
     return prod;
@@ -102,14 +103,11 @@ const controller = {
         products.push(prod);
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
 
-        return res.redirect('/products/products')
+        return res.redirect('/products/listProducts')
     },
     processEdit: (req, res) => {
         let id = req.params.id;
         let prod = createProd(id, req);
-
-        console.log("------------- processEdit -------------")
-        console.log(prod);
 
         products.forEach(elem => {
             if (elem.id == id) {
@@ -122,8 +120,6 @@ const controller = {
                 elem.descripcionLarga = prod.descripcionLarga;
                 elem.imgs = elem.imgs.concat(prod.imgs);
             }
-
-            console.log(elem);
         })
 
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2))
@@ -132,17 +128,11 @@ const controller = {
     },
     softDelete:(req,res)=>{
         let id = req.params.id;
-       
-
-        console.log("------------- processDelete-------------")
-       
 
         products.forEach(elem => {
             if (elem.id == id) {
                 elem.delete=true;
             }
-
-            console.log(elem);
         });
 
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
@@ -151,10 +141,6 @@ const controller = {
     },
     hardDelete:(req,res)=>{
         let id = req.params.id;
-       
-
-        console.log("------------- processDelete-------------")
-       
 
         let productsNotDelete=products.filter(row=>{return row.id!=id})
 
@@ -162,11 +148,24 @@ const controller = {
 
         return res.redirect('/products/manageProducts/')
     },
+    processActivate: (req, res) => {
+        let id = req.params.id;
+       
+        products.forEach(elem => {
+            if (elem.id == id) {
+                elem.delete = false;
+            }
+        });
+
+        fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
+
+        return res.redirect('/products/manageProducts/')
+    },
     manageEcoFood: (req, res) => {
         res.render('products/manageEcoFood')
     },
     manageProducts: (req, res) => {
-        res.render('products/manageProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false}), marcas: marcas})
+        res.render('products/manageProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
     }
     
 }

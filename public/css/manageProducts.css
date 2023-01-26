@@ -62,11 +62,12 @@
 .panel-prods-icons {
     margin: 15px;
 }
-.softDelete {
+
+.softDelete, .activar {
     color: #96AB61;
 }
 
-.softDelete:hover {
+.softDelete:hover, .activar:hover {
     color: #EB947A;
     transition: all 0.3s;
 }
