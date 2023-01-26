@@ -6,7 +6,13 @@
     <main>
         <section class="section-common">
             <div class="panel-prods-div">
-                <h2>Panel de gestión de productos</h2>
+                <div class="panel-prods-header">
+            
+                    <h2>Panel de gestión de productos</h2>
+                    <a href="/products/create">
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+                </div>
                 <% for(let i = 0; i < prods.length; i++) { %>
                     <article>
                         <div class="panel-prods-info">

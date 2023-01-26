@@ -1,3 +1,7 @@
+.panel-prods {
+    display: none;
+}
+
 .panel-prods-div {
     background-color: white;
     border: 2px solid #ebebeb;
@@ -10,6 +14,17 @@
 
 .panel-prods-div h2 {
     margin: 20px;
+}
+
+.panel-prods-div .panel-prods-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panel-prods-div .panel-prods-header i {
+    font-size: 2em;
+    margin-right: 10px;
 }
 
 .img-chica {

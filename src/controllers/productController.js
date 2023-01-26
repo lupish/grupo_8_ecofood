@@ -130,8 +130,10 @@ const controller = {
 
         return res.redirect('/products/productDetail/' + id)
     },
+    manageEcoFood: (req, res) => {
+        res.render('products/manageEcoFood')
+    },
     manageProducts: (req, res) => {
-        console.log("manageProducts")
         res.render('products/manageProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
     }
     

@@ -38,6 +38,8 @@ router.put('/edit/:id', uploadFile.array("prod_fotos"), productController.proces
 //LISTA DE PRODUCT0S
 router.get('/listProducts', productController.listProducts);
 
+// Admin
+router.get('/manageEcoFood', productController.manageEcoFood);
 router.get('/manageProducts', productController.manageProducts);
 
 module.exports = router;

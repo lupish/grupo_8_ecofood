@@ -18,9 +18,12 @@ main {
 .gris{
     filter: grayscale(1);
 }
+
 .gris:hover{
-   filter: none;  
+   filter: none;
+   transition: all 0.3s;
 }
+
 .carrusel-prods img {
     flex: 0 0 100%;
     width: 100%;
