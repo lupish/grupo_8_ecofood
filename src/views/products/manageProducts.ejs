@@ -35,9 +35,11 @@
                             <a href="/products/edit/<%= prods[i].id %>">
                                 <i id="icon-edit" class="fa-solid fa-pen-to-square"></i>
                             </a>
-                            <a href="/products/productDetail/<%= prods[i].id %>">
-                                <i id="icon-edit" class="fa-solid fa-trash-can"></i>
-                            </a>
+                          
+                                <label for="eliminar<%=prods[i].id%>" class="softDelete"><i id="icon-edit" class="fa-solid fa-trash-can"></i></label>
+                               
+                            
+                            <form style="display: none;" action="/products/delete/soft/<%= prods[i].id %>?_method=delete" method="POST"><input id="eliminar<%=prods[i].id%>" type="submit" value="eliminar"></form>
                         </div>
                     </article>
                 <% } %>

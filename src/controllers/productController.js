@@ -66,7 +66,7 @@ function createProd(prodId, req) {
 
 const controller = {
     productDetail: (req, res) => {
-        let prod = products.find(elem => elem.id == req.params.id);
+        let prod = products.find(elem => elem.id == req.params.id && elem.delete==false);
         
         if (prod) {
             res.render('products/productDetail', {prod: prod, estilosVida: estilosVida, marcas: marcas, estilosVida: estilosVida});
@@ -91,7 +91,7 @@ const controller = {
         }
     },
     listProducts: (req, res) => {
-        res.render('products/listProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
+        res.render('products/listProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false}), marcas: marcas})
     },
     processCreate: (req, res) => {        
         let prodId = products[products.length-1].id + 1;
@@ -130,11 +130,43 @@ const controller = {
 
         return res.redirect('/products/productDetail/' + id)
     },
+    softDelete:(req,res)=>{
+        let id = req.params.id;
+       
+
+        console.log("------------- processDelete-------------")
+       
+
+        products.forEach(elem => {
+            if (elem.id == id) {
+                elem.delete=true;
+            }
+
+            console.log(elem);
+        });
+
+        fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
+
+        return res.redirect('/products/manageProducts/')
+    },
+    hardDelete:(req,res)=>{
+        let id = req.params.id;
+       
+
+        console.log("------------- processDelete-------------")
+       
+
+        let productsNotDelete=products.filter(row=>{return row.id!=id})
+
+        fs.writeFileSync(productsJSON, JSON.stringify(productsNotDelete, null, 2));
+
+        return res.redirect('/products/manageProducts/')
+    },
     manageEcoFood: (req, res) => {
         res.render('products/manageEcoFood')
     },
     manageProducts: (req, res) => {
-        res.render('products/manageProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
+        res.render('products/manageProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false}), marcas: marcas})
     }
     
 }

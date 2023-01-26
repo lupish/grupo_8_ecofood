@@ -26,7 +26,8 @@
     ],
     "novedad": true,
     "preferido": false,
-    "buscados": false
+    "buscados": false,
+    "delete": false
   },
   {
     "id": 2,
@@ -53,7 +54,8 @@
     ],
     "novedad": true,
     "preferido": false,
-    "buscados": false
+    "buscados": false,
+    "delete": false
   },
   {
     "id": 3,
@@ -80,7 +82,8 @@
     ],
     "novedad": true,
     "preferido": false,
-    "buscados": false
+    "buscados": false,
+    "delete": false
   },
   {
     "id": 4,
@@ -107,7 +110,8 @@
     ],
     "novedad": true,
     "preferido": false,
-    "buscados": false
+    "buscados": false,
+    "delete": false
   },
   {
     "id": 5,
@@ -137,7 +141,8 @@
     ],
     "novedad": false,
     "preferido": true,
-    "buscados": false
+    "buscados": false,
+    "delete": false
   },
   {
     "id": 6,
@@ -167,7 +172,8 @@
     ],
     "novedad": false,
     "preferido": true,
-    "buscados": false
+    "buscados": false,
+    "delete": false
   },
   {
     "id": 7,
@@ -197,7 +203,8 @@
     ],
     "novedad": false,
     "preferido": true,
-    "buscados": false
+    "buscados": false,
+    "delete": false
   },
   {
     "id": 8,
@@ -227,7 +234,8 @@
     ],
     "novedad": false,
     "preferido": true,
-    "buscados": false
+    "buscados": false,
+    "delete": false
   },
   {
     "id": 9,
@@ -251,7 +259,8 @@
     ],
     "novedad": false,
     "preferido": false,
-    "buscados": true
+    "buscados": true,
+    "delete": false
   },
   {
     "id": 10,
@@ -278,7 +287,8 @@
     ],
     "novedad": false,
     "preferido": false,
-    "buscados": true
+    "buscados": true,
+    "delete": false
   },
   {
     "id": 11,
@@ -305,7 +315,8 @@
     ],
     "novedad": false,
     "preferido": false,
-    "buscados": true
+    "buscados": true,
+    "delete": false
   },
   {
     "id": 12,
@@ -332,7 +343,8 @@
     ],
     "novedad": false,
     "preferido": false,
-    "buscados": true
+    "buscados": true,
+    "delete": false
   },
   {
     "id": 14,
@@ -362,6 +374,7 @@
     ],
     "novedad": false,
     "preferido": false,
-    "buscados": false
+    "buscados": false,
+    "delete": false
   }
 ]
