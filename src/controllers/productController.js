@@ -166,6 +166,9 @@ const controller = {
     },
     manageProducts: (req, res) => {
         res.render('products/manageProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
+    },
+    manageMarcas: (req, res) => {
+        res.render('products/manageMarcas', {marcas: marcas})
     }
     
 }

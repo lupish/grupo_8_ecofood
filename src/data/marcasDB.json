@@ -1,22 +1,37 @@
 [
     {
         "id": 1,
-        "nombre": "Silk"
+        "nombre": "Silk",
+        "img": "/img/marcas/marca-silk.png",
+        "alt": "Logo Silk",
+        "delete": false
     },
     {
         "id": 2,
-        "nombre": "Biba"
+        "nombre": "Biba",
+        "img": "/img/marcas/marca-biba.jpg",
+        "alt": "Logo Biba",
+        "delete": false
     },
     {
         "id": 3,
-        "nombre": "Laddubar"
+        "nombre": "Laddubar",
+        "img": "/img/marcas/marca-laddubar.png",
+        "alt": "Logo Laddubar",
+        "delete": false
     },
     {
         "id": 4,
-        "nombre": "Kos Food"
+        "nombre": "Kos Food",
+        "img": "/img/marcas/marca-kosFood.jpg",
+        "alt": "Logo Kos Food",
+        "delete": false
     },
     {
         "id": 5,
-        "nombre": "Integra"
+        "nombre": "Integra",
+        "img": "/img/marcas/marca-integra.png",
+        "alt": "Logo Silk",
+        "delete": false
     }
 ]

@@ -50,5 +50,6 @@ router.get('/listProducts', productController.listProducts);
 // Admin
 router.get('/manageEcoFood', productController.manageEcoFood);
 router.get('/manageProducts', productController.manageProducts);
+router.get('/manageMarcas', productController.manageMarcas);
 
 module.exports = router;
