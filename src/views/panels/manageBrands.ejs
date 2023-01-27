@@ -7,9 +7,8 @@
         <section class="section-common">
             <div class="panel-prods-div">
                 <div class="panel-prods-header">
-            
                     <h2>Panel de gestión de marcas</h2>
-                    <a href="/products/create">
+                    <a href="/brands/create">
                         <i class="fa-solid fa-plus"></i>
                     </a>
                 </div>
@@ -29,9 +28,7 @@
                             </div>
                         </div>
                         <div class="panel-prods-icons">
-                            <a href="">
-                                <i id="icon-edit" class="fa-solid fa-magnifying-glass"></i>
-                            </a>
+                            
                             <a href="">
                                 <i id="icon-edit" class="fa-solid fa-pen-to-square"></i>
                             </a>
@@ -40,14 +37,14 @@
                                 <label for="activar<%=marcas[i].id%>" class="activar">
                                     <i id="icon-edit" class="fa-solid fa-power-off"></i>
                                 </label>
-                                <form style="display: none;" action="" method="POST">
+                                <form style="display: none;" action="/brands/activar/<%= marcas[i].id %>?_method=patch" method="POST">
                                     <input id="activar<%=marcas[i].id%>" type="submit" value="eliminar">
                                 </form>
                             <% } else { %>
                                 <label for="eliminar<%=marcas[i].id%>" class="softDelete">
                                     <i id="icon-edit" class="fa-solid fa-trash-can"></i>
                                 </label>
-                                <form style="display: none;" action="">
+                                <form style="display: none;" action="/brands/delete/soft/<%= marcas[i].id %>?_method=delete" method="POST">
                                     <input id="eliminar<%=marcas[i].id%>" type="submit" value="eliminar">
                                 </form>
                             <% } %>  

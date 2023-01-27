@@ -137,7 +137,7 @@ const controller = {
 
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
 
-        return res.redirect('/products/manageProducts/')
+        return res.redirect('/panels/manageProducts/')
     },
     hardDelete:(req,res)=>{
         let id = req.params.id;
@@ -146,7 +146,7 @@ const controller = {
 
         fs.writeFileSync(productsJSON, JSON.stringify(productsNotDelete, null, 2));
 
-        return res.redirect('/products/manageProducts/')
+        return res.redirect('/panels/manageProducts/')
     },
     processActivate: (req, res) => {
         let id = req.params.id;
@@ -159,16 +159,7 @@ const controller = {
 
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
 
-        return res.redirect('/products/manageProducts/')
-    },
-    manageEcoFood: (req, res) => {
-        res.render('products/manageEcoFood')
-    },
-    manageProducts: (req, res) => {
-        res.render('products/manageProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
-    },
-    manageMarcas: (req, res) => {
-        res.render('products/manageMarcas', {marcas: marcas})
+        return res.redirect('/panels/manageProducts/')
     }
     
 }

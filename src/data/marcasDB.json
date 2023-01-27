@@ -1,37 +1,44 @@
 [
-    {
-        "id": 1,
-        "nombre": "Silk",
-        "img": "/img/marcas/marca-silk.png",
-        "alt": "Logo Silk",
-        "delete": false
-    },
-    {
-        "id": 2,
-        "nombre": "Biba",
-        "img": "/img/marcas/marca-biba.jpg",
-        "alt": "Logo Biba",
-        "delete": false
-    },
-    {
-        "id": 3,
-        "nombre": "Laddubar",
-        "img": "/img/marcas/marca-laddubar.png",
-        "alt": "Logo Laddubar",
-        "delete": false
-    },
-    {
-        "id": 4,
-        "nombre": "Kos Food",
-        "img": "/img/marcas/marca-kosFood.jpg",
-        "alt": "Logo Kos Food",
-        "delete": false
-    },
-    {
-        "id": 5,
-        "nombre": "Integra",
-        "img": "/img/marcas/marca-integra.png",
-        "alt": "Logo Silk",
-        "delete": false
-    }
+  {
+    "id": 1,
+    "nombre": "Silk",
+    "img": "/img/brands/marca-silk.png",
+    "alt": "Logo Silk",
+    "delete": false
+  },
+  {
+    "id": 2,
+    "nombre": "Biba",
+    "img": "/img/brands/marca-biba.jpg",
+    "alt": "Logo Biba",
+    "delete": false
+  },
+  {
+    "id": 3,
+    "nombre": "Laddubar",
+    "img": "/img/brands/marca-laddubar.png",
+    "alt": "Logo Laddubar",
+    "delete": false
+  },
+  {
+    "id": 4,
+    "nombre": "Kos Food",
+    "img": "/img/brands/marca-kosFood.jpg",
+    "alt": "Logo Kos Food",
+    "delete": false
+  },
+  {
+    "id": 5,
+    "nombre": "Integra",
+    "img": "/img/brands/marca-integra.png",
+    "alt": "Logo Silk",
+    "delete": false
+  },
+  {
+    "id": 6,
+    "nombre": "Marca de prueba",
+    "delete": true,
+    "img": "",
+    "alt": ""
+  }
 ]
