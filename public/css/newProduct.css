@@ -73,14 +73,30 @@ main form div.div-prod-estilosVida, div.div-prod-radio {
     border: none;
 }
 
-@media (min-width: 769px) {
-    main .form-prod-nuevo {
-        width: 50%;
-    }
+main .form-prod-nuevo .input-form, textarea {
+    width: 98%;
+    text-align: left;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: #FFF;
+    border: 1px solid  #c9c56fff;;
+    box-sizing: border-box; 
+    margin: 5px;
+}
+
+main .form-editar-prod .input-form, textarea {
+    width: 98%;
+    text-align: left;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: #FFF;
+    border: 1px solid  #c9c56fff;;
+    box-sizing: border-box; 
+    margin: 5px;
 }
 
 @media (min-width: 769px) {
     main .form-prod-nuevo {
-        width: 70%;
+        width: 50%;
     }
 }

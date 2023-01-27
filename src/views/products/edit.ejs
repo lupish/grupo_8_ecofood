@@ -7,9 +7,9 @@
         <section class="section-common">
             <form class="form-editar-prod" method="POST" action="/products/edit/<%= prod.id %>?_method=PUT" enctype="multipart/form-data">
                 <h1 class="label-editar-prod">Editar producto</h1>
-                <div>
-                    <input type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" value="<%= prod.nombre %>"  required> 
-                </div>
+                
+                    <input class="input-form" type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" value="<%= prod.nombre %>"  required> 
+                
                 <div class="div-prod-radio">
                     <p>Categoría del producto:</p>
                     <% for(let i = 0; i < categorias.length; i ++) { %>
