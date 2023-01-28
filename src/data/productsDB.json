@@ -376,5 +376,30 @@
     "preferido": false,
     "buscados": false,
     "delete": false
+  },
+  {
+    "id": 15,
+    "nombre": "Semillas de Chia",
+    "categoria": "4",
+    "estilosVida": [
+      {
+        "id": "3"
+      }
+    ],
+    "marca": "4",
+    "precio": "485",
+    "descripcionCorta": "Semillas de Chia x 150gr",
+    "descripcionLarga": "CHÍA\r\nSemillas de chía\r\n\r\nPresentación: 150 gr.",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/prod-semillas-de-chia_1674775969834.webp",
+        "alt": "semillas-de-chia.webp"
+      }
+    ],
+    "novedad": false,
+    "preferido": false,
+    "buscados": false,
+    "delete": true
   }
 ]

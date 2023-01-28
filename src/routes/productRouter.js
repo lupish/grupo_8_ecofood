@@ -25,22 +25,26 @@ const productController = require('../controllers/productController');
 
 //DETALLE DE PRODUCTO
 router.get('/productDetail/:id', productController.productDetail);
+
 //CARRITO DE COMPRAS
 router.get('/productCart', productController.productCart);
+
 //CREAR UN NUEVO PRODUCTO
 router.get('/create', productController.create);
 router.post('/create', uploadFile.array("prod_fotos"), productController.processCreate);
+
 //EDCION DE UN  PRODUCTO
 router.get('/edit/:id', productController.edit);
 router.put('/edit/:id', uploadFile.array("prod_fotos"), productController.processEdit);
+
 //Soft delete de los productos
 router.delete('/delete/soft/:id', productController.softDelete);
 router.delete('/delete/hard/:id', productController.hardDelete);
+
+// REACTIVAR PRODUCTO
+router.patch('/activar/:id', productController.processActivate)
+
 //LISTA DE PRODUCT0S
 router.get('/listProducts', productController.listProducts);
-
-// Admin
-router.get('/manageEcoFood', productController.manageEcoFood);
-router.get('/manageProducts', productController.manageProducts);
 
 module.exports = router;
