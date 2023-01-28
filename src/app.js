@@ -32,6 +32,9 @@ app.use('/users', userRouter);
 const productRouter = require('./routes/productRouter');
 app.use('/products', productRouter);
 
+const aboutRouter = require('./routes/aboutUsRouter.js');
+app.use('/aboutus', aboutRouter);
+
 //ERROR 404
 // bd estilosVida
 const fs = require('fs');
