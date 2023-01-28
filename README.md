@@ -11,10 +11,7 @@ Personas que necesiten o que eligen dietas especiales.
 <br />
 
 ### __Integrantes__
-- **Leonardo Calentino:** tengo 35 años, nuevo en el mundo de la programacion y vengo de la rama del packaging.
 - **Jorge Martin Dominguez Diaz:** tengo 29 años, soy programador Java del ministerio de educación y de Pronto Pago  SA.
-- **Pablo G. Dumont:** tengo con 34 años, un hijo inquieto, trabajo de vendedor de materiales para la construcción y soy entrenador de rugby.
-- **Matias Moretti:** soy médico general con 5 años de experiencia, posgrado en medicina estética. Baterista desde los 12 años, con planes de emigrar a Barcelona en Febrero 2023.
 - **Sheine Sirota:** tengo 20 años y me quiero dedicar a la programación, trabajo manejando el instagram de una institución.
 - **Luciana Vidal:** tengo 29 años y soy ingeniera en computación, además soy escritora y publiqué un libro.
 
@@ -35,6 +32,9 @@ Lo que nos llamó la atención de este sitio y algo que nos gustaría imitar ser
 
 - [Amazon:](https://www.amazon.com)
 Al ser uno de los sitios mas importantes a nivel mundial nos pareció apropiado tenerlo en cuenta, además la forma de mostrar los productos es distinta a las otras opciones.
+
+- [The Food Market:](https://www.thefoodmarket.com.ar/)
+Tiene un diseño que nos pareció intuitivo, y el home nos pareció muy bien logrado. Tienen distintos tipos de categorizaciones para los productos: categorías y estilos de vida.
 
 <br />
 
