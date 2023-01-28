@@ -5,11 +5,36 @@
     <%- include('../partials/header') %>
     <main>
         <section>
-            <h2>Productos</h2>
+            <div class="estilosVida-imgs">
+                <a href="/products/listProducts">
+                    <div class="una-categoria">
+                        <img class="gris" src="/img/estilosVida/todosEV.webp" alt="Todos los productos"></a>
+                        <!--<i class="fa-solid fa-utensils"></i> -->
+                        <p>Todos</p>
+                    </div>
+                </a>
+                
+                <% for(let i = 0; i < estilosVida.length; i ++) { %>
+                    <a href="/products/listProducts/<%= estilosVida[i].id %>">
+                        <div class="una-categoria">
+                            <img class="gris" src="<%= estilosVida[i].img %>" alt="<%= estilosVida[i].alt %>"> 
+                            <!-- <i class="<%= estilosVida[i].iClass %>"></i>-->
+                            <p><%= estilosVida[i].nombre %></p>
+                        </div>
+                    </a>
+                <% } %>
+            </div>
+        </section>
+        
+        <section>
+            <% if (typeof estiloVidaFiltro !='undefined') {%> 
+                <h2>Productos - <%= estilosVida.find(elem => elem.id == estiloVidaFiltro).nombre %> </h2>
+            <% } else { %> 
+                <h2>Productos</h2>
+            <% } %> 
             <div class="contenedor-productos">
                 <% for(let i = 0; i < prods.length; i++) { %>
                     <article class="article-prod">
-                        <a href="/products/edit/<%= prods[i].id %>"><i id="icon-edit" class="fa-solid fa-pen-to-square"></i></a>
                         <a href="/products/productDetail/<%= prods[i].id %>">
                             <div class="info-de-producto">
                                 <i id="estrella" class="fa-solid fa-star"></i>
