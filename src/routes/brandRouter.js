@@ -31,7 +31,7 @@ router.patch('/activar/:id', brandController.processActivate)
 
 // crear
 router.get('/create', brandController.create);
-router.post('/create', uploadFile.array("marca_foto"), brandController.processCreate);
+router.post('/create', uploadFile.single("marca_foto"), brandController.processCreate);
 
 
 /*
