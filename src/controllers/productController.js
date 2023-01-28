@@ -92,7 +92,12 @@ const controller = {
         }
     },
     listProducts: (req, res) => {
-        res.render('products/listProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false}), marcas: marcas})
+        console.log(req.params.idEstiloVida)
+        if (req.params.idEstiloVida) {
+            res.render('products/listProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false && elem.estilosVida.some(estilo => estilo.id == req.params.idEstiloVida)}), marcas: marcas})
+        } else {
+            res.render('products/listProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false}), marcas: marcas})
+        }
     },
     processCreate: (req, res) => {        
         let prodId = products[products.length-1].id + 1;

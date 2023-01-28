@@ -27,7 +27,7 @@
                 </a>
                 
                 <% for(let i = 0; i < estilosVida.length; i ++) { %>
-                    <a href="/products/listProducts">
+                    <a href="/products/listProducts/<%= estilosVida[i].id %>">
                         <div class="una-categoria">
                             <img class="gris" src="<%= estilosVida[i].img %>" alt="<%= estilosVida[i].alt %>"> 
                             <!-- <i class="<%= estilosVida[i].iClass %>"></i>-->
