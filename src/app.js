@@ -34,6 +34,13 @@ app.use('/users', userRouter);
 const productRouter = require('./routes/productRouter');
 app.use('/products', productRouter);
 
+const panelRouter = require('./routes/panelRouter');
+app.use('/panels', panelRouter);
+
+const brandRouter = require('./routes/brandRouter');
+app.use('/brands', brandRouter);
+
+
 
 // bd estilosVida
 const fs = require('fs');

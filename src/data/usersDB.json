@@ -1,1 +1,35 @@
-[{"nombre":"Shaine Sara","email":"sheine.siro@gmail.com","contrasenia":"HOLA","confirmarContrasenia":"HOLA"},{"nombre":"satra","email":"sheine.siro@gmail.com","contrasenia":"HOLA","confirmarContrasenia":"hola"},{"nombre":"Shaine Sara","email":"sheine.siro@gmail.com","contrasenia":"HOLA","confirmarContrasenia":"hola"}]
+[
+  {
+    "id": "3",
+    "nombre": "Sara",
+    "email": "sheine.siro@gmail.com",
+    "contrasenia": "sara",
+    "confirmarContrasenia": "sara",
+    "delete": false
+  },
+  {
+    "id": "3",
+    "nombre": "Shaine Sara",
+    "email": "sheine.siro@gmail.com",
+    "contrasenia": "HOLA",
+    "confirmarContrasenia": "HOLA",
+    "delete": false
+  },
+  {
+    "id": "3",
+    "nombre": "Pepe",
+    "email": "sheine.siro@gmail.com",
+    "contrasenia": "hello",
+    "confirmarContrasenia": "hello",
+    "roles": "invitado",
+    "delete": false
+  },
+  {
+    "id": "31",
+    "nombre": "hola",
+    "email": "sheine.siro@gmail.com",
+    "contrasenia": "HOLA",
+    "confirmarContrasenia": "HOLA",
+    "delete": false
+  }
+]

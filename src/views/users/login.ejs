@@ -11,6 +11,16 @@
             <div class="div-form">
                 <img src="/img/EcoFood Logo Curvas web.jpg" alt="imagen de ejemplo" width="360">
                 <h2>Iniciá sesión</h2>
+                <% if (typeof errors != 'undefined') {%>
+                        <p style="color: red;">ERROR</p>
+                        <ul>
+                            <% for(let i = 0; errors.length; i++){ %>
+                                <li>
+                                    <%=errors[i].msg %>
+                                </li>
+                                <% } %>
+                        </ul>
+                        <% } %>
                 <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p>
                 <form action="/users/login" method="POST">
                     <div>

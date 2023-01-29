@@ -92,7 +92,12 @@ const controller = {
         }
     },
     listProducts: (req, res) => {
-        res.render('products/listProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false}), marcas: marcas})
+        console.log(req.params.idEstiloVida)
+        if (req.params.idEstiloVida) {
+            res.render('products/listProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false && elem.estilosVida.some(estilo => estilo.id == req.params.idEstiloVida)}), marcas: marcas, estiloVidaFiltro: req.params.idEstiloVida})
+        } else {
+            res.render('products/listProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false}), marcas: marcas})
+        }
     },
     processCreate: (req, res) => {        
         let prodId = products[products.length-1].id + 1;
@@ -137,7 +142,7 @@ const controller = {
 
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
 
-        return res.redirect('/products/manageProducts/')
+        return res.redirect('/panels/manageProducts/')
     },
     hardDelete:(req,res)=>{
         let id = req.params.id;
@@ -146,7 +151,7 @@ const controller = {
 
         fs.writeFileSync(productsJSON, JSON.stringify(productsNotDelete, null, 2));
 
-        return res.redirect('/products/manageProducts/')
+        return res.redirect('/panels/manageProducts/')
     },
     processActivate: (req, res) => {
         let id = req.params.id;
@@ -159,16 +164,7 @@ const controller = {
 
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
 
-        return res.redirect('/products/manageProducts/')
-    },
-    manageEcoFood: (req, res) => {
-        res.render('products/manageEcoFood')
-    },
-    manageProducts: (req, res) => {
-        res.render('products/manageProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
-    },
-    manageMarcas: (req, res) => {
-        res.render('products/manageMarcas', {marcas: marcas})
+        return res.redirect('/panels/manageProducts/')
     }
     
 }
