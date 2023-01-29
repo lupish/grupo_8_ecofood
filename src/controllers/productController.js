@@ -92,7 +92,6 @@ const controller = {
         }
     },
     listProducts: (req, res) => {
-        console.log(req.params.idEstiloVida)
         if (req.params.idEstiloVida) {
             res.render('products/listProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false && elem.estilosVida.some(estilo => estilo.id == req.params.idEstiloVida)}), marcas: marcas, estiloVidaFiltro: req.params.idEstiloVida})
         } else {

@@ -1,1 +1,12 @@
-[{"nombre":"Shaine Sara","email":"sheine.siro@gmail.com","contrasenia":"HOLA","confirmarContrasenia":"HOLA"},{"nombre":"satra","email":"sheine.siro@gmail.com","contrasenia":"HOLA","confirmarContrasenia":"hola"},{"nombre":"Shaine Sara","email":"sheine.siro@gmail.com","contrasenia":"HOLA","confirmarContrasenia":"hola"}]
+[
+  {
+    "nombre": "Luchi",
+    "email": "a@a.com",
+    "contrasenia": "$2a$10$rgL.Jp1Z55ZTn1o6FAwaAuLlpN9GTGoXGi2vvyFqf6vxQkK3/DAc2"
+  },
+  {
+    "nombre": "Lu",
+    "email": "b@a.com",
+    "contrasenia": "$2a$10$6jEX6SLvgRMJWNxMb0C8GOuSBY9F4eQCvGYB4LsVxm4oc97.oaxxe"
+  }
+]

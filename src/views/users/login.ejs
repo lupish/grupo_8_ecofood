@@ -12,7 +12,7 @@
                 <img src="/img/EcoFood Logo Curvas web.jpg" alt="imagen de ejemplo" width="360">
                 <h2>Iniciá sesión</h2>
                 <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p>
-                <form action="/users/login" method="POST">
+                <form action="/users/login" method="POST" action="/users/login">
                     <div>
                         <input type="email" name="email" id="email" placeholder="Email" required>
                     </div>
@@ -22,9 +22,9 @@
                     <div>
                         <button type="submit">Iniciar sesión</button>
                         
-                        <input class="checkbox-recordar-usuario" type="checkbox" name="recordar-usuario" id="recordar-usuario" value="recordar-usuario">
+                        <input class="checkbox-recordar-usuario" type="checkbox" name="recordar_usuario" id="recordar_usuario" value="recordar_usuario">
                     
-                        <label class="label-recordar-usuario" for="recordar-usuario">Recordarme</label>
+                        <label class="label-recordar-usuario" for="recordar_usuario">Recordarme</label>
                     
                         <a href="/"><p>Olvidé mi contraseña</p></a>
                     </div>
