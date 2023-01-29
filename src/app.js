@@ -2,6 +2,8 @@ const express=require('express');
 const path=require('path')
 const app=express();
 const methodOverride = require("method-override");
+const session = require('express-session');
+
 
 app.use(express.static('public'));
 console.log(app)
@@ -32,12 +34,13 @@ app.use('/users', userRouter);
 const productRouter = require('./routes/productRouter');
 app.use('/products', productRouter);
 
-//ERROR 404
+
 // bd estilosVida
 const fs = require('fs');
 const estilosVidaJSON = path.join(__dirname,'./data/estilosVidaDB.json');
 const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
 
+//ERROR 404
 app.use((req, res, next) => {
    res.status(404).render('./products/product-not-found');
 });
