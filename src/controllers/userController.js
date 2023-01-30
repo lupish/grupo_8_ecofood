@@ -86,7 +86,7 @@ const controller = {
                     nombre: req.body.nombre,
                     email: req.body.email,
                     contrasenia:  bcryptjs.hashSync(req.body.contrasenia, 10),
-                    deleted: false
+                    delete: false
                 }
                 users.push(usuario);
                 usuariosJSON = JSON.stringify(users, null, 2);
