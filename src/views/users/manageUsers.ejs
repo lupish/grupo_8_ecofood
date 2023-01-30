@@ -29,21 +29,7 @@
                             <a href="/users/edit/<%= users[i].id %>">
                                 <i id="icon-edit" class="fa-solid fa-pen-to-square"></i>
                             </a>
-                            <!-- <% if (users[i].delete) { %>
-                                <label for="activar<%=users[i].id%>" class="activar">
-                                    <i id="icon-edit" class="fa-solid fa-power-off"></i>
-                                </label>  
-                                <form style="display: none;" action="/users/activar/<%= users[i].id %>?_method=patch" method="POST">
-                                    <input id="activar<%=users[i].id%>" type="submit" value="eliminar">
-                                </form>
-                                <% } else { %>
-                                    <label for="eliminar<%=users[i].id%>" class="softDelete">
-                                        <i id="icon-edit" class="fa-solid fa-trash-can"></i>
-                                    </label>
-                                    <form style="display: none;" action="/users/delete/soft/<%= users[i].id %>?_method=delete" method="POST">
-                                        <input id="eliminar<%=users[i].id%>" type="submit" value="eliminar">
-                                    </form>
-                                <% } %>   -->
+                        
 
                                 <% if (users[i].delete) { %>
                                     <label for="activar<%=users[i].id%>" class="activar">

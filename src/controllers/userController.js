@@ -44,7 +44,7 @@ const controller = {
     },
     processLogin: (req, res) => {
          if (!req.session.usuarioLogueado) {
-             let usuario = usuarios.find(elem => elem.email == req.body.email && bcryptjs.compareSync(req.body.contrasenia, elem.contrasenia));
+             let usuario = users.find(elem => elem.email == req.body.email && bcryptjs.compareSync(req.body.contrasenia, elem.contrasenia));
              if (usuario) {
                  req.session.usuarioLogueado = usuario;
 
