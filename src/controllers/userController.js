@@ -72,17 +72,23 @@ const controller = {
        // CHEQUEAR CAMPOS
         
         // chequear que usuario no existe
-          if (!users.find(elem => elem.email == req.body.email)) {
+        if (!users.find(elem => elem.email == req.body.email)) {
             
-        // chequear que las pass coindicen
-        if (req.body.contrasenia == req.body.confirmarContrasenia) {
+            // chequear que las pass coindicen
+            if (req.body.contrasenia == req.body.confirmarContrasenia) {
+                let userId = 1;
+                if (users.length > 0) {
+                    userId = users[users.length-1].id + 1;
+                }
 
                 let usuario = {
+                    id: userId,
                     nombre: req.body.nombre,
                     email: req.body.email,
-                    contrasenia:  bcryptjs.hashSync(req.body.contrasenia, 10)
+                    contrasenia:  bcryptjs.hashSync(req.body.contrasenia, 10),
+                    deleted: false
                 }
-                users.push(users);
+                users.push(usuario);
                 usuariosJSON = JSON.stringify(users, null, 2);
                 fs.writeFileSync(usersJSON, usuariosJSON);
             

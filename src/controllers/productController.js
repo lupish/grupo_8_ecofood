@@ -99,7 +99,10 @@ const controller = {
         }
     },
     processCreate: (req, res) => {        
-        let prodId = products[products.length-1].id + 1;
+        let prodId = 1;
+        if (products.length > 0) {
+            prodId = products[products.length-1].id + 1;
+        }
 
         let prod = createProd(prodId, req);
 
