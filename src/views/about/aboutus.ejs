@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title: "About us"}) %> 
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/aboutus.css">
+    <script src="https://kit.fontawesome.com/287f20f5bd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head> -->
+
+<body>
+    <link rel="stylesheet" href="/css/aboutus.css">
+    <script src="https://kit.fontawesome.com/287f20f5bd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+function enviar_ajax(id){	
+    let messageForm=document.getElementById(("message"+id))
+    let successDiv=document.getElementById(("success-box-status-send"+id))
+    let errorDiv=document.getElementById(("error-box-status-send"+id))
+    let messageDiv=document.getElementById(("biography-container-message"+id))
+    let messageError=document.getElementById("error-box-status-send-error"+id)
+    let descriptionError=document.getElementById("error-box-status-send-error-description"+id)
+	$.ajax({
+	type: 'POST',
+	url: '/aboutus/message',
+	data: {id:id,message:messageForm.value},
+    success: function(respuesta) {
+		if(respuesta.message=='ok'){
+            successDiv.classList.add("success-box-status-send")
+            successDiv.classList.remove("status-send-no")
+            messageDiv.classList.remove("biography-position-true")
+            messageForm.value=""
+       
+		}
+	}
+   
+   
+	}).fail(function (jqXHR, textStatus, error) {
+    
+    // console.log(error)
+    // console.log(textStatus)
+    console.log(jqXHR)
+    // console.log(jqXHR.responseJSON.message)
+    // console.log(status)
+    if(jqXHR.status==400){       
+    
+        
+        messageError.innerText="Error "+jqXHR.status
+        descriptionError.innerText="No message to send"
+    }else{
+        messageError.innerText="Error "+jqXHR.status
+        descriptionError.innerText=jqXHR.status+" "+jqXHR.statusText
+    }
+            errorDiv.classList.add("error-box-status-send")
+            errorDiv.classList.remove("error-box-status-send-no")
+            messageDiv.classList.remove("biography-position-true")
+		
+});
+   
+
+}
+</script>
+
+<%- include('../partials/header') %>
+
+    <section class="desarrolladores">
+        
+        <%for(let i=0;i < listOfDev.length;i++){%>
+        <article class="biography-container">
+           <%if(listOfDev[i].img){%>
+            <img class="biography-image" src="<%=listOfDev[i].img.name%>"
+            alt="<%=listOfDev[i].img.alt%>" class="biography-image">
+            <%}%>
+            <div class="biography-carrousel">
+
+                <div id="<%='success-box-status-send'+listOfDev[i].id%>" class="status-send-no">
+                        <div class="face-status-send">
+                      <div class="eye-status-send"></div>
+                      <div class="eye-status-send right-status-send"></div>
+                      <div class="mouth-status-send happy-status-send"></div>
+                    </div>
+                    <div class="shadow-status-send scale-status-send"></div>
+                    <div class="message-status-send"><h1 class="alert-status-send h1-status-send-title">Success!</h1><p class="p-status-send">yay, everything is working.</p></div>
+                    <button class="button-status-send button-box-result-result" onclick="salirDelSucces('<%='success-box-status-send'+listOfDev[i].id%>','<%='biography-container-general'+listOfDev[i].id%>')"><h1  class="green-status-send h1-status-send">continue</h1></button>
+                  </div>
+
+                  <div id="<%='error-box-status-send'+listOfDev[i].id%>" class="error-box-status-send-no ">
+    
+                    <div class="face2-status-send">
+                      <div class="eye-status-send"></div>
+                      <div class="eye-status-send right-status-send"></div>
+                      <div class="mouth-status-send sad-status-send"></div>
+                    </div>
+                    <div class="shadow-status-send move-status-send"></div>
+                    <div class="message-status-send"><h1 class="alert-status-send h1-status-send-title" id="<%='error-box-status-send-error'+listOfDev[i].id%>">Error 404!</h1><p class="p-status-send" id="<%='error-box-status-send-error-description'+listOfDev[i].id%>">oh no, something went wrong.</p></div>
+                    <button class="button-status-send button-box-result-result" onclick="reintentar('<%='error-box-status-send'+listOfDev[i].id%>','<%='biography-container-message'+listOfDev[i].id%>')"><h1 class="red-status-send h1-status-send">try again</h1></button>
+                  </div>
+
+
+                <div class="biography-container-general" id="<%='biography-container-general'+listOfDev[i].id%>">
+
+
+                    <div class="biography-data-gral">
+                        <h3 class="biography-name"><% if(listOfDev[i].name){ %>
+                            <%=listOfDev[i].name+" " %>
+                        <%}%><% if(listOfDev[i].lastName){ %>
+                            <%=listOfDev[i].lastName%>
+                        <%}%></h3>
+                        <h4 class="biography-name"><%if(listOfDev[i].years){%>
+                            <%=listOfDev[i].years+" años"%>                            
+                        <%}%></h4>
+                        <p class="biography-profession"><%if(listOfDev[i].carrers){%>
+                            <%=listOfDev[i].carrers%>                            
+                        <%}%></p>
+                        <p class="biography-location"> <%if(listOfDev[i].location){%>
+                            <span class="material-symbols-outlined">
+                                location_on
+                            </span>
+                                <%=listOfDev[i].location%>                            
+                            <%}%></p>
+
+                    </div>
+                    <div class="biography-social-media">
+                       <%if(listOfDev[i].linkedin){%>
+                        <a href="<%=listOfDev[i].linkedin%>" target="_blank" class="i-fa fa-linkedin-in-bg "> <i class="fa-brands fa-linkedin-in "
+                            aria-hidden="true"></i></a>
+                       <%}%>
+                       <%if(listOfDev[i].instagram){%>
+                        <a href="<%=listOfDev[i].instagram%>" class="i-fa  fa-instagram-bg" target="_blank"> <i class="fa fa-instagram "
+                                aria-hidden="true"></i></a>
+                                <%}%>
+                         <%if(listOfDev[i].tiktok){%>
+
+                        <a href="<%=listOfDev[i].tiktok%>" class="fa-faticktok-bg" target="_blank"><i class="fa-brands fa-tiktok fa-tik-blanco"
+                                aria-hidden="true"></i>
+                            <i class="fa-brands fa-tiktok fa-tik-celeste" aria-hidden="true"></i>
+                            <i class="fa-brands fa-tiktok fa-tik-morado" aria-hidden="true"></i></a>
+                            <%}%>
+                          <%if(listOfDev[i].facebook){%>
+
+                            <a href="<%=listOfDev[i].facebook%>" class="i-fa fa-facebook-bg " target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <!-- <a href="" class="i-fa fa-twitter-bg"><i class="fa fa-twitter" aria-hidden="true"></i></a> -->
+                        <%}%>
+                        <%if(listOfDev[i].github){%>
+
+                        <a href="<%=listOfDev[i].github%>" class="i-fa fa-github-bg" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        <!-- <a href="" class="i-fa fa-link-bg"><i class="fa-solid fa-link" aria-hidden="true"></i></a> -->
+                        <%}%>
+                    </div>
+                    <div class="biography-actions">
+                        <button class="biography-button biography-messaje-button"
+                            onclick="verMessage('<%='biography-container-general'+listOfDev[i].id%>','<%='biography-container-message'+listOfDev[i].id%>')">Message</button>
+                        <button class="biography-button biography-aboutme-button"
+                            onclick="verAboutme('<%='biography-container-general'+listOfDev[i].id%>','<%='biography-container-aboutme'+listOfDev[i].id%>%>')">About
+                            me</button>
+                    </div>
+                </div>
+
+                <!-- comienza el menssage -->
+                <div class="biography-container-message" id="<%='biography-container-message'+listOfDev[i].id%>">
+                    <form onsubmit="enviar_ajax(<%=listOfDev[i].id%>); return false" class="biography-container-message-form" id="<%='biography-container-message-form'+listOfDev[i].id%>">
+                        <input hidden type="number" name="id" id="<%listOfDev[i].id%>" value="1">
+                        <textarea name="message" id="<%='message'+listOfDev[i].id%>" cols="30" rows="10" placeholder="Send me a message...."></textarea>
+                        <div class="biography-actions">
+
+                            <input type="submit" class="biography-button biography-messaje-button" value="Enviar">
+
+
+                           
+                            <label class="biography-button biography-aboutme-button"
+                                onclick="verGeneral('<%='biography-container-general'+listOfDev[i].id%>','<%='biography-container-message'+listOfDev[i].id%>')">Back</label>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- comienza la biography -->
+                <div class="biography-container-aboutme" id="<%='biography-container-aboutme'+listOfDev[i].id%>">
+                    <div class="biography-container-aboutme-content">
+                        <h3 class="biography-name"><% if(listOfDev[i].name){ %>
+                            <%=listOfDev[i].name+" " %>
+                        <%}%><% if(listOfDev[i].lastName){ %>
+                            <%=listOfDev[i].lastName%>
+                        <%}%></h3>
+                        <p><%if(listOfDev[i].aboutMe){%>
+                            <%=listOfDev[i].aboutMe%>                            
+                        <%}%></p>
+                        <div class="biography-actions-aboutme">
+
+                            <button class="biography-button biography-aboutme-button-back"
+                                onclick="verGeneral('<%='biography-container-general'+listOfDev[i].id%>','<%='biography-container-aboutme'+listOfDev[i].id%>')">Back</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </article>
+       
+        <%}%>
+   
+    </section>
+    <%- include('../partials/footer') %> 
+    <section>
+        <form action="/aboutus/createDev" method="post" enctype="multipart/form-data"
+         style="display: flex;flex-direction: column;">
+            <label for="id">id</label>
+            <input type="number" name="id" id="id">
+            <label for="name">name</label>
+            <input type="text" name="name1" id="name" placeholder="va el nombre" >
+            <label for="years">years</label>
+            <input type="text" name="years" id="years">
+            <label for="lastName">lastName</label>
+            <input type="text" name="lastName" id="lastName">
+            <label for="carrers">carrers</label>
+            <input type="text" name="carrers" id="carrers">
+            <label for="location">location</label>
+            <input type="text" name="location" id="location">
+            <label for="linkedin">linkedin</label>
+            <input type="text" name="linkedin" id="linkedin">
+            <label for="instagram">instagram</label>
+            <input type="text" name="instagram" id="instagram">
+            <label for="tiktok">tiktok</label>
+            <input type="text" name="tiktok" id="tiktok">
+            <label for="facebook">facebook</label>
+            <input type="text" name="facebook" id="github">
+            <label for="github">github</label>
+            <input type="text" name="github" id="github">
+            <label for="img">img</label>
+            <input type="file" name="img" id="img">
+            <label for="aboutMe">aboutMe</label>
+            <textarea name="aboutMe" id="aboutMe" cols="30" rows="10"></textarea>
+         <input type="submit" value="enviar">
+        </form>
+        <!-- <script>
+            <%if(locals.erroresEnviados){%>
+            <% for(let l=0 ;l < erroresEnviados.errors.length ;l++){%>           
+               
+          <%="alert('"+erroresEnviados.errors[l].msg+"')"%>
+              
+            <%}%>
+            <%}%>
+        </script> -->
+      
+    </section>
+
+   
+  
+
+    <script>
+        // let general=document.getElementById("biography-container-general")
+        // let message=document.getElementById("biography-container-message")
+        // let messageForm=document.getElementById("biography-container-message-form")
+        // let aboutme=document.getElementById("biography-container-aboutme")
+        function reintentar(idError,idMessage){
+            let message = document.getElementById(idMessage)
+            let errorDiv = document.getElementById(idError)
+            errorDiv.classList.remove("error-box-status-send")
+            errorDiv.classList.add("error-box-status-send-no")
+            message.classList.add("biography-position-true")
+        }
+        function verAboutme(idGeneral, idAboutme) {
+            let general = document.getElementById(idGeneral)
+            let aboutme = document.getElementById(idAboutme)
+            general.classList.add("biography-position-false")
+            aboutme.classList.add("biography-position-true")
+        }
+        function verMessage(idGeneral, idMessage) {
+            let message = document.getElementById(idMessage)
+            let general = document.getElementById(idGeneral)
+            general.classList.add("biography-position-false")
+            message.classList.add("biography-position-true")
+        }
+        function verGeneral(idGeneral, idMessage) {
+            let message = document.getElementById(idMessage)
+            let general = document.getElementById(idGeneral)
+            general.classList.remove("biography-position-false")
+            message.classList.remove("biography-position-true")
+        }
+        function salirDelSucces(idSuccess,idGeneral){
+            let general = document.getElementById(idGeneral)
+            let successDiv = document.getElementById(idSuccess)
+            general.classList.remove("biography-position-false")
+            successDiv.classList.remove("success-box-status-send")
+            successDiv.classList.add("status-send-no")
+
+        }
+        
+
+    </script>
+
+
+</body>
+
+</html>

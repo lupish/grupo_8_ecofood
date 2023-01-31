@@ -4,14 +4,16 @@
         "nombre": "Celíacos",
         "img": "/img/estilosVida/sin-gluten.webp",
         "alt": "lino_dorado_kos_food.webp",
-        "iClass": "fa-solid fa-seedling"
+        "iClass": "fa-solid fa-seedling",
+        "delete": false
     },
     {
         "id": 2,
         "nombre": "Diabéticos",
         "img": "/img/estilosVida/diabetes.webp",
         "alt": "lino_dorado_kos_food.webp",
-        "iClass": "fa-solid fa-seedling"
+        "iClass": "fa-solid fa-seedling",
+        "delete": false
         
     },
     {
@@ -19,34 +21,39 @@
         "nombre": "Fit",
         "img": "/img/estilosVida/fit.webp",
         "alt": "lino_dorado_kos_food.webp",
-        "iClass": "fa-solid fa-dumbbell"
+        "iClass": "fa-solid fa-dumbbell",
+        "delete": false
     },
     {
         "id": 4,
         "nombre": "Gourmet",
         "img": "/img/estilosVida/gourmet.webp",
         "alt": "lino_dorado_kos_food.webp",
-        "iClass": "fa-solid fa-seedling"
+        "iClass": "fa-solid fa-seedling",
+        "delete": false
     },
     {
         "id": 5,
         "nombre": "Kosher",
         "img": "/img/estilosVida/kosher.webp",
         "alt": "lino_dorado_kos_food.webp",
-        "iClass": "fa-solid fa-star-of-david"
+        "iClass": "fa-solid fa-star-of-david",
+        "delete": false
     },
     {
         "id": 6,
         "nombre": "Orgánicos",
         "img": "/img/estilosVida/organico.webp",
         "alt": "lino_dorado_kos_food.webp",
-        "iClass": "fa-solid fa-seedling"
+        "iClass": "fa-solid fa-seedling",
+        "delete": false
     },
     {
         "id": 7,
         "nombre": "Veganos",
         "img": "/img/estilosVida/vegano.webp",
         "alt": "lino_dorado_kos_food.webp",
-        "iClass": "fa-solid fa-seedling"
+        "iClass": "fa-solid fa-seedling",
+        "delete": false
     }
 ]

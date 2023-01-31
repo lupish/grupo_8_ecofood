@@ -1,0 +1,99 @@
+[
+  {
+    "id": 1,
+    "name": "Jorge Martin",
+    "years": "29",
+    "lastName": "Dominguez Diaz",
+    "carrers": "Java Developer / Node js/Reac Dev",
+    "location": "Buenos Aires, Argentina",
+    "linkedin": "https://www.linkedin.com/in/jmdominguezdiaz/",
+    "instagram": "https://www.instagram.com/jorgeddiazok/",
+    "tiktok": "",
+    "facebook": "https://www.facebook.com/jorgemartin.dominguezdiaz.7",
+    "github": "https://github.com/jorgenick69",
+    "img": {
+      "name": "/img/developers/img-1674940364136-262641036.jpg",
+      "alt": "1645727096486.jpg"
+    },
+    "aboutMe": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, consectetur harum. Vitae nam in quae velit eveniet impedit voluptates eligendi provident ullam? Perferendis quia sint qui ipsa perspiciatis unde provident cupiditate iure eveniet, inventore reiciendis aut possimus molestias quisquam rerum ipsam delectus dolorum optio earum exercitationem consequuntur.exercitationem consequuntur",
+    "messages": [
+      "Hola jojito",
+      "mandame un mensaje puto",
+      "gsfad",
+      "dsadasdsa",
+      "dsdsdsa"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Jorge Martin",
+    "years": "29",
+    "lastName": "Dominguez Diaz",
+    "carrers": "Java Developer / Node js/Reac Dev",
+    "location": "Buenos Aires, Argentina",
+    "linkedin": "https://www.linkedin.com/in/jmdominguezdiaz/",
+    "instagram": "https://www.instagram.com/jorgeddiazok/",
+    "tiktok": "",
+    "facebook": "https://www.facebook.com/jorgemartin.dominguezdiaz.7",
+    "github": "https://github.com/jorgenick69",
+    "img": {
+      "name": "/img/developers/img-1674940364136-262641036.jpg",
+      "alt": "1645727096486.jpg"
+    },
+    "aboutMe": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, consectetur harum. Vitae nam in quae velit eveniet impedit voluptates eligendi provident ullam? Perferendis quia sint qui ipsa perspiciatis unde provident cupiditate iure eveniet, inventore reiciendis aut possimus molestias quisquam rerum ipsam delectus dolorum optio earum exercitationem consequuntur.exercitationem consequuntur",
+    "messages": [
+      "Hola jojito",
+      "mandame un mensaje puto",
+      "gsfad",
+      "dsadasdsa",
+      "dsdsdsa",
+      "<zx",
+      "adsff"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Jorge Martin",
+    "years": "29",
+    "lastName": "Dominguez Diaz",
+    "carrers": "Java Developer / Node js/Reac Dev",
+    "location": "Buenos Aires, Argentina",
+    "linkedin": "https://www.linkedin.com/in/jmdominguezdiaz/",
+    "instagram": "https://www.instagram.com/jorgeddiazok/",
+    "tiktok": "",
+    "facebook": "https://www.facebook.com/jorgemartin.dominguezdiaz.7",
+    "github": "https://github.com/jorgenick69",
+    "img": {
+      "name": "/img/developers/img-1674940364136-262641036.jpg",
+      "alt": "1645727096486.jpg"
+    },
+    "aboutMe": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, consectetur harum. Vitae nam in quae velit eveniet impedit voluptates eligendi provident ullam? Perferendis quia sint qui ipsa perspiciatis unde provident cupiditate iure eveniet, inventore reiciendis aut possimus molestias quisquam rerum ipsam delectus dolorum optio earum exercitationem consequuntur.exercitationem consequuntur",
+    "messages": [
+      "Hola jojito",
+      "mandame un mensaje puto",
+      "gsfad",
+      "dsadasdsa",
+      "dsdsdsa"
+    ]
+  },
+  {
+    "id": 4,
+    "years": "29",
+    "lastName": "sanchez",
+    "carrers": "",
+    "location": "Buenos aires, argentina",
+    "linkedin": "wewqewr",
+    "instagram": "",
+    "tiktok": "rerwerwe",
+    "facebook": "",
+    "github": "rwerwe",
+    "img": {
+      "name": "/img/developers/img-1675205930507-501793533.png",
+      "alt": "descarga (1).png"
+    },
+    "aboutMe": "sobre mi zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "messages": [
+      "fdsgsdgsdgsd"
+    ]
+  }
+]

@@ -38,6 +38,35 @@ const controller = {
         return res.redirect("/panels/manageBrands")
 
     },
+    edit: (req, res) => {
+        let marca = marcas.find(elem => elem.id == req.params.id);
+
+        if (marca) {
+            res.render('brands/edit', {marca: marca})
+        } else {
+            return res.redirect('/products/product-not-found');
+        }
+    },
+    processEdit: (req, res) => {
+        let id = req.params.id;
+        marcas.forEach(elem => {
+            if (elem.id == id) {
+                elem.nombre = req.body.marca_nombre;
+                
+                if (req.file != undefined) {
+                    elem.img = "/img/brands/" + req.file.filename
+                    elem.alt = req.file.originalname
+                } else {
+                    elem.img = ""
+                    elem.alt = ""
+                }
+            }
+        });
+
+        fs.writeFileSync(marcasJSON, JSON.stringify(marcas, null, 2));
+
+        return res.redirect("/panels/manageBrands")
+    },
     softDelete:(req,res)=>{
         let id = req.params.id;
 

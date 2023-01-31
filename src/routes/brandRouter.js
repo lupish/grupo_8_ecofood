@@ -33,6 +33,10 @@ router.patch('/activar/:id', brandController.processActivate)
 router.get('/create', brandController.create);
 router.post('/create', uploadFile.single("marca_foto"), brandController.processCreate);
 
+// editar
+router.get('/edit/:id', brandController.edit);
+router.put('/edit/:id', uploadFile.single("marca_foto"), brandController.processEdit);
+
 
 /*
 

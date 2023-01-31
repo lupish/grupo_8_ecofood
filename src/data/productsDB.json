@@ -88,7 +88,7 @@
   {
     "id": 4,
     "nombre": "Leche de Quinoa",
-    "categoria": 2,
+    "categoria": "2",
     "estilosVida": [
       {
         "id": "1"
@@ -97,9 +97,9 @@
         "id": "7"
       }
     ],
-    "marca": 2,
-    "precio": 525,
-    "descripcionCorta": "Leche de Quinoa Agroecológica x 1 Lt",
+    "marca": "2",
+    "precio": "525",
+    "descripcionCorta": "Leche de Quinoa Agroecológica x 1 Lt ",
     "descripcionLarga": "Bebida Vegetal a base de quinoa  de origen nacional, cultivada en forma agroecológica en la provincia de San Juan por productores locales, asistidos tecnológicamente por el Instituto Nacional de Tecnología Agropecuaria (INTA). Fortificada con Vitaminas A, D2. E Y B12. Sin Lactosa. Sin TACC. Gran aporte de Calcio. Sin Conservantes",
     "imgs": [
       {
@@ -400,6 +400,6 @@
     "novedad": false,
     "preferido": false,
     "buscados": false,
-    "delete": true
+    "delete": false
   }
 ]

@@ -45,6 +45,6 @@ router.delete('/delete/hard/:id', productController.hardDelete);
 router.patch('/activar/:id', productController.processActivate)
 
 //LISTA DE PRODUCT0S
-router.get('/listProducts', productController.listProducts);
+router.get('/listProducts/:idEstiloVida?', productController.listProducts);
 
 module.exports = router;

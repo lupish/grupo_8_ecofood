@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', {title: "Gestionar usuarios"}) %>
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <section class="section-common">
+            <div class="panel-prods-div">
+                <div class="panel-prods-header">
+                    <h2>Panel de gestión de usuarios</h2>
+                    <a href="/users/register">
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+                </div>
+                <% for(let i = 0; i < users.length; i++) { %>
+                    <article>
+                        <div class="panel-prods-info">
+                            <div class="img-chica">
+                                <i style="color:  #96ab61ff;" class="fa-solid fa-user"></i>
+                            </div>
+                        <div>
+                                <p class="panel-prods-nombre"><%= users[i].nombre %></p>
+                            </div>
+                        </div>
+                        <div class="panel-prods-icons">
+                            <a href="/users/userDetail/<%= users[i].id %>">
+                                <i  id="icon-edit" class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                            <a href="/users/edit/<%= users[i].id %>">
+                                <i id="icon-edit" class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        
+
+                                <% if (users[i].delete) { %>
+                                    <label for="activar<%=users[i].id%>" class="activar">
+                                        <i id="icon-edit" class="fa-solid fa-power-off"></i>
+                                    </label>
+                                    <form style="display: none;" action="/users/activar/<%= users[i].id %>?_method=patch" method="POST">
+                                        <input id="activar<%=users[i].id%>" type="submit" value="eliminar">
+                                    </form>
+                                <% } else { %>
+                                    <label for="eliminar<%=users[i].id%>" class="softDelete">
+                                        <i id="icon-edit" class="fa-solid fa-trash-can"></i>
+                                    </label>
+                                    <form style="display: none;" action="/users/delete/soft/<%= users[i].id %>?_method=delete" method="POST">
+                                        <input id="eliminar<%=users[i].id%>" type="submit" value="eliminar">
+                                    </form>
+                                <% } %>  
+                                
+
+                            
+                        </div>
+                    </article>
+                <% } %>
+
+            </div>
+
+        </section>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>
