@@ -2,16 +2,15 @@ const express=require('express');
 const path=require('path')
 const app=express();
 const methodOverride = require("method-override");
-<<<<<<< HEAD
+
 const logMiddleware = require("../middlewares/logMiddleware.js");
 const session=require("express-session")
-=======
-const session = require('express-session');
+
 const cookieParser = require('cookie-parser');
 const recordameMiddleware = require('./middlewares/recordameMiddleware');
 
 
->>>>>>> 3b01cd88369c783ea71884eb43fa9819113db8e7
+
 app.use(express.static('public'));
 app.use(session({secret:"Shh,es un secreto!"}));
 
@@ -31,7 +30,11 @@ app.use(express.json());
 //este metodo URLencoded permite recibir la informacion de un formulario enviado por post
 app.use(express.urlencoded({ extended : false}));
 app.use(methodOverride("_method"));
-app.use(session({secret: "EcoFood secret"}));
+app.use(session({
+   secret: "EcoFood",
+   resave: true,
+   saveUninitialized: true
+}));
 app.use(cookieParser());
 app.use(recordameMiddleware);
 
@@ -49,12 +52,12 @@ app.use('/users', userRouter);
 const productRouter = require('./routes/productRouter');
 app.use('/products', productRouter);
 
-<<<<<<< HEAD
+
 const aboutRouter = require('./routes/aboutUsRouter.js');
 app.use('/aboutus', aboutRouter);
 
 //ERROR 404
-=======
+
 const panelRouter = require('./routes/panelRouter');
 app.use('/panels', panelRouter);
 
@@ -62,7 +65,6 @@ const brandRouter = require('./routes/brandRouter');
 app.use('/brands', brandRouter);
 
 
->>>>>>> 3b01cd88369c783ea71884eb43fa9819113db8e7
 // bd estilosVida
 const fs = require('fs');
 const estilosVidaJSON = path.join(__dirname,'./data/estilosVidaDB.json');

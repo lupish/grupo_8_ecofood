@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-[{"nombre":"Shaine Sara","email":"sheine.siro@gmail.com","contrasenia":"HOLA",
-"confirmarContrasenia":"HOLA"},{"nombre":"satra","email":"sheine.siro@gmail.com","contrasenia":"HOLA","confirmarContrasenia":"hola"},{"nombre":"Shaine Sara","email":"sheine.siro@gmail.com","contrasenia":"HOLA","confirmarContrasenia":"hola"}]
-=======
+
 [
   {
     "id": 1,
@@ -25,4 +22,4 @@
     "delete": false
   }
 ]
->>>>>>> 3b01cd88369c783ea71884eb43fa9819113db8e7
+

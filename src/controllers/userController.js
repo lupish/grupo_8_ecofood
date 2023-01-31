@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs');
 const { check } = require('express-validator');
 const { softDelete } = require('./productController');
-var validationResult = require('express-validator').validationResult;
+const {validationResult} = require('express-validator');
 const bcryptjs = require('bcryptjs');
 
 //GUARDAR
