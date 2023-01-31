@@ -1,0 +1,23 @@
+<section>
+    <div class="estilosVida-imgs">
+        <a href="/products/listProducts">
+            <div class="una-categoria">
+                <img class="gris" src="/img/estilosVida/todosEV.webp" alt="Todos los productos"></a>
+                <!--<i class="fa-solid fa-utensils"></i> -->
+                <p>Todos</p>
+            </div>
+        </a>
+        
+        <% for(let i = 0; i < estilosVida.length; i ++) { %>
+            <% if (!estilosVida[i].delete) { %> 
+                <a href="/products/listProducts/<%= estilosVida[i].id %>">
+                    <div class="una-categoria">
+                        <img class="gris" src="<%= estilosVida[i].img %>" alt="<%= estilosVida[i].alt %>"> 
+                        <!-- <i class="<%= estilosVida[i].iClass %>"></i>-->
+                        <p><%= estilosVida[i].nombre %></p>
+                    </div>
+                </a>
+            <% } %>
+        <% } %>
+    </div>
+</section>

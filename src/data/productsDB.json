@@ -88,7 +88,7 @@
   {
     "id": 4,
     "nombre": "Leche de Quinoa",
-    "categoria": 2,
+    "categoria": "2",
     "estilosVida": [
       {
         "id": "1"
@@ -97,9 +97,9 @@
         "id": "7"
       }
     ],
-    "marca": 2,
-    "precio": 525,
-    "descripcionCorta": "Leche de Quinoa Agroecológica x 1 Lt",
+    "marca": "2",
+    "precio": "525",
+    "descripcionCorta": "Leche de Quinoa Agroecológica x 1 Lt ",
     "descripcionLarga": "Bebida Vegetal a base de quinoa  de origen nacional, cultivada en forma agroecológica en la provincia de San Juan por productores locales, asistidos tecnológicamente por el Instituto Nacional de Tecnología Agropecuaria (INTA). Fortificada con Vitaminas A, D2. E Y B12. Sin Lactosa. Sin TACC. Gran aporte de Calcio. Sin Conservantes",
     "imgs": [
       {
@@ -370,6 +370,31 @@
         "id": 1,
         "img": "/img/products/prod-lino_dorado_kos_food_1674084577677.webp",
         "alt": "lino_dorado_kos_food.webp"
+      }
+    ],
+    "novedad": false,
+    "preferido": false,
+    "buscados": false,
+    "delete": false
+  },
+  {
+    "id": 15,
+    "nombre": "Semillas de Chia",
+    "categoria": "4",
+    "estilosVida": [
+      {
+        "id": "3"
+      }
+    ],
+    "marca": "4",
+    "precio": "485",
+    "descripcionCorta": "Semillas de Chia x 150gr",
+    "descripcionLarga": "CHÍA\r\nSemillas de chía\r\n\r\nPresentación: 150 gr.",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/prod-semillas-de-chia_1674775969834.webp",
+        "alt": "semillas-de-chia.webp"
       }
     ],
     "novedad": false,

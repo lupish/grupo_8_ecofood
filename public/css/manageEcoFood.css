@@ -30,6 +30,19 @@
 
 }
 
+.img-chica {
+    width: 50px;
+}
+
+.img-mediana {
+    width: 100px;
+    margin: 10px;
+}
+
+.panel-marcas-div {
+    height: 100px;
+}
+
 
 @media (min-width: 769px) {
     .panel-ecofood-iconos div {
