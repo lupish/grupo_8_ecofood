@@ -2,9 +2,21 @@
 let fs=require("fs");
 const path = require('path');
 const pathDeveloper=path.join(__dirname,'../data/developers.json');
+// Express validator
+const {validationResult}=require("express-validator")
+// Express validator
 let listOfDev=JSON.parse(fs.readFileSync(pathDeveloper,"utf-8"));
 
-function createDeveloper(object){
+function createDeveloper(req){
+  let object=req.body;
+  let file=req.file;
+  let img;
+  if(file){
+    img = {     
+      name: "/img/developers/" + file.filename,
+      alt: file.originalname
+  }
+  }else{console.log("no tiene imagen");}
   console.log(object);
   console.log(listOfDev.length);
   let idCreator;
@@ -29,7 +41,7 @@ function createDeveloper(object){
   tiktok:object.tiktok,
   facebook:object.facebook,
   github:object.github,
-  img:object.img,
+  img:img,
   aboutMe:object.aboutMe,
   messages:[]
   }
@@ -38,14 +50,26 @@ return dev;
 
 const controller={
     home:(req,res)=>{
-        res.render("about/aboutus.ejs",{listOfDev:listOfDev})
+console.log(pathDeveloper);
+       return  res.render("about/aboutus.ejs",{listOfDev:listOfDev})
     },
-    saveDev:(req,res)=>{
-      let object=req.body
-      let dev=createDeveloper(object)      
-      listOfDev.push(dev)      
+    saveDev:(req,res)=>{    
+      let result=validationResult(req)
+      console.log(result);
+     if(!result.isEmpty()){
+
+      console.log(result.mapped());
+      return res.render("about/aboutus.ejs",{listOfDev:listOfDev, erroresEnviados : result})
+      
+     }else{
+      console.log("no tiene erores");
+      let dev=createDeveloper(req)      
+      listOfDev.push(dev)
+         
       fs.writeFileSync(pathDeveloper,JSON.stringify(listOfDev, null, 2))
       return res.redirect('/aboutus')
+     }
+     
     },
     saveMessage:(req,res)=>{
       if(req.body.message){
@@ -67,3 +91,4 @@ if(row.id==req.body.id){
   }
 }
 module.exports = controller;
+

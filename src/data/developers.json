@@ -1,404 +1,99 @@
 [
   {
     "id": 1,
-    "name": "Jorge Diaz",
-    "carrers": "Node Dev",
+    "name": "Jorge Martin",
+    "years": "29",
+    "lastName": "Dominguez Diaz",
+    "carrers": "Java Developer / Node js/Reac Dev",
     "location": "Buenos Aires, Argentina",
-    "tiktok": "object.tiktok",
-    "aboutMe": "soy un desarrollador",
+    "linkedin": "https://www.linkedin.com/in/jmdominguezdiaz/",
+    "instagram": "https://www.instagram.com/jorgeddiazok/",
+    "tiktok": "",
+    "facebook": "https://www.facebook.com/jorgemartin.dominguezdiaz.7",
+    "github": "https://github.com/jorgenick69",
+    "img": {
+      "name": "/img/developers/img-1674940364136-262641036.jpg",
+      "alt": "1645727096486.jpg"
+    },
+    "aboutMe": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, consectetur harum. Vitae nam in quae velit eveniet impedit voluptates eligendi provident ullam? Perferendis quia sint qui ipsa perspiciatis unde provident cupiditate iure eveniet, inventore reiciendis aut possimus molestias quisquam rerum ipsam delectus dolorum optio earum exercitationem consequuntur.exercitationem consequuntur",
     "messages": [
-      "dsdsd",
-      "dadads",
-      "dsds",
-      "dssds",
-      "dsdsd",
-      "dsds",
-      "dsdsds",
-      "5767837"
+      "Hola jojito",
+      "mandame un mensaje puto",
+      "gsfad",
+      "dsadasdsa",
+      "dsdsdsa"
     ]
   },
   {
     "id": 2,
-    "name": "Micaela",
-    "lastName": "Sanchez",
-    "carrers": "Node Dev",
+    "name": "Jorge Martin",
+    "years": "29",
+    "lastName": "Dominguez Diaz",
+    "carrers": "Java Developer / Node js/Reac Dev",
     "location": "Buenos Aires, Argentina",
-    "linkedin": "https://ar.linkedin.com/",
-    "tiktok": "object.tiktok",
-    "aboutMe": "soy una desarrolladora",
+    "linkedin": "https://www.linkedin.com/in/jmdominguezdiaz/",
+    "instagram": "https://www.instagram.com/jorgeddiazok/",
+    "tiktok": "",
+    "facebook": "https://www.facebook.com/jorgemartin.dominguezdiaz.7",
+    "github": "https://github.com/jorgenick69",
+    "img": {
+      "name": "/img/developers/img-1674940364136-262641036.jpg",
+      "alt": "1645727096486.jpg"
+    },
+    "aboutMe": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, consectetur harum. Vitae nam in quae velit eveniet impedit voluptates eligendi provident ullam? Perferendis quia sint qui ipsa perspiciatis unde provident cupiditate iure eveniet, inventore reiciendis aut possimus molestias quisquam rerum ipsam delectus dolorum optio earum exercitationem consequuntur.exercitationem consequuntur",
     "messages": [
-      "783787837",
-      "",
-      "mensaje",
-      "avdvsdv",
-      "dsdsds",
-      "adsadsa",
-      "dsds",
-      "dsds",
-      "yrtyr"
+      "Hola jojito",
+      "mandame un mensaje puto",
+      "gsfad",
+      "dsadasdsa",
+      "dsdsdsa",
+      "<zx",
+      "adsff"
     ]
   },
   {
     "id": 3,
-    "name": "Noemi",
-    "years": 81,
-    "lastName": "Diaz",
-    "carrers": "Node Dev",
+    "name": "Jorge Martin",
+    "years": "29",
+    "lastName": "Dominguez Diaz",
+    "carrers": "Java Developer / Node js/Reac Dev",
     "location": "Buenos Aires, Argentina",
-    "linkedin": "mica",
-    "tiktok": "object.tiktok",
-    "facebook": "object.tiktok",
-    "aboutMe": "No quiero escribir ni verga",
+    "linkedin": "https://www.linkedin.com/in/jmdominguezdiaz/",
+    "instagram": "https://www.instagram.com/jorgeddiazok/",
+    "tiktok": "",
+    "facebook": "https://www.facebook.com/jorgemartin.dominguezdiaz.7",
+    "github": "https://github.com/jorgenick69",
+    "img": {
+      "name": "/img/developers/img-1674940364136-262641036.jpg",
+      "alt": "1645727096486.jpg"
+    },
+    "aboutMe": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, consectetur harum. Vitae nam in quae velit eveniet impedit voluptates eligendi provident ullam? Perferendis quia sint qui ipsa perspiciatis unde provident cupiditate iure eveniet, inventore reiciendis aut possimus molestias quisquam rerum ipsam delectus dolorum optio earum exercitationem consequuntur.exercitationem consequuntur",
     "messages": [
-      "Hola noemi me encanta tu perfil saludame porfa!!!",
-      "scasas",
-      "fsfsafas",
-      "fewgfwe",
-      "38737737",
-      "afgdh,j",
-      "Micaela"
+      "Hola jojito",
+      "mandame un mensaje puto",
+      "gsfad",
+      "dsadasdsa",
+      "dsdsdsa"
     ]
   },
   {
     "id": 4,
-    "name": "Aldana",
-    "years": 53,
-    "lastName": "Rodriguez",
-    "carrers": "Astronoma Compusiva",
-    "location": "Villa Carlos Paz, Corboda",
-    "instagram": "fdfd",
-    "tiktok": "o",
-    "facebook": "obj",
-    "github": "fsdf",
-    "aboutMe": "Es una piba genial",
+    "years": "29",
+    "lastName": "sanchez",
+    "carrers": "",
+    "location": "Buenos aires, argentina",
+    "linkedin": "wewqewr",
+    "instagram": "",
+    "tiktok": "rerwerwe",
+    "facebook": "",
+    "github": "rwerwe",
+    "img": {
+      "name": "/img/developers/img-1675205930507-501793533.png",
+      "alt": "descarga (1).png"
+    },
+    "aboutMe": "sobre mi zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
     "messages": [
-      "Hola mica desde html\n",
-      "38737878"
+      "fdsgsdgsdgsd"
     ]
-  },
-  {
-    "id": 5,
-    "name": "Jorge Diaz",
-    "carrers": "Node Dev",
-    "location": "Buenos Aires, Argentina",
-    "tiktok": "object.tiktok",
-    "aboutMe": "soy un desarrollador",
-    "messages": [
-      "dsdsd",
-      "dadads",
-      "dsds",
-      "dssds",
-      "dsdsd",
-      "dsds",
-      "dsdsds",
-      "trtetre"
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Micaela",
-    "lastName": "Sanchez",
-    "carrers": "Node Dev",
-    "location": "Buenos Aires, Argentina",
-    "linkedin": "https://ar.linkedin.com/",
-    "tiktok": "object.tiktok",
-    "aboutMe": "soy una desarrolladora",
-    "messages": [
-      "treterter"
-    ]
-  },
-  {
-    "id": 7,
-    "name": "Noemi",
-    "years": 81,
-    "lastName": "Diaz",
-    "carrers": "Node Dev",
-    "location": "Buenos Aires, Argentina",
-    "linkedin": "mica",
-    "tiktok": "object.tiktok",
-    "facebook": "object.tiktok",
-    "aboutMe": "No quiero escribir ni verga",
-    "messages": [
-      "Hola noemi me encanta tu perfil saludame porfa!!!",
-      "scasas",
-      "fsfsafas",
-      "fewgfwe",
-      "etwet4eer"
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Aldana",
-    "years": 53,
-    "lastName": "Rodriguez",
-    "carrers": "Astronoma Compusiva",
-    "location": "Villa Carlos Paz, Corboda",
-    "instagram": "fdfd",
-    "tiktok": "o",
-    "facebook": "obj",
-    "github": "fsdf",
-    "aboutMe": "Es una piba genial",
-    "messages": [
-      "Hola mica desde html\n",
-      "etfcposzd\n"
-    ]
-  },
-  {
-    "id": 9,
-    "messages": []
-  },
-  {
-    "id": 10,
-    "messages": []
-  },
-  {
-    "id": 11,
-    "messages": []
-  },
-  {
-    "id": 12,
-    "messages": []
-  },
-  {
-    "id": 13,
-    "messages": []
-  },
-  {
-    "id": 14,
-    "messages": []
-  },
-  {
-    "id": 15,
-    "messages": []
-  },
-  {
-    "id": 16,
-    "messages": []
-  },
-  {
-    "id": 17,
-    "messages": []
-  },
-  {
-    "id": 18,
-    "messages": []
-  },
-  {
-    "id": 19,
-    "name": "",
-    "years": "",
-    "lastName": "",
-    "carrers": "",
-    "location": "",
-    "linkedin": "dsdsd",
-    "instagram": "",
-    "tiktok": "",
-    "facebook": "",
-    "github": "",
-    "aboutMe": "",
-    "messages": []
-  },
-  {
-    "id": 20,
-    "name": "",
-    "years": "",
-    "lastName": "",
-    "carrers": "",
-    "location": "",
-    "linkedin": "dsdsd",
-    "instagram": "",
-    "tiktok": "",
-    "facebook": "",
-    "github": "",
-    "aboutMe": "",
-    "messages": []
-  },
-  {
-    "id": 21,
-    "name": "",
-    "years": "",
-    "lastName": "",
-    "carrers": "",
-    "location": "",
-    "linkedin": "",
-    "instagram": "",
-    "tiktok": "",
-    "facebook": "",
-    "github": "dsds",
-    "aboutMe": "",
-    "messages": []
-  },
-  {
-    "id": 22,
-    "name": "",
-    "years": "",
-    "lastName": "",
-    "carrers": "",
-    "location": "",
-    "linkedin": "",
-    "instagram": "",
-    "tiktok": "",
-    "facebook": "",
-    "github": "dsds",
-    "aboutMe": "",
-    "messages": []
-  },
-  {
-    "id": 23,
-    "name": "",
-    "years": "",
-    "lastName": "",
-    "carrers": "",
-    "location": "",
-    "linkedin": "",
-    "instagram": "",
-    "tiktok": "",
-    "facebook": "dsdsds",
-    "github": "",
-    "aboutMe": "",
-    "messages": []
-  },
-  {
-    "id": 24,
-    "name": "",
-    "years": "",
-    "lastName": "",
-    "carrers": "",
-    "location": "",
-    "linkedin": "",
-    "instagram": "",
-    "tiktok": "",
-    "facebook": "dsdsds",
-    "github": "",
-    "aboutMe": "",
-    "messages": []
-  },
-  {
-    "id": 25,
-    "messages": []
-  },
-  {
-    "id": 26,
-    "messages": []
-  },
-  {
-    "id": 27,
-    "name": "sddsa",
-    "years": "dsad",
-    "lastName": "dsd",
-    "carrers": "dsad",
-    "location": "sad",
-    "linkedin": "d",
-    "instagram": "dsasa",
-    "tiktok": "sadasd",
-    "facebook": "d",
-    "github": "dsa",
-    "aboutMe": "dsadsadsad",
-    "messages": []
-  },
-  {
-    "id": 28,
-    "name": "sddsa",
-    "years": "dsad",
-    "lastName": "dsd",
-    "carrers": "dsad",
-    "location": "sad",
-    "linkedin": "d",
-    "instagram": "dsasa",
-    "tiktok": "sadasd",
-    "facebook": "d",
-    "github": "dsa",
-    "aboutMe": "dsadsadsad",
-    "messages": []
-  },
-  {
-    "id": 29,
-    "name": "ds",
-    "years": "ds",
-    "lastName": "dsads",
-    "carrers": "sa",
-    "location": "dsd",
-    "linkedin": "dsadsad",
-    "instagram": "sa",
-    "tiktok": "sad",
-    "facebook": "sasa",
-    "github": "dsadsa",
-    "aboutMe": "sadsda",
-    "messages": []
-  },
-  {
-    "id": 30,
-    "name": "ds",
-    "years": "ds",
-    "lastName": "dsads",
-    "carrers": "sa",
-    "location": "dsd",
-    "linkedin": "dsadsad",
-    "instagram": "sa",
-    "tiktok": "sad",
-    "facebook": "sasa",
-    "github": "dsadsa",
-    "aboutMe": "sadsda",
-    "messages": []
-  },
-  {
-    "id": 31,
-    "name": "ds",
-    "years": "ds",
-    "lastName": "dsads",
-    "carrers": "sa",
-    "location": "dsd",
-    "linkedin": "dsadsad",
-    "instagram": "sa",
-    "tiktok": "sad",
-    "facebook": "sasa",
-    "github": "dsadsa",
-    "aboutMe": "sadsda",
-    "messages": []
-  },
-  {
-    "id": 32,
-    "name": "",
-    "years": "dsad",
-    "lastName": "",
-    "carrers": "",
-    "location": "",
-    "linkedin": "",
-    "instagram": "sadas",
-    "tiktok": "sa",
-    "facebook": "",
-    "github": "",
-    "aboutMe": "",
-    "messages": []
-  },
-  {
-    "id": 33,
-    "name": "",
-    "years": "",
-    "lastName": "as",
-    "carrers": "ds",
-    "location": "dsad",
-    "linkedin": "dsasa",
-    "instagram": "asds",
-    "tiktok": "",
-    "facebook": "",
-    "github": "",
-    "aboutMe": "",
-    "messages": []
-  },
-  {
-    "id": 34,
-    "name": "",
-    "years": "",
-    "lastName": "sa",
-    "carrers": "",
-    "location": "sads",
-    "linkedin": "dsdsd",
-    "instagram": "s",
-    "tiktok": "",
-    "facebook": "",
-    "github": "",
-    "aboutMe": "",
-    "messages": []
   }
 ]

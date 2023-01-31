@@ -2,8 +2,11 @@ const express=require('express');
 const path=require('path')
 const app=express();
 const methodOverride = require("method-override");
-
+const logMiddleware = require("../middlewares/logMiddleware.js");
+const session=require("express-session")
 app.use(express.static('public'));
+app.use(session({secret:"Shh,es un secreto!"}));
+
 console.log(app)
 
 // set views
@@ -14,13 +17,16 @@ app.set('view engine', 'ejs');
 
 // POST
 app.use(express.json());
+
+//este metodo URLencoded permite recibir la informacion de un formulario enviado por post
 app.use(express.urlencoded({ extended : false}));
 
 //PUT
 app.use(methodOverride("_method"));
 
 app.listen(3000,()=>{console.log("Servidor Corriendo")})
-
+/** log middleware * */
+app.use(logMiddleware)
 
 /*** ROUTES ***/
 const mainRouter = require('./routes/mainRouter');
