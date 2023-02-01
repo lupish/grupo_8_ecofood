@@ -64,6 +64,9 @@ app.use('/panels', panelRouter);
 const brandRouter = require('./routes/brandRouter');
 app.use('/brands', brandRouter);
 
+const lifeStylesRouter = require('./routes/lifeStylesRouter');
+app.use('/lifeStyles', lifeStylesRouter);
+
 
 // bd estilosVida
 const fs = require('fs');
