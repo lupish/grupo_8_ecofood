@@ -26,29 +26,23 @@
   },
   {
     "id": 2,
-    "name": "Jorge Martin",
-    "years": "29",
-    "lastName": "Dominguez Diaz",
-    "carrers": "Java Developer / Node js/Reac Dev",
-    "location": "Buenos Aires, Argentina",
-    "linkedin": "https://www.linkedin.com/in/jmdominguezdiaz/",
-    "instagram": "https://www.instagram.com/jorgeddiazok/",
+    "name": "Luciana",
+    "years": "30",
+    "lastName": "Vidal",
+    "carrers": "Sr Data Engineer",
+    "location": "Montevideo, Uruguay",
+    "linkedin": "https://www.linkedin.com/in/luciana-vidal-j/",
+    "instagram": "https://www.instagram.com/lubentofra/",
     "tiktok": "",
-    "facebook": "https://www.facebook.com/jorgemartin.dominguezdiaz.7",
-    "github": "https://github.com/jorgenick69",
+    "facebook": "",
+    "github": "https://github.com/lupish",
     "img": {
-      "name": "/img/developers/img-1674940364136-262641036.jpg",
+      "name": "/img/developers/LucianaVidal_dev.jpeg",
       "alt": "1645727096486.jpg"
     },
     "aboutMe": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, consectetur harum. Vitae nam in quae velit eveniet impedit voluptates eligendi provident ullam? Perferendis quia sint qui ipsa perspiciatis unde provident cupiditate iure eveniet, inventore reiciendis aut possimus molestias quisquam rerum ipsam delectus dolorum optio earum exercitationem consequuntur.exercitationem consequuntur",
     "messages": [
-      "Hola jojito",
-      "mandame un mensaje puto",
-      "gsfad",
-      "dsadasdsa",
-      "dsdsdsa",
-      "<zx",
-      "adsff"
+      
     ]
   },
   {
