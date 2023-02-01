@@ -47,3 +47,21 @@ Acciones a seguir en el próximo sprint, las mismas son simmilares al del sprint
 - Dividir el trabajo en una reunión de planificación en el comienzo de cada sprint.
 - Hacer más uso de trello.
 - Generar más compromiso.
+
+# RETROSPECTIVA SPRINT 1
+
+Realizamos la retro del sprint 3 utilizando los dashboards de la herramienta Metro Retro, el link para acceder al mismo es: https://metroretro.io/BOW21KVR35ZP.
+
+### __¿Qué cosas pasaron que no queremos repetir?__
+Si bien realizamos la división de tareas en la primera reunión, las tareas se terminaron cruzando a nivel de archivos y eso nos generó conflictos a la hora de subir los cambios al repositorio.
+
+### __¿Qué podemos hacer mejor para la próxima?__
+Estamos haciendo la retrospectiva muy tarde en el tiempo, por lo que se nos termina pisando con la del sprint corriente, por lo que nos cuesta discernir qué es de cada sprint.
+
+### __¿Qué estamos haciendo bien?__
+Notamos que la idea de haber seteado el día una reunión semanal fue buen idea dado que todos nos comprometemos a acudir y las reuniones son más efectivas.
+
+### __Acciones a tomar__
+Contemplando todo lo anterior, llegamos a dos accionables:
+- Dividir las tareas intentando que no se superpongan los archivos a manipular.
+- Realizar la retrospectiva como primera reunión del sprint.
