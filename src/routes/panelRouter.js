@@ -7,5 +7,6 @@ const panelController = require('../controllers/panelController');
 router.get('/manageEcoFood', panelController.manageEcoFood);
 router.get('/manageProducts', panelController.manageProducts);
 router.get('/manageBrands', panelController.manageBrands);
+router.get('/manageLifeStyles', panelController.manageEstilosVida);
 
 module.exports = router;

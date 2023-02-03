@@ -19,14 +19,27 @@ users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'))
 }
 
 //crar cuenta
-
 function createAcount(userId, req){
+    //imagen de usuario
+    let imgs = [];
+    let imgId = 1;
+    req.files.forEach(elem=>{
+        img = {
+            id: imgId,
+            img: '/img/users/' + elem.filename,
+            alt: elem.originalname
+        };
+        imgs.push(img);
+        imgId ++;
+    })
+    //crear usuario
     let usuario = {
         id: userId, 
         nombre: req.body.nombre,
         email: req.body.email,
         contrasenia: req.body.contrasenia,
         confirmarContrasenia: req.body.confirmarContrasenia,
+        imgs: imgs,
         roles: req.body.roles,
         delete: false
  }
@@ -65,7 +78,7 @@ const controller = {
 
         res.render('users/register')
     },
-    createAcount: (req, res) => {
+   processCreate: (req, res) => {
         if (req.session.usuarioLogueado) {
             return res.redirect('/')
        }
@@ -81,13 +94,16 @@ const controller = {
                     userId = users[users.length-1].id + 1;
                 }
 
-                let usuario = {
-                    id: userId,
-                    nombre: req.body.nombre,
-                    email: req.body.email,
-                    contrasenia:  bcryptjs.hashSync(req.body.contrasenia, 10),
-                    delete: false
-                }
+                // let usuario = {
+                //     id: userId,
+                //     nombre: req.body.nombre,
+                //     email: req.body.email,
+                //     contrasenia:  bcryptjs.hashSync(req.body.contrasenia, 10),
+                //     imgs: req.body.imgs,
+                //     delete: false
+                // }
+
+                let usuario = createAcount(userId, req)
                 users.push(usuario);
                 usuariosJSON = JSON.stringify(users, null, 2);
                 fs.writeFileSync(usersJSON, usuariosJSON);
@@ -148,7 +164,7 @@ const controller = {
     processActivate: (req, res) => {
         let id = req.params.id;
         users.forEach(elem=>{
-            if(elem.id=id){
+            if(elem.id==id){
                 elem.delete=false;
             }
         });

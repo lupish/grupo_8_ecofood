@@ -22,6 +22,9 @@ const controller = {
     },
     manageBrands: (req, res) => {
         res.render('panels/manageBrands', {marcas: marcas})
+    },
+    manageEstilosVida: (req, res) => {
+        res.render('panels/manageLifeStyles', {estilosVida: estilosVida})
     }
 }
 
