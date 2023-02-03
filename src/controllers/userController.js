@@ -32,13 +32,13 @@ function createAcount(userId, req){
         imgs.push(img);
         imgId ++;
     })
+
     //crear usuario
     let usuario = {
         id: userId, 
         nombre: req.body.nombre,
         email: req.body.email,
-        contrasenia: req.body.contrasenia,
-        confirmarContrasenia: req.body.confirmarContrasenia,
+        contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
         imgs: req.file.originalname,
         roles: req.body.roles,
         delete: false
@@ -93,15 +93,6 @@ const controller = {
                 if (users.length > 0) {
                     userId = users[users.length-1].id + 1;
                 }
-
-                // let usuario = {
-                //     id: userId,
-                //     nombre: req.body.nombre,
-                //     email: req.body.email,
-                //     contrasenia:  bcryptjs.hashSync(req.body.contrasenia, 10),
-                //     imgs: req.body.imgs,
-                //     delete: false
-                // }
 
                 let usuario = createAcount(userId, req)
                 users.push(usuario);
