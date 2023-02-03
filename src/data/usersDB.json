@@ -14,13 +14,13 @@
     "contrasenia": "$2a$10$ZdSqMOhq8/hv0GFtCOidOuynYpQ9OVP0IWl2rwjeAAnMdjZELb.hC",
     "roles": "administrador",
     "delete": false,
-    "imgs": [
+    "imgs": 
       {
         "id": 1,
         "img": "/img/products/lecheDeAlmendraYcoco.jpg",
         "alt": "Leche de almendras y coco"
       }
-    ]
+    
   }
 ]
 
