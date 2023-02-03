@@ -1,4 +1,3 @@
-
 [
   {
     "id": "1",
@@ -14,13 +13,34 @@
     "contrasenia": "$2a$10$ZdSqMOhq8/hv0GFtCOidOuynYpQ9OVP0IWl2rwjeAAnMdjZELb.hC",
     "roles": "administrador",
     "delete": false,
-    "imgs": 
+    "imgs": {
+      "id": 1,
+      "img": "/img/products/lecheDeAlmendraYcoco.jpg",
+      "alt": "Leche de almendras y coco"
+    }
+  },
+  {
+    "id": "111",
+    "nombre": "sdds",
+    "email": "jorgemartindominguezdiaz@gmail.com",
+    "contrasenia": "jorge123",
+    "confirmarContrasenia": "jorge123",
+    "imgs": {},
+    "delete": false
+  },
+  {
+    "id": "1111",
+    "nombre": "ddss",
+    "email": "jorgenick69@gmail.com",
+    "contrasenia": "jorge123",
+    "confirmarContrasenia": "jorge123",
+    "imgs": [
       {
         "id": 1,
-        "img": "/img/products/lecheDeAlmendraYcoco.jpg",
-        "alt": "Leche de almendras y coco"
+        "img": "/img/users/user-cebada_1675384501724.webp",
+        "alt": "cebada.webp"
       }
-    
+    ],
+    "delete": false
   }
 ]
-

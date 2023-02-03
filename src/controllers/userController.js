@@ -21,7 +21,7 @@ users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'))
 //crar cuenta
 function createAcount(userId, req){
     //imagen de usuario
-    let imgs = {};
+    let imgs = [];
     let imgId = 1;
     req.files.forEach(elem=>{
         img = {
@@ -40,6 +40,7 @@ function createAcount(userId, req){
         email: req.body.email,
         contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
         imgs: req.file.originalname,
+        imgs: imgs,
         roles: req.body.roles,
         delete: false
  }
