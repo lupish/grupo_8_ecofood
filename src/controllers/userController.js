@@ -39,7 +39,7 @@ function createAcount(userId, req){
         nombre: req.body.nombre,
         email: req.body.email,
         contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
-        imgs: req.file.originalname,
+        imgs: req.file.filename,
         imgs: imgs,
         roles: req.body.roles,
         delete: false
