@@ -37,7 +37,7 @@ function createProd(prodId, req) {
     req.files.forEach(elem => {
         img = {
             id: imgId,
-            img: "/img/products/" + elem.filename,
+            img: "/img/products/" + elem.originalname,
             alt: elem.originalname
         };
 

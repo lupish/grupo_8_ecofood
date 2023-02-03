@@ -32,5 +32,19 @@
       }
     ],
     "delete": false
+  },
+  {
+    "id": 4,
+    "nombre": "sdsds",
+    "email": "jorgenick69@gmail.com",
+    "contrasenia": "$2a$10$b8osM2sVBhig2DAsdwITfOMOb.DYSrZL9DkjUF77i1zQLKm0vKzmC",
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/user-20430950968_011_00001_00000012_1675386577614.pdf",
+        "alt": "20430950968_011_00001_00000012.pdf"
+      }
+    ],
+    "delete": false
   }
 ]

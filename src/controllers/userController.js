@@ -23,12 +23,13 @@ function createAcount(userId, req){
     //imagen de usuario
     let imgs = [];
     let imgId = 1;
-    req.files.forEach(elem=>{
+    req.files.forEach(elem => {
         img = {
             id: imgId,
-            img: '/img/users/' + elem.filename,
+            img: "/img/products/" + elem.filename,
             alt: elem.originalname
         };
+
         imgs.push(img);
         imgId ++;
     })
@@ -38,10 +39,9 @@ function createAcount(userId, req){
         id: userId, 
         nombre: req.body.nombre,
         email: req.body.email,
-        contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
-       
+        contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),       
         imgs: imgs,
-        roles: req.body.roles,
+        
         delete: false
  }
  return usuario
