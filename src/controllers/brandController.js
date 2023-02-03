@@ -24,12 +24,7 @@ const controller = {
         if (req.file != undefined) {
             marca.img = "/img/brands/" + req.file.filename
             marca.alt = req.file.originalname
-        } else {
-            marca.img = ""
-            marca.alt = ""
         }
-
-
 
         // Guardar producto en la bd
         marcas.push(marca);
