@@ -1,23 +1,24 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "nombre": "Luchi",
     "email": "a@a.com",
     "contrasenia": "$2a$10$xtR2k7RHLCDBMnuNc5ZiheqRqxwF/Vg5Mxt3HYAt0T/q4ZAdEwB9e",
     "delete": false
   },
   {
-    "id": 2,
-    "nombre": "Sara",
+    "id": "11",
+    "nombre": "Shaine Sara",
     "email": "sheine.siro@gmail.com",
-    "contrasenia": "$2a$10$YzrbuQ3xB6/BS6D5EhWfK.1s6fcRXIrA/UUB1DFl4SJ0KtLrWNW/.",
-    "delete": false
-  },
-  {
-    "id": 3,
-    "nombre": "Lu",
-    "email": "b@a.com",
-    "contrasenia": "$2a$10$wWe0PoiYlEpwqQCU6R6dbO/tmSb.trhlfLmJygXPXbbcdP4b4I7W.",
-    "delete": false
+    "contrasenia": "$2a$10$ZdSqMOhq8/hv0GFtCOidOuynYpQ9OVP0IWl2rwjeAAnMdjZELb.hC",
+    "roles": "administrador",
+    "delete": false,
+    "imgs": [
+      {
+        "id": 1,
+        "img": "/img/products/lecheDeAlmendraYcoco.jpg",
+        "alt": "Leche de almendras y coco"
+      }
+    ]
   }
 ]

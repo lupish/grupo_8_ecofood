@@ -1,6 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const { check } = require('express-validator');
+const path = require('path');
+
+//MULTER
+const multer = require('multer');
+const multerDiskStorage = multer.diskStorage({
+    destination: (req, file, cb)=>{
+        cb(null, path.join(__dirname, "../../public/img/users"));
+    },
+    filename: (req, file, cb)=>{
+        let fileExt = path.extname(file.originalname);
+        let originalName = file.originalname.slice(0, file.originalname.length - fileExt.length);
+        let imageName = 'user-' + originalName + '_' + Date.now() + path.extname(file.originalname);
+        cb(null, imageName);
+    }
+});
+const uploadFile = multer({storage: multerDiskStorage});
+
+
 
 //CONTROLADOR
 const userController = require('../controllers/userController');
@@ -12,7 +29,7 @@ router.get('/login', userController.login);
 router.post('/login', userController.processLogin);
 //REGISTER
 router.get('/register', userController.register);
-router.post('/register', userController.createAcount);
+router.post('/register', uploadFile.array('user-foto'), userController.processCreate);
 
 //ADMIN
 router.get('/manageUsers', userController.manageUsers);
