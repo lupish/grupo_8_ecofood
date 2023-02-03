@@ -1,13 +1,13 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "nombre": "Luchi",
     "email": "a@a.com",
     "contrasenia": "$2a$10$xtR2k7RHLCDBMnuNc5ZiheqRqxwF/Vg5Mxt3HYAt0T/q4ZAdEwB9e",
     "delete": false
   },
   {
-    "id": "11",
+    "id": 2,
     "nombre": "Shaine Sara",
     "email": "sheine.siro@gmail.com",
     "contrasenia": "$2a$10$ZdSqMOhq8/hv0GFtCOidOuynYpQ9OVP0IWl2rwjeAAnMdjZELb.hC",
@@ -20,25 +20,15 @@
     }
   },
   {
-    "id": "111",
-    "nombre": "sdds",
+    "id": 3,
+    "nombre": "dsdsd",
     "email": "jorgemartindominguezdiaz@gmail.com",
-    "contrasenia": "jorge123",
-    "confirmarContrasenia": "jorge123",
-    "imgs": {},
-    "delete": false
-  },
-  {
-    "id": "1111",
-    "nombre": "ddss",
-    "email": "jorgenick69@gmail.com",
-    "contrasenia": "jorge123",
-    "confirmarContrasenia": "jorge123",
+    "contrasenia": "$2a$10$Ru1bz6qrZV4vymqRcNxr8OZKLtkGqiNdfHM0GxzupmHpPmc8mDxDm",
     "imgs": [
       {
         "id": 1,
-        "img": "/img/users/user-cebada_1675384501724.webp",
-        "alt": "cebada.webp"
+        "img": "/img/users/user-descarga (1)_1675385793990.jfif",
+        "alt": "descarga (1).jfif"
       }
     ],
     "delete": false
