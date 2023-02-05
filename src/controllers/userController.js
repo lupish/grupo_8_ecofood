@@ -4,6 +4,7 @@ const { check } = require('express-validator');
 const { softDelete } = require('./productController');
 const {validationResult} = require('express-validator');
 const bcryptjs = require('bcryptjs');
+const { ResultWithContext } = require('express-validator/src/chain');
 
 //GUARDAR
 // const usersJSON = path.join(__dirname,'../data/usersDB.json');
@@ -21,30 +22,25 @@ users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'))
 //crar cuenta
 function createAcount(userId, req){
     //imagen de usuario
-    let imgs = [];
-    let imgId = 1;
-    req.files.forEach(elem => {
-        img = {
-            id: imgId,
-            img: "/img/products/" + elem.filename,
-            alt: elem.originalname
-        };
-
-        imgs.push(img);
-        imgId ++;
-    })
-
+    let imgUser = "user-default.webp";
+    let altUser = "Usuario sin imagen";
+    if (req.file) {
+        imgUser = req.file.filename;
+        altUser = req.file.originalname;
+    }
+    
     //crear usuario
     let usuario = {
         id: userId, 
         nombre: req.body.nombre,
         email: req.body.email,
         contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),       
-        imgs: imgs,
+        img: imgUser,
+        alt: altUser,
         
         delete: false
- }
- return usuario
+    }
+    return usuario
 }
 
 //controlador
@@ -84,10 +80,9 @@ const controller = {
             return res.redirect('/')
        }
        // CHEQUEAR CAMPOS
-        
+       console.log(users.find(elem => elem.email == req.body.email))
         // chequear que usuario no existe
         if (!users.find(elem => elem.email == req.body.email)) {
-            
             // chequear que las pass coindicen
             if (req.body.contrasenia == req.body.confirmarContrasenia) {
                 let userId = 1;
@@ -102,6 +97,8 @@ const controller = {
             
                 res.redirect('/');
             }
+        } else {
+            console.log("email MAL")
         }
        // ERRORES!
        

@@ -4,6 +4,9 @@
     "nombre": "Luchi",
     "email": "a@a.com",
     "contrasenia": "$2a$10$xtR2k7RHLCDBMnuNc5ZiheqRqxwF/Vg5Mxt3HYAt0T/q4ZAdEwB9e",
+    "img": "user-default.webp",
+    "alt": "Usuario sin imagen",
+    "rol": "administrador",
     "delete": false
   },
   {
@@ -11,40 +14,27 @@
     "nombre": "Shaine Sara",
     "email": "sheine.siro@gmail.com",
     "contrasenia": "$2a$10$ZdSqMOhq8/hv0GFtCOidOuynYpQ9OVP0IWl2rwjeAAnMdjZELb.hC",
-    "roles": "administrador",
+    "rol": "administrador",
     "delete": false,
-    "imgs": {
-      "id": 1,
-      "img": "/img/products/lecheDeAlmendraYcoco.jpg",
-      "alt": "Leche de almendras y coco"
-    }
+    "img": "user-default.webp",
+    "alt": "Usuario sin imagen"
   },
   {
     "id": 3,
-    "nombre": "dsdsd",
-    "email": "jorgemartindominguezdiaz@gmail.com",
-    "contrasenia": "$2a$10$Ru1bz6qrZV4vymqRcNxr8OZKLtkGqiNdfHM0GxzupmHpPmc8mDxDm",
-    "imgs": [
-      {
-        "id": 1,
-        "img": "/img/users/user-descarga (1)_1675385793990.jfif",
-        "alt": "descarga (1).jfif"
-      }
-    ],
+    "nombre": "Lucha",
+    "email": "lucha@gmail.com",
+    "contrasenia": "$2a$10$VtKIwBBNRBp85Ax9bfoiQuxds0F9oKz0WO6ibVAFmC5c5GC66paZ.",
+    "img": "user-raven_1675635784795.jpg",
+    "alt": "raven.jpg",
     "delete": false
   },
   {
     "id": 4,
-    "nombre": "sdsds",
-    "email": "jorgenick69@gmail.com",
-    "contrasenia": "$2a$10$b8osM2sVBhig2DAsdwITfOMOb.DYSrZL9DkjUF77i1zQLKm0vKzmC",
-    "imgs": [
-      {
-        "id": 1,
-        "img": "/img/products/user-20430950968_011_00001_00000012_1675386577614.pdf",
-        "alt": "20430950968_011_00001_00000012.pdf"
-      }
-    ],
+    "nombre": "Lu sin foto",
+    "email": "lusinfoto@gmail.com",
+    "contrasenia": "$2a$10$4Gtyei8C2QxxHPKxUJ5IyuCdkRZFKG1PPM.GSfoj.jIklxvBG8LUW",
+    "img": "user-default.webp",
+    "alt": "Usuario sin imagen",
     "delete": false
   }
 ]

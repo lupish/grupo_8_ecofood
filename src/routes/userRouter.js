@@ -29,7 +29,7 @@ router.get('/login', userController.login);
 router.post('/login', userController.processLogin);
 //REGISTER
 router.get('/register', userController.register);
-router.post('/register', uploadFile.array('user-foto'), userController.processCreate);
+router.post('/register', uploadFile.single('user_foto'), userController.processCreate);
 
 //ADMIN
 router.get('/manageUsers', userController.manageUsers);
