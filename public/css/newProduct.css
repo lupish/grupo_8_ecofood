@@ -84,6 +84,12 @@ main .form-prod-nuevo .input-form, textarea {
     margin: 5px;
 }
 
+.input-form-no-aceptado{
+   
+    border: 1px solid  #eb947aff !important;
+    
+}
+
 main .form-editar-prod .input-form, textarea {
     width: 98%;
     text-align: left;
