@@ -84,7 +84,6 @@ const controller = {
     },
     edit: (req, res) => {
         let prod = products.find(elem => elem.id == req.params.id);
-
         if (prod) {
             res.render('products/edit', {categorias: categorias, estilosVida: estilosVida, marcas: marcas, prod: prod});
         } else {

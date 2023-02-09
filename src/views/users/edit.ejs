@@ -8,25 +8,29 @@
 
 <!-- inicio main -->
 <main>
-    <div class="container">
-        <div class="box">
+        <h1 class="label-editar-prod">Editar usuario</h1>
+        <form class="form-editar-user" method="POST" action="/users/edit/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
+         <div class="container">
+          <div class="box">
           <img src="/img/users/<%= user.img %> " alt="<%= user.alt %> ">
-          <div class="name_job"><%= user.nombre %></div>
-          <p><%= user.email %></p>
-          <label for="pet-select">Seleccione una opción:</label>
-<select name="roles" id="roles">
-    <option value="invitado">Invitado</option>
-    <option value="usuario">Usuario</option>
-    <option value="administrador">Administrador</option>    
-</select>
-          <div class="btns">
-            
+          <input class="input-form" type="text" name="nombre" id="nombre" placeholder="Nombre del usuario" value="<%= user.nombre%>"> 
+          <input class="input-form" type="email" name="email" id="email"  value="<%= user.email %>">
+          <!-- rol -->
+          <% for (let i = 0; i < rol.length; i++) { %>
+                <div>
+                        <input type="radio" name="rol" id="<%= rol[i].nombre %>" value="<%= rol[i].id %>" <% if (rol[i].nombre == rol[i].nombre) { %> <%= 'checked' %> <% } %> >
+                        <label for="<%= rol[i].nombre %>"><%= rol[i].nombre %></label>
+                    </div>
+
+         <%}%>
+         
+         <div class="btns">
             <button type="submit">Editar usuario</button>
-            
             <button type="reset">Borrar</button>
           </div>
         </div>
-        </div>
+ </div>
+        </form>
 </main>
 <!-- fin main -->
 

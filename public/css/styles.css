@@ -89,12 +89,16 @@ header .buscador i:hover {
 }
 
 header .iconos {
+   
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 15%;
 }
 
+header .iconos div{
+     width: 33%;
+}
 header .iconos i {
     color: #96AB61;
 }
@@ -102,6 +106,24 @@ header .iconos i {
 header .iconos i:hover {
     color: #EB947A;
     transition: all 0.3s;
+}
+
+header .iconos img.img-perfil{
+   width: 60px;
+height: 60px;
+   border-radius: 50%;
+   box-sizing: border-box;
+  margin-left: 15px;
+  
+}
+header .iconos a{
+    text-decoration: none;
+}
+header .iconos h5{
+   color: #96AB61;
+   text-align: center;
+   text-decoration: none;
+
 }
 
 header .iconos #estrella, #usuario {

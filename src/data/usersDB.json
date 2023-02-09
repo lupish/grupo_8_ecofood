@@ -1,40 +1,30 @@
 [
   {
     "id": 1,
-    "nombre": "Luchi",
-    "email": "a@a.com",
-    "contrasenia": "$2a$10$xtR2k7RHLCDBMnuNc5ZiheqRqxwF/Vg5Mxt3HYAt0T/q4ZAdEwB9e",
-    "img": "user-default.webp",
-    "alt": "Usuario sin imagen",
-    "rol": "administrador",
+    "nombre": "hola",
+    "email": "hola@gmail.com",
+    "contrasenia": "$2a$10$sA.ZXC16YV0jEr08iO4I1eoLZFHRDEqye5WFi9XnEZPjbZVBCiKqa",
+    "img": "user-_103936993_numeros-arriba_1675896122054.jpg",
+    "alt": "_103936993_numeros-arriba.jpg",
+    "rol": {
+      "id": 1,
+      "nombre": "Usuario",
+      "descripcion": "Usuario comunes, sin privilegios de administrador"
+    },
     "delete": false
   },
   {
     "id": 2,
-    "nombre": "Shaine Sara",
+    "nombre": "Shaine ",
     "email": "sheine.siro@gmail.com",
-    "contrasenia": "$2a$10$ZdSqMOhq8/hv0GFtCOidOuynYpQ9OVP0IWl2rwjeAAnMdjZELb.hC",
-    "rol": "administrador",
-    "delete": false,
-    "img": "user-default.webp",
-    "alt": "Usuario sin imagen"
-  },
-  {
-    "id": 3,
-    "nombre": "Lucha",
-    "email": "lucha@gmail.com",
-    "contrasenia": "$2a$10$VtKIwBBNRBp85Ax9bfoiQuxds0F9oKz0WO6ibVAFmC5c5GC66paZ.",
-    "img": "user-raven_1675635784795.jpg",
-    "alt": "raven.jpg",
-    "delete": false
-  },
-  {
-    "id": 4,
-    "nombre": "Lu sin foto",
-    "email": "lusinfoto@gmail.com",
-    "contrasenia": "$2a$10$4Gtyei8C2QxxHPKxUJ5IyuCdkRZFKG1PPM.GSfoj.jIklxvBG8LUW",
-    "img": "user-default.webp",
-    "alt": "Usuario sin imagen",
+    "contrasenia": "$2a$10$jsBR6okxtfFFSTqwNPL0BuNCIm20p0k889nayVnwwZTQdltacdiHa",
+    "img": "user-17b72d75459c4b37f8bf9314b5f46988_1675896691056.jpg",
+    "alt": "17b72d75459c4b37f8bf9314b5f46988.jpg",
+    "rol": {
+      "id": 1,
+      "nombre": "Usuario",
+      "descripcion": "Usuario comunes, sin privilegios de administrador"
+    },
     "delete": false
   }
 ]

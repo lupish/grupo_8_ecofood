@@ -13,9 +13,15 @@
             <i id="menu" class="fa-solid fa-bars"></i>
             <i id ="estrella" class="fa-solid fa-star"></i>
             <a href="/products/productCart"><i class="fa-solid fa-solid fa-cart-shopping"> </i></a>
-            <i id="usuario" class="fa-solid fa-user"></i>
+          
+            <% if (locals.isLogged) { %>
+                   <a href="/users/userDetail/<%= locals.usuarioLogueado.id %>"><img class="img-perfil" src="/img/users/<%= locals.usuarioLogueado.img %> " alt="<%= locals.usuarioLogueado.alt %> " >
+                   <h5>Hola <%= locals.usuarioLogueado.nombre%></h5></a>
+             <%} else {%>
+           <a href="/users/login"><i id="usuario" class="fa-solid fa-user"></i></a>
+            <%}%>
+            </div>  
         </div>
-    </div>
     <nav>
         <ul>
             <li type="none"><a href="">Categorías</a></li>

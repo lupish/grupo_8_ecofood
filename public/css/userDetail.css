@@ -1,41 +1,4 @@
-/* body.detalle-usuario{
-    background-color:#ebebeb;    
-} 
-body.detalle-usuario  header{
-    background-color: white;
-}
-body.detalle-usuario main {
-    background-color: white;
-    border-radius: 15px;
-    width: 80vw;
-    margin: 30px 10%;    
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-body.detalle-usuario main article{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 2%;
-    box-sizing: border-box;
-}
 
-body.detalle-usuario main article div.logo-usuario {
-    border: 3px solid  #96AB61;
-    border-radius: 50px;
-    padding: 2%;
-    width: 60px;
-    height: 60px;
-    text-align: center;
-}
-body.detalle-usuario main article div.logo-usuario i{
-    font-size: 50px;
-}
-body.detalle-usuario main div.info{
-    text-align: center;
-} */
 
 ::selection{
   background: #96AB61;;
@@ -48,6 +11,9 @@ body.detalle-usuario{
 } 
 body.detalle-usuario  header{
     background-color: white;
+}
+body.detalle-usuario main form.form-editar-user{
+  border-color: transparent;
 }
 body.detalle-usuario main div.container{
   padding: 20px;
@@ -69,6 +35,7 @@ body.detalle-usuario main div.container div.box{
 
 body.detalle-usuario main div.container div.box img {
   width: 20%;
+  border-radius: 50%;
 }
 
 body.detalle-usuario main div.container div.box div.image{
@@ -82,6 +49,14 @@ body.detalle-usuario main div.container div.box div.image{
 body.detalle-usuario main div.container div.box .image i{
   padding-top: 10%;
   font-size: 100px; 
+}
+body.detalle-usuario main div.container div.box  img{
+  padding: 2%;
+  width: 80px;
+  height: 80px;
+  font-size: 100px; 
+  border: 3px solid #96AB61;
+  border-radius: 50%;
 }
 body.detalle-usuario main div.container div.box p{
   text-align: justify;
@@ -104,16 +79,16 @@ body.detalle-usuario main div.container div.box .name_job{
   width: 100%;
 }
 .btns button{
-  background: #96AB61;;
+  background: #96AB61;
   width: 100%;
   padding: 9px 0px;
   outline: none;
-  border: 2px solid #96AB61;;
+  border: 2px solid #96AB61;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
   font-weight: 400;
-  color: #96AB61;;
+  color: #96AB61;
   transition: all 0.3s linear;
 }
 .btns button:first-child{
@@ -125,9 +100,20 @@ body.detalle-usuario main div.container div.box .name_job{
   margin-left: 5px;
 }
 .btns button:first-child:hover{
-  background: #96AB61;;
+  background: #96AB61;
   color: #fff;
 }
 .btns button:hover{
+  color: #fff;
+}
+a.link-boton-1{
+  color: #fff;
+}
+a.link-boton-1:hover{
+  background: #96AB61;
+  color: #fff;
+}
+a.link-boton-2:hover{
+  background: #96AB61;
   color: #fff;
 }
