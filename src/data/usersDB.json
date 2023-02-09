@@ -36,5 +36,32 @@
     "img": "user-default.webp",
     "alt": "Usuario sin imagen",
     "delete": false
+  },
+  {
+    "id": 5,
+    "nombre": "",
+    "email": "",
+    "contrasenia": "$2a$10$NGkDnDTeg25D4tJYsgv78uJ0mpHX5XvAVe9BRbSlqSSDkVG1tbL3.",
+    "img": "user-default.webp",
+    "alt": "Usuario sin imagen",
+    "delete": false
+  },
+  {
+    "id": 6,
+    "nombre": "Luchi",
+    "email": "lubentofra@gmail.com",
+    "contrasenia": "$2a$10$0M6yLYH6//Hd8dVy1..aeuWuj.wBLVWW/tAt1GTW.gosuE3/ONzDu",
+    "img": "user-default.webp",
+    "alt": "Usuario sin imagen",
+    "delete": false
+  },
+  {
+    "id": 7,
+    "nombre": "Eleven",
+    "email": "eleven@gmail.com",
+    "contrasenia": "$2a$10$datE7zFsOe4NDr3Ve7uKN.6bX3W1Y5imHJN.tmffAYbo3v3qOPEwW",
+    "img": "user-450_1000_1675910376441.jpeg",
+    "alt": "450_1000.jpeg",
+    "delete": false
   }
 ]
