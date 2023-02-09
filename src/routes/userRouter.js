@@ -17,7 +17,25 @@ const multerDiskStorage = multer.diskStorage({
 });
 const uploadFile = multer({storage: multerDiskStorage});
 
+const { body } = require('express-validator');
+const validationRegister = [
+    body("nombre").notEmpty().withMessage("Debe ingresar un nombre"),
+    body("email").isEmail().withMessage("Debe ingresar un mail válido"),
+    body("contrasenia").notEmpty().withMessage("Debe ingresar una contraseña"),
+    body("confirmarContrasenia").notEmpty().withMessage("Debe confirmar la contraseña"),
+    body("user_foto").custom((value, { req }) => {
+        if (req.file) {
+            const extensions = ['.jpg', '.png', '.gif', '.webp', '.jpeg']
+            let fileExt = path.extname(req.file.originalname);
 
+            if (!extensions.includes(fileExt)) {
+                throw new Error(`Las extensiones permitidas son : ${extensions.join(", ")}`)
+            }
+        }
+
+        return true;
+    })
+];
 
 //CONTROLADOR
 const userController = require('../controllers/userController');
@@ -29,10 +47,7 @@ router.get('/login', userController.login);
 router.post('/login', userController.processLogin);
 //REGISTER
 router.get('/register', userController.register);
-router.post('/register', uploadFile.single('user_foto'), userController.processCreate);
-
-//ADMIN
-router.get('/manageUsers', userController.manageUsers);
+router.post('/register', uploadFile.single('user_foto'), validationRegister, userController.processCreate);
 
 //DETaLLE DE USUARIO
 router.get('/userDetail/:id', userController.userDetail);
