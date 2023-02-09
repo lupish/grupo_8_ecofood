@@ -1,8 +1,8 @@
 const path = require('path')
 const fs = require('fs');
-const { check } = require('express-validator');
+const { check, body } = require('express-validator');
 const { softDelete } = require('./productController');
-const {validationResult} = require('express-validator');
+const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
 const { ResultWithContext } = require('express-validator/src/chain');
 
@@ -54,17 +54,18 @@ const controller = {
         res.render('users/login')
     },
     processLogin: (req, res) => {
-         if (!req.session.usuarioLogueado) {
-             let usuario = users.find(elem => elem.email == req.body.email && bcryptjs.compareSync(req.body.contrasenia, elem.contrasenia));
-             if (usuario) {
-                 req.session.usuarioLogueado = usuario;
-                 if (req.body.recordar_usuario) {
-                     console.log("Guardar cookie")
-                     res.cookie('email', req.body.email, {maxAge: 60*1000});                 }
-             } else {
-                // MANDAR MENSAJE DE ERROR
-                 console.log("ALGO DIO MAAL")
-             }
+        if (!req.session.usuarioLogueado) {
+            let usuario = users.find(elem => elem.email == req.body.email && bcryptjs.compareSync(req.body.contrasenia, elem.contrasenia));
+            if (usuario) {
+                req.session.usuarioLogueado = usuario;
+
+                if (req.body.recordar_usuario) {
+                    console.log("Guardar cookie")
+                    res.cookie('email', req.body.email, {maxAge: 600*1000});                 }
+            } else {
+            // MANDAR MENSAJE DE ERROR
+                console.log("ALGO DIO MAAL")
+            }
         }
          res.redirect('/users/login');
     },
@@ -74,7 +75,17 @@ const controller = {
         }
         res.render('users/register', {roles: roles})
     },
-   processCreate: (req, res) => {
+    processCreate: (req, res) => {
+        if (req.session.usuarioLogueado) {
+            return res.redirect('/')
+        }
+
+        const valRes = validationResult(req)
+
+        if (valRes.errors.length > 0) {
+            return res.render('users/register', { errors: valRes.mapped(), oldData: req.body })
+        }
+
        // CHEQUEAR CAMPOS
        console.log(users.find(elem => elem.email == req.body.email))
         // chequear que usuario no existe
@@ -90,12 +101,22 @@ const controller = {
                 usuariosJSON = JSON.stringify(users, null, 2);
                 fs.writeFileSync(usersJSON, usuariosJSON);
                 res.redirect('/');
+            } else {
+                let contraseniaDistinta = {
+                    contrasenia: {
+                        msg: "La contraseña ingresada no coincide con la confirmación de la misma"
+                    }  
+                }
+                return res.render('users/register', {errors: contraseniaDistinta, oldData: req.body })
             }
         } else {
-            console.log("email MAL")
+            let mailRepetido = {
+                email: {
+                    msg: "Ya existe un usuario con el mail ingresado"
+                }  
+            }
+            return res.render('users/register', {errors: mailRepetido, oldData: req.body })
         }
-       // ERRORES!
-       
     },
     userDetail: (req, res) => {
         let user = users.find(elem => elem.id == req.params.id && elem.delete==false);

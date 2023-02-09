@@ -8,5 +8,6 @@ router.get('/manageEcoFood', panelController.manageEcoFood);
 router.get('/manageProducts', panelController.manageProducts);
 router.get('/manageBrands', panelController.manageBrands);
 router.get('/manageLifeStyles', panelController.manageEstilosVida);
+router.get('/manageUsers', panelController.manageUsers);
 
 module.exports = router;
