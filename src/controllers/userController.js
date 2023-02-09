@@ -179,10 +179,6 @@ const controller = {
         fs.writeFileSync(usersJSON, JSON.stringify(users, null, 2));
         return res.redirect('/users/manageUsers/');
     },
-    manageUsers: (req, res) => {
-        res.render('users/manageUsers', {users: users})
-
-    },
     logout: (req, res) => {
         res.clearCookie('email')
         req.session.destroy();

@@ -54,7 +54,7 @@ router.post('/login', userController.processLogin);
 router.get('/logout/:id', userController.logout);
 
 //REGISTER
-router.get('/register', userController.register);
+router.get('/register', guestMiddleware, userController.register);
 router.post('/register', uploadFile.single('user_foto'), validationRegister, userController.processCreate);
 
 //DETaLLE DE USUARIO
