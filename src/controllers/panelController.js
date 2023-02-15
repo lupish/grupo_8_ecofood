@@ -13,9 +13,13 @@ const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
 const marcasJSON = path.join(__dirname,'../data/marcasDB.json');
 const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
 
-// bd marcas
+// bd users
 const usersJSON = path.join(__dirname,'../data/usersDB.json');
 const users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'));
+
+// categorias
+const categoriasJSON = path.join(__dirname,'../data/categoriasDB.json');
+const categoriasList = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
 
 const controller = {
     manageEcoFood: (req, res) => {
@@ -30,9 +34,11 @@ const controller = {
     manageEstilosVida: (req, res) => {
         res.render('panels/manageLifeStyles', {estilosVida: estilosVida})
     },
+    manageCategorias: (req, res) => {
+        res.render('panels/manageCategoria', {categorias: categoriasList})
+    },
     manageUsers: (req, res) => {
         res.render('panels/manageUsers', {users: users})
-
     }
 }
 

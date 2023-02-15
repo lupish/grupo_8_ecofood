@@ -33,6 +33,10 @@
     font-weight: bold;
 }
 
+p.form-error {
+    font-weight: normal;
+}
+
 .form-prod-nuevo input[type=number] {
     width: 40%;
 }
@@ -43,6 +47,7 @@
 
 .form-prod-nuevo .div-prod-precio {
     display: flex;
+    align-items: center;
 }
 
 
@@ -82,6 +87,12 @@ main .form-prod-nuevo .input-form, textarea {
     border: 1px solid  #c9c56fff;;
     box-sizing: border-box; 
     margin: 5px;
+}
+
+.input-form-no-aceptado{
+   
+    border: 1px solid  #eb947aff !important;
+    
 }
 
 main .form-editar-prod .input-form, textarea {

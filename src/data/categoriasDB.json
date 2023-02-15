@@ -1,18 +1,22 @@
 [
-    {
-        "id": 1,
-        "nombre": "Alacena"
-    },
-    {
-        "id": 2,
-        "nombre": "Bebidas"
-    },
-    {
-        "id": 3,
-        "nombre": "Congelados"
-    },
-    {
-        "id": 4,
-        "nombre": "Snacks"
-    }
+  {
+    "id": 1,
+    "nombre": "Alacena",
+    "delete": false
+  },
+  {
+    "id": 2,
+    "nombre": "Bebidas",
+    "delete": false
+  },
+  {
+    "id": 3,
+    "nombre": "Congelados",
+    "delete": false
+  },
+  {
+    "id": 4,
+    "nombre": "Snacks",
+    "delete": false
+  }
 ]
