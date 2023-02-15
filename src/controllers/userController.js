@@ -53,14 +53,10 @@ const controller = {
         res.render('users/login')
     },
     processLogin: (req, res) => {
-        console.log("processLogin 1")
         if (!req.session.usuarioLogueado) {
-            console.log("processLogin")
             let usuario = users.find(elem => elem.email == req.body.email && !elem.delete);
             
-            console.log(usuario)
             if (usuario) {
-                console.log("va la pass")
                 console.log(req.body.contrasenia)
                 if (!bcryptjs.compareSync(req.body.contrasenia, usuario.contrasenia)) {
                     let contraseniaMal = {
@@ -73,7 +69,6 @@ const controller = {
                 req.session.usuarioLogueado = usuario;
 
                 if (req.body.recordar_usuario) {
-                    console.log("Guardar cookie")
                     res.cookie('email', req.body.email, {maxAge: 600*1000});                 
                 }
             } else {
