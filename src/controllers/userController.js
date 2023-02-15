@@ -47,7 +47,6 @@ function createAcount(userId, req){
 //controlador
 const controller = {
     login: (req, res) => {
-      
         if (req.session.usuarioLogueado) {
             let id = req.session.usuarioLogueado.id
             return res.redirect('/users/userDetail/' + id );
@@ -56,8 +55,7 @@ const controller = {
     },
     processLogin: (req, res) => {
         if (!req.session.usuarioLogueado) {
-            let usuario = users.find(elem => elem.email == req.body.email && !elem.delete);
-            
+            let usuario = users.find(elem => elem.email == req.body.email && !elem.delete);   
             if (usuario) {
                 console.log(req.body.contrasenia)
                 if (!bcryptjs.compareSync(req.body.contrasenia, usuario.contrasenia)) {
