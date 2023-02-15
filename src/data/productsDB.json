@@ -400,6 +400,6 @@
     "novedad": false,
     "preferido": false,
     "buscados": false,
-    "delete": false
+    "delete": true
   }
 ]

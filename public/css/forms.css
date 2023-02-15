@@ -23,6 +23,10 @@ main section div.div-form {
     margin: 5px;
 }
 
+main section div.div-form h2 {
+    width: 100%;
+}
+
 main form {
     width: 80%;
     margin: 0% 10% 2% 10%;
@@ -73,7 +77,13 @@ main a:hover {
     margin-top: 0px;
     margin-bottom: 5px;
     color: #EB8A52;
-    text-align: left
+    text-align: left;
+}
+
+.input-form-no-aceptado{
+   
+    border: 1px solid  #eb947aff;
+
 }
 
 @media (min-width: 769px) {

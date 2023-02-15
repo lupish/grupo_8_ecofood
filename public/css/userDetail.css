@@ -66,6 +66,11 @@ body.detalle-usuario main div.container div.box{
   border-radius: 15px;
 }
 
+
+body.detalle-usuario main div.container div.box img {
+  width: 20%;
+}
+
 body.detalle-usuario main div.container div.box div.image{
   margin: 10px 0;
   height: 150px;

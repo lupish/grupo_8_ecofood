@@ -1,9 +1,10 @@
 const path = require('path')
 const fs = require('fs');
-const { check } = require('express-validator');
+const { check, body } = require('express-validator');
 const { softDelete } = require('./productController');
-const {validationResult} = require('express-validator');
+const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
+const { ResultWithContext } = require('express-validator/src/chain');
 
 //GUARDAR
 // const usersJSON = path.join(__dirname,'../data/usersDB.json');
@@ -21,30 +22,25 @@ users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'))
 //crar cuenta
 function createAcount(userId, req){
     //imagen de usuario
-    let imgs = [];
-    let imgId = 1;
-    req.files.forEach(elem => {
-        img = {
-            id: imgId,
-            img: "/img/products/" + elem.filename,
-            alt: elem.originalname
-        };
-
-        imgs.push(img);
-        imgId ++;
-    })
-
+    let imgUser = "user-default.webp";
+    let altUser = "Usuario sin imagen";
+    if (req.file) {
+        imgUser = req.file.filename;
+        altUser = req.file.originalname;
+    }
+    
     //crear usuario
     let usuario = {
         id: userId, 
         nombre: req.body.nombre,
         email: req.body.email,
         contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),       
-        imgs: imgs,
+        img: imgUser,
+        alt: altUser,
         
         delete: false
- }
- return usuario
+    }
+    return usuario
 }
 
 //controlador
@@ -57,20 +53,35 @@ const controller = {
         res.render('users/login')
     },
     processLogin: (req, res) => {
-         if (!req.session.usuarioLogueado) {
-             let usuario = users.find(elem => elem.email == req.body.email && bcryptjs.compareSync(req.body.contrasenia, elem.contrasenia));
-             if (usuario) {
-                 req.session.usuarioLogueado = usuario;
+        if (!req.session.usuarioLogueado) {
+            let usuario = users.find(elem => elem.email == req.body.email && !elem.delete);
+            
+            if (usuario) {
+                console.log(req.body.contrasenia)
+                if (!bcryptjs.compareSync(req.body.contrasenia, usuario.contrasenia)) {
+                    let contraseniaMal = {
+                        contrasenia: {
+                            msg: "La contraseña no es correcta, si desea cambiarla haga clic en Olvidé mi contraseña"
+                        }  
+                    }
+                    return res.render('users/login', { errors: contraseniaMal, oldData: req.body })
+                }
+                req.session.usuarioLogueado = usuario;
 
-                 if (req.body.recordar_usuario) {
-                     console.log("Guardar cookie")
-                     res.cookie('email', req.body.email, {maxAge: 600*1000});                 }
-             } else {
-                // MANDAR MENSAJE DE ERROR
-                 console.log("ALGO DIO MAAL")
-             }
+                if (req.body.recordar_usuario) {
+                    res.cookie('email', req.body.email, {maxAge: 600*1000});                 
+                }
+            } else {
+                let emailNoExiste = {
+                    email: {
+                        msg: "No existe un usuario con el mail seleccionado"
+                    }  
+                }
+                return res.render('users/login', {errors: emailNoExiste, oldData: req.body })
+            }
         }
-         res.redirect('/');
+
+        res.redirect('/');
     },
     register: (req, res) => {
         if (req.session.usuarioLogueado) {
@@ -79,15 +90,21 @@ const controller = {
 
         res.render('users/register')
     },
-   processCreate: (req, res) => {
+    processCreate: (req, res) => {
         if (req.session.usuarioLogueado) {
             return res.redirect('/')
-       }
+        }
+
+        const valRes = validationResult(req)
+
+        if (valRes.errors.length > 0) {
+            return res.render('users/register', { errors: valRes.mapped(), oldData: req.body })
+        }
+
        // CHEQUEAR CAMPOS
-        
+       console.log(users.find(elem => elem.email == req.body.email))
         // chequear que usuario no existe
         if (!users.find(elem => elem.email == req.body.email)) {
-            
             // chequear que las pass coindicen
             if (req.body.contrasenia == req.body.confirmarContrasenia) {
                 let userId = 1;
@@ -101,10 +118,22 @@ const controller = {
                 fs.writeFileSync(usersJSON, usuariosJSON);
             
                 res.redirect('/');
+            } else {
+                let contraseniaDistinta = {
+                    contrasenia: {
+                        msg: "La contraseña ingresada no coincide con la confirmación de la misma"
+                    }  
+                }
+                return res.render('users/register', {errors: contraseniaDistinta, oldData: req.body })
             }
+        } else {
+            let mailRepetido = {
+                email: {
+                    msg: "Ya existe un usuario con el mail ingresado"
+                }  
+            }
+            return res.render('users/register', {errors: mailRepetido, oldData: req.body })
         }
-       // ERRORES!
-       
     },
     userDetail: (req, res) => {
         let user = users.find(elem => elem.id == req.params.id && elem.delete==false);
@@ -162,10 +191,6 @@ const controller = {
         });
         fs.writeFileSync(usersJSON, JSON.stringify(users, null, 2));
         return res.redirect('/users/manageUsers/');
-    },
-    manageUsers: (req, res) => {
-        res.render('users/manageUsers', {users: users})
-
     }
  
 }

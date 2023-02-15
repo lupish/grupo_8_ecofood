@@ -14,21 +14,49 @@
                 <!-- <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p> -->
                 <form action="/users/register" method="POST" enctype="multipart/form-data">
                     <div>
-                        <input type="text" name="nombre" id="nombre" placeholder="Nombre" required> 
+                        <input type="text" name="nombre" id="nombre" placeholder="Nombre"
+                            <%= (locals.errors && errors.nombre) ? 'class=input-form-no-aceptado' : "" %>
+                            value="<%= (locals.oldData && oldData.nombre) ? oldData.nombre : "" %>"
+                        >
+                        <% if (locals.errors && errors.nombre) { %>
+                            <p class="form-error"><%= errors.nombre.msg %> </p>
+                        <% } %> 
                     </div>
                     <div>
-                        <input type="email" name="email" id="email" placeholder="Email" required>
+                        <input type="text" name="email" id="email" placeholder="Email"
+                            <%= (locals.errors && errors.email) ? 'class=input-form-no-aceptado' : "" %>
+                            value="<%= (locals.oldData && oldData.email) ? oldData.email : "" %>"
+                        >
+                        <% if (locals.errors && errors.email) { %>
+                            <p class="form-error"><%= errors.email.msg %> </p>
+                        <% } %>
                     </div>
                     <div>
-                        <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña" required>
+                        <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña"
+                            <%= (locals.errors && errors.contrasenia) ? 'class=input-form-no-aceptado' : "" %>
+                        >
+                        <% if (locals.errors && errors.contrasenia) { %>
+                            <p class="form-error"><%= errors.contrasenia.msg %> </p>
+                        <% } %>
                     </div>
             
                     <div>
-                        <input type="password" name="confirmarContrasenia" id="confirmar-contrasenia" placeholder="Confirmar contarseña" required>
+                        <input type="password" name="confirmarContrasenia" id="confirmar-contrasenia" placeholder="Confirmar contarseña"
+                            <%= (locals.errors && errors.confirmarContrasenia) ? 'class=input-form-no-aceptado' : "" %> 
+                        >
+                        <% if (locals.errors && errors.confirmarContrasenia) { %>
+                            <p class="form-error"><%= errors.confirmarContrasenia.msg %> </p>
+                        <% } %>
                     </div>
                     <div >
-                        <label  for="user-foto">Sube una foto de perfil: </label>
-                        <input  type="file" name="user-foto" id="user-foto">
+                        <label for="user_foto">Sube una foto de perfil: </label>
+                        <input type="file" name="user_foto" id="user_foto"
+                        <%= (locals.errors && errors.user_foto) ? 'class=input-form-no-aceptado' : "" %>
+                        >
+
+                        <% if (locals.errors && errors.user_foto) { %>
+                            <p class="form-error"><%= errors.user_foto.msg %> </p>
+                        <% } %>
                     </div>
                     <div>
                         <button type="submit">Crear cuenta</button>

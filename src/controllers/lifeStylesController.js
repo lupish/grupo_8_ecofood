@@ -19,8 +19,6 @@ const controller = {
             delete: false
         }
 
-        console.log(req.body)
-        console.log(req.file)
         if (req.file != undefined) {
             estiloVida.img = "/img/estilosVida/" + req.file.filename
             estiloVida.alt = req.file.originalname

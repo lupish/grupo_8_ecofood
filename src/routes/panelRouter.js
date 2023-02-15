@@ -9,5 +9,6 @@ router.get('/manageProducts', panelController.manageProducts);
 router.get('/manageBrands', panelController.manageBrands);
 router.get('/manageLifeStyles', panelController.manageEstilosVida);
 router.get('/manageCategorias', panelController.manageCategorias);
+router.get('/manageUsers', panelController.manageUsers);
 
 module.exports = router;

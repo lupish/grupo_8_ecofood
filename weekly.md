@@ -38,3 +38,17 @@ Analizamos juntos el nuevo diseño del home, agregando los íconos referentes al
 - Buscar íconos en FlatIcon y descargarlos como jpg.
 - Editar los íconos con Photopea y cambiarle el color a verde, para luego exportarlos como webp y agergarlos a nuestra carpeta de imágenes.
 - En la view, ponerle escala de grises y en hover ponerle su color normal.
+
+# WEEKLY STANDUPS SPRINT 5
+
+## __Reunión n°1__
+> Fecha = 05/02/2023 - Participantes = Jorge Martin Dominguez Diaz, Sheine Sirota y Luciana Vidal.
+
+Llevamos a cabo la planning, primero leyendo la tarea y luego generenado tarjetitas en Trello. Dado que venimos bastante avanzados en cuanto a temas, decidimos incorporar la tarea de validación:
+- Manejo del rol del usuario y middleware para chequeos de accesos a vistas según rol: Sheine.
+- Validaciones para forms de productos: Jorge.
+- Validaciones para forms de usuario: Luciana.
+- Manejo de cateogrías (CRUD): Jorge.
+- Permitir una única imagen para el usuario: Luciana.
+
+Se propuso una nueva fecha para las reuniones dado que Jorge comienza inglés y el horario actual no le queda bien: jueves a las 19hs.
