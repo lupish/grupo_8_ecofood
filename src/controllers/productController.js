@@ -7,15 +7,15 @@ const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
 
 // bd categorias
 const categoriasJSON = path.join(__dirname,'../data/categoriasDB.json');
-const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
+const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8')).filter(elem => !elem.delete);
 
 // bd estilosVida
 const estilosVidaJSON = path.join(__dirname,'../data/estilosVidaDB.json');
-const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
+const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8')).filter(elem => !elem.delete);
 
 // bd marcas
 const marcasJSON = path.join(__dirname,'../data/marcasDB.json');
-const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
+const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8')).filter(elem => !elem.delete);
 // validator
 const {validationResult}=require("express-validator")
 

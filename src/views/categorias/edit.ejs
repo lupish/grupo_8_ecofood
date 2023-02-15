@@ -6,24 +6,24 @@
     <main>
         <section class="section-common">
             <form class="form-prod-nuevo" method="POST" action="/categoria/edit/<%=categoria.id%>?_method=PUT" enctype="multipart/form-data">
-                <h1 class="label-crear-prod">Editar la categoria</h1>
+                <h1 class="label-crear-prod">Editar la categoría</h1>
                 <input class="input-form" type="text" name="categoria_nombre" id="categoria-nombre" placeholder="Nombre de la categoria" value="<%= categoria.nombre %>"  required>
 
                 <div class="div-prod-fotos">
-                    <p>Foto actual de la Categoria:</p>
+                    <p>Foto actual de la categoría:</p>
                     <% if(categoria.img) { %>
                         <img class="img-mediana" src="<%= categoria.img.nombre %>" alt="<%= categoria.img.alt %> ">           
                     <% } else { %>
                         <img src="/img/products/img-not-found.webp" alt="Estilo de vida sin imagen">
                     <% } %>
                     <div>
-                    <label class="label-prod-fotos" for="estiloVida-foto">Foto de la categoria: </label>
+                    <label class="label-prod-fotos" for="estiloVida-foto">Foto de la categoría: </label>
                     <input class="input-prod-fotos" type="file" name="categoria_foto" id="categoria-foto">
                 </div>
                 </div>
 
                 <div>
-                    <button type="submit">Editar la categoria</button>
+                    <button type="submit">Editar la categoría</button>
                     <button type="reset">Borrar</button>
                 </div>
 

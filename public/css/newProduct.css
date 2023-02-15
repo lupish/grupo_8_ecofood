@@ -33,6 +33,10 @@
     font-weight: bold;
 }
 
+p.form-error {
+    font-weight: normal;
+}
+
 .form-prod-nuevo input[type=number] {
     width: 40%;
 }
@@ -43,6 +47,7 @@
 
 .form-prod-nuevo .div-prod-precio {
     display: flex;
+    align-items: center;
 }
 
 

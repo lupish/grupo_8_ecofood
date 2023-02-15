@@ -69,6 +69,13 @@ main a:hover {
     transition: all 0.3s;
 }
 
+.form-error {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: #EB8A52;
+    text-align: left
+}
+
 @media (min-width: 769px) {
 
     main .div-form {

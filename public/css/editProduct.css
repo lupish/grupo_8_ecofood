@@ -40,6 +40,7 @@
 
 .form-editar-prod .div-prod-precio {
     display: flex;
+    align-items: center;
 }
 
 
