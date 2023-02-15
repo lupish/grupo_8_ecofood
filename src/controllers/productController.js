@@ -7,15 +7,17 @@ const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
 
 // bd categorias
 const categoriasJSON = path.join(__dirname,'../data/categoriasDB.json');
-const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
+const categorias = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8')).filter(elem => !elem.delete);
 
 // bd estilosVida
 const estilosVidaJSON = path.join(__dirname,'../data/estilosVidaDB.json');
-const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
+const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8')).filter(elem => !elem.delete);
 
 // bd marcas
 const marcasJSON = path.join(__dirname,'../data/marcasDB.json');
-const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
+const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8')).filter(elem => !elem.delete);
+// validator
+const {validationResult}=require("express-validator")
 
 function createProd(prodId, req) {
     // estilosVida del producto
@@ -98,7 +100,10 @@ const controller = {
             res.render('products/listProducts', {estilosVida: estilosVida, prods: products.filter(elem=>{return elem.delete==false}), marcas: marcas})
         }
     },
-    processCreate: (req, res) => {        
+    processCreate: (req, res) => {   
+        let  errores=validationResult(req)
+       if(errores.errors.length===0){
+        console.log("NO Hay errores")
         let prodId = 1;
         if (products.length > 0) {
             prodId = products[products.length-1].id + 1;
@@ -111,6 +116,12 @@ const controller = {
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
 
         return res.redirect('/products/listProducts')
+       }else{
+        console.log("Hay errores")
+        console.log(errores.errors);
+        console.log(req.body)
+        res.render('products/create', {categorias: categorias, estilosVida: estilosVida, marcas: marcas,errores:errores.mapped(),prod:req.body});
+       }
     },
     processEdit: (req, res) => {
         let id = req.params.id;

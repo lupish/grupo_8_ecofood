@@ -62,6 +62,8 @@ app.use('/brands', brandRouter);
 
 const lifeStylesRouter = require('./routes/lifeStylesRouter');
 app.use('/lifeStyles', lifeStylesRouter);
+const categoria = require('./routes/categoriasRouter');
+app.use('/categoria', categoria);
 
 
 // bd estilosVida

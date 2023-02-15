@@ -1,7 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-
+const {check}=require("express-validator")
+const validaciones=[
+    check("prod_nombre").notEmpty().withMessage("El nombre del producto no debe ser vacío"),
+    check("prod_categoria").notEmpty().withMessage("La categoría del producto debe ser elegida"),
+    check("prod_estilosVida").notEmpty().withMessage("El estilo de vida del producto debe ser elegido"),
+    check("prod_marca").notEmpty().withMessage("La marca del producto debe ser elegida"),
+    check("prod_precio").notEmpty().withMessage("El precio no puede estar vacío").bail()
+    .isNumeric().withMessage("El precio debe ser de tipo numérico").bail().custom((value,{req})=>(value=req.body.prod_precio<=0?false:true)).withMessage("El campo precio debe ser positivo y mayor a cero"),
+    check("prod_descripcion_corta").notEmpty().withMessage("La descripción corta del producto no puede ser vacía"),
+    check("prod_descripcion_larga").notEmpty().withMessage("La descripción larga del producto no puede ser vacía")
+]
 //MULTER
 const multer = require('multer');
 const multerDiskStorage = multer.diskStorage({
@@ -31,7 +41,7 @@ router.get('/productCart', productController.productCart);
 
 //CREAR UN NUEVO PRODUCTO
 router.get('/create', productController.create);
-router.post('/create', uploadFile.array("prod_fotos"), productController.processCreate);
+router.post('/create', uploadFile.array("prod_fotos"),validaciones, productController.processCreate);
 
 //EDCION DE UN  PRODUCTO
 router.get('/edit/:id', productController.edit);

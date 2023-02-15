@@ -30,9 +30,10 @@ const controller = {
     manageEstilosVida: (req, res) => {
         res.render('panels/manageLifeStyles', {estilosVida: estilosVida})
     },
+    manageCategorias: (req, res) => {
+        res.render('panels/manageCategoria', {categorias: categoriasList}),
     manageUsers: (req, res) => {
         res.render('panels/manageUsers', {users: users})
-
     }
 }
 
