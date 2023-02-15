@@ -54,19 +54,34 @@ const controller = {
     },
     processLogin: (req, res) => {
         if (!req.session.usuarioLogueado) {
-            let usuario = users.find(elem => elem.email == req.body.email && bcryptjs.compareSync(req.body.contrasenia, elem.contrasenia));
+            let usuario = users.find(elem => elem.email == req.body.email && !elem.delete);
+            
             if (usuario) {
+                console.log(req.body.contrasenia)
+                if (!bcryptjs.compareSync(req.body.contrasenia, usuario.contrasenia)) {
+                    let contraseniaMal = {
+                        contrasenia: {
+                            msg: "La contraseña no es correcta, si desea cambiarla haga clic en Olvidé mi contraseña"
+                        }  
+                    }
+                    return res.render('users/login', { errors: contraseniaMal, oldData: req.body })
+                }
                 req.session.usuarioLogueado = usuario;
 
                 if (req.body.recordar_usuario) {
-                    console.log("Guardar cookie")
-                    res.cookie('email', req.body.email, {maxAge: 600*1000});                 }
+                    res.cookie('email', req.body.email, {maxAge: 600*1000});                 
+                }
             } else {
-            // MANDAR MENSAJE DE ERROR
-                console.log("ALGO DIO MAAL")
+                let emailNoExiste = {
+                    email: {
+                        msg: "No existe un usuario con el mail seleccionado"
+                    }  
+                }
+                return res.render('users/login', {errors: emailNoExiste, oldData: req.body })
             }
         }
-         res.redirect('/');
+
+        res.redirect('/');
     },
     register: (req, res) => {
         if (req.session.usuarioLogueado) {

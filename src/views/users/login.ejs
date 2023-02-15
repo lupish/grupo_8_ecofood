@@ -11,23 +11,25 @@
             <div class="div-form">
                 <img src="/img/EcoFood Logo Curvas web.jpg" alt="imagen de ejemplo" width="360">
                 <h2>Iniciá sesión</h2>
-                <% if (typeof errors != 'undefined') {%>
-                        <p style="color: red;">ERROR</p>
-                        <ul>
-                            <% for(let i = 0; errors.length; i++){ %>
-                                <li>
-                                    <%=errors[i].msg %>
-                                </li>
-                                <% } %>
-                        </ul>
-                        <% } %>
                 <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p>
                 <form action="/users/login" method="POST" action="/users/login">
                     <div>
-                        <input type="email" name="email" id="email" placeholder="Email" required>
+                        <input type="text" name="email" id="email" placeholder="Email"
+                            <%= (locals.errors && errors.email) ? 'class=input-form-no-aceptado' : "" %>
+                            value="<%= (locals.oldData && oldData.email) ? oldData.email : "" %>"  
+                        >
+
+                        <% if (locals.errors && errors.email) { %>
+                            <p class="form-error"><%= errors.email.msg %> </p>
+                        <% } %>
                     </div>
                     <div>
-                        <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña" required>
+                        <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña"
+                            <%= (locals.errors && errors.contrasenia) ? 'class=input-form-no-aceptado' : "" %>
+                        >
+                        <% if (locals.errors && errors.contrasenia) { %>
+                            <p class="form-error"><%= errors.contrasenia.msg %> </p>
+                        <% } %>
                     </div>
                     <div>
                         <button type="submit">Iniciar sesión</button>
