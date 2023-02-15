@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', {title: "Editar usuario"}) %>
+<body class="detalle-usuario">
+        <!-- inicio header -->
+        <%- include('../partials/header') %>
+        <!-- fin header -->
+
+<!-- inicio main -->
+<main>
+        <h1 class="label-editar-prod">Editar usuario</h1>
+      
+        <% if(user) { %>
+                <% if(locals.usuarioLogueado.rol == 1 || locals.usuarioLogueado.rol == 2 && locals.usuarioLogueado.id == user.id ) { %>
+        <form class="form-editar-user" method="POST" action="/users/edit/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
+                <input hidden name="id" id="id" value="<%= user.id %>">
+         <div class="container">
+          <div class="box">
+          <img src="/img/users/<%= user.img %> " alt="<%= user.alt %> ">
+          <p><%= user.nombre%></p>
+       
+          <input class="input-form" type="text" name="nombre" id="nombre" placeholder="Nombre del usuario" value="<%= user.nombre%>"  > 
+          <input class="input-form" type="email" name="email" id="email"  value="<%= user.email %>">
+          <div>
+                <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña"
+                    <%= (locals.errors && errors.contrasenia) ? 'class=input-form-no-aceptado' : "" %>
+                >
+                <% if (locals.errors && errors.contrasenia) { %>
+                    <p class="form-error"><%= errors.contrasenia.msg %> </p>
+                <% } %>
+            </div>
+    
+            <div>
+                <input type="password" name="confirmarContrasenia" id="confirmar-contrasenia" placeholder="Confirmar contarseña"
+                    <%= (locals.errors && errors.confirmarContrasenia) ? 'class=input-form-no-aceptado' : "" %> 
+                >
+                <% if (locals.errors && errors.confirmarContrasenia) { %>
+                    <p class="form-error"><%= errors.confirmarContrasenia.msg %> </p>
+                <% } %>
+            </div>
+           
+            <button type="submit">Editar</button>
+            <button type="reset">Borrar</button>
+          </div>
+        </div>
+         </form>
+          <% } %> 
+         <%  if(locals.usuarioLogueado.rol == 2){ %> 
+         
+                <!-- rol -->
+                <form class="form-editar-user" method="POST" action="/users/edit/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
+          <% for (let i = 0; i < rol.length; i++) { %>
+                <div>
+                        <input type="radio" name="rol" id="<%= rol[i].id %>" value="<%= rol[i].id %>" <%= user.rol == rol[i].id ? "checked" : "" %> > 
+                        <label for="<%= rol[i].id %>"><%= rol[i].nombre %></label>
+                    </div>
+         <% } %>
+         <% } %>
+         <div class="btns">
+            <button type="submit">Editar</button>
+            <button type="reset">Borrar</button>
+          </div>
+        </div>
+       </form>
+ </div>    
+        <%}%>
+        <% } %>
+         
+</main>
+<!-- fin main -->
+
+
+        <!-- inicio footer -->
+        <%- include('../partials/footer') %> 
+        <!-- fin footer -->
+</body>
+</html>

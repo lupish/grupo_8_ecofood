@@ -17,31 +17,32 @@ users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'))
 
 //bd roles
 const rolesJSON = path.join(__dirname, '../data/rolesDB.json');
-const roles = JSON.parse(fs.readFileSync(rolesJSON, 'utf-8'));
+const rol = JSON.parse(fs.readFileSync(rolesJSON, 'utf-8'));
 
 //crar cuenta
 function createAcount(userId, req){
-    //imagen de usuario
+    //imagen de usuario 
+    
     let imgUser = "user-default.webp";
     let altUser = "Usuario sin imagen";
     if (req.file) {
         imgUser = req.file.filename;
         altUser = req.file.originalname;
-    }    
+    }
     //crear usuario
     let usuario = {
         id: userId, 
         nombre: req.body.nombre,
         email: req.body.email,
-        contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),       
+        contrasenia: contra,   
         img: imgUser,
         alt: altUser,
-        rol: roles[0],
+        rol: rol[0].id,
         delete: false
     }
-    return usuario
+    return usuario 
+  
 }
-
 
 //controlador
 const controller = {
@@ -58,7 +59,6 @@ const controller = {
             let usuario = users.find(elem => elem.email == req.body.email && bcryptjs.compareSync(req.body.contrasenia, elem.contrasenia));
             if (usuario) {
                 req.session.usuarioLogueado = usuario;
-
                 if (req.body.recordar_usuario) {
                     console.log("Guardar cookie")
                     res.cookie('email', req.body.email, {maxAge: 600*1000});                 }
@@ -73,19 +73,13 @@ const controller = {
         if (req.session.usuarioLogueado) {
             return res.redirect('/')
         }
-        res.render('users/register', {roles: roles})
+        res.render('users/register')
     },
     processCreate: (req, res) => {
-        if (req.session.usuarioLogueado) {
-            return res.redirect('/')
-        }
-
         const valRes = validationResult(req)
-
         if (valRes.errors.length > 0) {
             return res.render('users/register', { errors: valRes.mapped(), oldData: req.body })
         }
-
        // CHEQUEAR CAMPOS
        console.log(users.find(elem => elem.email == req.body.email))
         // chequear que usuario no existe
@@ -107,7 +101,7 @@ const controller = {
                         msg: "La contraseña ingresada no coincide con la confirmación de la misma"
                     }  
                 }
-                return res.render('users/register', {errors: contraseniaDistinta, oldData: req.body })
+                return res.render('users/register', {errors: contraseniaDistinta, oldData: req.body})
             }
         } else {
             let mailRepetido = {
@@ -121,52 +115,63 @@ const controller = {
     userDetail: (req, res) => {
         let user = users.find(elem => elem.id == req.params.id && elem.delete==false);
         if (user){
-            res.render('users/userDetail', {user: req.session.usuarioLogueado})
+            res.render('users/userDetail', {user: user, rol: rol})
         }else{
             return res.redirect('/products/product-not-found');
         }
     },
     edit: (req, res)=>{
-        let userExist = users.find(elem=>elem.id==req.params.id);
-        if (userExist){
-            res.render('users/edit',{rol: roles, user: users})
+        let user = users.find(elem=>elem.id==req.params.id);
+        if (user){
+            res.render('users/edit', {user: user, rol: rol})
         }else{
             return res.redirect('/products/product-not-found');
         }
     },
-    processEdit: (req, res)=>{
-        let id = req.params.id; 
-        let usuario = createAcount(id, req)
-        users.forEach(elem=>{
-            if (elem.id == id){
-                elem.img = usuario.img;
-                elem.nombre = usuario.nombre;
-                elem.email = usuario.email;
-                elem.rol = usuario.rol.nombre;
+     processEdit: (req, res)=>{
+        let userId = req.params.id; 
+        function acount(userId, req){  
+            let usuario = {
+                id: userId, 
+                nombre: req.body.nombre,
+                email: req.body.email,
+                contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
+                img: imgUser,
+                alt: altUser,
+                rol: req.body.rol,
+                delete: false
+            }
+            return usuario 
         }
-        });
-        fs.writeFileSync(usersJSON, JSON.stringify(users, null, 2))
-        res.send(usuario)
-        // return  res.redirect('/users/userDetail/' + id)
+        
+        let usuario = acount(userId, req)
+        users.forEach(elem=>{
+             if (elem.id == userId){
+                 elem.nombre = usuario.nombre;
+                 elem.img = usuario.img;
+                 elem.email = usuario.email;
+                 elem.contrasenia = usuario.contrasenia;
+                 elem.rol = usuario.rol;  
+            }
+         });
+         fs.writeFileSync(usersJSON, JSON.stringify(users, null, 2))
+         return  res.redirect('/users/userDetail/' + userId)
     },
     softDelete: (req, res)=>{
         let id = req.params.id;
-    
         users.forEach(elem=>{
             if(elem.id == id){
                 elem.delete=true;
             }
         });
         fs.writeFileSync(usersJSON, JSON.stringify(users, null, 2));
-        return res.redirect('/users/manageUsers');
+        return res.redirect('/panels/manageUsers/');
     },
     hardDelete: (req, res)=>{
         let id = req.params.id;
-
         let usersNotDelete = users.filter(row=>{return row.id != id});
-
         fs.writeFileSync(usersJSON, JSON.stringify(usersNotDelete, null, 2));
-        return res.redirect('/users/manageUsers/');
+        return res.redirect('/panels/manageUsers/');
     },
    
     processActivate: (req, res) => {
@@ -177,7 +182,7 @@ const controller = {
             }
         });
         fs.writeFileSync(usersJSON, JSON.stringify(users, null, 2));
-        return res.redirect('/users/manageUsers/');
+        return res.redirect('/panels/manageUsers/');
     },
     logout: (req, res) => {
         res.clearCookie('email')

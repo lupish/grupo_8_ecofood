@@ -9,12 +9,12 @@
             <img src="/img/users/<%= user.img %> " alt="<%= user.alt %> ">
             <div class="name_job"><%= user.nombre %></div>
             <p><%= user.email %></p>
-            <!-- poner un middleware para q solo lo pueda ver el administrador -->
-            <p>Rol: <%= user.rol.nombre %></p>
-            <!--  -->
+            <% if(locals.usuarioLogueado.rol == 2) { %>
+            <p>Rol: <%= user.rol %></p>
+            <% } %>
                 <div class="btns">
                 <button><a class="link-boton-2" href="/users/logout/<%= user.id %>">Cerrar sesión</a></button>
-                <button><a class="link-boton-1" href="/users/edit/<%= user.id %>">Editar</a></button>  
+                <button><a class="link-boton-1" href="/users/edit/<%= user.id %>">Editar perfil</a></button>  
                 </div>
         </div>      
     </main>

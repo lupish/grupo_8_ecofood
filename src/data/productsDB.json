@@ -2,15 +2,18 @@
   {
     "id": 1,
     "nombre": "Leche Almendras y Chocolate",
-    "categoria": 2,
+    "categoria": "2",
     "estilosVida": [
       {
         "id": "7"
+      },
+      {
+        "id": "8"
       }
     ],
-    "marca": 1,
-    "precio": 699,
-    "descripcionCorta": "Bebida a base de almendra chocolate SILK. 1lt.",
+    "marca": "1",
+    "precio": "699",
+    "descripcionCorta": "Bebida a base de almendra chocolate SILK. 1lt. ",
     "descripcionLarga": "SILK leche vegetal, almendra y cacao, chocolate. ?Un sabor riquísimo, una cremosidad única, y la tranquilidad de consumir una bebida 100% de origen vegetal. Una opción ideal para disfrutarla con tu cereal en el desayuno o tu bebida favorita en smoothie, café o té. BEBIBLE 1lt.?Producto vegetal bebida a base de almendras y cacao, sabor chocolate fortificada con calcio, zinc y vitaminas A, B2, B12, D y E. Libre de gluten. Sin TACC.",
     "imgs": [
       {
@@ -27,7 +30,7 @@
     "novedad": true,
     "preferido": false,
     "buscados": false,
-    "delete": false
+    "delete": true
   },
   {
     "id": 2,
@@ -400,6 +403,6 @@
     "novedad": false,
     "preferido": false,
     "buscados": false,
-    "delete": true
+    "delete": false
   }
 ]

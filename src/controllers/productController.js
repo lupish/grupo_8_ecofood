@@ -134,16 +134,13 @@ const controller = {
     },
     softDelete:(req,res)=>{
         let id = req.params.id;
-
         products.forEach(elem => {
             if (elem.id == id) {
                 elem.delete=true;
             }
         });
-
         fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
-
-        return res.redirect('/panels/manageProducts/')
+        return res.redirect('/products/productDetail/' + id)
     },
     hardDelete:(req,res)=>{
         let id = req.params.id;

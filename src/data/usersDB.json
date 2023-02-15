@@ -1,57 +1,32 @@
 [
   {
     "id": 1,
-    "nombre": "hola",
-    "email": "hola@gmail.com",
-    "contrasenia": "$2a$10$sA.ZXC16YV0jEr08iO4I1eoLZFHRDEqye5WFi9XnEZPjbZVBCiKqa",
-    "img": "user-_103936993_numeros-arriba_1675896122054.jpg",
-    "alt": "_103936993_numeros-arriba.jpg",
-    "rol": {
-      "id": 1,
-      "nombre": "Usuario",
-      "descripcion": "Usuario comunes, sin privilegios de administrador"
-    },
+    "nombre": "Shaine Sara",
+    "email": "sheine.siro@gmail.com",
+    "contrasenia": "$2a$10$WZbJC72dwue7GUQBb6trlOk3YXjUgI860/VdPdnWLO4lHSGl6yhJ.",
+    "img": "user-default.webp",
+    "alt": "Usuario sin imagen",
+    "rol": 2,
     "delete": false
   },
   {
     "id": 2,
-    "nombre": "Shaine ",
-    "email": "sheine.siro@gmail.com",
-    "contrasenia": "$2a$10$jsBR6okxtfFFSTqwNPL0BuNCIm20p0k889nayVnwwZTQdltacdiHa",
-    "img": "user-17b72d75459c4b37f8bf9314b5f46988_1675896691056.jpg",
-    "alt": "17b72d75459c4b37f8bf9314b5f46988.jpg",
-    "rol": {
-      "id": 1,
-      "nombre": "Usuario",
-      "descripcion": "Usuario comunes, sin privilegios de administrador"
-    },
-    "delete": false
-  },
-  {
-    "id": 5,
-    "nombre": "",
-    "email": "",
-    "contrasenia": "$2a$10$NGkDnDTeg25D4tJYsgv78uJ0mpHX5XvAVe9BRbSlqSSDkVG1tbL3.",
+    "nombre": "sara",
+    "email": "sara@gmail.com",
+    "contrasenia": "$2a$10$A92u4JAE3TrtrxkPandHF.bqXYu6Pj01uc9ngdSYjnaioTddb36A6",
     "img": "user-default.webp",
     "alt": "Usuario sin imagen",
+    "rol": 2,
     "delete": false
   },
   {
-    "id": 6,
-    "nombre": "Luchi",
-    "email": "lubentofra@gmail.com",
-    "contrasenia": "$2a$10$0M6yLYH6//Hd8dVy1..aeuWuj.wBLVWW/tAt1GTW.gosuE3/ONzDu",
-    "img": "user-default.webp",
-    "alt": "Usuario sin imagen",
-    "delete": false
-  },
-  {
-    "id": 7,
-    "nombre": "Eleven",
-    "email": "eleven@gmail.com",
-    "contrasenia": "$2a$10$datE7zFsOe4NDr3Ve7uKN.6bX3W1Y5imHJN.tmffAYbo3v3qOPEwW",
-    "img": "user-450_1000_1675910376441.jpeg",
-    "alt": "450_1000.jpeg",
+    "id": 3,
+    "nombre": "hola",
+    "email": "hola@gmail.com",
+    "contrasenia": "$2a$10$kVb8cJdEA6NvQm1e5MUX0O0b3/OgUIlin5Hrq1IWD366IiQaDJJnu",
+    "img": "user-Captura de pantalla (3)_1676500034921.png",
+    "alt": "Captura de pantalla (3).png",
+    "rol": 1,
     "delete": false
   }
 ]

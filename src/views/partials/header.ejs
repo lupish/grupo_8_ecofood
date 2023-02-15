@@ -16,7 +16,7 @@
           
             <% if (locals.isLogged) { %>
                    <a href="/users/userDetail/<%= locals.usuarioLogueado.id %>"><img class="img-perfil" src="/img/users/<%= locals.usuarioLogueado.img %> " alt="<%= locals.usuarioLogueado.alt %> " >
-                   <h5>Hola <%= locals.usuarioLogueado.nombre%></h5></a>
+                   <h6>Hola <%= locals.usuarioLogueado.nombre%></h6></a>
              <%} else {%>
            <a href="/users/login"><i id="usuario" class="fa-solid fa-user"></i></a>
             <%}%>

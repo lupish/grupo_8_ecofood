@@ -18,8 +18,12 @@ const multerDiskStorage = multer.diskStorage({
 });
 const uploadFile = multer({storage: multerDiskStorage});
 
+//MIDDLEWARE
+
+
 //CONTROLADOR
 const productController = require('../controllers/productController');
+
 
 //RUTAS
 
@@ -38,7 +42,7 @@ router.get('/edit/:id', productController.edit);
 router.put('/edit/:id', uploadFile.array("prod_fotos"), productController.processEdit);
 
 //Soft delete de los productos
-router.delete('/delete/soft/:id', productController.softDelete);
+router.delete('/delete/soft/:id',productController.softDelete);
 router.delete('/delete/hard/:id', productController.hardDelete);
 
 // REACTIVAR PRODUCTO

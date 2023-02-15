@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const authPage = require('../middlewares/authPage')
 
 //MIDDLEWARES
 const guestMiddleware = require('../middlewares/guestMiddleware');
@@ -58,11 +57,12 @@ router.get('/register', guestMiddleware, userController.register);
 router.post('/register', uploadFile.single('user_foto'), validationRegister, userController.processCreate);
 
 //DETaLLE DE USUARIO
-router.get('/userDetail/:id', authMiddleware ,userController.userDetail);
+router.get('/userDetail/:id', authMiddleware, userController.userDetail);
 
-//EDICION DE ROL 
+//EDICION DE ROL-USUARIO
 router.get('/edit/:id', userController.edit);
 router.put('/edit/:id', uploadFile.single('user_foto'), userController.processEdit);
+
 
 //ELIMINACION DE USUARIOS 
 router.delete('/delete/soft/:id', userController.softDelete);

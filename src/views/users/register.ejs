@@ -13,6 +13,7 @@
                 <h2>Creá tu cuenta</h2>
                 <!-- <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p> -->
                 <form action="/users/register" method="POST" enctype="multipart/form-data">
+                 
                     <div>
                         <input type="text" name="nombre" id="nombre" placeholder="Nombre"
                             <%= (locals.errors && errors.nombre) ? 'class=input-form-no-aceptado' : "" %>
