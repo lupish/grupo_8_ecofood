@@ -19,7 +19,7 @@ const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8')).filter(elem => !
 // validator
 const {validationResult}=require("express-validator")
 
-function createProd(prodId, req) {
+function assignProd(prodId, req) {
     // estilosVida del producto
     let prodEstilosVida = [];
     let categ = {};
@@ -69,10 +69,16 @@ function createProd(prodId, req) {
 
 const controller = {
     productDetail: (req, res) => {
-        let prod = products.find(elem => elem.id == req.params.id && elem.delete==false);
-        
+        let prod = products.find(elem => elem.id == req.params.id);
         if (prod) {
-            res.render('products/productDetail', {prod: prod, estilosVida: estilosVida, marcas: marcas, estilosVida: estilosVida});
+           
+            if(req.session.usuarioLogueado && req.session.usuarioLogueado.rol == 1 && prod.delete == true){
+            return res.redirect('/products/product-not-found');
+        }
+        if(!req.session.usuarioLogueado && prod.delete == true){
+            return res.redirect('/products/product-not-found');
+        } 
+         res.render('products/productDetail', {prod: prod, estilosVida: estilosVida, marcas: marcas, estilosVida: estilosVida}); 
         } else {
             return res.redirect('/products/product-not-found');
         }
@@ -108,7 +114,7 @@ const controller = {
             prodId = products[products.length-1].id + 1;
         }
 
-        let prod = createProd(prodId, req);
+        let prod = assignProd(prodId, req);
 
         // Guardar producto en la bd
         products.push(prod);
@@ -124,7 +130,13 @@ const controller = {
     },
     processEdit: (req, res) => {
         let id = req.params.id;
-        let prod = createProd(id, req);
+        let prod = assignProd(id, req);
+        let  errores=validationResult(req)
+        if(errores.errors.length > 0){
+        console.log("Hay errores")
+            console.log(prod);
+            return res.render('products/edit',  {categorias: categorias, estilosVida: estilosVida, marcas: marcas, errores:errores.mapped(), prod:prod})
+        }
 
         products.forEach(elem => {
             if (elem.id == id) {

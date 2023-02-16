@@ -17,28 +17,13 @@
           <div class="box">
           <img src="/img/users/<%= user.img %> " alt="<%= user.alt %> ">
           <p><%= user.nombre%></p>
-          <% if(locals.usuarioLogueado.id == user.id ) { %>
+          
+          <% if(locals.usuarioLogueado && locals.usuarioLogueado.id == user.id ) { %>
           <input class="input-form" type="text" name="nombre" id="nombre" placeholder="Nombre del usuario" value="<%= user.nombre%>"  > 
           <input class="input-form" type="email" name="email" id="email"  value="<%= user.email %>">
-          <div>
-                <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una nueva contraseña"
-                    <%= (locals.errors && errors.contrasenia) ? 'class=input-form-no-aceptado' : "" %>
-                >
-                <% if (locals.errors && errors.contrasenia) { %>
-                    <p class="form-error"><%= errors.contrasenia.msg %> </p>
-                <% } %>
-            </div>
     
-            <div>
-                <input type="password" name="confirmarContrasenia" id="confirmar-contrasenia" placeholder="Confirmar contarseña"
-                    <%= (locals.errors && errors.confirmarContrasenia) ? 'class=input-form-no-aceptado' : "" %> 
-                >
-                <% if (locals.errors && errors.confirmarContrasenia) { %>
-                    <p class="form-error"><%= errors.confirmarContrasenia.msg %> </p>
-                <% } %>
-            </div>
         <% } %>      
-        <% if(locals.usuarioLogueado.rol == 2) { %> 
+        <% if(locals.usuarioLogueado && locals.usuarioLogueado.rol == 2) { %> 
                         <% for (let i = 0; i < rol.length; i++) { %>
                             <div>
                                     <input type="radio" name="rol" id="<%= rol[i].id %>" value="<%= rol[i].id %>" <%= user.rol == rol[i].id ? "checked" : "" %> > 

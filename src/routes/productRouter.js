@@ -45,11 +45,11 @@ router.get('/productCart', productController.productCart);
 
 //CREAR UN NUEVO PRODUCTO
 router.get('/create', productController.create);
-router.post('/create', uploadFile.array("prod_fotos"),validaciones, productController.processCreate);
+router.post('/create', uploadFile.array("prod_fotos"), validaciones, productController.processCreate);
 
 //EDCION DE UN  PRODUCTO
 router.get('/edit/:id', productController.edit);
-router.put('/edit/:id', uploadFile.array("prod_fotos"), productController.processEdit);
+router.put('/edit/:id', uploadFile.array("prod_fotos"), validaciones ,productController.processEdit);
 
 //Soft delete de los productos
 router.delete('/delete/soft/:id',productController.softDelete);

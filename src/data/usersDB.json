@@ -8,25 +8,5 @@
     "alt": "Usuario sin imagen",
     "rol": 2,
     "delete": false
-  },
-  {
-    "id": 2,
-    "nombre": "sara",
-    "email": "sara@gmail.com",
-    "contrasenia": "$2a$10$A92u4JAE3TrtrxkPandHF.bqXYu6Pj01uc9ngdSYjnaioTddb36A6",
-    "img": "user-default.webp",
-    "alt": "Usuario sin imagen",
-    "rol": 2,
-    "delete": false
-  },
-  {
-    "id": 3,
-    "nombre": "hola",
-    "email": "hola@gmail.com",
-    "contrasenia": "$2a$10$kVb8cJdEA6NvQm1e5MUX0O0b3/OgUIlin5Hrq1IWD366IiQaDJJnu",
-    "img": "user-Captura de pantalla (3)_1676500034921.png",
-    "alt": "Captura de pantalla (3).png",
-    "rol": 1,
-    "delete": false
   }
 ]

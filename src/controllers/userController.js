@@ -34,7 +34,7 @@ function createAcount(userId, req){
         id: userId, 
         nombre: req.body.nombre,
         email: req.body.email,
-        contrasenia: contra,   
+        contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
         img: imgUser,
         alt: altUser,
         rol: rol[0].id,
@@ -143,28 +143,35 @@ const controller = {
     },
      processEdit: (req, res)=>{
         let userId = req.params.id; 
-        function acount(userId, req){  
+        function acount(userId, req){ 
+        let imgUser = "user-default.webp";
+        let altUser = "Usuario sin imagen";
+        if (req.file) {
+        imgUser = req.file.filename;
+        altUser = req.file.originalname;
+        } 
             let usuario = {
                 id: userId, 
                 nombre: req.body.nombre,
-                email: req.body.email,
-                contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
+                email: req.body.email, 
                 img: imgUser,
                 alt: altUser,
-                rol: req.body.rol,
+                rol: parseInt(req.body.rol),
                 delete: false
             }
             return usuario 
-        }
-        
+        }  
         let usuario = acount(userId, req)
         users.forEach(elem=>{
              if (elem.id == userId){
-                 elem.nombre = usuario.nombre;
+                if(req.session.usuarioLogueado.id == elem.id ) 
+               {  elem.nombre = usuario.nombre;
                  elem.img = usuario.img;
-                 elem.email = usuario.email;
-                 elem.contrasenia = usuario.contrasenia;
-                 elem.rol = usuario.rol;  
+                 elem.email = usuario.email; 
+                 elem.rol = usuario.rol;
+                }else{
+                    elem.rol = usuario.rol; 
+                }
             }
          });
          fs.writeFileSync(usersJSON, JSON.stringify(users, null, 2))
