@@ -8,11 +8,19 @@
             <form class="form-prod-nuevo" method="POST" action="/lifeStyles/create" enctype="multipart/form-data">
                 <h1 class="label-crear-prod">Crear estilo de vida</h1>
                 
-                    <input class="input-form" type="text" name="estiloVida_nombre" id="estiloVida-nombre" placeholder="Nombre del estilo de vida" required>
+                <input class="input-form <%if(locals.errores && errors.estiloVida_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="estiloVida_nombre" id="estiloVida-nombre" placeholder="Nombre del estilo de vida"
+                    value="<%= (locals.oldData && oldData.estiloVida_nombre) ? oldData.estiloVida_nombre : "" %>"
+                >
+                <% if (locals.errors && errors.estiloVida_nombre) { %>
+                    <p class="form-error"><%= errors.estiloVida_nombre.msg %> </p>
+                <% } %>
                 
                 <div class="div-prod-fotos">
                     <label class="label-prod-fotos" for="estiloVida-foto">Foto del estilo de vida: </label>
                     <input class="input-prod-fotos" type="file" name="estiloVida_foto" id="estiloVida-foto">
+                    <% if (locals.errors && errors.estiloVida_foto) { %>
+                        <p class="form-error"><%= errors.estiloVida_foto.msg %> </p>
+                    <% } %>
                 </div>
 
                 <div>

@@ -22,6 +22,10 @@
                     <div>
                     <label class="label-prod-fotos" for="estiloVida-foto">Foto de la categoría: </label>
                     <input class="input-prod-fotos" type="file" name="categoria_foto" id="categoria-foto">
+                    
+                    <% if (locals.errors && errors.categoria_foto) { %>
+                        <p class="form-error"><%= errors.categoria_foto.msg %> </p>
+                    <% } %>
                 </div>
                 </div>
 

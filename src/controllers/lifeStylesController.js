@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs');
+const { validationResult } = require('express-validator');
 
 // bd marcas
 const estilosVidaJSON = path.join(__dirname,'../data/estilosVidaDB.json');
@@ -10,7 +11,22 @@ const controller = {
         res.render('lifeStyles/create');
     },
     processCreate: (req, res) => {
-        // VER QUE el estilo de vida NO EXISTA YA
+        // chequeo validaciones middleware
+        const valRes = validationResult(req)
+        if (valRes.errors.length > 0) {
+            return res.render('lifeStyles/create', { errors: valRes.mapped(), oldData: req.body })
+        }
+
+        // chequear unicidad
+        if (estilosVida.find(elem => elem.nombre == req.body.estiloVida_nombre)) {
+            let estiloVidaRepetido = {
+                estiloVida_nombre: {
+                    msg: "El estilo de vida ingresado ya existe"
+                }
+            }
+            return res.render('lifeStyles/create', { errors: estiloVidaRepetido, oldData: req.body })
+        }
+
         let estiloVidaId = estilosVida[estilosVida.length-1].id + 1;
 
         let estiloVida = {
@@ -44,6 +60,34 @@ const controller = {
         }
     },
     processEdit: (req, res) => {
+        console.log("PROCESS EDIT")
+        
+        // chequeo validaciones middleware
+        const valRes = validationResult(req)
+        console.log(valRes.mapped())
+        if (valRes.errors.length > 0) {
+            let estiloVida = {
+                id: req.params.id,
+                nombre: req.body.estiloVida_nombre
+            }
+            return res.render('lifeStyles/edit', { errors: valRes.mapped(), estiloVida: estiloVida })
+        }
+
+        // chequear unicidad
+        if (estilosVida.find(elem => elem.nombre == req.body.estiloVida_nombre && elem.id != req.params.id)) {
+            let estiloVidaRepetido = {
+                estiloVida_nombre: {
+                    msg: "El estilo de vida ingresado ya existe"
+                }
+            }
+            let estiloVida = {
+                id: req.params.id,
+                nombre: req.body.estiloVida_nombre
+            }
+            console.log(estiloVidaRepetido)
+            return res.render('lifeStyles/edit', { errors: estiloVidaRepetido, estiloVida: estiloVida })
+        }
+        
         let id = req.params.id;
         estilosVida.forEach(elem => {
             if (elem.id == id) {

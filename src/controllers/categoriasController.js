@@ -74,7 +74,12 @@ const controller = {
         // chequeo validaciones middleware
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
-            return res.render('categorias/edit', { errors: valRes.mapped(), categoria: req.body })
+            let categoria = {
+                id: req.params.id,
+                nombre: req.body.categoria_nombre
+            }
+
+            return res.render('categorias/edit', { errors: valRes.mapped(), categoria: categoria })
         }
 
         // chequear unicidad
@@ -84,7 +89,11 @@ const controller = {
                     msg: "La categoría ingresada ya existe"
                 }
             }
-            return res.render('categorias/edit', { errors: categoriaRepetida, categoria: req.body })
+            let categoria = {
+                id: req.params.id,
+                nombre: req.body.categoria_nombre
+            }
+            return res.render('categorias/edit', { errors: categoriaRepetida, categoria: categoria })
         }
         
         let id = req.params.id;

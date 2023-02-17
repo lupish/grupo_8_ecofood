@@ -18,6 +18,24 @@ const multerDiskStorage = multer.diskStorage({
 });
 const uploadFile = multer({storage: multerDiskStorage});
 
+// VALIDACIONES
+const { body } = require('express-validator');
+const validarEstiloVida = [
+    body("estiloVida_nombre").notEmpty().withMessage("Debe ingresar un nombre"),
+    body("estiloVida_foto").custom((value, { req }) => {
+        if (req.file) {
+            const extensions = ['.jpg', '.png', '.gif', '.webp', '.jpeg']
+            let fileExt = path.extname(req.file.originalname);
+
+            if (!extensions.includes(fileExt)) {
+                throw new Error(`Las extensiones permitidas son : ${extensions.join(", ")}`)
+            }
+        }
+
+        return true;
+    })
+];
+
 /*** CONTROLADOR ***/
 const lifeStyleController = require('../controllers/lifeStylesController');
 
@@ -31,10 +49,10 @@ router.patch('/activar/:id', lifeStyleController.processActivate)
 
 // crear
 router.get('/create', lifeStyleController.create);
-router.post('/create', uploadFile.single("estiloVida_foto"), lifeStyleController.processCreate);
+router.post('/create', uploadFile.single("estiloVida_foto"), validarEstiloVida, lifeStyleController.processCreate);
 
 // editar
 router.get('/edit/:id', lifeStyleController.edit);
-router.put('/edit/:id', uploadFile.single("estiloVida_foto"), lifeStyleController.processEdit);
+router.put('/edit/:id', uploadFile.single("estiloVida_foto"), validarEstiloVida, lifeStyleController.processEdit);
 
 module.exports = router;
