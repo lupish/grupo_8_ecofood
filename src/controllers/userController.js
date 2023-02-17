@@ -93,8 +93,8 @@ const controller = {
         if (valRes.errors.length > 0) {
             return res.render('users/register', { errors: valRes.mapped(), oldData: req.body })
         }
-       // CHEQUEAR CAMPOS
-       console.log(users.find(elem => elem.email == req.body.email))
+        // CHEQUEAR CAMPOS
+
         // chequear que usuario no existe
         if (!users.find(elem => elem.email == req.body.email)) {
             // chequear que las pass coindicen
@@ -205,6 +205,7 @@ const controller = {
         return res.redirect('/panels/manageUsers/');
     },
     logout: (req, res) => {
+        console.log("---------------------------------- LOGOUT -----------------------------")
         res.clearCookie('email')
         req.session.destroy();
         return res.redirect('/')

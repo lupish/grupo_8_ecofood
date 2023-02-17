@@ -33,12 +33,5 @@
     "img": "/img/brands/marca-integra.png",
     "alt": "Logo Silk",
     "delete": false
-  },
-  {
-    "id": 6,
-    "nombre": "Marca de prueba",
-    "delete": true,
-    "img": "",
-    "alt": ""
   }
 ]

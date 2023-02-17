@@ -7,14 +7,17 @@
         <section class="section-common">
             <form class="form-prod-nuevo" method="POST" action="/categoria/edit/<%=categoria.id%>?_method=PUT" enctype="multipart/form-data">
                 <h1 class="label-crear-prod">Editar la categoría</h1>
-                <input class="input-form" type="text" name="categoria_nombre" id="categoria-nombre" placeholder="Nombre de la categoria" value="<%= categoria.nombre %>"  required>
+                <input class="input-form <%if(locals.errores && errors.categoria_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="categoria_nombre" id="categoria-nombre" placeholder="Nombre de la categoría" value="<%= categoria.nombre %>">
+                <% if (locals.errors && errors.categoria_nombre) { %>
+                    <p class="form-error"><%= errors.categoria_nombre.msg %> </p>
+                <% } %>
 
                 <div class="div-prod-fotos">
                     <p>Foto actual de la categoría:</p>
                     <% if(categoria.img) { %>
                         <img class="img-mediana" src="<%= categoria.img.nombre %>" alt="<%= categoria.img.alt %> ">           
                     <% } else { %>
-                        <img src="/img/products/img-not-found.webp" alt="Estilo de vida sin imagen">
+                        <img class="img-mediana" src="/img/products/img-not-found.webp" alt="Estilo de vida sin imagen">
                     <% } %>
                     <div>
                     <label class="label-prod-fotos" for="estiloVida-foto">Foto de la categoría: </label>

@@ -3,6 +3,6 @@ function userLoggedMiddleware (req, res, next){
         res.locals.isLogged  = true;
         res.locals.usuarioLogueado = req.session.usuarioLogueado;
     }
-next();
+    next();
 }
 module.exports = userLoggedMiddleware;

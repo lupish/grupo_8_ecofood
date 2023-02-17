@@ -18,5 +18,32 @@
     "id": 4,
     "nombre": "Snacks",
     "delete": false
+  },
+  {
+    "id": 5,
+    "nombre": "para borrar",
+    "delete": true,
+    "img": {
+      "nombre": "/img/categorias/img-not-found.webp",
+      "alt": "Categoría sin imagen"
+    }
+  },
+  {
+    "id": 6,
+    "nombre": "para borrar 2",
+    "delete": true,
+    "img": {
+      "nombre": "/img/categorias/img-not-found.webp",
+      "alt": "Categoría sin imagen"
+    }
+  },
+  {
+    "id": 7,
+    "nombre": "para borrar 3",
+    "delete": true,
+    "img": {
+      "nombre": "/img/categorias/img-not-found.webp",
+      "alt": "Categoría sin imagen"
+    }
   }
 ]

@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs');
+const { validationResult } = require('express-validator');
 
 // bd marcas
 const categoriasJSON = path.join(__dirname,'../data/categoriasDB.json');
@@ -10,6 +11,21 @@ const controller = {
         res.render('categorias/create');
     },
     processCreate: (req, res) => {
+        // chequeo validaciones middleware
+        const valRes = validationResult(req)
+        if (valRes.errors.length > 0) {
+            return res.render('categorias/create', { errors: valRes.mapped(), oldData: req.body })
+        }
+
+        // chequear unicidad
+        if (categoriasList.find(elem => elem.nombre == req.body.categoria_nombre)) {
+            let categoriaRepetida = {
+                categoria_nombre: {
+                    msg: "La categoría ingresada ya existe"
+                }
+            }
+            return res.render('categorias/create', { errors: categoriaRepetida, oldData: req.body })
+        }
         
         let categoriaId = categoriasList[categoriasList.length-1].id + 1;
        
@@ -17,10 +33,10 @@ const controller = {
             id: categoriaId,
             nombre: req.body.categoria_nombre,
             delete: false
-           
         }
 
         console.log(req.body)
+        console.log("--------------->")
         console.log(req.file)
         if (req.file != undefined) {
             categoria.img = {
@@ -29,8 +45,8 @@ const controller = {
         }
         } else {
             categoria.img = {
-                nombre:"/img/categorias/" + req.file.filename,
-                alt :req.file.originalname
+                nombre:"/img/categorias/img-not-found.webp",
+                alt: "Categoría sin imagen"
             }
         }
 
@@ -55,6 +71,22 @@ const controller = {
         }
     },
     processEdit: (req, res) => {
+        // chequeo validaciones middleware
+        const valRes = validationResult(req)
+        if (valRes.errors.length > 0) {
+            return res.render('categorias/edit', { errors: valRes.mapped(), categoria: req.body })
+        }
+
+        // chequear unicidad
+        if (categoriasList.find(elem => elem.nombre == req.body.categoria_nombre && elem.id != req.params.id)) {
+            let categoriaRepetida = {
+                categoria_nombre: {
+                    msg: "La categoría ingresada ya existe"
+                }
+            }
+            return res.render('categorias/edit', { errors: categoriaRepetida, categoria: req.body })
+        }
+        
         let id = req.params.id;
         categoriasList.forEach(elem => {
             if (elem.id == id) {

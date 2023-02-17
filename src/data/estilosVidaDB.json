@@ -54,12 +54,5 @@
     "delete": true,
     "img": "/img/estilosVida/estiloVida-party2_1675289234067.jpg",
     "alt": "party2.jpg"
-  },
-  {
-    "id": 9,
-    "nombre": "dsds",
-    "delete": true,
-    "img": "/img/estilosVida/estiloVida-cebada_1675642013417.webp",
-    "alt": "cebada.webp"
   }
 ]
