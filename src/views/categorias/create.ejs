@@ -8,7 +8,7 @@
             <form class="form-prod-nuevo" method="POST" action="/categoria/create" enctype="multipart/form-data">
                 <h1 class="label-crear-prod">Crear categoría</h1>
                 
-                <input class="input-form <%if(locals.errores && errors.categoria_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="categoria_nombre" id="categoria_nombre" placeholder="Nombre del estilo de vida"
+                <input class="input-form <%if(locals.errors && errors.categoria_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="categoria_nombre" id="categoria_nombre" placeholder="Nombre del estilo de vida"
                     value="<%= (locals.oldData && oldData.categoria_nombre) ? oldData.categoria_nombre : "" %>"
                 >
                 <% if (locals.errors && errors.categoria_nombre) { %>

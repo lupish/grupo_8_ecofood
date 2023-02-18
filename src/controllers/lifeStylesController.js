@@ -60,8 +60,6 @@ const controller = {
         }
     },
     processEdit: (req, res) => {
-        console.log("PROCESS EDIT")
-        
         // chequeo validaciones middleware
         const valRes = validationResult(req)
         console.log(valRes.mapped())

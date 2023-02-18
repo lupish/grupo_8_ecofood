@@ -8,11 +8,20 @@
             <form class="form-prod-nuevo" method="POST" action="/brands/create" enctype="multipart/form-data">
                 <h1 class="label-crear-prod">Crear marca</h1>
                 
-                    <input class="input-form" type="text" name="marca_nombre" id="marca-nombre" placeholder="Nombre de la marca" required>
+                <input class="input-form <%if(locals.errores && errors.marca_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="marca_nombre" id="marca-nombre" placeholder="Nombre de la marca"
+                    value="<%= (locals.oldData && oldData.marca_nombre) ? oldData.marca_nombre : "" %>"
+                >
+                <% if (locals.errors && errors.marca_nombre) { %>
+                    <p class="form-error"><%= errors.marca_nombre.msg %> </p>
+                <% } %> 
                 
-                <div class="div-prod-fotos">
+                <div class="div-prod-fotos <%= (locals.errors && errors.marca_foto) ? 'class=input-form-no-aceptado' : "" %></div>">
                     <label class="label-prod-fotos" for="marca-foto">Foto de la marca: </label>
                     <input class="input-prod-fotos" type="file" name="marca_foto" id="marca-foto">
+                    
+                    <% if (locals.errors && errors.marca_foto) { %>
+                        <p class="form-error"><%= errors.marca_foto.msg %> </p>
+                    <% } %>
                 </div>
 
                 <div>

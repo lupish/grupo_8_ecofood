@@ -7,12 +7,12 @@
         <section class="section-common">
             <form class="form-prod-nuevo" method="POST" action="/lifeStyles/edit/<%= estiloVida.id %>?_method=PUT" enctype="multipart/form-data">
                 <h1 class="label-crear-prod">Editar estilo de vida</h1>
-                <input class="input-form <%if(locals.errores && errors.categoria_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="estiloVida_nombre" id="estiloVida-nombre" placeholder="Nombre de la categoría" value="<%=estiloVida.nombre%>" >
+                <input class="input-form <%if(locals.errors && errors.categoria_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="estiloVida_nombre" id="estiloVida-nombre" placeholder="Nombre de la categoría" value="<%=estiloVida.nombre%>" >
                 <% if (locals.errors && errors.estiloVida_nombre) { %>
                     <p class="form-error"><%= errors.estiloVida_nombre.msg %> </p>
                 <% } %>
 
-                <div class="div-prod-fotos">
+                <div class="div-prod-fotos <%= (locals.errors && errors.estiloVida_foto) ? 'class=input-form-no-aceptado' : "" %>">
                     <p>Foto actual del estilo de vida:</p>
                     <% if(estiloVida.img) { %>
                         <img class="img-mediana" src="<%= estiloVida.img %>" alt="<%= estiloVida.alt %> ">           

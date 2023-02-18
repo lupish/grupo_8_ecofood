@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs');
+const { validationResult } = require('express-validator');
 
 // bd marcas
 const marcasJSON = path.join(__dirname,'../data/marcasDB.json');
@@ -10,7 +11,22 @@ const controller = {
         res.render('brands/create');
     },
     processCreate: (req, res) => {
-        // VER QUE LA MARCA NO EXISTA YA
+        // chequeo validaciones middleware
+        const valRes = validationResult(req)
+        if (valRes.errors.length > 0) {
+            return res.render('brands/create', { errors: valRes.mapped(), oldData: req.body })
+        }
+
+        // chequear unicidad
+        if (marcas.find(elem => elem.nombre == req.body.marca_nombre)) {
+            let marcaRepetida = {
+                marca_nombre: {
+                    msg: "La marca ingresada ya existe"
+                }
+            }
+            return res.render('brands/create', { errors: marcaRepetida, oldData: req.body })
+        }
+
         let marcaId = marcas[marcas.length-1].id + 1;
 
         let marca = {
@@ -19,8 +35,6 @@ const controller = {
             delete: false
         }
 
-        console.log(req.body)
-        console.log(req.file)
         if (req.file != undefined) {
             marca.img = "/img/brands/" + req.file.filename
             marca.alt = req.file.originalname
@@ -43,6 +57,31 @@ const controller = {
         }
     },
     processEdit: (req, res) => {
+        // chequeo validaciones middleware
+        const valRes = validationResult(req)
+        if (valRes.errors.length > 0) {
+            let marca = {
+                id: req.params.id,
+                nombre: req.body.marca_nombre
+            }
+            
+            return res.render('brands/edit', { errors: valRes.mapped(), marca: marca })
+        }
+
+        // chequear unicidad
+        if (marcas.find(elem => elem.nombre == req.body.marca_nombre && elem.id != req.params.id)) {
+            let marcaRepetida = {
+                marca_nombre: {
+                    msg: "La marca ingresada ya existe"
+                }
+            }
+            let marca = {
+                id: req.params.id,
+                nombre: req.body.marca_nombre
+            }
+            return res.render('brands/edit', { errors: marcaRepetida, marca: marca })
+        }
+
         let id = req.params.id;
         marcas.forEach(elem => {
             if (elem.id == id) {

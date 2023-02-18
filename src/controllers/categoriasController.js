@@ -35,9 +35,6 @@ const controller = {
             delete: false
         }
 
-        console.log(req.body)
-        console.log("--------------->")
-        console.log(req.file)
         if (req.file != undefined) {
             categoria.img = {
             nombre:"/img/categorias/" + req.file.filename,
@@ -52,12 +49,11 @@ const controller = {
 
         // Guardar estilo de vida en la bd
         categoriasList.push(categoria);
-        console.log("*************************");
-           fs.writeFileSync(categoriasJSON, JSON.stringify(categoriasList, null, 2))
+        fs.writeFileSync(categoriasJSON, JSON.stringify(categoriasList, null, 2))
            
            
        
-          return  res.redirect("/panels/manageCategorias")
+        return  res.redirect("/panels/manageCategorias")
        
 
     },

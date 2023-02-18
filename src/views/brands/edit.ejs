@@ -7,9 +7,12 @@
         <section class="section-common">
             <form class="form-prod-nuevo" method="POST" action="/brands/edit/<%= marca.id %>?_method=PUT" enctype="multipart/form-data">
                 <h1 class="label-crear-prod">Editar marca</h1>
-                <input class="input-form" type="text" name="marca_nombre" id="marca-nombre" placeholder="Nombre de la marca" value="<%= marca.nombre %>"  required>
+                <input class="input-form <%if(locals.errors && errors.marca_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="marca_nombre" id="marca-nombre" placeholder="Nombre de la marca" value="<%= marca.nombre %>">
+                <% if (locals.errors && errors.marca_nombre) { %>
+                    <p class="form-error"><%= errors.marca_nombre.msg %> </p>
+                <% } %>
 
-                <div class="div-prod-fotos">
+                <div class="div-prod-fotos <%= (locals.errors && errors.marca_foto) ? 'class=input-form-no-aceptado' : "" %>">
                     <p>Foto actual de la marca:</p>
                     <% if(marca.img) { %>
                         <img class="img-mediana" src="<%= marca.img %>" alt="<%= marca.alt %> ">           
@@ -19,6 +22,10 @@
                     <div>
                     <label class="label-prod-fotos" for="marca-foto">Foto de la marca: </label>
                     <input class="input-prod-fotos" type="file" name="marca_foto" id="marca-foto">
+                    
+                    <% if (locals.errors && errors.marca_foto) { %>
+                        <p class="form-error"><%= errors.marca_foto.msg %> </p>
+                    <% } %>
                 </div>
                 </div>
 

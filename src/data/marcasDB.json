@@ -33,5 +33,12 @@
     "img": "/img/brands/marca-integra.png",
     "alt": "Logo Silk",
     "delete": false
+  },
+  {
+    "id": 6,
+    "nombre": "Silk 2",
+    "delete": true,
+    "img": "",
+    "alt": ""
   }
 ]

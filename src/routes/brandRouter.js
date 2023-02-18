@@ -18,6 +18,24 @@ const multerDiskStorage = multer.diskStorage({
 });
 const uploadFile = multer({storage: multerDiskStorage});
 
+// VALIDACIONES
+const { body } = require('express-validator');
+const validarMarcas = [
+    body("marca_nombre").notEmpty().withMessage("Debe ingresar un nombre"),
+    body("marca_foto").custom((value, { req }) => {
+        if (req.file) {
+            const extensions = ['.jpg', '.png', '.gif', '.webp', '.jpeg']
+            let fileExt = path.extname(req.file.originalname);
+
+            if (!extensions.includes(fileExt)) {
+                throw new Error(`Las extensiones permitidas son : ${extensions.join(", ")}`)
+            }
+        }
+
+        return true;
+    })
+];
+
 /*** CONTROLADOR ***/
 const brandController = require('../controllers/brandController');
 
@@ -31,27 +49,10 @@ router.patch('/activar/:id', brandController.processActivate)
 
 // crear
 router.get('/create', brandController.create);
-router.post('/create', uploadFile.single("marca_foto"), brandController.processCreate);
+router.post('/create', uploadFile.single("marca_foto"), validarMarcas, brandController.processCreate);
 
 // editar
 router.get('/edit/:id', brandController.edit);
-router.put('/edit/:id', uploadFile.single("marca_foto"), brandController.processEdit);
+router.put('/edit/:id', uploadFile.single("marca_foto"), validarMarcas, brandController.processEdit);
 
-
-/*
-
-//EDCION DE UN  PRODUCTO
-router.get('/edit/:id', brandController.edit);
-router.put('/edit/:id', uploadFile.array("brand_foto"), brandController.processEdit);
-
-//Soft delete de los productos
-router.delete('/delete/soft/:id', brandController.softDelete);
-router.delete('/delete/hard/:id', brandController.hardDelete);
-
-
-
-//LISTA DE MARCAS
-router.get('/listBrands', brandController.listBrands);
-
-*/
 module.exports = router;
