@@ -62,7 +62,6 @@ const controller = {
     processEdit: (req, res) => {
         // chequeo validaciones middleware
         const valRes = validationResult(req)
-        console.log(valRes.mapped())
         if (valRes.errors.length > 0) {
             let estiloVida = {
                 id: req.params.id,
@@ -82,7 +81,6 @@ const controller = {
                 id: req.params.id,
                 nombre: req.body.estiloVida_nombre
             }
-            console.log(estiloVidaRepetido)
             return res.render('lifeStyles/edit', { errors: estiloVidaRepetido, estiloVida: estiloVida })
         }
         

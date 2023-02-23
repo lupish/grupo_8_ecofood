@@ -57,7 +57,6 @@ const controller = {
         if (!req.session.usuarioLogueado) {
             let usuario = users.find(elem => elem.email == req.body.email && !elem.delete);   
             if (usuario) {
-                console.log(req.body.contrasenia)
                 if (!bcryptjs.compareSync(req.body.contrasenia, usuario.contrasenia)) {
                     let contraseniaMal = {
                         contrasenia: {
@@ -205,7 +204,6 @@ const controller = {
         return res.redirect('/panels/manageUsers/');
     },
     logout: (req, res) => {
-        console.log("---------------------------------- LOGOUT -----------------------------")
         res.clearCookie('email')
         req.session.destroy();
         return res.redirect('/')

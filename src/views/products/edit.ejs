@@ -45,7 +45,7 @@
                     <p>Marca del producto:</p>
                     <% for(let i = 0; i < marcas.length; i ++) { %>
                         <div>
-                            <input type="radio" name="prod_marca" id="<%= marcas[i].nombre %>" value="<%= marcas[i].id %>" <% if (marcas[prod.marca-1].nombre == marcas[i].nombre) { %> <%= 'checked' %> <% } %> >
+                            <input type="radio" name="prod_marca" id="<%= marcas[i].nombre %>" value="<%= marcas[i].id %>" <% if (prod.marca == marcas[i].id) { %> <%= 'checked' %> <% } %> >
                             <label for="<%= marcas[i].nombre %>"><%= marcas[i].nombre %> </label>
                         </div>
                        
