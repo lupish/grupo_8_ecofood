@@ -23,14 +23,16 @@ function assignProd(prodId, req) {
     // estilosVida del producto
     let prodEstilosVida = [];
     let categ = {};
-    if (typeof(req.body.prod_estilosVida) == "string") {
-        categ = {id: req.body.prod_estilosVida};
-        prodEstilosVida.push(categ);
-    } else {
-        req.body.prod_estilosVida.forEach(elem => {
-            categ = {id: elem};
+    if (req.body.prod_estilosVida) {
+        if (typeof(req.body.prod_estilosVida) == "string") {
+            categ = {id: req.body.prod_estilosVida};
             prodEstilosVida.push(categ);
-        });
+        } else {
+            req.body.prod_estilosVida.forEach(elem => {
+                categ = {id: elem};
+                prodEstilosVida.push(categ);
+            });
+        }
     }
     
     // Imagenes del producto
@@ -39,7 +41,7 @@ function assignProd(prodId, req) {
     req.files.forEach(elem => {
         img = {
             id: imgId,
-            img: "/img/products/" + elem.originalname,
+            img: "/img/products/" + elem.filename,
             alt: elem.originalname
         };
 
@@ -107,25 +109,21 @@ const controller = {
     },
     processCreate: (req, res) => {   
         let  errores=validationResult(req)
-       if(errores.errors.length===0){
-        console.log("NO Hay errores")
-        let prodId = 1;
-        if (products.length > 0) {
-            prodId = products[products.length-1].id + 1;
-        }
+        if(errores.errors.length===0){
+            let prodId = 1;
+            if (products.length > 0) {
+                prodId = products[products.length-1].id + 1;
+            }
 
-        let prod = assignProd(prodId, req);
+            let prod = assignProd(prodId, req);
 
-        // Guardar producto en la bd
-        products.push(prod);
-        fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
+            // Guardar producto en la bd
+            products.push(prod);
+            fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
 
-        return res.redirect('/products/listProducts')
-       }else{
-        console.log("Hay errores")
-        console.log(errores.errors);
-        console.log(req.body)
-        res.render('products/create', {categorias: categorias, estilosVida: estilosVida, marcas: marcas,errores:errores.mapped(),prod:req.body});
+            return res.redirect('/products/listProducts')
+        }else{
+            res.render('products/create', {categorias: categorias, estilosVida: estilosVida, marcas: marcas,errores:errores.mapped(),prod:req.body});
        }
     },
     processEdit: (req, res) => {
@@ -133,8 +131,6 @@ const controller = {
         let prod = assignProd(id, req);
         let  errores=validationResult(req)
         if(errores.errors.length > 0){
-        console.log("Hay errores")
-            console.log(prod);
             return res.render('products/edit',  {categorias: categorias, estilosVida: estilosVida, marcas: marcas, errores:errores.mapped(), prod:prod})
         }
 

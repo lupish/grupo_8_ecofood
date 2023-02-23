@@ -383,12 +383,15 @@
     "categoria": "4",
     "estilosVida": [
       {
+        "id": "2"
+      },
+      {
         "id": "3"
       }
     ],
     "marca": "4",
     "precio": "485",
-    "descripcionCorta": "Semillas de Chia x 150gr",
+    "descripcionCorta": "Semillas de Chia x 150gr ",
     "descripcionLarga": "CHÍA\r\nSemillas de chía\r\n\r\nPresentación: 150 gr.",
     "imgs": [
       {

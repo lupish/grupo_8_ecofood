@@ -30,6 +30,10 @@
     font-weight: bold;
 }
 
+p.form-error {
+    font-weight: normal;
+}
+
 .form-editar-prod input[type=number] {
     width: 40%;
 }
