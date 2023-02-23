@@ -109,21 +109,21 @@ const controller = {
     },
     processCreate: (req, res) => {   
         let  errores=validationResult(req)
-       if(errores.errors.length===0){
-        let prodId = 1;
-        if (products.length > 0) {
-            prodId = products[products.length-1].id + 1;
-        }
+        if(errores.errors.length===0){
+            let prodId = 1;
+            if (products.length > 0) {
+                prodId = products[products.length-1].id + 1;
+            }
 
-        let prod = assignProd(prodId, req);
+            let prod = assignProd(prodId, req);
 
-        // Guardar producto en la bd
-        products.push(prod);
-        fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
+            // Guardar producto en la bd
+            products.push(prod);
+            fs.writeFileSync(productsJSON, JSON.stringify(products, null, 2));
 
-        return res.redirect('/products/listProducts')
-       }else{
-        res.render('products/create', {categorias: categorias, estilosVida: estilosVida, marcas: marcas,errores:errores.mapped(),prod:req.body});
+            return res.redirect('/products/listProducts')
+        }else{
+            res.render('products/create', {categorias: categorias, estilosVida: estilosVida, marcas: marcas,errores:errores.mapped(),prod:req.body});
        }
     },
     processEdit: (req, res) => {
@@ -132,22 +132,6 @@ const controller = {
         let  errores=validationResult(req)
         if(errores.errors.length > 0){
             return res.render('products/edit',  {categorias: categorias, estilosVida: estilosVida, marcas: marcas, errores:errores.mapped(), prod:prod})
-        }
-
-        // chequear unicidad
-        if (products.find(elem => elem.nombre == req.body.prod_nombre && elem.id != req.params.id)) {
-            let prodRepetido = {
-                prod_nombre: {
-                    msg: "El producto ingresado ya existe"
-                }
-            }
-            return res.render('products/edit', {
-                categorias: categorias,
-                estilosVida: estilosVida,
-                marcas: marcas,
-                errores:prodRepetido,
-                prod:prod
-            })
         }
 
         products.forEach(elem => {

@@ -404,33 +404,5 @@
     "preferido": false,
     "buscados": false,
     "delete": false
-  },
-  {
-    "id": 16,
-    "nombre": "Producto para editar",
-    "categoria": "1",
-    "estilosVida": [
-      {
-        "id": "3"
-      },
-      {
-        "id": "5"
-      }
-    ],
-    "marca": "4",
-    "precio": "1",
-    "descripcionCorta": "Corta",
-    "descripcionLarga": "Larga",
-    "imgs": [
-      {
-        "id": 1,
-        "img": "/img/products/prod-road-trip-1058x701_1677117192639.jpg",
-        "alt": "road-trip-1058x701.jpg"
-      }
-    ],
-    "novedad": false,
-    "preferido": false,
-    "buscados": false,
-    "delete": false
   }
 ]
