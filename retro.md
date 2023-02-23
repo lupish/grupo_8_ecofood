@@ -68,3 +68,6 @@ Contemplando todo lo anterior, llegamos a dos accionables:
 
 # RETROSPECTIVA SPRINT 4
 Debido a que nos atrasamos en realizar la retrospectiva del Sprint 3, hicimos la 3 y la 4 en conjunto. Por lo que levantamos los mismos puntos y mismos accionables que los mencionados en el apartado anterior.
+
+# RETROSPECTIVA SPRINT 5
+En el último Sprint manejamos muy bien los tiempos, logrando terminar antes de la fecha de entrega, e incluso anticiparnos a próximas entregas. Dicho esto, estaría ideal seguir trabajando con la misma organización.
