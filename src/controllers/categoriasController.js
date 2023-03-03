@@ -1,61 +1,49 @@
 const path = require('path')
 const fs = require('fs');
 const { validationResult } = require('express-validator');
-
-// bd marcas
-const categoriasJSON = path.join(__dirname,'../data/categoriasDB.json');
-const categoriasList = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
+const db = require('../database/models');
+const Categoria = db.Categoria;
 
 const controller = {
     create: (req, res) => {
         res.render('categorias/create');
     },
-    processCreate: (req, res) => {
+    processCreate: async (req, res) => {
         // chequeo validaciones middleware
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
             return res.render('categorias/create', { errors: valRes.mapped(), oldData: req.body })
         }
-
+        const repetida = await Categoria.findAll
+          ({ where:{
+                nombre: req.body.categoria_nombre
+            }})
+            console.log(repetida);
         // chequear unicidad
-        if (categoriasList.find(elem => elem.nombre == req.body.categoria_nombre)) {
+         if (repetida.length > 0) {
+        console.log('svfd');
+       
             let categoriaRepetida = {
                 categoria_nombre: {
                     msg: "La categoría ingresada ya existe"
                 }
             }
-            return res.render('categorias/create', { errors: categoriaRepetida, oldData: req.body })
-        }
-        
-        let categoriaId = categoriasList[categoriasList.length-1].id + 1;
-       
-        let categoria = {
-            id: categoriaId,
-            nombre: req.body.categoria_nombre,
-            delete: false
+    return res.render('categorias/create', { errors: categoriaRepetida, oldData: req.body })
         }
 
+        let imagen 
         if (req.file != undefined) {
-            categoria.img = {
-            nombre:"/img/categorias/" + req.file.filename,
-            alt :req.file.originalname
+           imagen = "/img/categorias/" + req.file.filename
         }
-        } else {
-            categoria.img = {
-                nombre:"/img/categorias/img-not-found.webp",
-                alt: "Categoría sin imagen"
-            }
-        }
-
-        // Guardar estilo de vida en la bd
-        categoriasList.push(categoria);
-        fs.writeFileSync(categoriasJSON, JSON.stringify(categoriasList, null, 2))
-           
-           
-       
-        return  res.redirect("/panels/manageCategorias")
-       
-
+       try { const newCateg = await Categoria.create({
+            nombre: req.body.categoria_nombre,
+            img: imagen
+    })    
+} 
+catch (error){
+    console.log(error);
+}
+return  res.redirect("/panels/manageCategorias")       
     },
     edit: (req, res) => {
         let categoria = categoriasList.find(elem => elem.id == req.params.id);
@@ -108,17 +96,16 @@ const controller = {
 
         return  res.redirect("/panels/manageCategorias")
     },
-    softDelete:(req,res)=>{
+    softDelete: async (req,res)=>{
         let id = req.params.id;
-
-        categoriasList.forEach(elem => {
-            if (elem.id == id) {
-                elem.delete=true;
+        try {const categoria = await Categoria.destroy({
+            where: {
+                id: id
             }
-        });
-
-        fs.writeFileSync(categoriasJSON, JSON.stringify(categoriasList, null, 2));
-
+        })} 
+        catch (error){
+            console.log(error);
+        }
         return  res.redirect("/panels/manageCategorias")
     },
     hardDelete:(req,res)=>{

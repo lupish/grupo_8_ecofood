@@ -18,8 +18,8 @@ const usersJSON = path.join(__dirname,'../data/usersDB.json');
 const users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'));
 
 // categorias
-const categoriasJSON = path.join(__dirname,'../data/categoriasDB.json');
-const categoriasList = JSON.parse(fs.readFileSync(categoriasJSON, 'utf-8'));
+const db = require('../database/models');
+const Categoria = db.Categoria;
 
 const controller = {
     manageEcoFood: (req, res) => {
@@ -34,8 +34,9 @@ const controller = {
     manageEstilosVida: (req, res) => {
         res.render('panels/manageLifeStyles', {estilosVida: estilosVida})
     },
-    manageCategorias: (req, res) => {
-        res.render('panels/manageCategoria', {categorias: categoriasList})
+    manageCategorias: async (req, res) => {
+        const list = await Categoria.findAll()
+        res.render('panels/manageCategoria', {categorias: list})
     },
     manageUsers: (req, res) => {
         res.render('panels/manageUsers', {users: users})
