@@ -28,5 +28,15 @@
     "alt": "450_1000.jpeg",
     "rol": 1,
     "delete": false
+  },
+  {
+    "id": 4,
+    "nombre": "Admin",
+    "email": "admin@gmail.com",
+    "contrasenia": "$2a$10$UgvjGmEFs.OZyBI/K2hemuYK3/f64WUhcLXYCwblz7pe0Skov3cEG",
+    "img": "user-default.webp",
+    "alt": "Usuario sin imagen",
+    "rol": 2,
+    "delete": false
   }
 ]
