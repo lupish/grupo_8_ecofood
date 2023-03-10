@@ -13,13 +13,10 @@ const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
 const marcasJSON = path.join(__dirname,'../data/marcasDB.json');
 const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
 
-// bd users
-const usersJSON = path.join(__dirname,'../data/usersDB.json');
-const users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'));
-
-// categorias
+// Tablas de la base de datos
 const db = require('../database/models');
 const Categoria = db.Categoria;
+const Usuario = db.Usuario;
 
 const controller = {
     manageEcoFood: (req, res) => {
@@ -38,7 +35,8 @@ const controller = {
         const list = await Categoria.findAll()
         res.render('panels/manageCategoria', {categorias: list})
     },
-    manageUsers: (req, res) => {
+    manageUsers: async (req, res) => {
+        const users = await Usuario.findAll({paranoid: false});
         res.render('panels/manageUsers', {users: users})
     }
 }

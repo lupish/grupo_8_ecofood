@@ -40,6 +40,22 @@ const validationRegister = [
     })
 ];
 
+const validationEdit = [
+    body("nombre").notEmpty().withMessage("Debe ingresar un nombre"),
+    body("user_foto").custom((value, { req }) => {
+        if (req.file) {
+            const extensions = ['.jpg', '.png', '.gif', '.webp', '.jpeg']
+            let fileExt = path.extname(req.file.originalname);
+
+            if (!extensions.includes(fileExt)) {
+                throw new Error(`Las extensiones permitidas son : ${extensions.join(", ")}`)
+            }
+        }
+
+        return true;
+    })
+];
+
 //CONTROLADOR
 const userController = require('../controllers/userController');
 
@@ -54,19 +70,18 @@ router.get('/logout/:id', userController.logout);
 
 //REGISTER
 router.get('/register', guestMiddleware, userController.register);
-router.post('/register', uploadFile.single('user_foto'), validationRegister, userController.processCreate);
+router.post('/register', validationRegister, uploadFile.single('user_foto'), userController.processCreate);
 
 //DETaLLE DE USUARIO
 router.get('/userDetail/:id', authMiddleware, userController.userDetail);
 
 //EDICION DE ROL-USUARIO
 router.get('/edit/:id', userController.edit);
-router.put('/edit/:id', uploadFile.single('user_foto'), userController.processEdit);
+router.put('/edit/:id', uploadFile.single('user_foto'), validationEdit, userController.processEdit);
 
 
 //ELIMINACION DE USUARIOS 
 router.delete('/delete/soft/:id', userController.softDelete);
-router.delete('/delete/hard/:id', userController.hardDelete);
 
 //REACTIVAR USURAIO
 router.patch('/activar/:id', userController.processActivate);
