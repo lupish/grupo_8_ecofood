@@ -15,7 +15,7 @@
                 <div class="div-prod-fotos <%= (locals.errors && errors.categoria_foto) ? 'class=input-form-no-aceptado' : "" %>">
                     <p>Foto actual de la categoría:</p>
                     <% if(categoria.img) { %>
-                        <img class="img-mediana" src="<%= categoria.img.nombre %>" alt="<%= categoria.img.alt %> ">           
+                        <img class="img-mediana" src="<%= categoria.img %>" alt="imagen">           
                     <% } else { %>
                         <img class="img-mediana" src="/img/products/img-not-found.webp" alt="Estilo de vida sin imagen">
                     <% } %>

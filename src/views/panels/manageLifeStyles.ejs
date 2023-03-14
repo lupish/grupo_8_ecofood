@@ -33,7 +33,7 @@
                                 <i id="icon-edit" class="fa-solid fa-pen-to-square"></i>
                             </a>
 
-                            <% if (estilosVida[i].delete) { %>
+                            <% if (estilosVida[i].deleted_at != null) { %>
                                 <label for="activar<%=estilosVida[i].id%>" class="activar">
                                     <i id="icon-edit" class="fa-solid fa-power-off"></i>
                                 </label>

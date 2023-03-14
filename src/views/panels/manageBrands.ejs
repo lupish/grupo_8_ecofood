@@ -33,7 +33,7 @@
                                 <i id="icon-edit" class="fa-solid fa-pen-to-square"></i>
                             </a>
 
-                            <% if (marcas[i].delete) { %>
+                            <% if (marcas[i].deleted_at != null) { %>
                                 <label for="activar<%=marcas[i].id%>" class="activar">
                                     <i id="icon-edit" class="fa-solid fa-power-off"></i>
                                 </label>

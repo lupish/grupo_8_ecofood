@@ -22,7 +22,7 @@ const multerDiskStorage = multer.diskStorage({
         let fileExt = path.extname(file.originalname);
         let originalName = file.originalname.slice(0, file.originalname.length - fileExt.length)
 
-        let imageName = "prod-" + originalName + "_" + Date.now() + path.extname(file.originalname)
+        let imageName = "prod-" + Date.now() + path.extname(file.originalname)
         cb(null, imageName);
     }
 });

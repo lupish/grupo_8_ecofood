@@ -15,9 +15,9 @@
                 <div class="div-prod-fotos <%= (locals.errors && errors.marca_foto) ? 'class=input-form-no-aceptado' : "" %>">
                     <p>Foto actual de la marca:</p>
                     <% if(marca.img) { %>
-                        <img class="img-mediana" src="<%= marca.img %>" alt="<%= marca.alt %> ">           
+                        <img class="img-mediana" src="<%= marca.img %>" alt=" ">           
                     <% } else { %>
-                        <img class="img-mediana" src="/img/products/img-not-found.webp" alt="Marca sin imagen">
+                        <img class="img-mediana" src="/img/products/img-not-found.webp" alt="" >
                     <% } %>
                     <div>
                     <label class="label-prod-fotos" for="marca-foto">Foto de la marca: </label>

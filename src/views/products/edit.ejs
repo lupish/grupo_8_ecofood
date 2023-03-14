@@ -16,7 +16,7 @@
                     <p>Categoría del producto:</p>
                     <% for(let i = 0; i < categorias.length; i ++) { %>
                         <div>
-                            <input type="radio" name="prod_categoria" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (prod.categoria == categorias[i].id) { %> <%= 'checked' %> <% } %> >
+                            <input type="radio" name="prod_categoria" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (prod.Categoria.id == categorias[i].id) { %> <%= 'checked' %> <% } %> >
                             <label for="<%= categorias[i].nombre %>"><%= categorias[i].nombre %></label>
                            
                         </div>
@@ -31,9 +31,10 @@
                     <p>Estilos de vida acorde al producto:</p>
                     <% for(let i = 0 ; i < estilosVida.length; i ++) { %>
                         <div>
-                            <input type="checkbox" name="prod_estilosVida" id="<%= estilosVida[i].nombre %>" value="<%= estilosVida[i].id %>" <% if (prod.estilosVida.find(elem => elem.id == estilosVida[i].id)) { %> <%= 'checked' %> <% } %> >
+                            <input type="checkbox" name="prod_estilosVida" id="<%= estilosVida[i].nombre %>" value="<%= estilosVida[i].id %>" <% if (estilos.includes(estilosVida[i].id)) { %> <%= 'checked' %> <% } %>  >  
                             <label for="<%= estilosVida[i].nombre %>"><%= estilosVida[i].nombre %></label>
                         </div>
+                        
                        
                     <% } %> 
                     <%if(locals.errores && errores.prod_estilosVida){%>
@@ -45,7 +46,7 @@
                     <p>Marca del producto:</p>
                     <% for(let i = 0; i < marcas.length; i ++) { %>
                         <div>
-                            <input type="radio" name="prod_marca" id="<%= marcas[i].nombre %>" value="<%= marcas[i].id %>" <% if (prod.marca == marcas[i].id) { %> <%= 'checked' %> <% } %> >
+                            <input type="radio" name="prod_marca" id="<%= marcas[i].nombre %>" value="<%= marcas[i].id %>" <% if (prod.Marca.id == marcas[i].id) { %> <%= 'checked' %> <% } %> >
                             <label for="<%= marcas[i].nombre %>"><%= marcas[i].nombre %> </label>
                         </div>
                        
@@ -77,11 +78,8 @@
                     <div class="carrusel-un-prod-center">
                         <p>Fotos actuales del producto:</p>
                         <div class="carrusel-un-prod">
-                            <% for(let i = 0; i < prod.imgs.length; i ++) { %>
-                                <img src="<%= prod.imgs[i].img %>" alt="<%= prod.imgs[i].alt %> ">           
-                            <% } %>
-                            <% if (prod.imgs.length == 0) { %>
-                                <img src="/img/products/img-not-found.webp" alt="Producto sin imagen">
+                            <% for(let i = 0; i < prod.ProductoImagen.length; i ++) { %>
+                                <img src="<%= prod.ProductoImagen[i].img %>" alt=" ">           
                             <% } %>
                         </div>
                     </div>

@@ -1,0 +1,1 @@
+- en el panel de categorias se deberian ver las categorias eliminadas con la opcion de reactivarlas 

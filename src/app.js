@@ -16,7 +16,7 @@ const fs = require('fs');
 
 app.use(express.static('public'));
 app.use(session({secret:"Shh,es un secreto!"}));
-console.log(app)
+
 
 // set views
 app.set('views', path.join(__dirname, './views'));

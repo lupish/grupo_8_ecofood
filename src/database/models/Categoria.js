@@ -15,6 +15,7 @@ module.exports = (sequelize, dataTypes) => {
         }
     };
     let config = {
+        tableName: "categoria",
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
@@ -22,6 +23,13 @@ module.exports = (sequelize, dataTypes) => {
         paranoid: true
     }
     const Categoria = sequelize.define(alias, cols, config); 
+
+    Categoria.associate = function(models) {
+        Categoria.hasMany(models.Producto, { 
+            as: "Producto",
+            foreignKey: "categoria_id"
+        })
+    }
 
     return Categoria
 };

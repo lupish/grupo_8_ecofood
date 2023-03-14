@@ -1,42 +1,65 @@
-const path = require('path')
-const fs = require('fs');
+const db = require('../database/models');
+ // bd productos
+ const Producto = db.Producto;
 
-// bd productos
-const productsJSON = path.join(__dirname,'../data/productsDB.json');
-const products = JSON.parse(fs.readFileSync(productsJSON, 'utf-8'));
+ // bd imagenes de productos
+const ProductoImagen = db.ProductoImagen
 
-// bd estilosVida
-const estilosVidaJSON = path.join(__dirname,'../data/estilosVidaDB.json');
-const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
-
-// bd marcas
-const marcasJSON = path.join(__dirname,'../data/marcasDB.json');
-const marcas = JSON.parse(fs.readFileSync(marcasJSON, 'utf-8'));
+ // bd categorias
+ const Categoria = db.Categoria;
+ 
+ // bd estilosVida
+ const EstiloVida = db.EstiloVida;
+ 
+ // bd marcas
+ const Marca = db.Marca;
 
 // bd users
-const usersJSON = path.join(__dirname,'../data/usersDB.json');
-const users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'));
+const Usuario = db.Usuario
 
-// categorias
-const db = require('../database/models');
-const Categoria = db.Categoria;
 
 const controller = {
     manageEcoFood: (req, res) => {
         res.render('panels/manageEcoFood')
     },
-    manageProducts: (req, res) => {
-        res.render('panels/manageProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
+    manageProducts: async (req, res) => {
+        try{
+            const prods = await Producto.findAll({include: [{association: 'ProductoImagen'}]}, {paranoid: false} )
+            console.log(prods);
+            res.render('panels/manageProducts', {prods: prods})
+        }
+        catch (error){
+            console.log(error);
+        };
+        // res.render('panels/manageProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
     },
-    manageBrands: (req, res) => {
-        res.render('panels/manageBrands', {marcas: marcas})
+    manageBrands: async (req, res) => {
+        try{
+            const list = await Marca.findAll({paranoid: false})
+            res.render('panels/manageBrands', {marcas: list})
+            }
+            catch (error){
+                console.log(error);
+            };
     },
-    manageEstilosVida: (req, res) => {
-        res.render('panels/manageLifeStyles', {estilosVida: estilosVida})
+    manageEstilosVida: async (req, res) => {
+        try{
+            const list = await EstiloVida.findAll({paranoid: false})
+            res.render('panels/manageLifeStyles', {estilosVida: list})
+        }
+        catch (error){
+            console.log(error);
+        };
+        
     },
     manageCategorias: async (req, res) => {
-        const list = await Categoria.findAll()
+        try{
+        const list = await Categoria.findAll({paranoid: false})
         res.render('panels/manageCategoria', {categorias: list})
+        }
+        catch (error){
+            console.log(error);
+        };
     },
     manageUsers: (req, res) => {
         res.render('panels/manageUsers', {users: users})
