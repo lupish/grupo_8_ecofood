@@ -1,48 +1,12 @@
 const path = require('path')
 const fs = require('fs');
-const { check, body } = require('express-validator');
-const { softDelete } = require('./productController');
 const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
-const { ResultWithContext } = require('express-validator/src/chain');
 
-//bd users
-const usersJSON = path.join(__dirname, '../data/usersDB.json');
-let users;
-if(usersJSON==""){
-users = []
-}else {
-users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'))
-}
-
-//bd roles
-const rolesJSON = path.join(__dirname, '../data/rolesDB.json');
-const rol = JSON.parse(fs.readFileSync(rolesJSON, 'utf-8'));
-
-//crar cuenta
-function createAcount(userId, req){
-    //imagen de usuario 
-    
-    let imgUser = "user-default.webp";
-    let altUser = "Usuario sin imagen";
-    if (req.file) {
-        imgUser = req.file.filename;
-        altUser = req.file.originalname;
-    }
-    //crear usuario
-    let usuario = {
-        id: userId, 
-        nombre: req.body.nombre,
-        email: req.body.email,
-        contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
-        img: imgUser,
-        alt: altUser,
-        rol: rol[0].id,
-        delete: false
-    }
-    return usuario 
-  
-}
+// Tablas de la base de datos
+const db = require('../database/models');
+const Usuario = db.Usuario;
+const Rol = db.Rol;
 
 //controlador
 const controller = {
@@ -53,9 +17,20 @@ const controller = {
         }
         res.render('users/login')
     },
-    processLogin: (req, res) => {
+    processLogin: async (req, res) => {
         if (!req.session.usuarioLogueado) {
-            let usuario = users.find(elem => elem.email == req.body.email && !elem.delete);   
+            let listaUsuarios = await Usuario.findAll({
+                where: {
+                    email: req.body.email
+                }
+            })
+
+            let usuario;
+            if (listaUsuarios.length > 0) {
+                usuario = listaUsuarios[0]
+            }
+
+            // users.find(elem => elem.email == req.body.email && !elem.delete);   
             if (usuario) {
                 if (!bcryptjs.compareSync(req.body.contrasenia, usuario.contrasenia)) {
                     let contraseniaMal = {
@@ -87,35 +62,16 @@ const controller = {
         }
         res.render('users/register')
     },
-    processCreate: (req, res) => {
+    processCreate: async (req, res) => {
+        // CHEQUEAR CAMPOS
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
             return res.render('users/register', { errors: valRes.mapped(), oldData: req.body })
         }
-        // CHEQUEAR CAMPOS
 
         // chequear que usuario no existe
-        if (!users.find(elem => elem.email == req.body.email)) {
-            // chequear que las pass coindicen
-            if (req.body.contrasenia == req.body.confirmarContrasenia) {
-                let userId = 1;
-                if (users.length > 0) {
-                    userId = users[users.length-1].id + 1;
-                }
-                let usuario = createAcount(userId, req)
-                users.push(usuario);
-                usuariosJSON = JSON.stringify(users, null, 2);
-                fs.writeFileSync(usersJSON, usuariosJSON);
-                res.redirect('/');
-            } else {
-                let contraseniaDistinta = {
-                    contrasenia: {
-                        msg: "La contraseña ingresada no coincide con la confirmación de la misma"
-                    }  
-                }
-                return res.render('users/register', {errors: contraseniaDistinta, oldData: req.body})
-            }
-        } else {
+        let usuariosEmail = await Usuario.findAll({where: {email: req.body.email}})
+        if (usuariosEmail.length > 0) {
             let mailRepetido = {
                 email: {
                     msg: "Ya existe un usuario con el mail ingresado"
@@ -123,84 +79,115 @@ const controller = {
             }
             return res.render('users/register', {errors: mailRepetido, oldData: req.body })
         }
-    },
-    userDetail: (req, res) => {
-        let user = users.find(elem => elem.id == req.params.id && elem.delete==false);
-        if (user){
-            res.render('users/userDetail', {user: user, rol: rol})
-        }else{
-            return res.redirect('/products/product-not-found');
-        }
-    },
-    edit: (req, res)=>{
-        let user = users.find(elem=>elem.id==req.params.id);
-        if (user){
-            res.render('users/edit', {user: user, rol: rol})
-        }else{
-            return res.redirect('/products/product-not-found');
-        }
-    },
-     processEdit: (req, res)=>{
-        let userId = req.params.id; 
-        function acount(userId, req){ 
-        let imgUser = "user-default.webp";
-        let altUser = "Usuario sin imagen";
-        if (req.file) {
-        imgUser = req.file.filename;
-        altUser = req.file.originalname;
-        } 
-            let usuario = {
-                id: userId, 
+
+        // chequear que las pass coindicen
+        if (req.body.contrasenia == req.body.confirmarContrasenia) {
+            //crear usuario
+            let userImg; 
+            if (req.file != undefined) {
+                userImg = "/img/users/" + req.file.filename;
+            }
+            let rolesUsuario = await Rol.findAll({where: {nombre: "Usuario"}})
+            let userRol = rolesUsuario[0].id
+            let user = await Usuario.create({
                 nombre: req.body.nombre,
-                email: req.body.email, 
-                img: imgUser,
-                alt: altUser,
-                rol: parseInt(req.body.rol),
-                delete: false
+                email: req.body.email,
+                contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
+                img: userImg,
+                rol_id: userRol
+            })
+
+            res.redirect('/');
+        } else {
+            let contraseniaDistinta = {
+                contrasenia: {
+                    msg: "La contraseña ingresada no coincide con la confirmación de la misma"
+                }  
             }
-            return usuario 
-        }  
-        let usuario = acount(userId, req)
-        users.forEach(elem=>{
-             if (elem.id == userId){
-                if(req.session.usuarioLogueado.id == elem.id ) 
-               {  elem.nombre = usuario.nombre;
-                 elem.img = usuario.img;
-                 elem.email = usuario.email; 
-                 elem.rol = usuario.rol;
-                }else{
-                    elem.rol = usuario.rol; 
-                }
-            }
-         });
-         fs.writeFileSync(usersJSON, JSON.stringify(users, null, 2))
-         return  res.redirect('/users/userDetail/' + userId)
+            return res.render('users/register', {errors: contraseniaDistinta, oldData: req.body})
+        }
     },
-    softDelete: (req, res)=>{
-        let id = req.params.id;
-        users.forEach(elem=>{
-            if(elem.id == id){
-                elem.delete=true;
-            }
-        });
-        fs.writeFileSync(usersJSON, JSON.stringify(users, null, 2));
-        return res.redirect('/panels/manageUsers/');
+    userDetail: async (req, res) => {
+        const user = await Usuario.findByPk(req.params.id);
+        const rolUser = await Rol.findByPk(user.rol_id);
+        
+        if (user) {
+            res.render('users/userDetail', {user: user, rol: rolUser.nombre})
+        } else {
+            return res.redirect('/products/product-not-found');
+        }
     },
-    hardDelete: (req, res)=>{
-        let id = req.params.id;
-        let usersNotDelete = users.filter(row=>{return row.id != id});
-        fs.writeFileSync(usersJSON, JSON.stringify(usersNotDelete, null, 2));
+    edit: async (req, res)=>{
+        const user = await Usuario.findByPk(req.params.id);
+
+        
+        let rolUser;
+        if (req.session.usuarioLogueado) {
+            rolUser = await Rol.findByPk(req.session.usuarioLogueado.rol_id);
+        } else {
+            rolUser = await Rol.findByPk(user.rol_id);
+        }
+            
+        const roles = await Rol.findAll();
+        
+
+        if (user) {
+            res.render('users/edit', {user: user, rolUser: rolUser.nombre, rol: roles})
+        } else {
+            return res.redirect('/products/product-not-found');
+        }
+    },
+     
+    processEdit: async (req, res) => {
+        let userId = req.params.id;
+        let oldUser = await Usuario.findByPk(userId);
+        if (req.session.usuarioLogueado) {
+            rolUser = await Rol.findByPk(req.session.usuarioLogueado.rol_id);
+        } else {
+            return res.redirect('/products/product-not-found');
+        }
+        const roles = await Rol.findAll();
+
+        const valRes = validationResult(req);
+        if (req.session.usuarioLogueado.id == userId && valRes.errors.length > 0) {
+            return res.render('users/edit', { errors: valRes.mapped(), user: oldUser, rolUser: rolUser.nombre, rol: roles })
+        }
+        
+        let userImg; 
+        if (req.file != undefined) {
+            userImg = "/img/users/" + req.file.filename;
+        } else {
+            userImg = oldUser.img
+        }
+        let user = await Usuario.update({
+            nombre: req.body.nombre,
+            img: userImg,
+            rol_id: req.body.rol
+        },
+        {
+            where: {id: userId}
+        })
+
+        if (req.session.usuarioLogueado.id == userId) {
+            let userEditado = await Usuario.findByPk(userId)
+            req.session.usuarioLogueado = userEditado;
+        }
+
+        return  res.redirect('/users/userDetail/' + userId)
+    },
+    softDelete: async (req, res)=>{
+        let userId = req.params.id;
+
+        let user = await Usuario.destroy({where: {id: userId}})
+
         return res.redirect('/panels/manageUsers/');
     },
    
-    processActivate: (req, res) => {
-        let id = req.params.id;
-        users.forEach(elem=>{
-            if(elem.id==id){
-                elem.delete=false;
-            }
-        });
-        fs.writeFileSync(usersJSON, JSON.stringify(users, null, 2));
+    processActivate: async (req, res) => {
+        let userId = req.params.id;
+        const user = await Usuario.restore({
+            where: {id : userId}
+        })
         return res.redirect('/panels/manageUsers/');
     },
     logout: (req, res) => {

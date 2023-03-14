@@ -61,7 +61,8 @@ const controller = {
             console.log(error);
         };
     },
-    manageUsers: (req, res) => {
+    manageUsers: async (req, res) => {
+        const users = await Usuario.findAll({paranoid: false});
         res.render('panels/manageUsers', {users: users})
     }
 }

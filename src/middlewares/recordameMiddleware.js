@@ -1,15 +1,21 @@
-const path = require('path')
-const fs = require('fs');
+// Tablas de la base de datos
+const db = require('../database/models');
+const Usuario = db.Usuario;
 
-const usersJSON = path.join(__dirname,'../data/usersDB.json');
-let users = JSON.parse(fs.readFileSync(usersJSON, 'utf-8'));
-
-function recordameMiddleware(req, res, next) {
+const recordameMiddleware = async (req, res, next) => {
+    console.log("recordameMiddleware")
     if (req.cookies.email) {
         if (!req.session.usuarioLogueado) {
-            let usuario = users.find(elem => elem.email == req.cookies.email);
-            req.session.usuarioLogueado = usuario;
-            console.log("Usuario recordado en session")
+            let usuarioMail = await Usuario.findAll({
+                where: {
+                    email: req.cookies.email
+                }
+            });
+            if (usuarioMail.length > 0) {
+                let user = usuarioMail[0]
+                req.session.usuarioLogueado = user;
+                console.log("Usuario recordado en session")
+            }   
         }
     }
     

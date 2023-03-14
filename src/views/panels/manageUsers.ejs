@@ -17,7 +17,7 @@
                         <div class="panel-prods-info">
                             <div class="img-chica">
                                 <% if (users[i].img) { %>
-                                    <img src="/img/users/<%= users[i].img %>" alt="<%= users[i].alt %>" width="360">
+                                    <img src="<%= users[i].img %>" alt="<%= users[i].alt %>" width="360">
                                     <% } else { %>        
                                 <i style="color:  #96ab61ff;" class="fa-solid fa-user"></i>
                                 <% } %>
@@ -36,7 +36,7 @@
                             </a>
                         
 
-                                <% if (users[i].delete) { %>
+                                <% if (users[i].deleted_at) { %>
                                     <label for="activar<%=users[i].id%>" class="activar">
                                         <i id="icon-edit" class="fa-solid fa-power-off"></i>
                                     </label>
