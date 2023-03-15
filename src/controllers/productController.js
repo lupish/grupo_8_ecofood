@@ -96,23 +96,37 @@ const controller = {
     },
     listProducts: async (req, res) => {
         try {
-        let prods = await Producto.findAll({include:[{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida'}]})
-        
-        if(req.params.idEstiloVida){
-            let estilo = await EstiloVida.findByPk(req.params.idEstiloVida)
-            //let prods = await Producto.findAll({include:[{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida'}]}, {where: {EstiloVida: {[Op.in]: estilo}}})
+            let prods = await Producto.findAll({
+                include:[
+                    {association: 'ProductoImagen'}
+                    ,{association: 'Marca'}
+                    ,{association: 'EstiloVida'}
+                ]
+            })
+            let listaEstilosVida = await EstiloVida.findAll();
+            
+            if (req.params.idEstiloVida){
+                let estilo = await EstiloVida.findByPk(req.params.idEstiloVida)
+                let prods = await Producto.findAll({
+                    include:[
+                            {association: 'ProductoImagen'}
+                            ,{association: 'Marca'}
+                            ,{association: 'EstiloVida', where: {id: req.params.idEstiloVida}}
+                        ]
+                })
 
-            let prods = await Producto.findAll({include:[{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida', where: {id: req.params.idEstiloVida}}]})
-            // let prods = await Producto.findAll()
-            return res.send(prods);
-             
-             console.log(estilo)
-            res.render('products/listProducts', {prods: prods, estilosVidas: estilo, estilosVida: EstiloVida})
-        }else{
-            prods = await Producto.findAll({include:[{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida'}]},{where: {EstiloVida:{[Op.in]:req.params.idEstiloVida}}});
-            console.log(prods);
-            res.render('products/listProducts', {prods: prods,  estilosVida: EstiloVida})
-        }
+                res.render('products/listProducts', {prods: prods, estiloFiltrado: estilo, estilosVida: listaEstilosVida})
+            } else {
+                prods = await Producto.findAll({
+                    include:[
+                        {association: 'ProductoImagen'}
+                        ,{association: 'Marca'}
+                        ,{association: 'EstiloVida'}
+                    ]
+                });
+                
+                res.render('products/listProducts', {prods: prods,  estilosVida: listaEstilosVida})
+            }
         }
         catch (error){
             console.log(error);

@@ -7,8 +7,8 @@
         <%- include('../partials/listEstilosVida') %> 
         
         <section>
-            <% if (typeof estilosVidas !='undefined') {%> 
-                <h2>Productos - <%= estilosVidas.nombre %> </h2>
+            <% if (locals.estiloFiltrado) {%> 
+                <h2>Productos - <%= estiloFiltrado.nombre %> </h2>
             <% } else { %> 
                 <h2>Productos</h2>
             <% } %> 
