@@ -99,9 +99,13 @@ const controller = {
         let prods = await Producto.findAll({include:[{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida'}]})
         
         if(req.params.idEstiloVida){
-            let prods = await Producto.findAll({include:[{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida'}]},{where: {EstiloVida}})
-            return res.send(prods[1]);
-             let estilo = await EstiloVida.findByPk(req.params.idEstiloVida)
+            let estilo = await EstiloVida.findByPk(req.params.idEstiloVida)
+            //let prods = await Producto.findAll({include:[{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida'}]}, {where: {EstiloVida: {[Op.in]: estilo}}})
+
+            let prods = await Producto.findAll({include:[{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida', where: {id: req.params.idEstiloVida}}]})
+            // let prods = await Producto.findAll()
+            return res.send(prods);
+             
              console.log(estilo)
             res.render('products/listProducts', {prods: prods, estilosVidas: estilo, estilosVida: EstiloVida})
         }else{
