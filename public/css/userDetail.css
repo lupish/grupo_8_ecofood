@@ -58,12 +58,14 @@ body.detalle-usuario main div.container div.box  img{
   border: 3px solid #96AB61;
   border-radius: 50%;
 }
-body.detalle-usuario main div.container div.box p{
+
+body.detalle-usuario main div.container div.box p.p-mediana{
   text-align: justify;
   margin-top: 8px;
   font-size: 22px;
   font-weight: 400;
 }
+
 body.detalle-usuario main div.container div.box .name_job{
   margin: 10px 0 3px 0;
   color: #96AB61;;

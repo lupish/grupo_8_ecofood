@@ -108,11 +108,14 @@ const controller = {
         }
     },
     userDetail: async (req, res) => {
-        const user = await Usuario.findByPk(req.params.id);
-        const rolUser = await Rol.findByPk(user.rol_id);
+        //const user = await Usuario.findByPk({association: "rol"}, req.params.id);
+        const user = await Usuario.findOne(
+            {where: {id: req.params.id}
+            ,include: [{association: "rol"}]}
+        );
         
         if (user) {
-            res.render('users/userDetail', {user: user, rol: rolUser.nombre})
+            res.render('users/userDetail', {user: user})
         } else {
             return res.redirect('/products/product-not-found');
         }
@@ -120,16 +123,17 @@ const controller = {
     edit: async (req, res)=>{
         const user = await Usuario.findByPk(req.params.id);
 
-        
         let rolUser;
         if (req.session.usuarioLogueado) {
             rolUser = await Rol.findByPk(req.session.usuarioLogueado.rol_id);
+            if (rolUser.nombre != "Administrador" && req.session.usuarioLogueado.id != user.id) {
+                return res.redirect('/products/product-not-found');
+            }
         } else {
-            rolUser = await Rol.findByPk(user.rol_id);
+            return res.redirect('/products/product-not-found');
         }
             
         const roles = await Rol.findAll();
-        
 
         if (user) {
             res.render('users/edit', {user: user, rolUser: rolUser.nombre, rol: roles})
@@ -150,7 +154,10 @@ const controller = {
 
         const valRes = validationResult(req);
         if (req.session.usuarioLogueado.id == userId && valRes.errors.length > 0) {
-            return res.render('users/edit', { errors: valRes.mapped(), user: oldUser, rolUser: rolUser.nombre, rol: roles })
+            let userData = oldUser
+            userData.nombre =req.body.nombre
+
+            return res.render('users/edit', { errors: valRes.mapped(), user: userData, rolUser: rolUser.nombre, rol: roles })
         }
         
         let userImg; 

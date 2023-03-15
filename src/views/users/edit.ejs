@@ -16,11 +16,18 @@
             
                     <% if(locals.usuarioLogueado && locals.usuarioLogueado.id == user.id ) { %>
                         <input class="input-form" type="text" name="nombre" id="nombre" placeholder="Nombre del usuario" value="<%= user.nombre%>">
+                        <% if (locals.errors && errors.nombre) { %>
+                            <p class="form-error"><%= errors.nombre.msg %> </p>
+                        <% } %>
 
-                        <label for="user_foto">Cambiá tu foto de perfil</label>
+                        <label for="user_foto"><p class="p-mediana">Cambiá tu foto de perfil:</p></label>
                         <input type="file" name="user_foto" id="user_foto"
                         <%= (locals.errors && errors.user_foto) ? 'class=input-form-no-aceptado' : "" %>
                         >
+
+                        <% if (locals.errors && errors.user_foto) { %>
+                            <p class="form-error"><%= errors.user_foto.msg %> </p>
+                        <% } %>
                     <% } %>      
             
                     <% if(locals.usuarioLogueado && rolUser == "Administrador") { %> 
