@@ -70,7 +70,7 @@ router.get('/logout/:id', userController.logout);
 
 //REGISTER
 router.get('/register', guestMiddleware, userController.register);
-router.post('/register', validationRegister, uploadFile.single('user_foto'), userController.processCreate);
+router.post('/register', uploadFile.single('user_foto'), validationRegister, userController.processCreate);
 
 //DETaLLE DE USUARIO
 router.get('/userDetail/:id', authMiddleware, userController.userDetail);
