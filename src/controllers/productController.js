@@ -18,8 +18,10 @@ const Marca = db.Marca;
 // bd imagenes 
 const ProductoImagen = db.ProductoImagen
 
+const ProductoEstiloVida = db.ProductoEstiloVida
+
 // validator
-const {validationResult}=require("express-validator")
+const {validationResult}=require("express-validator");
 
 const controller = {
     productDetail: async (req, res) => {
@@ -56,43 +58,39 @@ const controller = {
         }
     },
     processCreate: async (req, res) => { 
-      try{
-         let errores = validationResult(req);
-         if(errores.errors.length === 0){
-         let newProduct = await Producto
-         .create({
-              nombre: req.body.prod_nombre,
-              categoria_id: req.body.prod_categoria,
-              marca_id: req.body.prod_marca,
-              precio: req.body.prod_precio,
-              descripcionCorta: req.body.prod_descripcion_corta,
-              descripcionLarga: req.body.prod_descripcion_larga,
-
-         })
-         let idEstiloVida = req.body.prod_estilosVida
-         for(let i = 0; i < idEstiloVida.length; i++){
-            await newProduct.addEstiloVida(idEstiloVida[i])
-         }
+        try{
+            let errores = validationResult(req);
+            if(errores.errors.length === 0) {
+                let newProduct = await Producto.create({
+                    nombre: req.body.prod_nombre,
+                    categoria_id: req.body.prod_categoria,
+                    marca_id: req.body.prod_marca,
+                    precio: req.body.prod_precio,
+                    descripcionCorta: req.body.prod_descripcion_corta,
+                    descripcionLarga: req.body.prod_descripcion_larga,
+                })
          
-         let imagenes = req.files
-         let imgAcc = []
-          for(let i = 0; i < imagenes.length; i++){
-
-             await ProductoImagen.create({
-                img: imagenes[i].filename,
-                producto_id: newProduct.id
-             })
-          
+                let idEstiloVida = req.body.prod_estilosVida
+                for(let i = 0; i < idEstiloVida.length; i++){
+                    await newProduct.addEstiloVida(idEstiloVida[i])
+                }
+            
+                let imagenes = req.files
+                for(let i = 0; i < imagenes.length; i++){
+                    await ProductoImagen.create({
+                        img: "/img/products/" + imagenes[i].filename,
+                        producto_id: newProduct.id
+                    })
+                }
+    
+                return res.redirect('/products/productDetail/' + newProduct.id)
+            } else{
+                res.render('products/create', {categorias: Categoria, estilosVida: EstiloVida, marcas: Marca, errores:errores.mapped(), prod:req.body});
             }
-  
-          return res.redirect('/product/listProduct')
-      }else{
-               res.render('products/create', {categorias: Categoria, estilosVida: EstiloVida, marcas: Marca, errores:errores.mapped(), prod:req.body});
-    }
-       }
-       catch (error){
-          console.log(error);
-       } 
+        }
+        catch (error){
+            console.log(error);
+        } 
     },
     listProducts: async (req, res) => {
         try {
@@ -151,25 +149,57 @@ const controller = {
     },
     processEdit: async (req, res) => {
         try{
-        let id = req.params.id;
-        let  errores=validationResult(req)
-        if(errores.errors.length > 0){
-            return res.render('products/edit',  {categorias: Categoria, estilosVida: EstiloVida, marcas: Marca, errores:errores.mapped(), prod:prod})
-        }
-       let updateProduct = await Producto
-       .update({
-            nombre: req.body.prod_nombre,
-            categoria_id: req.body.prod_categoria,
-            marca_id: req.body.prod_marca,
-            precio: req.body.prod_precio,
-            descripcionCorta: req.body.prod_descripcion_corta,
-            descripcionLarga: req.body.prod_descripcion_larga, 
-        },
-        {where:{id:id}});
-        let idEstiloVida = req.body.prod_estilosVida
-         for(let i = 0; i < idEstiloVida.length; i++){
+            let idProd = req.params.id;
+            
+            let errores = validationResult(req)
+            if(errores.errors.length > 0){
+                return res.render('products/edit',  {categorias: Categoria, estilosVida: EstiloVida, marcas: Marca, errores:errores.mapped(), prod:prod})
+            }
+
+            await Producto.update(
+                {
+                    nombre: req.body.prod_nombre,
+                    categoria_id: req.body.prod_categoria,
+                    marca_id: req.body.prod_marca,
+                    precio: req.body.prod_precio,
+                    descripcionCorta: req.body.prod_descripcion_corta,
+                    descripcionLarga: req.body.prod_descripcion_larga, 
+                },
+                {where: {id:idProd}}
+            );
+            let prodNuevo = await Producto.findByPk(idProd);
+
+            /*** Estilos de vida ***/
+            let prodEstilosVida = req.body.prod_estilosVida;
+            // remover estilos viejos
+            await ProductoEstiloVida.destroy({where: {producto_id: idProd}})
+            // agregar estilos nuevos
+            for(let i = 0; i < prodEstilosVida.length; i++){
+                await prodNuevo.addEstiloVida(prodEstilosVida[i])
+            }
+
+            /*** Imagenes ***/
+            let prodImagenes = req.files;
+            console.log(prodImagenes)
+            // agregar nuevas fotos
+            for(let i = 0; i < prodImagenes.length; i++){
+                await ProductoImagen.create(
+                    {
+                        producto_id: idProd,
+                        img: "/img/products/" + prodImagenes[i].filename
+                    }
+                )
+            }
+        
+            return res.redirect('/products/productDetail/' + idProd)
+
+        // return res.redirect('/product/listProduct')
+
+        /*
+        let idEstiloVida = req.body.prod_estilosVida;
+        for(let i = 0; i < idEstiloVida.length; i++){
             await updateProduct.addEstiloVida(idEstiloVida[i])
-         }
+        }
         let imagenes = req.files
          let imgAcc = []
           for(let i = 0; i < imagenes.length; i++){
@@ -177,6 +207,7 @@ const controller = {
                 img: imagenes[i].filename
              },{where: {producto_id:id}})
             }
+        */
         }
         catch (error){
             console.log(error);
