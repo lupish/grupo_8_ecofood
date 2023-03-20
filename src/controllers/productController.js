@@ -192,22 +192,6 @@ const controller = {
             }
         
             return res.redirect('/products/productDetail/' + idProd)
-
-        // return res.redirect('/product/listProduct')
-
-        /*
-        let idEstiloVida = req.body.prod_estilosVida;
-        for(let i = 0; i < idEstiloVida.length; i++){
-            await updateProduct.addEstiloVida(idEstiloVida[i])
-        }
-        let imagenes = req.files
-         let imgAcc = []
-          for(let i = 0; i < imagenes.length; i++){
-             await ProductoImagen.create({
-                img: imagenes[i].filename
-             },{where: {producto_id:id}})
-            }
-        */
         }
         catch (error){
             console.log(error);
