@@ -171,11 +171,9 @@ const controller = {
 
             /*** Estilos de vida ***/
             let prodEstilosVida = req.body.prod_estilosVida;
-            // remover estilos viejos
-            await ProductoEstiloVida.destroy({where: {producto_id: idProd}})
             // agregar estilos nuevos
             for(let i = 0; i < prodEstilosVida.length; i++){
-                await prodNuevo.addEstiloVida(prodEstilosVida[i])
+                await prodNuevo.setEstiloVida(prodEstilosVida[i])
             }
 
             /*** Imagenes ***/
