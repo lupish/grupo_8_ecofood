@@ -85,7 +85,10 @@ const controller = {
     
                 return res.redirect('/products/productDetail/' + newProduct.id)
             } else{
-                res.render('products/create', {categorias: Categoria, estilosVida: EstiloVida, marcas: Marca, errores:errores.mapped(), prod:req.body});
+                let listaCateg = await Categoria.findAll();
+                let listaEstilosVida = await EstiloVida.findAll();
+                let listaMarcas = await Marca.findAll();
+                res.render('products/create', {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, errores:errores.mapped(), prod:req.body});
             }
         }
         catch (error){
@@ -153,7 +156,20 @@ const controller = {
             
             let errores = validationResult(req)
             if(errores.errors.length > 0){
-                return res.render('products/edit',  {categorias: Categoria, estilosVida: EstiloVida, marcas: Marca, errores:errores.mapped(), prod:prod})
+                const prod = await Producto.findByPk(
+                    idProd
+                    ,{include:[
+                        {association: 'ProductoImagen'}
+                        ,{association: 'Marca'}
+                        ,{association: 'Categoria'}
+                        ,{association: 'EstiloVida'}
+                    ]}
+                )
+                let listaCateg = await Categoria.findAll();
+                let listaEstilosVida = await EstiloVida.findAll();
+                let listaMarcas = await Marca.findAll();
+                let prodEstilos = prod.EstiloVida.map(elem => elem.id);
+                return res.render('products/edit',  {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, estilos: prodEstilos, errores:errores.mapped(), prod:prod})
             }
 
             await Producto.update(
@@ -169,12 +185,9 @@ const controller = {
             );
             let prodNuevo = await Producto.findByPk(idProd);
 
-            /*** Estilos de vida ***/
+            // reemplazar estilos de vida con los nuevos
             let prodEstilosVida = req.body.prod_estilosVida;
-            // agregar estilos nuevos
-            for(let i = 0; i < prodEstilosVida.length; i++){
-                await prodNuevo.setEstiloVida(prodEstilosVida[i])
-            }
+            await prodNuevo.setEstiloVida(prodEstilosVida)
 
             /*** Imagenes ***/
             let prodImagenes = req.files;
