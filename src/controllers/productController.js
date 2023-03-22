@@ -156,20 +156,33 @@ const controller = {
             
             let errores = validationResult(req)
             if(errores.errors.length > 0){
-                const prod = await Producto.findByPk(
-                    idProd
-                    ,{include:[
-                        {association: 'ProductoImagen'}
-                        ,{association: 'Marca'}
-                        ,{association: 'Categoria'}
-                        ,{association: 'EstiloVida'}
-                    ]}
-                )
                 let listaCateg = await Categoria.findAll();
                 let listaEstilosVida = await EstiloVida.findAll();
                 let listaMarcas = await Marca.findAll();
-                let prodEstilos = prod.EstiloVida.map(elem => elem.id);
-                return res.render('products/edit',  {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, estilos: prodEstilos, errores:errores.mapped(), prod:prod})
+                let prodEstilos;
+                if (req.body.prod_estilosVida) {
+                    prodEstilos = req.body.prod_estilosVida.map(elem => parseInt(elem));
+                } else {
+                    prodEstilos = []
+                }
+
+                let prodNuevo =
+                {
+                    id: idProd,
+                    nombre: req.body.prod_nombre,
+                    Categoria: {
+                        id: req.body.prod_categoria
+                    },
+                    Marca: {
+                        id: req.body.prod_marca
+                    },
+                    precio: req.body.prod_precio,
+                    descripcionCorta: req.body.prod_descripcion_corta,
+                    descripcionLarga: req.body.prod_descripcion_larga,
+                    ProductoImagen: prod.ProductoImagen
+                }
+
+                return res.render('products/edit',  {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, estilos: prodEstilos, errores:errores.mapped(), prod:prodNuevo})
             }
 
             await Producto.update(

@@ -15,7 +15,7 @@
             <div class="btns">
                 <button><a class="link-boton-2" href="/users/logout/<%= user.id %>">Cerrar sesión</a></button>
                 <button><a class="link-boton-1" href="/users/edit/<%= user.id %>">Editar perfil</a></button>  
-                <% if(user && locals.usuarioLogueado.id == user.id && user.rol.nombre == "Administrador") { %>
+                <% if(locals.usuarioLogueado && locals.usuarioLogueado.id == user.id && user.rol.nombre == "Administrador") { %>
                     <button><a class="link-boton-1" href="/panels/manageEcoFood">Gestionar sitio</a></button>
                 <% } %>
             </div>
