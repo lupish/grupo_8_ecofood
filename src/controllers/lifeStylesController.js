@@ -11,27 +11,27 @@ const controller = {
     processCreate: async (req, res) => {
         const t = await sequelize.transaction();
          try{
-        // chequeo validaciones middleware
-        const valRes = validationResult(req)
-        if (valRes.errors.length > 0) {
-            return res.render('lifeStyles/create', { errors: valRes.mapped(), oldData: req.body })
-        }
-
-        // chequear unicidad
-        let repetida = await EstiloVida.findAll({where:{nombre: req.body.estiloVida_nombre}})
-        if(repetida.length > 0){
-            let estiloVidaRepetido = {
-                estiloVida_nombre: {
-                    msg: "El estilo de vida ingresado ya existe"
-                }
+            // chequeo validaciones middleware
+            const valRes = validationResult(req)
+            if (valRes.errors.length > 0) {
+                return res.render('lifeStyles/create', { errors: valRes.mapped(), oldData: req.body })
             }
-            return res.render('lifeStyles/create', { errors: estiloVidaRepetido, oldData: req.body })  
-        }
-        let imagen 
-        if (req.file != undefined) {
-           imagen = "/img/estilosVida/" + req.file.filename
-        }
-       
+
+            // chequear unicidad
+            let repetida = await EstiloVida.findAll({where:{nombre: req.body.estiloVida_nombre}})
+            if(repetida.length > 0){
+                let estiloVidaRepetido = {
+                    estiloVida_nombre: {
+                        msg: "El estilo de vida ingresado ya existe"
+                    }
+                }
+                return res.render('lifeStyles/create', { errors: estiloVidaRepetido, oldData: req.body })  
+            }
+            let imagen 
+            if (req.file != undefined) {
+            imagen = "/img/estilosVida/" + req.file.filename
+            }
+        
             let newLifeStyle = await EstiloVida.create({
                 nombre: req.body.estiloVida_nombre,
                 img: imagen
@@ -63,41 +63,45 @@ const controller = {
     processEdit: async (req, res) => {
         const t = await sequelize.transaction();
         try{
-        // chequeo validaciones middleware
-        const valRes = validationResult(req)
-        if (valRes.errors.length > 0) {
-            let estiloVida = {
-                id: req.params.id,
-                nombre: req.body.estiloVida_nombre
-            }
-            return res.render('lifeStyles/edit', { errors: valRes.mapped(), estiloVida: estiloVida })
-        }
+            const estiloViejo = await EstiloVida.findByPk(req.params.id);
 
-        // chequear unicidad
-        let repetida = await EstiloVida.findAll({where:{id:{[Op.ne]: req.params.id}, nombre: req.body.estiloVida_nombre}})
-        if(repetida.length > 0){
-            let estiloVidaRepetido = {
-                estiloVida_nombre: {
-                    msg: "El estilo de vida ingresado ya existe"
+            // chequeo validaciones middleware
+            const valRes = validationResult(req)
+            if (valRes.errors.length > 0) {
+                let estiloVida = {
+                    id: req.params.id,
+                    nombre: req.body.estiloVida_nombre,
+                    img: estiloViejo.img
                 }
+                return res.render('lifeStyles/edit', { errors: valRes.mapped(), estiloVida: estiloVida })
             }
-            let estiloVida = {
-                id: req.params.id,
-                nombre: req.body.estiloVida_nombre
+
+            // chequear unicidad
+            let repetida = await EstiloVida.findAll({where:{id:{[Op.ne]: req.params.id}, nombre: req.body.estiloVida_nombre}})
+            if(repetida.length > 0){
+                let estiloVidaRepetido = {
+                    estiloVida_nombre: {
+                        msg: "El estilo de vida ingresado ya existe"
+                    }
+                }
+                let estiloVida = {
+                    id: req.params.id,
+                    nombre: req.body.estiloVida_nombre,
+                    img: estiloViejo.img
+                }
+                return res.render('lifeStyles/edit', { errors: estiloVidaRepetido, estiloVida: estiloVida })
             }
-            return res.render('lifeStyles/edit', { errors: estiloVidaRepetido, estiloVida: estiloVida })
-        }
-       let imagen 
-       if (req.file != undefined) {
-        imagen = "/img/estilosVida/" + req.file.filename
-       }  
-      
-        let updateLifeStyle = EstiloVida.update({
-            nombre: req.body.estiloVida_nombre,
-            img: imagen
-        },{where: {id: req.params.id}},{transaction: t})
-        await t.commit();
-        return res.redirect("/panels/manageLifeStyles")
+        let imagen 
+        if (req.file != undefined) {
+            imagen = "/img/estilosVida/" + req.file.filename
+        }  
+        
+            let updateLifeStyle = EstiloVida.update({
+                nombre: req.body.estiloVida_nombre,
+                img: imagen
+            },{where: {id: req.params.id}},{transaction: t})
+            await t.commit();
+            return res.redirect("/panels/manageLifeStyles")
        }
        catch (error){
             await t.rollback();

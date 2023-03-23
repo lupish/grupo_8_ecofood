@@ -64,55 +64,58 @@ const controller = {
     processEdit: async (req, res) => {
         const t = await sequelize.transaction();
         try {
-        // chequeo validaciones middleware
-        const valRes = validationResult(req)
-        if (valRes.errors.length > 0) {
-            const categoriaVieja = await Categoria.findByPk(req.params.id)
-            let categoria = {
-                id: req.params.id,
-                nombre: req.body.categoria_nombre,
-                img: categoriaVieja.img
-            }
-            return res.render('categorias/edit', { errors: valRes.mapped(), categoria: categoria })
-        }
-        // chequear unicidad
-        let repetida = await Categoria.findAll({
-            where:{
-                id:{
-                    [Op.ne]: req.params.id
-                },
-                nombre: req.body.categoria_nombre
-            }
-        })
-        if(repetida.length > 0){
-            let categoriaRepetida = {
-                categoria_nombre: {
-                    msg: "La categoría ingresada ya existe"
+            const categoriaVieja = await Categoria.findByPk(req.params.id);
+
+            // chequeo validaciones middleware
+            const valRes = validationResult(req)
+            if (valRes.errors.length > 0) {
+                
+                let categoria = {
+                    id: req.params.id,
+                    nombre: req.body.categoria_nombre,
+                    img: categoriaVieja.img
                 }
+                return res.render('categorias/edit', { errors: valRes.mapped(), categoria: categoria })
             }
-            let categoria = {
-                id: req.params.id,
-                nombre: req.body.categoria_nombre
-            } 
-            return res.render('categorias/edit', { errors: categoriaRepetida, categoria: categoria }) 
-        }
-        
-        let id = req.params.id;
-        let imagen 
-        if (req.file != undefined) {
-           imagen = "/img/categorias/" + req.file.filename
-        }
-        
-            const updateCateg = Categoria.update({
-            nombre: req.body.categoria_nombre,
-            img: imagen
-        }, {
-            where: {
-                id: id
+            // chequear unicidad
+            let repetida = await Categoria.findAll({
+                where:{
+                    id:{
+                        [Op.ne]: req.params.id
+                    },
+                    nombre: req.body.categoria_nombre
+                }
+            })
+            if(repetida.length > 0){
+                let categoriaRepetida = {
+                    categoria_nombre: {
+                        msg: "La categoría ingresada ya existe"
+                    }
+                }
+                let categoria = {
+                    id: req.params.id,
+                    nombre: req.body.categoria_nombre,
+                    img: categoriaVieja.img
+                } 
+                return res.render('categorias/edit', { errors: categoriaRepetida, categoria: categoria }) 
             }
-        },{transaction: t})
-        await t.commit();
-        return  res.redirect("/panels/manageCategorias")
+        
+            let id = req.params.id;
+            let imagen 
+            if (req.file != undefined) {
+            imagen = "/img/categorias/" + req.file.filename
+            }
+            
+                const updateCateg = Categoria.update({
+                nombre: req.body.categoria_nombre,
+                img: imagen
+            }, {
+                where: {
+                    id: id
+                }
+            },{transaction: t})
+            await t.commit();
+            return  res.redirect("/panels/manageCategorias")
         }
         catch (error){
             await t.rollback();

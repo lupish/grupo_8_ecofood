@@ -63,46 +63,50 @@ const controller = {
     processEdit: async (req, res) => {
         const t = await sequelize.transaction(); 
         try { 
-        // chequeo validaciones middleware
-        const valRes = validationResult(req)
-        if (valRes.errors.length > 0) {
-            let marca = {
-                id: req.params.id,
-                nombre: req.body.marca_nombre
-            }   
-            return res.render('brands/edit', { errors: valRes.mapped(), marca: marca })
-        }
-        // chequear unicidad
-        let repetida = await Marca.findAll({where:{id:{[Op.ne]:req.params.id}, nombre: req.body.marca_nombre}})
-        if(repetida.length > 0){
-            let marcaRepetida = {
-                marca_nombre: {
-                    msg: "La marca ingresada ya existe"
+            let marcaVieja = await Marca.findByPk(req.params.id);
+            
+            // chequeo validaciones middleware
+            const valRes = validationResult(req)
+            if (valRes.errors.length > 0) {
+                let marca = {
+                    id: req.params.id,
+                    nombre: req.body.marca_nombre,
+                    img: marcaVieja.img
+                }   
+                return res.render('brands/edit', { errors: valRes.mapped(), marca: marca })
+            }
+            // chequear unicidad
+            let repetida = await Marca.findAll({where:{id:{[Op.ne]:req.params.id}, nombre: req.body.marca_nombre}})
+            if(repetida.length > 0){
+                let marcaRepetida = {
+                    marca_nombre: {
+                        msg: "La marca ingresada ya existe"
+                    }
                 }
+                let marca = {
+                    id: req.params.id,
+                    nombre: req.body.marca_nombre,
+                    img: marcaVieja.img
+                }
+                return res.render('brands/edit', { errors: marcaRepetida, marca: marca }) 
             }
-            let marca = {
-                id: req.params.id,
-                nombre: req.body.marca_nombre
+            let id = req.params.id;
+            let imagen 
+            if (req.file != undefined) {
+            imagen = "/img/brands/" + req.file.filename
             }
-            return res.render('brands/edit', { errors: marcaRepetida, marca: marca }) 
-        }
-        let id = req.params.id;
-        let imagen 
-        if (req.file != undefined) {
-           imagen = "/img/brands/" + req.file.filename
-        }
-       
-            const updateBrand = await Marca.update({
-            nombre: req.body.marca_nombre,
-            img: imagen
-        }, {
-            where: {
-                id: id
-            }
-        },
-        {transaction: t})
-        await t.commit();
-        return  res.redirect("/panels/manageBrands")
+        
+                const updateBrand = await Marca.update({
+                nombre: req.body.marca_nombre,
+                img: imagen
+            }, {
+                where: {
+                    id: id
+                }
+            },
+            {transaction: t})
+            await t.commit();
+            return  res.redirect("/panels/manageBrands")
        }
        catch (error){
             await t.rollback();
