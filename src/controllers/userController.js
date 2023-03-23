@@ -3,8 +3,10 @@ const fs = require('fs');
 const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
 
+
 // Tablas de la base de datos
 const db = require('../database/models');
+const sequelize = db.sequelize;
 const Usuario = db.Usuario;
 const Rol = db.Rol;
 
@@ -18,19 +20,19 @@ const controller = {
         res.render('users/login')
     },
     processLogin: async (req, res) => {
+    const t = await sequelize.transaction();
+    try{
         if (!req.session.usuarioLogueado) {
             let listaUsuarios = await Usuario.findAll({
                 where: {
                     email: req.body.email
                 }
-            })
+            },{transaction: t})
 
             let usuario;
             if (listaUsuarios.length > 0) {
                 usuario = listaUsuarios[0]
-            }
-
-            // users.find(elem => elem.email == req.body.email && !elem.delete);   
+            }  
             if (usuario) {
                 if (!bcryptjs.compareSync(req.body.contrasenia, usuario.contrasenia)) {
                     let contraseniaMal = {
@@ -53,8 +55,13 @@ const controller = {
                 return res.render('users/login', {errors: emailNoExiste, oldData: req.body })
             }
         }
-
+        await t.commit();
         res.redirect('/');
+    }
+    catch (error){
+        await t.rollback();
+        console.log(error);
+    } 
     },
     register: (req, res) => {
         if (req.session.usuarioLogueado) {
@@ -63,6 +70,8 @@ const controller = {
         res.render('users/register')
     },
     processCreate: async (req, res) => {
+    const t = await sequelize.transaction();
+    try{
         // CHEQUEAR CAMPOS
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
@@ -95,8 +104,8 @@ const controller = {
                 contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
                 img: userImg,
                 rol_id: userRol
-            })
-
+            },{transaction: t})
+            await t.commit();
             res.redirect('/');
         } else {
             let contraseniaDistinta = {
@@ -106,23 +115,36 @@ const controller = {
             }
             return res.render('users/register', {errors: contraseniaDistinta, oldData: req.body})
         }
+    }
+    catch (error){
+        await t.rollback();
+        console.log(error);
+    }
     },
     userDetail: async (req, res) => {
+    const t = await sequelize.transaction();
+    try{
         //const user = await Usuario.findByPk({association: "rol"}, req.params.id);
         const user = await Usuario.findOne(
-            {where: {id: req.params.id}
-            ,include: [{association: "rol"}]}
-        );
-        
+            {where: {id: req.params.id},
+            include: [{association: "rol"}]},
+            {transaction: t});
         if (user) {
+            await t.commit();
             res.render('users/userDetail', {user: user})
         } else {
             return res.redirect('/products/product-not-found');
         }
+    }
+    catch (error){
+        await t.rollback();
+        console.log(error);
+    }
     },
     edit: async (req, res)=>{
-        const user = await Usuario.findByPk(req.params.id);
-
+    const t = await sequelize.transaction();
+    try{
+        const user = await Usuario.findByPk(req.params.id,{transaction: t});
         let rolUser;
         if (req.session.usuarioLogueado) {
             rolUser = await Rol.findByPk(req.session.usuarioLogueado.rol_id);
@@ -131,18 +153,23 @@ const controller = {
             }
         } else {
             return res.redirect('/products/product-not-found');
-        }
-            
+        }  
         const roles = await Rol.findAll();
-
         if (user) {
+            await t.commit();
             res.render('users/edit', {user: user, rolUser: rolUser.nombre, rol: roles})
         } else {
             return res.redirect('/products/product-not-found');
         }
-    },
-     
+    }
+    catch (error){
+        await t.rollback();
+        console.log(error);
+    }
+    }, 
     processEdit: async (req, res) => {
+    const t = await sequelize.transaction();
+    try{
         let userId = req.params.id;
         let oldUser = await Usuario.findByPk(userId);
         if (req.session.usuarioLogueado) {
@@ -173,39 +200,60 @@ const controller = {
         },
         {
             where: {id: userId}
-        })
-
+        },{transaction: t})
         if (req.session.usuarioLogueado.id == userId) {
             let userEditado = await Usuario.findByPk(userId)
             req.session.usuarioLogueado = userEditado;
         }
-
+        await t.commit();
         return  res.redirect('/users/userDetail/' + userId)
+    }
+    catch (error){
+        await t.rollback();
+        console.log(error);
+    }
     },
     softDelete: async (req, res)=>{
+    const t = await sequelize.transaction();
+    try{
         let userId = req.params.id;
-
-        let user = await Usuario.destroy({where: {id: userId}})
-
+        let user = await Usuario.destroy({where: {id: userId}},{transaction: t})
+        await t.commit();
         return res.redirect('/panels/manageUsers/');
+    }
+    catch (error){
+        await t.rollback();
+        console.log(error);
+    }
     },
-   
     processActivate: async (req, res) => {
+    const t = await sequelize.transaction();
+    try{
         let userId = req.params.id;
         const user = await Usuario.restore({
             where: {id : userId}
-        })
+        },{transaction: t})
+        await t.commit();
         return res.redirect('/panels/manageUsers/');
+    }
+    catch (error){
+        await t.rollback();
+        console.log(error);
+    }
     },
-    logout: (req, res) => {
+    logout: async (req, res) => {
+    const t = await sequelize.transaction();
+    try{
         res.clearCookie('email')
         req.session.destroy();
+        await t.commit();
         return res.redirect('/')
     }
-    
-
- 
+    catch (error){
+        await t.rollback();
+        console.log(error);
+    }
+    }
 }
-
-
 module.exports = controller;
+
