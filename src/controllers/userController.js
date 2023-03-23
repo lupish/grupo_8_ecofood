@@ -22,7 +22,7 @@ const controller = {
             let listaUsuarios = await Usuario.findAll({
                 where: {
                     email: req.body.email
-                }
+                }, paranoid: false
             })
 
             let usuario;
@@ -109,10 +109,11 @@ const controller = {
     },
     userDetail: async (req, res) => {
         //const user = await Usuario.findByPk({association: "rol"}, req.params.id);
-        const user = await Usuario.findOne(
-            {where: {id: req.params.id}
-            ,include: [{association: "rol"}]}
-        );
+        const user = await Usuario.findOne({
+            where: {id: req.params.id}
+            ,include: [{association: "rol"}],
+            paranoid: false
+        });
         
         if (user) {
             res.render('users/userDetail', {user: user})
@@ -121,7 +122,7 @@ const controller = {
         }
     },
     edit: async (req, res)=>{
-        const user = await Usuario.findByPk(req.params.id);
+        const user = await Usuario.findByPk(req.params.id, {paranoid: false});
 
         let rolUser;
         if (req.session.usuarioLogueado) {
@@ -144,7 +145,8 @@ const controller = {
      
     processEdit: async (req, res) => {
         let userId = req.params.id;
-        let oldUser = await Usuario.findByPk(userId);
+        let oldUser = await Usuario.findByPk(userId, {paranoid: false});
+
         if (req.session.usuarioLogueado) {
             rolUser = await Rol.findByPk(req.session.usuarioLogueado.rol_id);
         } else {
@@ -172,7 +174,8 @@ const controller = {
             rol_id: req.body.rol
         },
         {
-            where: {id: userId}
+            where: {id: userId},
+            paranoid: false
         })
 
         if (req.session.usuarioLogueado.id == userId) {

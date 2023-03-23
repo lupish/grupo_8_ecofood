@@ -48,13 +48,13 @@ const controller = {
     edit: async (req, res) => {
         const t = await sequelize.transaction();
         try {
-        let categoria = await Categoria.findByPk(req.params.id,{transaction: t})
-        if (categoria) {
-            await t.commit();
-            return res.render('categorias/edit', {categoria: categoria})
-        } else {
-            return  res.redirect("/panels/manageCategorias")
-        }
+            let categoria = await Categoria.findByPk(req.params.id,{transaction: t, paranoid: false})
+            if (categoria) {
+                await t.commit();
+                return res.render('categorias/edit', {categoria: categoria})
+            } else {
+                return  res.redirect("/panels/manageCategorias")
+            }
         }
         catch (error){
             await t.rollback();
@@ -64,7 +64,7 @@ const controller = {
     processEdit: async (req, res) => {
         const t = await sequelize.transaction();
         try {
-            const categoriaVieja = await Categoria.findByPk(req.params.id);
+            const categoriaVieja = await Categoria.findByPk(req.params.id, {paranoid: false});
 
             // chequeo validaciones middleware
             const valRes = validationResult(req)
@@ -84,7 +84,7 @@ const controller = {
                         [Op.ne]: req.params.id
                     },
                     nombre: req.body.categoria_nombre
-                }
+                }, paranoid: false
             })
             if(repetida.length > 0){
                 let categoriaRepetida = {
@@ -106,14 +106,15 @@ const controller = {
             imagen = "/img/categorias/" + req.file.filename
             }
             
-                const updateCateg = Categoria.update({
+            const updateCateg = Categoria.update({
                 nombre: req.body.categoria_nombre,
                 img: imagen
-            }, {
-                where: {
-                    id: id
-                }
-            },{transaction: t})
+                }, {
+                    where: {
+                        id: id
+                    }, paranoid: false
+                },{transaction: t}
+            )
             await t.commit();
             return  res.redirect("/panels/manageCategorias")
         }

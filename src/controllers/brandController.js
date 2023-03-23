@@ -47,7 +47,7 @@ const controller = {
         const t = await sequelize.transaction();
         try {
         let id = req.params.id;
-        let marca = await Marca.findByPk(id, {transaction: t})
+        let marca = await Marca.findByPk(id, {transaction: t, paranoid: false})
         if (marca) {
             await t.commit();
             res.render('brands/edit', {marca: marca})
@@ -63,8 +63,8 @@ const controller = {
     processEdit: async (req, res) => {
         const t = await sequelize.transaction(); 
         try { 
-            let marcaVieja = await Marca.findByPk(req.params.id);
-            
+            let marcaVieja = await Marca.findByPk(req.params.id, {paranoid: false});
+
             // chequeo validaciones middleware
             const valRes = validationResult(req)
             if (valRes.errors.length > 0) {
@@ -76,7 +76,10 @@ const controller = {
                 return res.render('brands/edit', { errors: valRes.mapped(), marca: marca })
             }
             // chequear unicidad
-            let repetida = await Marca.findAll({where:{id:{[Op.ne]:req.params.id}, nombre: req.body.marca_nombre}})
+            let repetida = await Marca.findAll({
+                where: {id:{[Op.ne]:req.params.id}, nombre: req.body.marca_nombre}
+                ,paranoid: false
+            })
             if(repetida.length > 0){
                 let marcaRepetida = {
                     marca_nombre: {
@@ -93,16 +96,16 @@ const controller = {
             let id = req.params.id;
             let imagen 
             if (req.file != undefined) {
-            imagen = "/img/brands/" + req.file.filename
+                imagen = "/img/brands/" + req.file.filename
             }
         
-                const updateBrand = await Marca.update({
+            const updateBrand = await Marca.update({
                 nombre: req.body.marca_nombre,
                 img: imagen
             }, {
                 where: {
                     id: id
-                }
+                }, paranoid: false
             },
             {transaction: t})
             await t.commit();
