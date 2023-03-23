@@ -92,7 +92,10 @@ const controller = {
                 await t.commit();
                 return res.redirect('/products/productDetail/' + newProduct.id)
             } else{
-                res.render('products/create', {categorias: Categoria, estilosVida: EstiloVida, marcas: Marca, errores:errores.mapped(), prod:req.body});
+                let listaCateg = await Categoria.findAll();
+                let listaEstilosVida = await EstiloVida.findAll();
+                let listaMarcas = await Marca.findAll();
+                res.render('products/create', {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, errores:errores.mapped(), prod:req.body});
             }
         }
         catch (error){
@@ -166,7 +169,33 @@ const controller = {
             let idProd = req.params.id;    
             let errores = validationResult(req)
             if(errores.errors.length > 0){
-                return res.render('products/edit',  {categorias: Categoria, estilosVida: EstiloVida, marcas: Marca, errores:errores.mapped(), prod:prod})
+                let listaCateg = await Categoria.findAll();
+                let listaEstilosVida = await EstiloVida.findAll();
+                let listaMarcas = await Marca.findAll();
+                let prodEstilos;
+                if (req.body.prod_estilosVida) {
+                    prodEstilos = req.body.prod_estilosVida.map(elem => parseInt(elem));
+                } else {
+                    prodEstilos = []
+                }
+
+                let prodNuevo =
+                {
+                    id: idProd,
+                    nombre: req.body.prod_nombre,
+                    Categoria: {
+                        id: req.body.prod_categoria
+                    },
+                    Marca: {
+                        id: req.body.prod_marca
+                    },
+                    precio: req.body.prod_precio,
+                    descripcionCorta: req.body.prod_descripcion_corta,
+                    descripcionLarga: req.body.prod_descripcion_larga,
+                    ProductoImagen: prod.ProductoImagen
+                }
+
+                return res.render('products/edit',  {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, estilos: prodEstilos, errores:errores.mapped(), prod:prodNuevo})
             }
             await Producto.update(
                 {
@@ -182,12 +211,9 @@ const controller = {
             );
             let prodNuevo = await Producto.findByPk(idProd, {transaction: t});
 
-            /*** Estilos de vida ***/
+            // reemplazar estilos de vida con los nuevos
             let prodEstilosVida = req.body.prod_estilosVida;
-            // agregar estilos nuevos
-            for(let i = 0; i < prodEstilosVida.length; i++){
-                await prodNuevo.setEstiloVida(prodEstilosVida[i],{transaction: t})
-            }
+            await prodNuevo.setEstiloVida(prodEstilosVida)
 
             /*** Imagenes ***/
             let prodImagenes = req.files;
