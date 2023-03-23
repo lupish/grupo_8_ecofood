@@ -26,7 +26,7 @@ const controller = {
             let listaUsuarios = await Usuario.findAll({
                 where: {
                     email: req.body.email
-                }
+                }, paranoid: false
             },{transaction: t})
 
             let usuario;
@@ -79,7 +79,7 @@ const controller = {
         }
 
         // chequear que usuario no existe
-        let usuariosEmail = await Usuario.findAll({where: {email: req.body.email}})
+        let usuariosEmail = await Usuario.findAll({where: {email: req.body.email}, paranoid: false})
         if (usuariosEmail.length > 0) {
             let mailRepetido = {
                 email: {
@@ -125,10 +125,7 @@ const controller = {
     const t = await sequelize.transaction();
     try{
         //const user = await Usuario.findByPk({association: "rol"}, req.params.id);
-        const user = await Usuario.findOne(
-            {where: {id: req.params.id},
-            include: [{association: "rol"}]},
-            {transaction: t});
+        const user = await Usuario.findOne({where: {id: req.params.id}}, {include:[{association: "rol"}], paranoid: false}, {transaction: t});
         if (user) {
             await t.commit();
             res.render('users/userDetail', {user: user})
@@ -144,7 +141,7 @@ const controller = {
     edit: async (req, res)=>{
     const t = await sequelize.transaction();
     try{
-        const user = await Usuario.findByPk(req.params.id,{transaction: t});
+        const user = await Usuario.findByPk(req.params.id, {paranoid: false},{transaction: t});
         let rolUser;
         if (req.session.usuarioLogueado) {
             rolUser = await Rol.findByPk(req.session.usuarioLogueado.rol_id);
@@ -171,7 +168,8 @@ const controller = {
     const t = await sequelize.transaction();
     try{
         let userId = req.params.id;
-        let oldUser = await Usuario.findByPk(userId);
+        let oldUser = await Usuario.findByPk(userId, {paranoid: false});
+
         if (req.session.usuarioLogueado) {
             rolUser = await Rol.findByPk(req.session.usuarioLogueado.rol_id);
         } else {
@@ -199,7 +197,8 @@ const controller = {
             rol_id: req.body.rol
         },
         {
-            where: {id: userId}
+            where: {id: userId},
+            paranoid: false
         },{transaction: t})
         if (req.session.usuarioLogueado.id == userId) {
             let userEditado = await Usuario.findByPk(userId)

@@ -146,13 +146,15 @@ const controller = {
     edit: async (req, res) => {
         const t = await sequelize.transaction();
         try{
-         let listaCateg = await Categoria.findAll({transaction: t});
-         let listaEstilosVida = await EstiloVida.findAll({transaction: t});
-         let listaMarcas = await Marca.findAll({transaction: t});
-         let prod =  await Producto.findByPk(req.params.id, {include:[{association: 'ProductoImagen'}, {association: 'Marca'},{association: 'Categoria'}, {association: 'EstiloVida'}],paranoid: false},{transaction: t})
+            let listaCateg = await Categoria.findAll({transaction: t});
+            let listaEstilosVida = await EstiloVida.findAll({transaction: t});
+            let listaMarcas = await Marca.findAll({transaction: t});
+
+            let prod =  await Producto.findByPk(req.params.id, {include:[{association: 'ProductoImagen'}, {association: 'Marca'},{association: 'Categoria'}, {association: 'EstiloVida'}],paranoid: false},{transaction: t})
+            
             if (prod) {
-               let prodEstilos = prod.EstiloVida.map(elem => elem.id)
-               await t.commit();
+            let prodEstilos = prod.EstiloVida.map(elem => elem.id)
+            await t.commit();
                 return res.render('products/edit', {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, prod: prod, estilos: prodEstilos});
             }else{
                 return res.redirect('/products/product-not-found');
@@ -168,16 +170,20 @@ const controller = {
         try{
             let idProd = req.params.id;    
             let errores = validationResult(req)
+            
             if(errores.errors.length > 0){
                 let listaCateg = await Categoria.findAll();
                 let listaEstilosVida = await EstiloVida.findAll();
                 let listaMarcas = await Marca.findAll();
                 let prodEstilos;
+
                 if (req.body.prod_estilosVida) {
-                    prodEstilos = req.body.prod_estilosVida.map(elem => parseInt(elem));
+                    prodEstilos = (req.body.prod_estilosVida).map(elem => parseInt(elem));
                 } else {
                     prodEstilos = []
                 }
+
+                let prodViejo = await Producto.findByPk(idProd, {include:[{association: 'ProductoImagen'}], paranoid: false});
 
                 let prodNuevo =
                 {
@@ -192,7 +198,7 @@ const controller = {
                     precio: req.body.prod_precio,
                     descripcionCorta: req.body.prod_descripcion_corta,
                     descripcionLarga: req.body.prod_descripcion_larga,
-                    ProductoImagen: prod.ProductoImagen
+                    ProductoImagen: prodViejo.ProductoImagen
                 }
 
                 return res.render('products/edit',  {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, estilos: prodEstilos, errores:errores.mapped(), prod:prodNuevo})
@@ -206,17 +212,17 @@ const controller = {
                     descripcionCorta: req.body.prod_descripcion_corta,
                     descripcionLarga: req.body.prod_descripcion_larga, 
                 },
-                {where: {id:idProd}},
+                {where: {id:idProd}, paranoid: false},
                 {transaction: t}
             );
-            let prodNuevo = await Producto.findByPk(idProd, {transaction: t});
+            let prodNuevo = await Producto.findByPk(idProd, {transaction: t, paranoid: false});
 
             // reemplazar estilos de vida con los nuevos
             let prodEstilosVida = req.body.prod_estilosVida;
             await prodNuevo.setEstiloVida(prodEstilosVida)
+            
             /*** Imagenes ***/
             let prodImagenes = req.files;
-            console.log(prodImagenes)
             // agregar nuevas fotos
             for(let i = 0; i < prodImagenes.length; i++){
                 await ProductoImagen.create(
@@ -227,6 +233,7 @@ const controller = {
                     {transaction: t}
                 )
             }
+            
             await t.commit();
             return res.redirect('/products/productDetail/' + idProd)
         }
