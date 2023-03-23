@@ -67,9 +67,11 @@ const controller = {
         // chequeo validaciones middleware
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
+            const categoriaVieja = await Categoria.findByPk(req.params.id)
             let categoria = {
                 id: req.params.id,
-                nombre: req.body.categoria_nombre
+                nombre: req.body.categoria_nombre,
+                img: categoriaVieja.img
             }
             return res.render('categorias/edit', { errors: valRes.mapped(), categoria: categoria })
         }
