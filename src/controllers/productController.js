@@ -161,10 +161,13 @@ const controller = {
                 let listaMarcas = await Marca.findAll();
                 let prodEstilos;
                 if (req.body.prod_estilosVida) {
-                    prodEstilos = req.body.prod_estilosVida.map(elem => parseInt(elem));
+
+                    prodEstilos = (req.body.prod_estilosVida).map(elem => parseInt(elem));
                 } else {
                     prodEstilos = []
                 }
+
+                let prodViejo = await Producto.findByPk(idProd, {include:[{association: 'ProductoImagen'}]});
 
                 let prodNuevo =
                 {
@@ -179,7 +182,7 @@ const controller = {
                     precio: req.body.prod_precio,
                     descripcionCorta: req.body.prod_descripcion_corta,
                     descripcionLarga: req.body.prod_descripcion_larga,
-                    ProductoImagen: prod.ProductoImagen
+                    ProductoImagen: prodViejo.ProductoImagen
                 }
 
                 return res.render('products/edit',  {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, estilos: prodEstilos, errores:errores.mapped(), prod:prodNuevo})
