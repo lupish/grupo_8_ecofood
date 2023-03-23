@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
+//MIDDLEWARE
+const adminPermission = require('../middlewares/adminPermission');
+
 //MULTER
 const multer = require('multer');
 const multerDiskStorage = multer.diskStorage({
@@ -41,18 +44,18 @@ const brandController = require('../controllers/brandController');
 
 /*** RUTAS ***/
 // borrado
-router.delete('/delete/soft/:id', brandController.softDelete);
-router.delete('/delete/hard/:id', brandController.hardDelete);
+router.delete('/delete/soft/:id', adminPermission, brandController.softDelete);
+router.delete('/delete/hard/:id', adminPermission, brandController.hardDelete);
 
 // reactivar
-router.patch('/activar/:id', brandController.processActivate)
+router.patch('/activar/:id', adminPermission, brandController.processActivate)
 
 // crear
-router.get('/create', brandController.create);
-router.post('/create', uploadFile.single("marca_foto"), validarMarcas, brandController.processCreate);
+router.get('/create', adminPermission, brandController.create);
+router.post('/create', adminPermission, uploadFile.single("marca_foto"), validarMarcas, brandController.processCreate);
 
 // editar
-router.get('/edit/:id', brandController.edit);
-router.put('/edit/:id', uploadFile.single("marca_foto"), validarMarcas, brandController.processEdit);
+router.get('/edit/:id', adminPermission, brandController.edit);
+router.put('/edit/:id', adminPermission, uploadFile.single("marca_foto"), validarMarcas, brandController.processEdit);
 
 module.exports = router;

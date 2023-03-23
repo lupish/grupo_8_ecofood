@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-
+//MIDDLEWARE
+const adminPermission = require('../middlewares/adminPermission');
 //MULTER
 const multer = require('multer');
 const multerDiskStorage = multer.diskStorage({
@@ -41,18 +42,18 @@ const lifeStyleController = require('../controllers/lifeStylesController');
 
 /*** RUTAS ***/
 // borrado
-router.delete('/delete/soft/:id', lifeStyleController.softDelete);
-router.delete('/delete/hard/:id', lifeStyleController.hardDelete);
+router.delete('/delete/soft/:id', adminPermission, lifeStyleController.softDelete);
+router.delete('/delete/hard/:id', adminPermission, lifeStyleController.hardDelete);
 
 // reactivar
-router.patch('/activar/:id', lifeStyleController.processActivate)
+router.patch('/activar/:id', adminPermission, lifeStyleController.processActivate)
 
 // crear
-router.get('/create', lifeStyleController.create);
-router.post('/create', uploadFile.single("estiloVida_foto"), validarEstiloVida, lifeStyleController.processCreate);
+router.get('/create', adminPermission, lifeStyleController.create);
+router.post('/create', adminPermission, uploadFile.single("estiloVida_foto"), validarEstiloVida, lifeStyleController.processCreate);
 
 // editar
-router.get('/edit/:id', lifeStyleController.edit);
-router.put('/edit/:id', uploadFile.single("estiloVida_foto"), validarEstiloVida, lifeStyleController.processEdit);
+router.get('/edit/:id', adminPermission, lifeStyleController.edit);
+router.put('/edit/:id', adminPermission, uploadFile.single("estiloVida_foto"), validarEstiloVida, lifeStyleController.processEdit);
 
 module.exports = router;

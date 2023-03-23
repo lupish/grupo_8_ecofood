@@ -29,7 +29,7 @@ const multerDiskStorage = multer.diskStorage({
 const uploadFile = multer({storage: multerDiskStorage});
 
 //MIDDLEWARE
-
+const adminPermission = require('../middlewares/adminPermission');
 
 //CONTROLADOR
 const productController = require('../controllers/productController');
@@ -44,19 +44,19 @@ router.get('/productDetail/:id', productController.productDetail);
 router.get('/productCart', productController.productCart);
 
 //CREAR UN NUEVO PRODUCTO
-router.get('/create', productController.create);
-router.post('/create', uploadFile.array("prod_fotos"), validaciones, productController.processCreate);
+router.get('/create', adminPermission, productController.create);
+router.post('/create', adminPermission, uploadFile.array("prod_fotos"), validaciones, productController.processCreate);
 
 //EDCION DE UN  PRODUCTO
-router.get('/edit/:id', productController.edit);
-router.put('/edit/:id', uploadFile.array("prod_fotos"), validaciones ,productController.processEdit);
+router.get('/edit/:id', adminPermission, productController.edit);
+router.put('/edit/:id', adminPermission, uploadFile.array("prod_fotos"), validaciones ,productController.processEdit);
 
 //Soft delete de los productos
-router.delete('/delete/soft/:id',productController.softDelete);
-router.delete('/delete/hard/:id', productController.hardDelete);
+router.delete('/delete/soft/:id', adminPermission, productController.softDelete);
+router.delete('/delete/hard/:id', adminPermission, productController.hardDelete);
 
 // REACTIVAR PRODUCTO
-router.patch('/activar/:id', productController.processActivate)
+router.patch('/activar/:id', adminPermission, productController.processActivate)
 
 //LISTA DE PRODUCT0S
 router.get('/listProducts/:idEstiloVida?', productController.listProducts);

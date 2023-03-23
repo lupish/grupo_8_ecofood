@@ -1,4 +1,5 @@
 const db = require('../database/models');
+const sequelize = db.sequelize;
  // bd productos
  const Producto = db.Producto;
 
@@ -23,47 +24,65 @@ const controller = {
         res.render('panels/manageEcoFood')
     },
     manageProducts: async (req, res) => {
+        const t = await sequelize.transaction();
         try{
-            const prods = await Producto.findAll({include: [{association: 'ProductoImagen'}]}, {paranoid: false} )
-            console.log(prods);
+            const prods = await Producto.findAll( {include: [{association: 'ProductoImagen'}], paranoid: false}, {transaction: t})
+            await t.commit();
             res.render('panels/manageProducts', {prods: prods})
         }
         catch (error){
+            await t.rollback();
             console.log(error);
         };
-        // res.render('panels/manageProducts', {estilosVida: estilosVida, prods: products, marcas: marcas})
     },
     manageBrands: async (req, res) => {
+        const t = await sequelize.transaction();
         try{
-            const list = await Marca.findAll({paranoid: false})
+            const list = await Marca.findAll({paranoid: false},{transaction: t})
+            await t.commit();
             res.render('panels/manageBrands', {marcas: list})
             }
             catch (error){
+                await t.rollback();
                 console.log(error);
             };
     },
     manageEstilosVida: async (req, res) => {
+        const t = await sequelize.transaction();
         try{
-            const list = await EstiloVida.findAll({paranoid: false})
+            const list = await EstiloVida.findAll({paranoid: false},{transaction: t})
+            await t.commit();
             res.render('panels/manageLifeStyles', {estilosVida: list})
         }
         catch (error){
+            await t.rollback();
             console.log(error);
         };
         
     },
     manageCategorias: async (req, res) => {
+        const t = await sequelize.transaction();
         try{
-        const list = await Categoria.findAll({paranoid: false})
+        const list = await Categoria.findAll({paranoid: false},{transaction: t})
+        await t.commit();
         res.render('panels/manageCategoria', {categorias: list})
         }
         catch (error){
+            await t.rollback();
             console.log(error);
         };
     },
     manageUsers: async (req, res) => {
-        const users = await Usuario.findAll({paranoid: false});
+        const t = await sequelize.transaction();
+        try{
+        const users = await Usuario.findAll({paranoid: false},{transaction: t});
+        await t.commit();
         res.render('panels/manageUsers', {users: users})
+        }
+        catch (error){
+            await t.rollback();
+            console.log(error);
+        };
     }
 }
 

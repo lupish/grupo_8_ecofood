@@ -1,5 +1,6 @@
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
+const sequelize = db.sequelize;
 const Categoria = db.Categoria;
 const { Op } = require("sequelize");
 
@@ -8,6 +9,8 @@ const controller = {
         res.render('categorias/create');
     },
     processCreate: async (req, res) => {
+        const t = await sequelize.transaction();
+        try {
         // chequeo validaciones middleware
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
@@ -30,30 +33,37 @@ const controller = {
         if (req.file != undefined) {
            imagen = "/img/categorias/" + req.file.filename
         }
-        try { const newCateg = await Categoria.create({
+        const newCateg = await Categoria.create({
             nombre: req.body.categoria_nombre,
             img: imagen
-        })    
+        },{transaction: t}) 
+        await t.commit();
+        return  res.redirect("/panels/manageCategorias")       
         } 
         catch (error){
+        await t.rollback();
         console.log(error);
-        }
-        return  res.redirect("/panels/manageCategorias")       
+        }       
     },
     edit: async (req, res) => {
+        const t = await sequelize.transaction();
         try {
-        let categoria = await Categoria.findByPk(req.params.id)
+        let categoria = await Categoria.findByPk(req.params.id,{transaction: t})
         if (categoria) {
-            res.render('categorias/edit', {categoria: categoria})
+            await t.commit();
+            return res.render('categorias/edit', {categoria: categoria})
         } else {
             return  res.redirect("/panels/manageCategorias")
         }
         }
         catch (error){
+            await t.rollback();
             console.log(error);
         }
     },
     processEdit: async (req, res) => {
+        const t = await sequelize.transaction();
+        try {
         // chequeo validaciones middleware
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
@@ -84,25 +94,13 @@ const controller = {
             } 
             return res.render('categorias/edit', { errors: categoriaRepetida, categoria: categoria }) 
         }
-        // if (categoriasList.find(elem => elem.nombre == req.body.categoria_nombre && elem.id != req.params.id)) {
-        //     let categoriaRepetida = {
-        //         categoria_nombre: {
-        //             msg: "La categoría ingresada ya existe"
-        //         }
-        //     }
-        //     let categoria = {
-        //         id: req.params.id,
-        //         nombre: req.body.categoria_nombre
-        //     }
-        //     return res.render('categorias/edit', { errors: categoriaRepetida, categoria: categoria })
-        // }
-        //
+        
         let id = req.params.id;
         let imagen 
         if (req.file != undefined) {
            imagen = "/img/categorias/" + req.file.filename
         }
-        try {
+        
             const updateCateg = Categoria.update({
             nombre: req.body.categoria_nombre,
             img: imagen
@@ -110,26 +108,34 @@ const controller = {
             where: {
                 id: id
             }
-        })}
-        catch (error){
-            console.log(error);
-        }
+        },{transaction: t})
+        await t.commit();
         return  res.redirect("/panels/manageCategorias")
+        }
+        catch (error){
+            await t.rollback();
+            console.log(error);
+        }  
     },
     softDelete: async (req,res)=>{
+        const t = await sequelize.transaction();
         let id = req.params.id;
         try {
             let categoria = await Categoria.destroy({
             where: {
                 id: id
             }
-        })} 
-        catch (error){
-            console.log(error);
-        }
+        },{transaction: t})
+        await t.commit();
         return  res.redirect("/panels/manageCategorias")
+        } 
+        catch (error){
+            await t.rollback();
+            console.log(error);
+        }   
     },
     hardDelete: async (req,res)=>{
+        const t = await sequelize.transaction();
         let id = req.params.id;
         try {
             let categoria = await Categoria.destroy({
@@ -137,43 +143,32 @@ const controller = {
                     id: id
                 }, 
                 force: true
-            })
+            },{transaction: t}) 
+            await t.commit();
+            return res.redirect("/panels/manageCategorias")
         }
         catch(error){
+            await t.rollback();
             console.log(error);
-        }
-        return res.redirect("/panels/manageCategorias")
-
-        // let categoriasNotDelete=categoriasList.filter(row=>{return row.id!=id})
-
-        // fs.writeFileSync(categoriasJSON, JSON.stringify(categoriasNotDelete, null, 2));
-
-        // return  res.redirect("/panels/manageCategorias")
+        } 
     },
     processActivate: async (req, res) => {
+        const t = await sequelize.transaction();
         let id = req.params.id;
         try {
             let categoria = await Categoria.restore({
                 where:{
                     id: id
                 }
-            })
+            },{transaction: t})
+            await t.commit();
+            return res.redirect("/panels/manageCategorias");
         }
         catch(error){
+            await t.rollback();
             console.log(error);
         }
-        return res.redirect("/panels/manageCategorias");
-        
        
-        // categoriasList.forEach(elem => {
-        //     if (elem.id == id) {
-        //         elem.delete = false;
-        //     }
-        // });
-
-        // fs.writeFileSync(categoriasJSON, JSON.stringify(categoriasList, null, 2));
-
-        // return  res.redirect("/panels/manageCategorias")
     }
 }
 
