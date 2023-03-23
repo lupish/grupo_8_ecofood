@@ -149,7 +149,7 @@ const controller = {
          let listaCateg = await Categoria.findAll({transaction: t});
          let listaEstilosVida = await EstiloVida.findAll({transaction: t});
          let listaMarcas = await Marca.findAll({transaction: t});
-         let prod =  await Producto.findByPk(req.params.id, {include:[{association: 'ProductoImagen'}, {association: 'Marca'},{association: 'Categoria'}, {association: 'EstiloVida'}]},{transaction: t})
+         let prod =  await Producto.findByPk(req.params.id, {include:[{association: 'ProductoImagen'}, {association: 'Marca'},{association: 'Categoria'}, {association: 'EstiloVida'}],paranoid: false},{transaction: t})
             if (prod) {
                let prodEstilos = prod.EstiloVida.map(elem => elem.id)
                await t.commit();
@@ -214,7 +214,6 @@ const controller = {
             // reemplazar estilos de vida con los nuevos
             let prodEstilosVida = req.body.prod_estilosVida;
             await prodNuevo.setEstiloVida(prodEstilosVida)
-
             /*** Imagenes ***/
             let prodImagenes = req.files;
             console.log(prodImagenes)
