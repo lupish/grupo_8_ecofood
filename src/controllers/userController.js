@@ -70,7 +70,7 @@ const controller = {
         }
 
         // chequear que usuario no existe
-        let usuariosEmail = await Usuario.findAll({where: {email: req.body.email}})
+        let usuariosEmail = await Usuario.findAll({where: {email: req.body.email}, paranoid: false})
         if (usuariosEmail.length > 0) {
             let mailRepetido = {
                 email: {
