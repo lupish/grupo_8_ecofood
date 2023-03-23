@@ -1,5 +1,6 @@
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
+const sequelize = db.sequelize;
 const Marca = db.Marca;
 const { Op } = require("sequelize");
 
@@ -8,6 +9,8 @@ const controller = {
         res.render('brands/create');
     },
     processCreate: async (req, res) => {
+        const t = await sequelize.transaction();
+        try{
         // chequeo validaciones middleware
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
@@ -27,28 +30,39 @@ const controller = {
         if(req.file != undefined){
             imagen = "/img/brands/" + req.file.filename
         }
-        try{
+        
             const newBrand = await Marca.create({
                 nombre: req.body.marca_nombre,
                 img: imagen
-            })
+            },{transaction: t})
+            await t.commit();
+            return res.redirect("/panels/manageBrands");
         }
         catch (error){
+            await t.rollback();
             console.log(error);
-        }
-        return res.redirect("/panels/manageBrands");
+        }    
     },
     edit: async (req, res) => {
+        const t = await sequelize.transaction();
+        try {
         let id = req.params.id;
-        let marca = await Marca.findByPk(id)
+        let marca = await Marca.findByPk(id, {transaction: t})
         if (marca) {
+            await t.commit();
             res.render('brands/edit', {marca: marca})
         } else {
             return res.redirect('/products/product-not-found');
         }
+        }
+        catch (error){
+            await t.rollback();
+            console.log(error);
+        }   
     },
     processEdit: async (req, res) => {
-        // console.log(req.body);
+        const t = await sequelize.transaction(); 
+        try { 
         // chequeo validaciones middleware
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
@@ -58,7 +72,6 @@ const controller = {
             }   
             return res.render('brands/edit', { errors: valRes.mapped(), marca: marca })
         }
-
         // chequear unicidad
         let repetida = await Marca.findAll({where:{id:{[Op.ne]:req.params.id}, nombre: req.body.marca_nombre}})
         if(repetida.length > 0){
@@ -78,7 +91,7 @@ const controller = {
         if (req.file != undefined) {
            imagen = "/img/brands/" + req.file.filename
         }
-        try {
+       
             const updateBrand = await Marca.update({
             nombre: req.body.marca_nombre,
             img: imagen
@@ -86,43 +99,54 @@ const controller = {
             where: {
                 id: id
             }
-        })
-     
-    }
-        catch (error){
-            console.log(error);
-        }
+        },
+        {transaction: t})
+        await t.commit();
         return  res.redirect("/panels/manageBrands")
+       }
+       catch (error){
+            await t.rollback();
+            console.log(error);
+       }  
     },
     softDelete: async (req,res)=>{
+        const t = await sequelize.transaction();
         let id = req.params.id;
         try{
-            let marca = await Marca.destroy({where:{id:id}})
+            let marca = await Marca.destroy({where:{id:id}}, {transaction: t})
+            await t.commit();
+            return res.redirect('/panels/manageBrands/');
         }
         catch (error){
+            await t.rollback();
             console.log(error);
         }
-        return res.redirect('/panels/manageBrands/');
     },
     hardDelete: async (req,res)=>{
+        const t = await sequelize.transaction();
         let id = req.params.id;
         try{
-            let marca = await Marca.destroy({where:{id:id}, force: true})
+            let marca = await Marca.destroy({where:{id:id}, force: true},{transaction: t})
+            await t.commit();
+            return res.redirect('/panels/manageBrands/');
         }
         catch (error){
+            await t.rollback();
             console.log(error);
-        }
-        return res.redirect('/panels/manageBrands/');
+        }    
     },
     processActivate: async (req, res) => {
+        const t = await sequelize.transaction();
         let id = req.params.id;
         try{
-            let marca = await Marca.restore({where:{id:id}})
+            let marca = await Marca.restore({where:{id:id}},{transaction: t})
+            await t.commit();
+            return res.redirect('/panels/manageBrands/');
         }
         catch(error){
+            await t.rollback();
             console.log(error);
-        }
-        return res.redirect('/panels/manageBrands/');
+        } 
     }
 }
 

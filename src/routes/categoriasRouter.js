@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-
+//MIDDLEWARE
+const adminPermission = require('../middlewares/adminPermission');
 //MULTER
 const multer = require('multer');
 const multerDiskStorage = multer.diskStorage({
@@ -41,18 +42,18 @@ const categoriaController = require('../controllers/categoriasController');
 
 /*** RUTAS ***/
 // borrado
-router.delete('/delete/soft/:id', categoriaController.softDelete);
-router.delete('/delete/hard/:id', categoriaController.hardDelete);
+router.delete('/delete/soft/:id', adminPermission, categoriaController.softDelete);
+router.delete('/delete/hard/:id', adminPermission, categoriaController.hardDelete);
 
 // reactivar
-router.patch('/activar/:id', categoriaController.processActivate)
+router.patch('/activar/:id', adminPermission, categoriaController.processActivate)
 
 // crear
-router.get('/create', categoriaController.create);
-router.post('/create', uploadFile.single("categoria_foto"), validarCategorias, categoriaController.processCreate);
+router.get('/create', adminPermission, categoriaController.create);
+router.post('/create', adminPermission, uploadFile.single("categoria_foto"), validarCategorias, categoriaController.processCreate);
 
 // editar
-router.get('/edit/:id', categoriaController.edit);
-router.put('/edit/:id', uploadFile.single("categoria_foto"), validarCategorias, categoriaController.processEdit);
+router.get('/edit/:id', adminPermission, categoriaController.edit);
+router.put('/edit/:id', adminPermission, uploadFile.single("categoria_foto"), validarCategorias, categoriaController.processEdit);
 
 module.exports = router;

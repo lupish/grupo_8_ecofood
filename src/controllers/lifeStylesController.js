@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
 const EstiloVida = db.EstiloVida;
+const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 
 const controller = {
@@ -8,6 +9,8 @@ const controller = {
         res.render('lifeStyles/create');
     },
     processCreate: async (req, res) => {
+        const t = await sequelize.transaction();
+         try{
         // chequeo validaciones middleware
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
@@ -28,31 +31,38 @@ const controller = {
         if (req.file != undefined) {
            imagen = "/img/estilosVida/" + req.file.filename
         }
-        try{
+       
             let newLifeStyle = await EstiloVida.create({
                 nombre: req.body.estiloVida_nombre,
                 img: imagen
-            })
+            },{transaction: t})
+            await t.commit();
+            return res.redirect("/panels/manageLifeStyles")
         }
         catch (error){
+            await t.rollback();
             console.log(error);
-        }
-        return res.redirect("/panels/manageLifeStyles")
+        }   
     },
     edit: async (req, res) => {
+        const t = await sequelize.transaction();
         try{
-        let estiloVida = await EstiloVida.findByPk(req.params.id)
+        let estiloVida = await EstiloVida.findByPk(req.params.id,{transaction: t})
         if (estiloVida) {
-            res.render('lifeStyles/edit', {estiloVida: estiloVida})
+            await t.commit();
+            return res.render('lifeStyles/edit', {estiloVida: estiloVida})
         } else {
             return res.redirect('/products/product-not-found');
         }
         }  
         catch (error){
+            await t.rollback();
             console.log(error);
         } 
     },
     processEdit: async (req, res) => {
+        const t = await sequelize.transaction();
+        try{
         // chequeo validaciones middleware
         const valRes = validationResult(req)
         if (valRes.errors.length > 0) {
@@ -81,43 +91,54 @@ const controller = {
        if (req.file != undefined) {
         imagen = "/img/estilosVida/" + req.file.filename
        }  
-       try{
+      
         let updateLifeStyle = EstiloVida.update({
             nombre: req.body.estiloVida_nombre,
             img: imagen
-        },{where: {id: req.params.id}})
+        },{where: {id: req.params.id}},{transaction: t})
+        await t.commit();
+        return res.redirect("/panels/manageLifeStyles")
        }
        catch (error){
+            await t.rollback();
             console.log(error);
-       } 
-       return res.redirect("/panels/manageLifeStyles")
+       }   
     },
     softDelete: async (req,res)=>{
+        const t = await sequelize.transaction();
         try{
-            let estiloVida = await EstiloVida.destroy({where: {id: req.params.id}})
+            let estiloVida = await EstiloVida.destroy({where: {id: req.params.id}},{transaction: t}) 
+            await t.commit();
+            return res.redirect('/panels/managelifeStyles/')
         }
         catch (error){
+            await t.rollback();
             console.log(error);
-        } 
-        return res.redirect('/panels/managelifeStyles/')
+        }   
     },
     hardDelete: async (req,res)=>{
+        const t = await sequelize.transaction();
         try{
-            let estiloVida = await EstiloVida.destroy({where: {id: req.params.id}, force: true})
+            let estiloVida = await EstiloVida.destroy({where: {id: req.params.id}, force: true}, {transaction: t})
+            await t.commit();
+            return res.redirect('/panels/managelifeStyles/')
         }
         catch (error){
+            await t.rollback();
             console.log(error);
-        } 
-        return res.redirect('/panels/managelifeStyles/')
+        }    
     },
     processActivate:  async (req,res)=>{
+        const t = await sequelize.transaction();
         try{
-            let estiloVida = await EstiloVida.restore({where: {id: req.params.id}})
+            let estiloVida = await EstiloVida.restore({where: {id: req.params.id}},{transaction: t})
+            await t.commit();
+            return res.redirect('/panels/managelifeStyles/')
         }
         catch (error){
+            await t.rollback();
             console.log(error);
-        } 
-        return res.redirect('/panels/managelifeStyles/')
+        }   
     }
 }
 

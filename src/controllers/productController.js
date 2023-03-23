@@ -3,6 +3,7 @@ const db = require('../database/models');
 const sequelize = db.sequelize;
 const { Op, Association } = require("sequelize");
 
+
  // bd productos
 const Producto = db.Producto;
 
@@ -18,46 +19,52 @@ const Marca = db.Marca;
 // bd imagenes 
 const ProductoImagen = db.ProductoImagen
 
-const ProductoEstiloVida = db.ProductoEstiloVida
-
 // validator
 const {validationResult}=require("express-validator");
 
 const controller = {
     productDetail: async (req, res) => {
+        const t = await sequelize.transaction();
         let id = req.params.id
         try{
-            if(req.session.usuarioLogueado && req.session.usuarioLogueado.rol ==  2){
-                let producto = await Producto.findByPk(id, {include:[{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida'}]}, {paranoid: false})
-                return res.render('products/productDetail', {prod: producto, estilosVida: EstiloVida});
-            }else if(!req.session.usuarioLogueado || req.session.usuarioLogueado.rol !=  2 ){
-                let producto = await Producto.findByPk(id, {include: [{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida'}]})
-                    if(producto){
-                        return res.render('products/productDetail', {prod: producto, estilosVida: EstiloVida, marcas: Marca});
+            if(req.session.usuarioLogueado && req.session.usuarioLogueado.rol_id ===  2){
+                let producto = await Producto.findByPk(id, {include: [{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida'}], paranoid: false}, {transaction: t})
+                await t.commit();
+                return res.render('products/productDetail', {prod: producto, marca: Marca});
+            }else if(!req.session.usuarioLogueado || req.session.usuarioLogueado.rol_id !=  2 ){
+                let producto = await Producto.findByPk(id, {include: [{association: 'ProductoImagen'}, {association: 'Marca'}, {association: 'EstiloVida'}]}, {transaction: t})
+                    if(producto){ 
+                        await t.commit();
+                        res.render('products/productDetail', {prod: producto, marca: Marca});
                     }else{
                         return res.redirect('/products/product-not-found')
                     }               
             }
         }
         catch (error){
-         console.log(error);
+            await t.rollback();
+            console.log(error);
         }        
     },
     productCart: (req, res) => {
         res.render('products/productCart', {estilosVida: EstiloVida});
     },
     create: async (req, res) => {
+        const t = await sequelize.transaction();
         try {
-         let listaCateg = await Categoria.findAll();
-         let listaEstilosVida = await EstiloVida.findAll();
-         let listaMarcas = await Marca.findAll();
+         let listaCateg = await Categoria.findAll({transaction: t});
+         let listaEstilosVida = await EstiloVida.findAll({transaction: t});
+         let listaMarcas = await Marca.findAll({transaction: t});
+         await t.commit();
          res.render('products/create', {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas});
         }
         catch (error){
+            await t.rollback();
             console.log(error);
         }
     },
     processCreate: async (req, res) => { 
+        const t = await sequelize.transaction();
         try{
             let errores = validationResult(req);
             if(errores.errors.length === 0) {
@@ -68,11 +75,11 @@ const controller = {
                     precio: req.body.prod_precio,
                     descripcionCorta: req.body.prod_descripcion_corta,
                     descripcionLarga: req.body.prod_descripcion_larga,
-                })
+                }, {transaction: t})
          
                 let idEstiloVida = req.body.prod_estilosVida
                 for(let i = 0; i < idEstiloVida.length; i++){
-                    await newProduct.addEstiloVida(idEstiloVida[i])
+                    await newProduct.addEstiloVida(idEstiloVida[i],{transaction: t})
                 }
             
                 let imagenes = req.files
@@ -80,9 +87,9 @@ const controller = {
                     await ProductoImagen.create({
                         img: "/img/products/" + imagenes[i].filename,
                         producto_id: newProduct.id
-                    })
+                    },{transaction: t})
                 }
-    
+                await t.commit();
                 return res.redirect('/products/productDetail/' + newProduct.id)
             } else{
                 let listaCateg = await Categoria.findAll();
@@ -92,10 +99,12 @@ const controller = {
             }
         }
         catch (error){
+            await t.rollback();
             console.log(error);
         } 
     },
     listProducts: async (req, res) => {
+        const t = await sequelize.transaction();
         try {
             let prods = await Producto.findAll({
                 include:[
@@ -103,19 +112,19 @@ const controller = {
                     ,{association: 'Marca'}
                     ,{association: 'EstiloVida'}
                 ]
-            })
+            },{transaction: t})
             let listaEstilosVida = await EstiloVida.findAll();
             
             if (req.params.idEstiloVida){
-                let estilo = await EstiloVida.findByPk(req.params.idEstiloVida)
+                let estilo = await EstiloVida.findByPk(req.params.idEstiloVida,{transaction: t})
                 let prods = await Producto.findAll({
                     include:[
                             {association: 'ProductoImagen'}
                             ,{association: 'Marca'}
                             ,{association: 'EstiloVida', where: {id: req.params.idEstiloVida}}
                         ]
-                })
-
+                },{transaction: t})
+                await t.commit();
                 res.render('products/listProducts', {prods: prods, estiloFiltrado: estilo, estilosVida: listaEstilosVida})
             } else {
                 prods = await Producto.findAll({
@@ -124,36 +133,40 @@ const controller = {
                         ,{association: 'Marca'}
                         ,{association: 'EstiloVida'}
                     ]
-                });
-                
+                },{transaction: t});
+                await t.commit();
                 res.render('products/listProducts', {prods: prods,  estilosVida: listaEstilosVida})
             }
         }
         catch (error){
+            await t.rollback();
             console.log(error);
         } 
     },
     edit: async (req, res) => {
+        const t = await sequelize.transaction();
         try{
-         let listaCateg = await Categoria.findAll();
-         let listaEstilosVida = await EstiloVida.findAll();
-         let listaMarcas = await Marca.findAll();
-            let prod =  await Producto.findByPk(req.params.id, {include:[{association: 'ProductoImagen'}, {association: 'Marca'},{association: 'Categoria'}, {association: 'EstiloVida'}]})
+         let listaCateg = await Categoria.findAll({transaction: t});
+         let listaEstilosVida = await EstiloVida.findAll({transaction: t});
+         let listaMarcas = await Marca.findAll({transaction: t});
+         let prod =  await Producto.findByPk(req.params.id, {include:[{association: 'ProductoImagen'}, {association: 'Marca'},{association: 'Categoria'}, {association: 'EstiloVida'}],paranoid: false},{transaction: t})
             if (prod) {
                let prodEstilos = prod.EstiloVida.map(elem => elem.id)
+               await t.commit();
                 return res.render('products/edit', {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, prod: prod, estilos: prodEstilos});
             }else{
                 return res.redirect('/products/product-not-found');
             }
         }
         catch (error){
+            await t.rollback();
             console.log(error);
         } 
     },
     processEdit: async (req, res) => {
+        const t = await sequelize.transaction();
         try{
-            let idProd = req.params.id;
-            
+            let idProd = req.params.id;    
             let errores = validationResult(req)
             if(errores.errors.length > 0){
                 let listaCateg = await Categoria.findAll();
@@ -187,7 +200,6 @@ const controller = {
 
                 return res.render('products/edit',  {categorias: listaCateg, estilosVida: listaEstilosVida, marcas: listaMarcas, estilos: prodEstilos, errores:errores.mapped(), prod:prodNuevo})
             }
-
             await Producto.update(
                 {
                     nombre: req.body.prod_nombre,
@@ -197,14 +209,14 @@ const controller = {
                     descripcionCorta: req.body.prod_descripcion_corta,
                     descripcionLarga: req.body.prod_descripcion_larga, 
                 },
-                {where: {id:idProd}}
+                {where: {id:idProd}},
+                {transaction: t}
             );
-            let prodNuevo = await Producto.findByPk(idProd);
+            let prodNuevo = await Producto.findByPk(idProd, {transaction: t});
 
             // reemplazar estilos de vida con los nuevos
             let prodEstilosVida = req.body.prod_estilosVida;
             await prodNuevo.setEstiloVida(prodEstilosVida)
-
             /*** Imagenes ***/
             let prodImagenes = req.files;
             console.log(prodImagenes)
@@ -214,48 +226,58 @@ const controller = {
                     {
                         producto_id: idProd,
                         img: "/img/products/" + prodImagenes[i].filename
-                    }
+                    }, 
+                    {transaction: t}
                 )
             }
-        
+            await t.commit();
             return res.redirect('/products/productDetail/' + idProd)
         }
         catch (error){
+            await t.rollback();
             console.log(error);
         } 
     },
     softDelete: async (req,res)=>{
+        const t = await sequelize.transaction();
         let id = req.params.id;
         try{
             let producto = await Producto.destroy({where:{id:id}})
+            await t.commit();
+            return res.redirect('/panels/manageProducts');
         }
         catch (error){
+            await t.rollback();
             console.log(error);
-        }
-        return res.redirect('/products/productDetail/' + id)
+        }     
     },
     hardDelete: async (req,res)=>{
+        const t = await sequelize.transaction();
         let id = req.params.id;
         try{
-            let producto = await Producto.destroy({where:{id:id}, force: true})
+            let producto = await Producto.destroy({where:{id:id}, force: true},{transaction: t})
+            await t.commit();
+            return res.redirect('/panels/manageProducts');
         }
         catch (error){
-        console.log(error);
-        } 
-        return res.redirect('/panels/manageProducts');
+            await t.rollback();
+            console.log(error);
+        }      
     },
     processActivate: async (req, res) => {
+        const t = await sequelize.transaction();
         let id = req.params.id;
         try {
-            let producto = await Producto.restore({where:{id:id}})
+            let producto = await Producto.restore({where:{id:id}},{transaction: t})
+            await t.commit(); 
+            return res.redirect('/panels/manageProducts/')
         }
         catch (error){
+            await t.rollback();
             console.log(error);
-        }
-        return res.redirect('/panels/manageProducts/')
+        }    
     }    
 }
-
 module.exports = controller;
 
 
