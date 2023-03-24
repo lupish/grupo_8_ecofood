@@ -42,6 +42,7 @@ router.get('/productDetail/:id', productController.productDetail);
 
 //CARRITO DE COMPRAS
 router.get('/productCart', productController.productCart);
+router.get('/productCartBackup', productController.productCartBackup);
 
 //CREAR UN NUEVO PRODUCTO
 router.get('/create', adminPermission, productController.create);

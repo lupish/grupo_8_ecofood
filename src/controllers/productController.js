@@ -49,6 +49,9 @@ const controller = {
     productCart: (req, res) => {
         res.render('products/productCart', {estilosVida: EstiloVida});
     },
+    productCartBackup: (req, res) => {
+        res.render('products/productCartBackup', {estilosVida: EstiloVida});
+    }, 
     create: async (req, res) => {
         const t = await sequelize.transaction();
         try {
