@@ -7,7 +7,7 @@
         <section class="prod-carrusel">
             <div class="carrusel-un-prod">
                 <% for (let i = 0; i < prod.ProductoImagen.length; i++) { %>
-                <img src="<%= prod.ProductoImagen[i].img %>" alt="">
+                <img id="prod-img-<%= i %>" src="<%= prod.ProductoImagen[i].img %>" alt="<%= prod.ProductoImagen[i].img %>">
                 <% } %>         
             </div>
             <i id ="estrella" class="fa-solid fa-star"></i>
@@ -34,9 +34,9 @@
 
             <div class="agregar-carrito">
                 <div class="cantidad"> 
-                    <button class="cant" onclick="botonQuitar()"><i class="fa-solid fa-minus"></i></button>
+                    <button class="cant"><i class="fa-solid fa-minus"></i></button>
                     <p id="prod-cant">1</p>
-                    <button class="cant" onclick="botonAgregar()"><i class="fa-solid fa-plus"></i></button>
+                    <button class="cant"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 <button type="submit" class="boton-carrito-comprar">Comprar ahora</button>
                 <button type="submit" class="boton-carrito-agregar" id="agregar-carrito">Agregar al carrito</button>

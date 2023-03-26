@@ -25,7 +25,8 @@ function agregarElemCarrito() {
     let prod = {
         id: parseFloat(document.getElementById("prod-id").innerText),
         nombre: document.getElementById("prod-nombre-marca").innerText,
-        precio: parseFloat(document.getElementById("prod-precio").innerText.replace("$ ", ""))
+        precio: parseFloat(document.getElementById("prod-precio").innerText.replace("$ ", "")),
+        img: document.getElementById("prod-img-0").alt
     }
 
     let carrito = JSON.parse(localStorage.getItem("carrito"))
