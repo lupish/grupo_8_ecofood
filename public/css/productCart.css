@@ -136,8 +136,13 @@ div.carrito-info {
     border-radius: 50%;
 }
 .arti-cant:hover{
-transform: scale(1.2);
-transition: all 0.5s;
+    transform: scale(1.2);
+    transition: all 0.5s;
+}
+
+.arti-trash:hover{
+    transform: scale(1.2);
+    transition: all 0.5s;
 }
 
 
@@ -229,7 +234,7 @@ div.carrito-footer-comprar {
 
 @media (min-width: 769px) {
     .carrito-lista {
-        width: 40%;
+        width: 55%;
     }
     .carrito-footer{
         width: 40%;

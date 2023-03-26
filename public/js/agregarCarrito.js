@@ -15,13 +15,10 @@ function readyDoc() {
     // agarro el boton de agergar al carrito
     let agregarCarrito = document.getElementById("agregar-carrito")
     
-    console.log(agregarCarrito)
     agregarCarrito.addEventListener("click", agregarElemCarrito)
 }
 
 function agregarElemCarrito() {
-    console.log("Evento del agregar carrito");
-
     let prod = {
         id: parseFloat(document.getElementById("prod-id").innerText),
         nombre: document.getElementById("prod-nombre-marca").innerText,
@@ -31,7 +28,6 @@ function agregarElemCarrito() {
 
     let carrito = JSON.parse(localStorage.getItem("carrito"))
     const cantProd = parseFloat(document.getElementById("prod-cant").innerText);
-    console.log(cantProd)
 
     if (carrito.length == 0) {
         // carito vacio
@@ -40,8 +36,6 @@ function agregarElemCarrito() {
 
         carrito.push(prod);
     } else {
-        console.log("Carrito existente!")
-
         // buscar si existe producto
         let prodEnCarrito = carrito.find((elem) => elem.id == prod.id)
         if (prodEnCarrito) {
@@ -58,11 +52,18 @@ function agregarElemCarrito() {
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito))
+
+    // aviso de elemento nuevo en el carrito
+    let aviso = document.getElementById("carrito-aviso-elem-agregado")
+    aviso.style.display = "block"
 }
 
 function botonAgregar() {
     const cantProd = parseFloat(document.getElementById("prod-cant").innerText);
     document.getElementById("prod-cant").innerText = cantProd + 1;
+
+    let aviso = document.getElementById("carrito-aviso-elem-agregado")
+    aviso.style.display = "none"
 }
 
 function botonQuitar() {
@@ -71,5 +72,8 @@ function botonQuitar() {
     if (cantProd > 1) {
         document.getElementById("prod-cant").innerText = cantProd - 1;
     }
+
+    let aviso = document.getElementById("carrito-aviso-elem-agregado")
+    aviso.style.display = "none"
     
 }
