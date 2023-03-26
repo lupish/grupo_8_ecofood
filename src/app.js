@@ -11,8 +11,6 @@ const recordameMiddleware = require('./middlewares/recordameMiddleware');
 
 const userLoggedMiddleware = require('./middlewares/userLogguedMiddleware')
 const path = require('path');
-const fs = require('fs');
-
 
 app.use(express.static('public'));
 app.use(session({secret:"Shh,es un secreto!"}));
@@ -68,15 +66,6 @@ const lifeStylesRouter = require('./routes/lifeStylesRouter');
 app.use('/lifeStyles', lifeStylesRouter);
 const categoria = require('./routes/categoriasRouter');
 app.use('/categoria', categoria);
-
-
-// // bd estilosVida
-// const fs = require('fs');
-// const estilosVidaJSON = path.join(__dirname,'./data/estilosVidaDB.json');
-// const estilosVida = JSON.parse(fs.readFileSync(estilosVidaJSON, 'utf-8'));
-
-
-
 
 //ERROR 404
 app.use((req, res, next) => {

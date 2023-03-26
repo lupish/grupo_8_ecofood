@@ -3,7 +3,6 @@ const db = require('../database/models');
 const Usuario = db.Usuario;
 
 const recordameMiddleware = async (req, res, next) => {
-    console.log("recordameMiddleware")
     if (req.cookies.email) {
         if (!req.session.usuarioLogueado) {
             let usuarioMail = await Usuario.findAll({

@@ -3,7 +3,6 @@ const db = require('../database/models');
 const Rol = db.Rol;
 
 const adminPermission = async (req, res, next)=>{     
-    console.log("adminPermission")
     if (req.session.usuarioLogueado) {
         const rolUser = await Rol.findByPk(req.session.usuarioLogueado.rol_id);
         if (rolUser && rolUser.nombre == "Administrador") {
