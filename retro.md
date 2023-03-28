@@ -71,3 +71,7 @@ Debido a que nos atrasamos en realizar la retrospectiva del Sprint 3, hicimos la
 
 # RETROSPECTIVA SPRINT 5
 En el último Sprint manejamos muy bien los tiempos, logrando terminar antes de la fecha de entrega, e incluso anticiparnos a próximas entregas. Dicho esto, estaría ideal seguir trabajando con la misma organización.
+
+# RETROSPECTIVA SPRINT 6
+En el comienzo del Sprint, un integrante del grupo abandonó el proyecto por lo que, dividiendo las tareas entre dos personas, fue más carga de trabajo para cada una, además de ser un Sprint largo y complejo. De todas formas nos organizamos y logramos la entrega en fecha. 
+En el siguiente Sprint vamos a lograr mejor organización ya que desde un principio sabemos cómo trbajar entre dos personas.
