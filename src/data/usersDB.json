@@ -1,0 +1,49 @@
+[
+    {
+      "id": 1,
+      "nombre": "Luchi",
+      "email": "a@a.com",
+      "contrasenia": "$2a$10$xtR2k7RHLCDBMnuNc5ZiheqRqxwF/Vg5Mxt3HYAt0T/q4ZAdEwB9e",
+      "img": "user-default.webp",
+      "alt": "Usuario sin imagen",
+      "rol": "administrador",
+      "delete": false
+    },
+    {
+      "id": 2,
+      "nombre": "Shaine Sara",
+      "email": "sheine.siro@gmail.com",
+      "contrasenia": "$2a$10$ZdSqMOhq8/hv0GFtCOidOuynYpQ9OVP0IWl2rwjeAAnMdjZELb.hC",
+      "rol": "administrador",
+      "delete": false,
+      "img": "user-default.webp",
+      "alt": "Usuario sin imagen"
+    },
+    {
+      "id": 3,
+      "nombre": "Lucha",
+      "email": "lucha@gmail.com",
+      "contrasenia": "$2a$10$VtKIwBBNRBp85Ax9bfoiQuxds0F9oKz0WO6ibVAFmC5c5GC66paZ.",
+      "img": "user-raven_1675635784795.jpg",
+      "alt": "raven.jpg",
+      "delete": false
+    },
+    {
+      "id": 4,
+      "nombre": "Lu sin foto",
+      "email": "lusinfoto@gmail.com",
+      "contrasenia": "$2a$10$4Gtyei8C2QxxHPKxUJ5IyuCdkRZFKG1PPM.GSfoj.jIklxvBG8LUW",
+      "img": "user-default.webp",
+      "alt": "Usuario sin imagen",
+      "delete": false
+    },
+    {
+      "id": 7,
+      "nombre": "Eleven",
+      "email": "eleven@gmail.com",
+      "contrasenia": "$2a$10$datE7zFsOe4NDr3Ve7uKN.6bX3W1Y5imHJN.tmffAYbo3v3qOPEwW",
+      "img": "user-450_1000_1675910376441.jpeg",
+      "alt": "450_1000.jpeg",
+      "delete": false
+    }
+]
