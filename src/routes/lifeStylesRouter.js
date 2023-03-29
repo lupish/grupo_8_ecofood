@@ -3,21 +3,7 @@ const router = express.Router();
 const path = require('path');
 //MIDDLEWARE
 const adminPermission = require('../middlewares/adminPermission');
-//MULTER
-const multer = require('multer');
-const multerDiskStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "../../public/img/estilosVida"));
-    },
-    filename: (req, file, cb) => {
-        let fileExt = path.extname(file.originalname);
-        let originalName = file.originalname.slice(0, file.originalname.length - fileExt.length)
-
-        let imageName = "estiloVida-" + originalName + "_" + Date.now() + path.extname(file.originalname)
-        cb(null, imageName);
-    }
-});
-const uploadFile = multer({storage: multerDiskStorage});
+const multerExport = require('../modulos/multer');
 
 // VALIDACIONES
 const { body } = require('express-validator');
@@ -50,10 +36,10 @@ router.patch('/activar/:id', adminPermission, lifeStyleController.processActivat
 
 // crear
 router.get('/create', adminPermission, lifeStyleController.create);
-router.post('/create', adminPermission, uploadFile.single("estiloVida_foto"), validarEstiloVida, lifeStyleController.processCreate);
+router.post('/create', adminPermission, multerExport("estiloVida_foto", 'estilosVida', 'single'), validarEstiloVida, lifeStyleController.processCreate);
 
 // editar
 router.get('/edit/:id', adminPermission, lifeStyleController.edit);
-router.put('/edit/:id', adminPermission, uploadFile.single("estiloVida_foto"), validarEstiloVida, lifeStyleController.processEdit);
+router.put('/edit/:id', adminPermission, multerExport("estiloVida_foto", 'estilosVida', 'single'), validarEstiloVida, lifeStyleController.processEdit);
 
 module.exports = router;

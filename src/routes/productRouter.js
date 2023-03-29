@@ -12,24 +12,10 @@ const validaciones=[
     check("prod_descripcion_corta").notEmpty().withMessage("La descripción corta del producto no puede ser vacía"),
     check("prod_descripcion_larga").notEmpty().withMessage("La descripción larga del producto no puede ser vacía")
 ]
-//MULTER
-const multer = require('multer');
-const multerDiskStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "../../public/img/products"));
-    },
-    filename: (req, file, cb) => {
-        let fileExt = path.extname(file.originalname);
-        let originalName = file.originalname.slice(0, file.originalname.length - fileExt.length)
-
-        let imageName = "prod-" + Date.now() + path.extname(file.originalname)
-        cb(null, imageName);
-    }
-});
-const uploadFile = multer({storage: multerDiskStorage});
 
 //MIDDLEWARE
 const adminPermission = require('../middlewares/adminPermission');
+const multerExport = require('../modulos/multer')
 
 //CONTROLADOR
 const productController = require('../controllers/productController');
@@ -46,11 +32,11 @@ router.get('/productCartBackup', productController.productCartBackup);
 
 //CREAR UN NUEVO PRODUCTO
 router.get('/create', adminPermission, productController.create);
-router.post('/create', adminPermission, uploadFile.array("prod_fotos"), validaciones, productController.processCreate);
+router.post('/create', adminPermission,multerExport("prod_fotos", 'products', 'array'), validaciones, productController.processCreate);
 
 //EDCION DE UN  PRODUCTO
 router.get('/edit/:id', adminPermission, productController.edit);
-router.put('/edit/:id', adminPermission, uploadFile.array("prod_fotos"), validaciones ,productController.processEdit);
+router.put('/edit/:id', adminPermission, multerExport("prod_fotos", 'products', 'array'), validaciones ,productController.processEdit);
 
 //Soft delete de los productos
 router.delete('/delete/soft/:id', adminPermission, productController.softDelete);

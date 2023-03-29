@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const methodOverride = require("method-override");
 
-const logMiddleware = require("../middlewares/logMiddleware.js");
+
 const session=require("express-session")
 
 const cookieParser = require('cookie-parser');
@@ -41,8 +41,7 @@ app.use(cookieParser());
 app.use(recordameMiddleware);
 
 app.listen(3000,()=>{console.log("Servidor Corriendo")})
-/** log middleware * */
-app.use(logMiddleware)
+
 
 /*** ROUTES ***/
 const mainRouter = require('./routes/mainRouter');

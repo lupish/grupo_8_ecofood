@@ -5,20 +5,7 @@ const path = require('path');
 //MIDDLEWARES
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware= require('../middlewares/authMiddleware');
-//MULTER
-const multer = require('multer');
-const multerDiskStorage = multer.diskStorage({
-    destination: (req, file, cb)=>{
-        cb(null, path.join(__dirname, "../../public/img/users"));
-    },
-    filename: (req, file, cb)=>{
-        let fileExt = path.extname(file.originalname);
-        let originalName = file.originalname.slice(0, file.originalname.length - fileExt.length);
-        let imageName = 'user-' + originalName + '_' + Date.now() + path.extname(file.originalname);
-        cb(null, imageName);
-    }
-});
-const uploadFile = multer({storage: multerDiskStorage});
+const multerExport = require('../modulos/multer')
 
 const { body } = require('express-validator');
 const validationRegister = [
@@ -70,14 +57,14 @@ router.get('/logout/:id', userController.logout);
 
 //REGISTER
 router.get('/register', guestMiddleware, userController.register);
-router.post('/register', uploadFile.single('user_foto'), validationRegister, userController.processCreate);
+router.post('/register', multerExport("user_foto", 'users', 'single'), validationRegister, userController.processCreate);
 
 //DETaLLE DE USUARIO
 router.get('/userDetail/:id', authMiddleware, userController.userDetail);
 
 //EDICION DE ROL-USUARIO
 router.get('/edit/:id', userController.edit);
-router.put('/edit/:id', uploadFile.single('user_foto'), validationEdit, userController.processEdit);
+router.put('/edit/:id', multerExport("user_foto", 'users', 'single'), validationEdit, userController.processEdit);
 
 
 //ELIMINACION DE USUARIOS 

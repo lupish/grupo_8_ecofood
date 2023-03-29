@@ -3,21 +3,7 @@ const router = express.Router();
 const path = require('path');
 //MIDDLEWARE
 const adminPermission = require('../middlewares/adminPermission');
-//MULTER
-const multer = require('multer');
-const multerDiskStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "../../public/img/categorias"));
-    },
-    filename: (req, file, cb) => {
-        let fileExt = path.extname(file.originalname);
-        let originalName = file.originalname.slice(0, file.originalname.length - fileExt.length)
-
-        let imageName = "categoria-" + originalName + "_" + Date.now() + path.extname(file.originalname)
-        cb(null, imageName);
-    }
-});
-const uploadFile = multer({storage: multerDiskStorage});
+const multerExport = require('../modulos/multer')
 
 // VALIDACIONES
 const { body } = require('express-validator');
@@ -50,10 +36,10 @@ router.patch('/activar/:id', adminPermission, categoriaController.processActivat
 
 // crear
 router.get('/create', adminPermission, categoriaController.create);
-router.post('/create', adminPermission, uploadFile.single("categoria_foto"), validarCategorias, categoriaController.processCreate);
+router.post('/create', adminPermission, multerExport("categoria_foto", 'categorias', 'single'), validarCategorias, categoriaController.processCreate);
 
 // editar
 router.get('/edit/:id', adminPermission, categoriaController.edit);
-router.put('/edit/:id', adminPermission, uploadFile.single("categoria_foto"), validarCategorias, categoriaController.processEdit);
+router.put('/edit/:id', adminPermission, multerExport("categoria_foto", 'categorias', 'single'), validarCategorias, categoriaController.processEdit);
 
 module.exports = router;
