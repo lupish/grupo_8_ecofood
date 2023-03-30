@@ -12,8 +12,25 @@ function multerExport (nombreDeCampo, ruta, cantDeFotos){
             let imageName = ruta + "-" + originalName + "_" + Date.now() + path.extname(file.originalname)
             cb(null, imageName);
         }
+       
     });
-    const uploadFile = multer({storage: multerDiskStorage});
+    
+
+    const mimeTypeFilter = (req, file, cb) => {
+        console.log(file.mimetype);
+            if(
+                (file.mimetype).includes("jpg")  || (file.mimetype).includes("jpeg") ||
+                 (file.mimetype).includes("gif") || (file.mimetype).includes("png")
+            ) {
+                cb(null, true)
+            } else {
+                cb(null, false)
+                req.fileError = "ppp"
+                console.log('hola')
+            }
+        }
+
+    const uploadFile = multer({fileFilter: mimeTypeFilter, storage: multerDiskStorage})
     return uploadFile[cantDeFotos](nombreDeCampo);
 }
 module.exports = multerExport

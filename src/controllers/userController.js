@@ -23,16 +23,10 @@ const controller = {
     const t = await sequelize.transaction();
     try{
         if (!req.session.usuarioLogueado) {
-            let listaUsuarios = await Usuario.findAll({
-                where: {
-                    email: req.body.email
-                }, paranoid: false
-            },{transaction: t})
-
-            let usuario;
-            if (listaUsuarios.length > 0) {
-                usuario = listaUsuarios[0]
-            }  
+            let usuario = await Usuario.findOne({
+                where: {email: req.body.email},
+                include: [{association: 'rol'}],
+                paranoid: false},{transaction: t})
             if (usuario) {
                 if (!bcryptjs.compareSync(req.body.contrasenia, usuario.contrasenia)) {
                     let contraseniaMal = {

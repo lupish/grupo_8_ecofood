@@ -6,6 +6,7 @@ const path = require('path');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware= require('../middlewares/authMiddleware');
 const multerExport = require('../modulos/multer')
+const adminPermission = require('../middlewares/adminPermission');
 
 const { body } = require('express-validator');
 const validationRegister = [
@@ -68,9 +69,9 @@ router.put('/edit/:id', multerExport("user_foto", 'users', 'single'), validation
 
 
 //ELIMINACION DE USUARIOS 
-router.delete('/delete/soft/:id', userController.softDelete);
+router.delete('/delete/soft/:id', adminPermission, userController.softDelete);
 
 //REACTIVAR USURAIO
-router.patch('/activar/:id', userController.processActivate);
+router.patch('/activar/:id', adminPermission, userController.processActivate);
 
 module.exports = router;

@@ -5,16 +5,14 @@ const Usuario = db.Usuario;
 const recordameMiddleware = async (req, res, next) => {
     if (req.cookies.email) {
         if (!req.session.usuarioLogueado) {
-            let usuarioMail = await Usuario.findAll({
+            let user = await Usuario.findOne({
                 where: {
                     email: req.cookies.email
-                }
+                },
+                include: [{association: 'rol'}]
             });
-            if (usuarioMail.length > 0) {
-                let user = usuarioMail[0]
-                req.session.usuarioLogueado = user;
-                console.log("Usuario recordado en session")
-            }   
+          req.session.usuarioLogueado = user;
+          console.log("Usuario recordado en session") 
         }
     }
     
