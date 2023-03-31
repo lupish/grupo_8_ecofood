@@ -5,8 +5,11 @@ const path = require('path');
 //MIDDLEWARES
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware= require('../middlewares/authMiddleware');
-const multerExport = require('../modulos/multer')
 const adminPermission = require('../middlewares/adminPermission');
+
+//MODULOS
+const multerExport = require('../modulos/multer')
+
 
 const { body } = require('express-validator');
 const validationRegister = [

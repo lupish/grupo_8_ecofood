@@ -1,27 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+
 //MIDDLEWARE
 const adminPermission = require('../middlewares/adminPermission');
+
+//MODULOS
 const multerExport = require('../modulos/multer');
-
-// VALIDACIONES
-const { body } = require('express-validator');
-const validarEstiloVida = [
-    body("estiloVida_nombre").notEmpty().withMessage("Debe ingresar un nombre"),
-    body("estiloVida_foto").custom((value, { req }) => {
-        if (req.file) {
-            const extensions = ['.jpg', '.png', '.gif', '.webp', '.jpeg']
-            let fileExt = path.extname(req.file.originalname);
-
-            if (!extensions.includes(fileExt)) {
-                throw new Error(`Las extensiones permitidas son : ${extensions.join(", ")}`)
-            }
-        }
-
-        return true;
-    })
-];
+const validar = require('../modulos/validaciones/validacionesGenerica');
 
 /*** CONTROLADOR ***/
 const lifeStyleController = require('../controllers/lifeStylesController');
@@ -36,10 +22,10 @@ router.patch('/activar/:id', adminPermission, lifeStyleController.processActivat
 
 // crear
 router.get('/create', adminPermission, lifeStyleController.create);
-router.post('/create', adminPermission, multerExport("estiloVida_foto", 'estilosVida', 'single'), validarEstiloVida, lifeStyleController.processCreate);
+router.post('/create', adminPermission, multerExport("estiloVida_foto", 'estilosVida', 'single'), validar('estiloVida_nombre', 'estiloVida_foto'), lifeStyleController.processCreate);
 
 // editar
 router.get('/edit/:id', adminPermission, lifeStyleController.edit);
-router.put('/edit/:id', adminPermission, multerExport("estiloVida_foto", 'estilosVida', 'single'), validarEstiloVida, lifeStyleController.processEdit);
+router.put('/edit/:id', adminPermission, multerExport("estiloVida_foto", 'estilosVida', 'single'), validar('estiloVida_nombre', 'estiloVida_foto'), lifeStyleController.processEdit);
 
 module.exports = router;

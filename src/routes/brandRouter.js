@@ -1,45 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const {check }=require("express-validator")
 
 //MIDDLEWARE
 const adminPermission = require('../middlewares/adminPermission');
+
+//MODULOS
 const multerExport = require('../modulos/multer');
-const validarMarcas = require('../modulos/validaciones/validacionesGenerica');
-
-// //MULTER
-// const multer = require('multer');
-// const multerDiskStorage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, path.join(__dirname, "../../public/img/brands"));
-//     },
-//     filename: (req, file, cb) => {
-//         let fileExt = path.extname(file.originalname);
-//         let originalName = file.originalname.slice(0, file.originalname.length - fileExt.length)
-
-//         let imageName = "brand-" + originalName + "_" + Date.now() + path.extname(file.originalname)
-//         cb(null, imageName);
-//     }
-// });
-// const uploadFile = multer({storage: multerDiskStorage});
-
-// VALIDACIONES
-// const { body } = require('express-validator');
-// const validarMarcas = [
-//     body("marca_nombre").notEmpty().withMessage("Debe ingresar un nombre"),
-//     body("marca_foto").custom((value, { req }) => {
-//         if (req.file) {
-//             const extensions = ['.jpg', '.png', '.gif', '.webp', '.jpeg']
-//             let fileExt = path.extname(req.file.originalname);
-
-//             if (!extensions.includes(fileExt)) {
-//                 throw new Error(`Las extensiones permitidas son : ${extensions.join(", ")}`)
-//             }
-//         }
-
-//         return true;
-//     })
-// ];
+const validar = require('../modulos/validaciones/validacionesGenerica');
 
 /*** CONTROLADOR ***/
 const brandController = require('../controllers/brandController');
@@ -54,10 +23,10 @@ router.patch('/activar/:id', adminPermission, brandController.processActivate)
 
 // crear
 router.get('/create', adminPermission, brandController.create);
-router.post('/create', adminPermission, multerExport("marca_foto", 'brands', 'single'), validarMarcas('marca_nombre'), brandController.processCreate);
+router.post('/create', adminPermission, multerExport("marca_foto", 'brands', 'single'), validar('marca_nombre', 'marca_foto'), brandController.processCreate);
 
 // editar
 router.get('/edit/:id', adminPermission, brandController.edit);
-router.put('/edit/:id', adminPermission, multerExport("marca_foto", 'brands', 'single'), validarMarcas('marca_nombre', 'marca_foto'), brandController.processEdit);
+router.put('/edit/:id', adminPermission, multerExport("marca_foto", 'brands', 'single'), validar('marca_nombre', 'marca_foto'), brandController.processEdit);
 
 module.exports = router;

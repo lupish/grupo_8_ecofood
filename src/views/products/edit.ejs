@@ -83,9 +83,15 @@
                             <% } %>
                         </div>
                     </div>
-                    <label class="label-prod-fotos" for="prod-fotos">Nuevas fotos del producto: </label>
-                    <input class="input-prod-fotos" type="file" name="prod_fotos" id="prod-fotos" multiple>
+                    <<div class="div-prod-fotos <%= (locals.errores && errores.prod_fotos) ? 'class=input-form-no-aceptado' : "" %></div>">
+                        <label class="label-prod-fotos" for="prod-fotos">Nuevas fotos del producto: </label>
+                        <input class="input-prod-fotos" type="file" name="prod_fotos" id="prod-fotos" multiple>
+                        <% if (locals.errores && errores.prod_fotos) { %>
+                            <p class="form-error"><%= errores.prod_fotos.msg %> </p>
+                        <% } %>
+                    </div>
                 </div>
+
                 <div>
                     <button type="submit">Editar producto</button>
                     <button type="reset">Borrar</button>
