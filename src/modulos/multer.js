@@ -18,23 +18,21 @@ function multerExport (nombreDeCampo, ruta, cantDeFotos){
 
     const mimeTypeFilter = (req, file, cb) => {
         console.log(file.mimetype);
-            if(
-                (file.mimetype).includes("jpg")  || (file.mimetype).includes("jpeg") ||
-                 (file.mimetype).includes("gif") || (file.mimetype).includes("png")
-            ) {
-                cb(null, true)
-            } else {
-                cb(null, false)
-                req.fileError = "ppp"
-                console.log('hola')
-            }
+        if(
+            (file.mimetype).includes("jpg")  || (file.mimetype).includes("jpeg") ||
+            (file.mimetype).includes("gif") || (file.mimetype).includes("png")
+        ) {
+            cb(null, true)
+        } else {
+            cb(null, false)
+            req.fileError = "ppp"
         }
+    }
 
     const uploadFile = multer({fileFilter: mimeTypeFilter, storage: multerDiskStorage})
     return uploadFile[cantDeFotos](nombreDeCampo);
 }
 module.exports = multerExport
-//agregar validacion 
 
 
 

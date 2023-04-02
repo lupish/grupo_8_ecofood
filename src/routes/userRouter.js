@@ -9,6 +9,7 @@ const adminPermission = require('../middlewares/adminPermission');
 
 //MODULOS
 const multerExport = require('../modulos/multer')
+const validarRegistro = require('../modulos/validaciones/validacionesUsuario');
 
 
 const { body } = require('express-validator');
@@ -61,14 +62,14 @@ router.get('/logout/:id', userController.logout);
 
 //REGISTER
 router.get('/register', guestMiddleware, userController.register);
-router.post('/register', multerExport("user_foto", 'users', 'single'), validationRegister, userController.processCreate);
+router.post('/register', multerExport("user_foto", 'users', 'single'), validarRegistro("Registro"), userController.processCreate);
 
 //DETaLLE DE USUARIO
 router.get('/userDetail/:id', authMiddleware, userController.userDetail);
 
 //EDICION DE ROL-USUARIO
 router.get('/edit/:id', userController.edit);
-router.put('/edit/:id', multerExport("user_foto", 'users', 'single'), validationEdit, userController.processEdit);
+router.put('/edit/:id', multerExport("user_foto", 'users', 'single'), validarRegistro("Editar"), userController.processEdit);
 
 
 //ELIMINACION DE USUARIOS 
