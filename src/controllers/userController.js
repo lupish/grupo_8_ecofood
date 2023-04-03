@@ -64,59 +64,59 @@ const controller = {
         res.render('users/register')
     },
     processCreate: async (req, res) => {
-    const t = await sequelize.transaction();
-    try{
-        // CHEQUEAR CAMPOS
-        const valRes = validationResult(req)
-        if (valRes.errors.length > 0) {
-            return res.render('users/register', { errors: valRes.mapped(), oldData: req.body })
-        }
+        const t = await sequelize.transaction();
+        try{
+            // CHEQUEAR CAMPOS
+            const valRes = validationResult(req)
+            if (valRes.errors.length > 0) {
+                return res.render('users/register', { errors: valRes.mapped(), oldData: req.body })
+            }
 
-        // chequear que usuario no existe
-        let usuariosEmail = await Usuario.findAll({where: {email: req.body.email}, paranoid: false})
-        if (usuariosEmail.length > 0) {
-            let mailRepetido = {
-                email: {
-                    msg: "Ya existe un usuario con el mail ingresado"
-                }  
+            // chequear que usuario no existe
+            let usuariosEmail = await Usuario.findAll({where: {email: req.body.email}, paranoid: false})
+            if (usuariosEmail.length > 0) {
+                let mailRepetido = {
+                    email: {
+                        msg: "Ya existe un usuario con el mail ingresado"
+                    }  
+                }
+                return res.render('users/register', {errors: mailRepetido, oldData: req.body })
             }
-            return res.render('users/register', {errors: mailRepetido, oldData: req.body })
-        }
 
-        // chequear que las pass coindicen
-        if (req.body.contrasenia == req.body.confirmarContrasenia) {
-            //crear usuario
-            let userImg; 
-            if (req.file != undefined) {
-                userImg = "/img/users/" + req.file.filename;
+            // chequear que las pass coindicen
+            if (req.body.contrasenia == req.body.confirmarContrasenia) {
+                //crear usuario
+                let userImg; 
+                if (req.file != undefined) {
+                    userImg = "/img/users/" + req.file.filename;
+                }
+                let rolesUsuario = await Rol.findAll({where: {nombre: "Usuario"}})
+                let userRol = rolesUsuario[0].id
+                let user = await Usuario.create(
+                    {
+                        nombre: req.body.nombre,
+                        email: req.body.email,
+                        contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
+                        img: userImg,
+                        rol_id: userRol
+                    },
+                    {transaction: t}
+                )
+                await t.commit();
+                res.redirect('/');
+            } else {
+                let contraseniaDistinta = {
+                    contrasenia: {
+                        msg: "La contraseña ingresada no coincide con la confirmación de la misma"
+                    }  
+                }
+                return res.render('users/register', {errors: contraseniaDistinta, oldData: req.body})
             }
-            let rolesUsuario = await Rol.findAll({where: {nombre: "Usuario"}})
-            let userRol = rolesUsuario[0].id
-            let user = await Usuario.create(
-                {
-                    nombre: req.body.nombre,
-                    email: req.body.email,
-                    contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
-                    img: userImg,
-                    rol_id: userRol
-                },
-                {transaction: t}
-            )
-            await t.commit();
-            res.redirect('/');
-        } else {
-            let contraseniaDistinta = {
-                contrasenia: {
-                    msg: "La contraseña ingresada no coincide con la confirmación de la misma"
-                }  
-            }
-            return res.render('users/register', {errors: contraseniaDistinta, oldData: req.body})
         }
-    }
-    catch (error){
-        await t.rollback();
-        console.log(error);
-    }
+        catch (error){
+            await t.rollback();
+            console.log(error);
+        }
     },
     userDetail: async (req, res) => {
         const t = await sequelize.transaction();
