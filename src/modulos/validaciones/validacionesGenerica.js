@@ -6,8 +6,9 @@ const validacion = [
     const extensions = ['.jpg', '.png', '.gif', '.jpeg']
     const file = req.file;
     if(!file){
-        throw new Error(`Las extensiones permitidas son : ${extensions.join(", ")}`)
+        throw new Error(`Este campo es obligatorio y las extensiones permitidas son: ${extensions.join(", ")}`)
     }
+    return true
     })
 ]
 return validacion
