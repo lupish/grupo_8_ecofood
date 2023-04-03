@@ -17,7 +17,6 @@ function multerExport (nombreDeCampo, ruta, cantDeFotos){
     
 
     const mimeTypeFilter = (req, file, cb) => {
-        console.log(file.mimetype);
         if(
             (file.mimetype).includes("jpg")  || (file.mimetype).includes("jpeg") ||
             (file.mimetype).includes("gif") || (file.mimetype).includes("png")
