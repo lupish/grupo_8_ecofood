@@ -86,6 +86,10 @@ main a:hover {
 
 }
 
+.boton-form-error {
+    background-color:  #eb947aff;
+}
+
 @media (min-width: 769px) {
 
     main .div-form {

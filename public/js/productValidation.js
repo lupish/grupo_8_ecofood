@@ -34,6 +34,7 @@ window.onload = function () {
         descrCorta.classList.remove('input-form-no-aceptado');
         descrLarga.classList.remove('input-form-no-aceptado');
         document.getElementById("div-prod-fotos").classList.remove('input-form-no-aceptado');
+        document.getElementById("form-prod-submit").classList.remove('boton-form-error')
 
         errores = []
         if (nombre.value.length < 5) {
@@ -94,6 +95,8 @@ window.onload = function () {
         
         if (errores.length == 0) {
             form.submit()
+        } else {
+            document.getElementById("form-prod-submit").classList.add('boton-form-error')
         }
         
     })
