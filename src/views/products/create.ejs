@@ -9,11 +9,10 @@
         <form id="form-prod-nuevo" class="form-prod-nuevo" method="POST" action="/products/create" enctype="multipart/form-data">
             <h1 class="label-crear-prod">Crear producto</h1>
             
-            <input class="input-form <%if(locals.errores && errores.prod_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" value="<%if(locals.prod && prod.prod_nombre){%> <%=prod.prod_nombre%> <%}%>"> 
+            <input class="input-form <%if(locals.errores && errores.prod_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" value="<%if(locals.prod && prod.prod_nombre){%> <%=prod.prod_nombre%> <%}%>">
+            
+            <p id="p-prod-nombre" class="form-error"><%= (locals.errores && errores.prod_nombre) ? errores.prod_nombre.msg : "" %></p>
 
-            <%if(locals.errores && errores.prod_nombre){%>
-                <p id="error-prod-nombre" class="form-error"><%=errores.prod_nombre.msg%></p>
-            <%}%>
             <div id="div-prod-categoria" class="div-prod-radio <%if(locals.errores && errores.prod_categoria){%><%="input-form-no-aceptado"%><%}%>">
                 <p>Categoría del producto:</p>
                 <% for(let i = 0; i < categorias.length; i ++) { %>
@@ -24,9 +23,9 @@
                     </div>
                     
                 <% } %>
-                <%if(locals.errores && errores.prod_categoria){%>
-                    <p class="form-error"><%=errores.prod_categoria.msg%></p>
-                <%}%>
+
+                <p id="p-prod-categoria" class="form-error"><%= (locals.errores && errores.prod_categoria) ? errores.prod_categoria.msg : "" %></p>
+
                 <a class="crear-nueva-categoria" href="">Crear nueva categoria</a>
             </div>
             <div id="div-prod-estilosVida" class="div-prod-estilosVida <%if(locals.errores && errores.prod_estilosVida){%><%="input-form-no-aceptado"%><%}%>">
@@ -42,9 +41,9 @@
                         
                     </div>
                 <% } %>
-                <%if(locals.errores && errores.prod_estilosVida){%>
-                    <p class="form-error"><%=errores.prod_estilosVida.msg%></p>
-                <%}%>
+                
+                <p id="p-prod-estilosVida" class="form-error"><%= (locals.errores && errores.prod_estilosVida) ? errores.prod_estilosVida.msg : "" %></p>
+                
                 <a class="crear-nuevo-estiloVida" href="">Crear nuevo estilo de vida</a>
             </div>
             <div id="div-prod-marca" class="div-prod-radio <%if(locals.errores && errores.prod_marca){%><%="input-form-no-aceptado"%><%}%>">
@@ -56,36 +55,32 @@
                        
                     </div>
                 <% } %>
-                <%if(locals.errores && errores.prod_marca){%>
-                    <p class="form-error"><%=errores.prod_marca.msg%></p>
-                <%}%>
+
+                <p id="p-prod-marca" class="form-error"><%= (locals.errores && errores.prod_marca) ? errores.prod_marca.msg : "" %></p>
+
                 <a class="crear-nueva-marca" href="">Crear nueva marca</a>
             </div>
             
             <div class="div-prod-precio">
                 <p>$</p><input class="<%if(locals.errores && errores.prod_precio){%><%="input-form-no-aceptado"%><%}%>"  type="number" step="0.01"  name="prod_precio" id="prod-precio" placeholder="Precio del producto" value="<%if(locals.prod && prod.prod_precio){%><%=parseFloat(prod.prod_precio)%><%}%>">
-                <%if(locals.errores && errores.prod_precio){%>
-                    <p class="form-error"><%=errores.prod_precio.msg%></p>
-                <%}%>
+
+                <p id="p-prod-precio" class="form-error"><%= (locals.errores && errores.prod_precio) ? errores.prod_precio.msg : "" %></p>
             </div>
             <div>
-                <input type="text" class="<%if(locals.errores && errores.prod_descripcion_corta){%><%="input-form-no-aceptado"%><%}%>" name="prod_descripcion_corta" id="prod-descripcion-corta" placeholder="Descripción corta del producto" value="<%if(locals.prod && prod.prod_descripcion_corta){%> <%=prod.prod_descripcion_corta%> <%}%>"> 
-                <%if(locals.errores && errores.prod_descripcion_corta){%>
-                    <p class="form-error"><%=errores.prod_descripcion_corta.msg%></p>
-                <%}%>
+                <input type="text" class="<%if(locals.errores && errores.prod_descripcion_corta){%><%="input-form-no-aceptado"%><%}%>" name="prod_descripcion_corta" id="prod-descripcion-corta" placeholder="Descripción corta del producto" value="<%if(locals.prod && prod.prod_descripcion_corta){%> <%=prod.prod_descripcion_corta%> <%}%>">
+
+                <p id="p-prod-descr-corta" class="form-error"><%= (locals.errores && errores.prod_descripcion_corta) ? errores.prod_descripcion_corta.msg : "" %></p>
             </div>
             <div>
                 <textarea class="<%if(locals.errores && errores.prod_descripcion_larga){%><%="input-form-no-aceptado"%><%}%>" name="prod_descripcion_larga" id="prod-descripcion-larga" cols="30" rows="5" placeholder="Decripción larga del producto"><%if(locals.prod && prod.prod_descripcion_larga){%><%=prod.prod_descripcion_larga%><%}%></textarea>
-                <%if(locals.errores && errores.prod_descripcion_larga){%>
-                    <p class="form-error"><%=errores.prod_descripcion_larga.msg%></p>
-                <%}%>
+                
+                <p id="p-prod-descr-larga" class="form-error"><%= (locals.errores && errores.prod_descripcion_larga) ? errores.prod_descripcion_larga.msg : "" %></p>
             </div>
             <div id="div-prod-fotos" class="div-prod-fotos <%= (locals.errores && errores.prod_fotos) ? 'class=input-form-no-aceptado' : "" %>">
                 <label class="label-prod-fotos" for="prod-fotos">Fotos del producto: </label>
                 <input class="input-prod-fotos" type="file" name="prod_fotos" id="prod-fotos" multiple>
-                <% if (locals.errores && errores.prod_fotos) { %>
-                    <p class="form-error"><%= errores.prod_fotos.msg %> </p>
-                <% } %>
+
+                <p id="p-prod-fotos" class="form-error"><%= (locals.errores && errores.prod_fotos) ? errores.prod_fotos.msg : "" %></p>
             </div>
             <div>
                 <button id="boton-prod-nuevo" type="submit">Crear producto</button>
@@ -97,5 +92,5 @@
     <%- include('../partials/footer') %>
 </body>
 
-<script src="/js/productValidation.js"></script>
+<!-- <script src="/js/productValidation.js"></script> -->
 </html>
