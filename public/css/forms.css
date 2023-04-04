@@ -80,11 +80,20 @@ main a:hover {
     text-align: left;
 }
 
-.input-form-no-aceptado{
-   
-    border: 1px solid  #eb947aff;
-
+.form-valid {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: #96AB61;
+    text-align: left;
 }
+
+.input-form-no-aceptado{
+    border: 1px solid  #eb947aff;
+}
+.input-form-aceptado{
+    border: 1px solid  green ;
+}
+
 
 @media (min-width: 769px) {
 

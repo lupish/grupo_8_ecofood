@@ -12,7 +12,7 @@
                 <img src="/img/EcoFood Logo Curvas web.jpg" alt="imagen de ejemplo" width="360">
                 <h2>Creá tu cuenta</h2>
                 <!-- <p>Comprá más rápido y llevá el control de tus pedidos; ¡en un solo lugar!</p> -->
-                <form action="/users/register" method="POST" enctype="multipart/form-data">
+                <form id="form" action="/users/register" method="POST" enctype="multipart/form-data" >
                  
                     <div>
                         <input type="text" name="nombre" id="nombre" placeholder="Nombre"
@@ -20,7 +20,7 @@
                             value="<%= (locals.oldData && oldData.nombre) ? oldData.nombre : "" %>"
                         >
                         <% if (locals.errors && errors.nombre) { %>
-                            <p class="form-error"><%= errors.nombre.msg %> </p>
+                            <p  id="error" class="form-error"><%= errors.nombre.msg %> </p>
                         <% } %> 
                     </div>
                     <div>
@@ -29,7 +29,7 @@
                             value="<%= (locals.oldData && oldData.email) ? oldData.email : "" %>"
                         >
                         <% if (locals.errors && errors.email) { %>
-                            <p class="form-error"><%= errors.email.msg %> </p>
+                            <p id="error" class="form-error"><%= errors.email.msg %> </p>
                         <% } %>
                     </div>
                     <div>
@@ -37,7 +37,7 @@
                             <%= (locals.errors && errors.contrasenia) ? 'class=input-form-no-aceptado' : "" %>
                         >
                         <% if (locals.errors && errors.contrasenia) { %>
-                            <p class="form-error"><%= errors.contrasenia.msg %> </p>
+                            <p id="error" class="form-error"><%= errors.contrasenia.msg %> </p>
                         <% } %>
                     </div>
             
@@ -46,31 +46,32 @@
                             <%= (locals.errors && errors.confirmarContrasenia) ? 'class=input-form-no-aceptado' : "" %> 
                         >
                         <% if (locals.errors && errors.confirmarContrasenia) { %>
-                            <p class="form-error"><%= errors.confirmarContrasenia.msg %> </p>
+                            <p  id="error" class="form-error"><%= errors.confirmarContrasenia.msg %> </p>
                         <% } %>
                     </div>
-                    <div >
+                    <div id="user_foto">
                         <label for="user_foto">Sube una foto de perfil: </label>
                         <input type="file" name="user_foto" id="user_foto"
                         <%= (locals.errors && errors.user_foto) ? 'class=input-form-no-aceptado' : "" %>
                         >
 
                         <% if (locals.errors && errors.user_foto) { %>
-                            <p class="form-error"><%= errors.user_foto.msg %> </p>
+                            <p id="error" class="form-error"><%= errors.user_foto.msg %> </p>
                         <% } %>
                     </div>
                     <div>
-                        <button type="submit">Crear cuenta</button>
+                        <button type="submit" id="botonEnviar" >Crear cuenta</button>
                     </div>
                 </form>
                 <a href="/users/login">¿Yá tenés una cuenta? Iniciá sesión</a>
             </div>
-        </section>
+        </section> 
+       
     </main>
     <!-- fin main -->
     <!-- inicio footer -->
     <%- include('../partials/footer') %> 
     <!-- fin footer -->
-    
+   <script src="/js/validaciones/regsitroUsuario.js"></script> 
 </body>
 </html>
