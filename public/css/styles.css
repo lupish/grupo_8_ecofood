@@ -164,6 +164,19 @@ footer .iconos-footer i:hover {
     text-shadow: black 1px 0 10px;
 }
 
+a.icon-cart {
+    display: flex;
+}
+
+a.icon-cart p {
+    position: relative;
+    z-index: 1;
+    bottom: 10px;
+    font-size: 12px;
+    color: #96AB61;
+    font-weight: bold;
+}
+
 /* fin footer */
 
 /****** MEDIA QUERY ******/

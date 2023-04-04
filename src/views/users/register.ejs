@@ -64,7 +64,7 @@
                         <% } %>
                     </div>
                     <div>
-                        <button type="submit" id="botonEnviar" >Crear cuenta</button>
+                        <button class="<%= (locals.errors) ? "boton-form-error" : "" %>" type="submit">Crear cuenta</button>
                     </div>
                 </form>
                 <a href="/users/login">¿Yá tenés una cuenta? Iniciá sesión</a>
