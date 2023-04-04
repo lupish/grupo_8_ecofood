@@ -5,76 +5,73 @@
     <%- include('../partials/header') %>  
     <main>
         <section class="section-common">
-            <form class="form-editar-prod" method="POST" action="/products/edit/<%= prod.id %>?_method=PUT" enctype="multipart/form-data">
+            <form id="form-prod-nuevo" class="form-editar-prod" method="POST" action="/products/edit/<%= prod.id %>?_method=PUT" enctype="multipart/form-data">
                 <h1 class="label-editar-prod">Editar producto</h1>
                 
-                    <input class="input-form <%if(locals.errores && errores.prod_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" value="<%= prod.nombre %>"  > 
-                 <%if(locals.errores && errores.prod_nombre){%>
-                                <p class="form-error"><%=errores.prod_nombre.msg%></p>
-                    <%}%>
-                <div class="div-prod-radio">
+                <input class="input-form <%if(locals.errores && errores.prod_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="prod_nombre" id="prod-nombre" placeholder="Nombre del producto" value="<%= prod.nombre %>"  >
+
+                <p id="p-prod-nombre" class="form-error"><%= (locals.errores && errores.prod_nombre) ? errores.prod_nombre.msg : "" %></p>
+                
+                <div id="div-prod-categoria" class="div-prod-radio">
                     <p>Categoría del producto:</p>
                     <% for(let i = 0; i < categorias.length; i ++) { %>
                         <div>
                             <input type="radio" name="prod_categoria" id="<%= categorias[i].nombre %>" value="<%= categorias[i].id %>" <% if (prod.Categoria.id == categorias[i].id) { %> <%= 'checked' %> <% } %> >
-                            <label for="<%= categorias[i].nombre %>"><%= categorias[i].nombre %></label>
-                           
+                            <label for="<%= categorias[i].nombre %>"><%= categorias[i].nombre %></label>           
                         </div>
-                        
                     <% } %>
-                    <%if(locals.errores && errores.prod_categoria){%>
-                            <p class="form-error"><%=errores.prod_categoria.msg%></p>
-                    <%}%>
+                    
+                    <p id="p-prod-categoria" class="form-error"><%= (locals.errores && errores.prod_categoria) ? errores.prod_categoria.msg : "" %></p>
+
                     <a class="crear-nueva-categoria" href="">Crear nueva categoria</a>
                 </div>
-                <div class="div-prod-estilosVida">
+
+                <div id="div-prod-estilosVida" class="div-prod-estilosVida">
                     <p>Estilos de vida acorde al producto:</p>
                     <% for(let i = 0 ; i < estilosVida.length; i ++) { %>
                         <div>
                             <input type="checkbox" name="prod_estilosVida" id="<%= estilosVida[i].nombre %>" value="<%= estilosVida[i].id %>" <% if (estilos.includes(estilosVida[i].id)) { %> <%= 'checked' %> <% } %>  >  
                             <label for="<%= estilosVida[i].nombre %>"><%= estilosVida[i].nombre %></label>
-                        </div>
-                        
-                       
-                    <% } %> 
-                    <%if(locals.errores && errores.prod_estilosVida){%>
-                            <p class="form-error"><%=errores.prod_estilosVida.msg%></p>
-                        <%}%>
-                    <a class="crear-nueva-categoria" href="">Crear nueva categoría</a>
+                        </div>       
+                    <% } %>
+
+                    <p id="p-prod-estilosVida" class="form-error"><%= (locals.errores && errores.prod_estilosVida) ? errores.prod_estilosVida.msg : "" %></p>
+
+                    <a class="crear-nueva-categoria" href="">Crear nuevo estilo de vida</a>
                 </div>
-                <div class="div-prod-radio">
+
+                <div id="div-prod-marca" class="div-prod-radio">
                     <p>Marca del producto:</p>
                     <% for(let i = 0; i < marcas.length; i ++) { %>
                         <div>
                             <input type="radio" name="prod_marca" id="<%= marcas[i].nombre %>" value="<%= marcas[i].id %>" <% if (prod.Marca.id == marcas[i].id) { %> <%= 'checked' %> <% } %> >
                             <label for="<%= marcas[i].nombre %>"><%= marcas[i].nombre %> </label>
-                        </div>
-                       
-                    <% } %> 
-                    <%if(locals.errores && errores.prod_marca){%>
-                            <p class="form-error"><%=errores.prod_marca.msg%></p>
-                        <%}%>
+                        </div>      
+                    <% } %>
+                    
+                    <p id="p-prod-marca" class="form-error"><%= (locals.errores && errores.prod_marca) ? errores.prod_marca.msg : "" %></p>
+
                     <a class="editar-marca" href="">Crear nueva marca</a>
                 </div>
+
                 <div class="div-prod-precio">
                     <p>$</p> <input type="number" name="prod_precio" id="prod-precio" placeholder="Precio del producto" value=<%= prod.precio %> >
                 </div>
-                <%if(locals.errores && errores.prod_precio){%>
-                    <p class="form-error"><%=errores.prod_precio.msg%></p>
-                <%}%>
+
+                <p id="p-prod-precio" class="form-error"><%= (locals.errores && errores.prod_precio) ? errores.prod_precio.msg : "" %></p>
+
                 <div>
                     <input type="text" name="prod_descripcion_corta" id="prod-descripcion-corta" placeholder="Descripción corta del producto" value="<%= prod.descripcionCorta %> " > 
                 </div>
-                <%if(locals.errores && errores.prod_descripcion_corta){%>
-                    <p class="form-error"><%=errores.prod_descripcion_corta.msg%></p>
-                <%}%>
+
+                <p id="p-prod-descr-corta" class="form-error"><%= (locals.errores && errores.prod_descripcion_corta) ? errores.prod_descripcion_corta.msg : "" %></p>
+                
                 <div>
                     <textarea name="prod_descripcion_larga" id="prod-descripcion-larga" cols="30" rows="5" placeholder="Decripción larga del producto"><%= prod.descripcionLarga %></textarea>
                 </div>
-                <%if(locals.errores && errores.prod_descripcion_larga){%>
-                    <p class="form-error"><%=errores.prod_descripcion_larga.msg%></p>
-                <%}%>
-                <div class="div-prod-fotos">
+
+                <p id="p-prod-descr-larga" class="form-error"><%= (locals.errores && errores.prod_descripcion_larga) ? errores.prod_descripcion_larga.msg : "" %></p>
+                <div id="div-prod-fotos" class="div-prod-fotos">
                     <div class="carrusel-un-prod-center">
                         <p>Fotos actuales del producto:</p>
                         <div class="carrusel-un-prod">
@@ -83,17 +80,16 @@
                             <% } %>
                         </div>
                     </div>
-                    <<div class="div-prod-fotos <%= (locals.errores && errores.prod_fotos) ? 'class=input-form-no-aceptado' : "" %></div>">
+                    <div class="div-prod-fotos <%= (locals.errores && errores.prod_fotos) ? 'class=input-form-no-aceptado' : "" %>">
                         <label class="label-prod-fotos" for="prod-fotos">Nuevas fotos del producto: </label>
                         <input class="input-prod-fotos" type="file" name="prod_fotos" id="prod-fotos" multiple>
-                        <% if (locals.errores && errores.prod_fotos) { %>
-                            <p class="form-error"><%= errores.prod_fotos.msg %> </p>
-                        <% } %>
+                        
+                        <p id="p-prod-fotos" class="form-error"><%= (locals.errores && errores.prod_fotos) ? errores.prod_fotos.msg : "" %></p>
                     </div>
                 </div>
 
                 <div>
-                    <button type="submit">Editar producto</button>
+                    <button id="form-prod-submit" type="submit">Editar producto</button>
                     <button type="reset">Borrar</button>
                 </div>
             </form>
@@ -101,4 +97,6 @@
     </main>  
     <%- include('../partials/footer') %> 
 </body>
+
+<script src="/js/productValidation.js"></script>
 </html>
