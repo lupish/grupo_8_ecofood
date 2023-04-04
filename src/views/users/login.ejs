@@ -32,7 +32,7 @@
                         <% } %>
                     </div>
                     <div>
-                        <button type="submit">Iniciar sesión</button>
+                        <button class="<%= (locals.errors) ? "boton-form-error" : "" %>" type="submit">Iniciar sesión</button>
                         
                         <input class="checkbox-recordar-usuario" type="checkbox" name="recordar_usuario" id="recordar_usuario" value="recordar_usuario">
                     
