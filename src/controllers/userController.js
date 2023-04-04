@@ -203,7 +203,7 @@ const controller = {
                 paranoid: false
             },{transaction: t})
             if (req.session.usuarioLogueado.id == userId) {
-                let userEditado = await Usuario.findByPk(userId)
+                let userEditado = await Usuario.findByPk(userId, {include: [{association: 'rol'}]})
                 req.session.usuarioLogueado = userEditado;
             }
             await t.commit();
