@@ -12,7 +12,7 @@
         <div class="iconos">
             <i id="menu" class="fa-solid fa-bars"></i>
             <i id ="estrella" class="fa-solid fa-star"></i>
-            <a href="/products/productCart"><i class="fa-solid fa-solid fa-cart-shopping"> </i></a>
+            <a class="icon-cart" href="/products/productCart"><i class="fa-solid fa-solid fa-cart-shopping"></i> <p id="p-icon-cart"></p></a>
           
             <% if (locals.isLogged) { %>
                 <a href="/users/userDetail/<%= locals.usuarioLogueado.id %>">
@@ -33,3 +33,5 @@
         </ul>
     </nav>
 </header>
+
+<script src="/js/contadorIconoCarrito.js"></script>

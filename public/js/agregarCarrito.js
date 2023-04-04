@@ -56,6 +56,8 @@ function agregarElemCarrito() {
     // aviso de elemento nuevo en el carrito
     let aviso = document.getElementById("carrito-aviso-elem-agregado")
     aviso.style.display = "block"
+
+    actualizarIconoCarrito()
 }
 
 function botonAgregar() {
@@ -75,5 +77,4 @@ function botonQuitar() {
 
     let aviso = document.getElementById("carrito-aviso-elem-agregado")
     aviso.style.display = "none"
-    
 }

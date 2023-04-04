@@ -19,6 +19,10 @@ function displayCarritoVacio() {
     padre.innerHTML = `
     <img src="/img/products/empty-cart.png">
     `
+
+    calcularFooter([])
+
+    actualizarIconoCarrito()
 }
 
 function displayCarrito() {
@@ -54,6 +58,8 @@ function displayCarrito() {
 
     // footer del carrito
     calcularFooter(carrito)
+
+    actualizarIconoCarrito()
 }
 
 function calcularFooter(carrito) {
