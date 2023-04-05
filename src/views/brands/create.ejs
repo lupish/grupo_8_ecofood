@@ -11,13 +11,13 @@
                 <input class="input-form <%if(locals.errores && errors.marca_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="marca_nombre" id="obj-nombre" placeholder="Nombre de la marca"
                     value="<%= (locals.oldData && oldData.marca_nombre) ? oldData.marca_nombre : "" %>"
                 >
-                <p id="p-obj-nombre" class="form-error"><%= (locals.errores && errores.marca_nombre) ? errores.marca_nombre.msg : "" %></p> 
+                <p id="p-obj-nombre" class="form-error"><%= (locals.errors && errors.marca_nombre) ? errors.marca_nombre.msg : "" %></p> 
                 
                 <div class="div-prod-fotos <%= (locals.errors && errors.marca_foto) ? 'class=input-form-no-aceptado' : "" %>">
                     <label class="label-prod-fotos" for="marca-foto">Foto de la marca: </label>
                     <input class="input-prod-fotos" type="file" name="marca_foto" id="obj-foto">
                     
-                    <p id="p-obj-foto" class="form-error"><%= (locals.errores && errores.marca_foto) ? errores.marca_foto.msg : "" %></p>
+                    <p id="p-obj-foto" class="form-error"><%= (locals.errors && errors.marca_foto) ? errors.marca_foto.msg : "" %></p>
                 </div>
 
                 <div>
