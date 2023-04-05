@@ -4,7 +4,7 @@ window.onload = function () {
 
     form.addEventListener("submit", (e) => {
         e.preventDefault()
-
+        
         // obtener campos del formulario
         const form = document.getElementById('form'); 
         const nombre = document.getElementById('nombre');
@@ -13,6 +13,9 @@ window.onload = function () {
         const confirmarContrasenia = document.getElementById('confirmar-contrasenia');
         const fotos = document.getElementById("user_foto").files;
         const contraseniaValida =  /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/
+        for (let i = 0; i <  document.querySelectorAll('small.form-error').length; i++) {
+            document.querySelectorAll('small.form-error')[i].innerText = ''
+        }
 
         errores = []
  
@@ -55,8 +58,10 @@ window.onload = function () {
                 !(foto.type.includes("jpg")  || foto.type.includes("jpeg")
                 || foto.type.includes("gif") || foto.type.includes("png"))
             ) {
-                setError(document.getElementById("user_foto"),  "La contraseña debe tener al menos 8 caracteres, letras mayúsculas y minúsculas, un número y un símbolo")
-            }            
+                setError(document.getElementById("user_foto"),  `Las extensiones permitidas son : ${extensions.join(", ")}`)
+            }else{
+                setSuccess(document.getElementById("user_foto"),  `Las extensiones permitidas son : ${extensions.join(", ")}`)
+            }        
         }
 
         function isEmail(email){
@@ -69,12 +74,10 @@ window.onload = function () {
             small.innerText = message;
             errores.push(message)
         }
-        function setSuccess(input) {
+        function setSuccess(input, message) {
             input.classList.remove('input-form-no-aceptado')
-            input.classList.add('input-form-aceptado')
+            input.classList.add('input-form-aceptado')     
         }
-
-
         if (errores.length === 0) {
             form.submit()
         }
