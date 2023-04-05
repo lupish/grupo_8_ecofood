@@ -1,5 +1,4 @@
 window.onload = function () {
-    console.log("productValidation")
     form = document.getElementById("form-prod-nuevo");
 
     form.addEventListener("submit", (e) => {

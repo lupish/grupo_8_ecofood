@@ -1,5 +1,4 @@
 window.onload = function () {
-    console.log("registroUsuario")
     form = document.getElementById("form");
     botonSubmit = document.getElementById("botonEnviar");
 
@@ -79,7 +78,6 @@ window.onload = function () {
         if (errores.length === 0) {
             form.submit()
         }
-        console.log(errores)
     }
 )
 

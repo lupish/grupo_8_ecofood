@@ -63,6 +63,7 @@ const controller = {
     processEdit: async (req, res) => {
         const t = await sequelize.transaction(); 
         try { 
+            console.log("branchController processEdit")
             let marcaVieja = await Marca.findByPk(req.params.id, {paranoid: false});
 
             // chequeo validaciones middleware
