@@ -4,9 +4,9 @@ const validacion = [
     body(campoNombre).notEmpty().withMessage("Debe ingresar un nombre"),
     body(campoFoto).custom((value, { req }) => {
     const extensions = ['.jpg', '.png', '.gif', '.jpeg']
-    const file = req.file;
-    if(!file){
-        throw new Error(`Este campo es obligatorio y las extensiones permitidas son: ${extensions.join(", ")}`)
+    const fileError = req.fileError;
+    if(fileError){
+        throw new Error(`Las extensiones permitidas son: ${extensions.join(", ")}`)
     }
     return true
     })

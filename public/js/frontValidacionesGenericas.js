@@ -1,5 +1,4 @@
 window.onload = function () {
-    console.log("validaciones genericas en front")
     form = document.getElementById("form-generico");
 
     form.addEventListener("submit", (e) => {
