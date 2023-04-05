@@ -56,7 +56,7 @@ window.onload = function () {
                 !(foto.type.includes("jpg")  || foto.type.includes("jpeg")
                 || foto.type.includes("gif") || foto.type.includes("png"))
             ) {
-                setError(fotos,  "La contraseña debe tener al menos 8 caracteres, letras mayúsculas y minúsculas, un número y un símbolo")
+                setError(document.getElementById("user_foto"),  "La contraseña debe tener al menos 8 caracteres, letras mayúsculas y minúsculas, un número y un símbolo")
             }            
         }
 
