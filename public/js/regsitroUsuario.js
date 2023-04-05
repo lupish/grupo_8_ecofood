@@ -12,9 +12,9 @@ window.onload = function () {
         const email = document.getElementById('email');
         const contrasenia = document.getElementById('contrasenia');
         const confirmarContrasenia = document.getElementById('confirmar-contrasenia');
-        const fotos = document.getElementById("user_foto");
+        const fotos = document.getElementById("user_foto").files;
         const contraseniaValida =  /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/
-        console.log(fotos);
+
         errores = []
  
         if (nombre.value.length < 2) {
@@ -29,7 +29,6 @@ window.onload = function () {
         }else if(!isEmail(email.value)){
             setError(email, "Debe igresar un email válido(Ej: usuario@dominio.com)")
         }else{
-            console.log(email.value);
             setSuccess(email)
         }
 
@@ -38,7 +37,6 @@ window.onload = function () {
         }else if(contraseniaValida.test(contrasenia.value) == false){
             setError(contrasenia, "La contraseña debe tener al menos 8 caracteres, letras mayúsculas y minúsculas, un número y un símbolo")
         }else{
-            console.log(contrasenia.value);
             setSuccess(contrasenia) 
         }
 
@@ -51,17 +49,15 @@ window.onload = function () {
         }
 
         
-        if (fotos != undefined) {
-            const extensions = ['.jpg', '.png', '.gif', '.jpeg']
-                if (
-                    !(fotos.type.includes('jpg') || fotos.type.includes("jpeg")
-                    || fotos.type.includes("gif") || fotos.type.includes("png"))
-                ) {
-                    setError(fotos, "La contraseña debe tener al menos 8 caracteres, letras mayúsculas y minúsculas, un número y un símbolo")
-                }else{
-                    setSuccess(fotos)
-                }
-            
+        if (fotos != undefined && fotos.length > 0) {
+            let foto = fotos[0];
+            const extensions = ['.jpg', '.png', '.gif', '.jpeg'];
+            if (
+                !(foto.type.includes("jpg")  || foto.type.includes("jpeg")
+                || foto.type.includes("gif") || foto.type.includes("png"))
+            ) {
+                setError(fotos,  "La contraseña debe tener al menos 8 caracteres, letras mayúsculas y minúsculas, un número y un símbolo")
+            }            
         }
 
         function isEmail(email){
