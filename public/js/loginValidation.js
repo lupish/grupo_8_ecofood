@@ -26,8 +26,9 @@ window.onload = function () {
 
         if (contrasenia.value === '') {
             setError(contrasenia, "Este campo es obligatorio")
-        }else if(contraseniaValida.test(contrasenia.value) == false){
+        /*}else if(contraseniaValida.test(contrasenia.value) == false){
             setError(contrasenia, "Debe ingresar una contraseña válida")
+        */
         }else{
             setSuccess(contrasenia) 
         }

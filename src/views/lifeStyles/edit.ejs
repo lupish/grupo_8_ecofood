@@ -5,12 +5,10 @@
     <%- include('../partials/header') %>
     <main>
         <section class="section-common">
-            <form class="form-prod-nuevo" method="POST" action="/lifeStyles/edit/<%= estiloVida.id %>?_method=PUT" enctype="multipart/form-data">
+            <form id="form-generico" class="form-prod-nuevo" method="POST" action="/lifeStyles/edit/<%= estiloVida.id %>?_method=PUT" enctype="multipart/form-data">
                 <h1 class="label-crear-prod">Editar estilo de vida</h1>
-                <input class="input-form <%if(locals.errors && errors.categoria_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="estiloVida_nombre" id="estiloVida-nombre" placeholder="Nombre de la categoría" value="<%=estiloVida.nombre%>" >
-                <% if (locals.errors && errors.estiloVida_nombre) { %>
-                    <p class="form-error"><%= errors.estiloVida_nombre.msg %> </p>
-                <% } %>
+                <input class="input-form <%if(locals.errors && errors.estiloVida_nombre){%><%="input-form-no-aceptado"%><%}%>" type="text" name="estiloVida_nombre" id="obj-nombre" placeholder="Nombre del estilo de vida" value="<%=estiloVida.nombre%>" >
+                <p id="p-obj-nombre" class="form-error"><%= (locals.errors && errors.estiloVida_nombre) ? errors.estiloVida_nombre.msg : "" %></p>
 
                 <div class="div-prod-fotos <%= (locals.errors && errors.estiloVida_foto) ? 'class=input-form-no-aceptado' : "" %>">
                     <p>Foto actual del estilo de vida:</p>
@@ -21,16 +19,14 @@
                     <% } %>
                     <div>
                     <label class="label-prod-fotos" for="estiloVida-foto">Foto del estilo de vida: </label>
-                    <input class="input-prod-fotos" type="file" name="estiloVida_foto" id="estiloVida-foto">
+                    <input class="input-prod-fotos" type="file" name="estiloVida_foto" id="obj-foto">
 
-                    <% if (locals.errors && errors.estiloVida_foto) { %>
-                        <p class="form-error"><%= errors.estiloVida_foto.msg %> </p>
-                    <% } %>
+                    <p id="p-obj-foto" class="form-error"><%= (locals.errors && errors.estiloVida_foto) ? errors.estiloVida_foto.msg : "" %></p>
                 </div>
                 </div>
 
                 <div>
-                    <button type="submit">Editar el estilo de vida</button>
+                    <button id="form-submit" type="submit">Editar el estilo de vida</button>
                     <button type="reset">Borrar</button>
                 </div>
 
@@ -39,4 +35,6 @@
     </main>
     <%- include('../partials/footer') %>
 </body>
+
+<script src="/js/frontValidacionesGenericas.js"></script>
 </html>
