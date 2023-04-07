@@ -20,42 +20,42 @@ const controller = {
         res.render('users/login')
     },
     processLogin: async (req, res) => {
-    const t = await sequelize.transaction();
-    try{
-        if (!req.session.usuarioLogueado) {
-            let usuario = await Usuario.findOne({
-                where: {email: req.body.email},
-                include: [{association: 'rol'}],
-                paranoid: false},{transaction: t})
-            if (usuario) {
-                if (!bcryptjs.compareSync(req.body.contrasenia, usuario.contrasenia)) {
-                    let contraseniaMal = {
-                        contrasenia: {
-                            msg: "La contraseña no es correcta, si desea cambiarla haga clic en Olvidé mi contraseña"
+        try{
+            if (!req.session.usuarioLogueado) {
+                let usuario = await Usuario.findOne({
+                    where: {email: req.body.email},
+                    include: [{association: 'rol'}],
+                    paranoid: false})
+                
+                if (usuario) {
+                    if (!bcryptjs.compareSync(req.body.contrasenia, usuario.contrasenia)) {
+                        let contraseniaMal = {
+                            contrasenia: {
+                                msg: "La contraseña no es correcta, si no la recuerda haga clic en Olvidé mi contraseña"
+                            }  
+                        }
+                        return res.render('users/login', { errors: contraseniaMal, oldData: req.body })
+                    }
+
+                    req.session.usuarioLogueado = usuario;
+                    if (req.body.recordar_usuario) {
+                        res.cookie('email', req.body.email, {maxAge: 600*1000});                 
+                    }
+                } else {
+                    let emailNoExiste = {
+                        email: {
+                            msg: "No existe un usuario con el mail seleccionado"
                         }  
                     }
-                    return res.render('users/login', { errors: contraseniaMal, oldData: req.body })
+                    return res.render('users/login', {errors: emailNoExiste, oldData: req.body })
                 }
-                req.session.usuarioLogueado = usuario;
-                if (req.body.recordar_usuario) {
-                    res.cookie('email', req.body.email, {maxAge: 600*1000});                 
-                }
-            } else {
-                let emailNoExiste = {
-                    email: {
-                        msg: "No existe un usuario con el mail seleccionado"
-                    }  
-                }
-                return res.render('users/login', {errors: emailNoExiste, oldData: req.body })
             }
+            res.redirect('/');
         }
-        await t.commit();
-        res.redirect('/');
-    }
-    catch (error){
-        await t.rollback();
-        console.log(error);
-    } 
+        catch (error){
+            await t.rollback();
+            console.log(error);
+        } 
     },
     register: (req, res) => {
         if (req.session.usuarioLogueado) {

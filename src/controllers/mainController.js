@@ -21,7 +21,10 @@ const controller = {
         catch(error){
             console.log(error);
         }
-     }
+     },
+    nosotros: (req, res) => {
+        res.render('nosotros');
+    }
 }
 
 module.exports = controller;
