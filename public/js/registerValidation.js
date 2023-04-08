@@ -2,7 +2,7 @@ window.onload = function () {
     form = document.getElementById("form");
     botonSubmit = document.getElementById("botonEnviar");
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault()
         
         // obtener campos del formulario
@@ -29,9 +29,22 @@ window.onload = function () {
         if (email.value === '') {
             setError(email, "Este campo es obligatorio")
         }else if(!isEmail(email.value)){
-            setError(email, "Debe igresar un email válido(Ej: usuario@dominio.com)")
+            setError(email, "Debe igresar un email válido (Ej: usuario@dominio.com)")
         }else{
-            setSuccess(email)
+            // chequear unicidad del mail via api
+            const response = await fetch("/api/users/listUsers", {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+            const users = await response.json()
+            const userEmail = users.data.find(elem => elem.email == email.value)
+            if (userEmail) {
+                setError(email, "Ya existe un usuario con el mail ingresado");
+            } else {
+                setSuccess(email)
+            }
         }
 
         if (contrasenia.value === '') {
@@ -63,6 +76,7 @@ window.onload = function () {
                 setSuccess(document.getElementById("user_foto"),  `Las extensiones permitidas son : ${extensions.join(", ")}`)
             }        
         }
+
 
         function isEmail(email){
             return /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(email);
