@@ -7,7 +7,7 @@
     <main>
         <h1 class="label-editar-prod">Editar usuario</h1>
 
-        <form class="form-editar-user" method="POST" action="/users/edit/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
+        <form  id="form" class="form-editar-user" method="POST" action="/users/edit/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
             <input hidden name="id" id="id" value="<%= user.id %>">
             <div class="container">
                 <div class="box">
@@ -15,21 +15,23 @@
                     <div class="name_job"><%= user.nombre %></div>
             
                     <% if(locals.usuarioLogueado && locals.usuarioLogueado.id == user.id ) { %>
-                        <input class="input-form" type="text" name="nombre" id="nombre" placeholder="Nombre del usuario" value="<%= user.nombre%>">
-                        <% if (locals.errors && errors.nombre) { %>
-                            <p class="form-error"><%= errors.nombre.msg %> </p>
-                        <% } %>
 
+                        <div>
+                        <input class="input-form" type="text" name="nombre" id="nombre" placeholder="Nombre del usuario" value="<%= user.nombre%>">
+                        <p class="form-error"><%= (locals.errors && errors.nombre) ? errors.nombre.msg : "" %></p>
+                        </div>
+
+                        <div>
                         <label for="user_foto"><p class="p-mediana">Cambiá tu foto de perfil:</p></label>
                         <input type="file" name="user_foto" id="user_foto"
                         <%= (locals.errors && errors.user_foto) ? 'class=input-form-no-aceptado' : "" %>
                         >
+                        <p class="form-error"><%= (locals.errors && errors.user_foto) ? errors.user_foto.msg : "" %></p> 
+                        </div>
 
-                        <% if (locals.errors && errors.user_foto) { %>
-                            <p class="form-error"><%= errors.user_foto.msg %> </p>
-                        <% } %>
                     <% } %>      
-            
+                       
+
                     <% if(locals.usuarioLogueado && rolUser == "Administrador") { %> 
                         <% for (let i = 0; i < rol.length; i++) { %>
                             <div>
@@ -47,5 +49,6 @@
     </main>
 
     <%- include('../partials/footer') %>
+    <script src="/js/registerValidation.js"></script> 
 </body>
 </html>

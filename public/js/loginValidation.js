@@ -10,8 +10,8 @@ window.onload = function () {
         const email = document.getElementById('email');
         const contrasenia = document.getElementById('contrasenia');
         const contraseniaValida =  /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/
-        for (let i = 0; i <  document.querySelectorAll('small.form-error').length; i++) {
-            document.querySelectorAll('small.form-error')[i].innerText = ''
+        for (let i = 0; i <  document.querySelectorAll('p.form-error').length; i++) {
+            document.querySelectorAll('p.form-error')[i].innerText = ''
         }
 
         errores = []
@@ -26,9 +26,6 @@ window.onload = function () {
 
         if (contrasenia.value === '') {
             setError(contrasenia, "Este campo es obligatorio")
-        /*}else if(contraseniaValida.test(contrasenia.value) == false){
-            setError(contrasenia, "Debe ingresar una contraseña válida")
-        */
         }else{
             setSuccess(contrasenia) 
         }
@@ -38,9 +35,9 @@ window.onload = function () {
         }
         function setError(input, message) {
             const formControl = input.parentElement;
-            const small = formControl.querySelector('small');
+            const p = formControl.querySelector('p');
             input.className = 'input-form-no-aceptado';
-            small.innerText = message;
+            p.innerText = message;
             errores.push(message)
         }
         function setSuccess(input, message) {

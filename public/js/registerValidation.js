@@ -13,20 +13,23 @@ window.onload = function () {
         const confirmarContrasenia = document.getElementById('confirmar-contrasenia');
         const fotos = document.getElementById("user_foto").files;
         const contraseniaValida =  /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/
-        for (let i = 0; i <  document.querySelectorAll('small.form-error').length; i++) {
-            document.querySelectorAll('small.form-error')[i].innerText = ''
+        for (let i = 0; i <  document.querySelectorAll('p.form-error').length; i++) {
+            document.querySelectorAll('p.form-error')[i].innerText = ''
         }
 
         errores = []
- 
+
+ if(nombre != null){
         if (nombre.value.length < 2) {
             setError(nombre, "El nombre debe tener al menos 2 caracteres")
         }else{
             console.log(nombre.value);
             setSuccess(nombre)
         }
+    }
 
-        if (email.value === '') {
+    if(email != null){
+            if (email.value === '') {
             setError(email, "Este campo es obligatorio")
         }else if(!isEmail(email.value)){
             setError(email, "Debe igresar un email válido (Ej: usuario@dominio.com)")
@@ -46,7 +49,9 @@ window.onload = function () {
                 setSuccess(email)
             }
         }
+    }
 
+    if(contrasenia != null){
         if (contrasenia.value === '') {
             setError(contrasenia, "Este campo es obligatorio")
         }else if(contraseniaValida.test(contrasenia.value) == false){
@@ -54,7 +59,9 @@ window.onload = function () {
         }else{
             setSuccess(contrasenia) 
         }
+    }
 
+    if(confirmarContrasenia != null){    
         if (confirmarContrasenia.value === '') {
             setError(confirmarContrasenia, "Debe confirmar la contraseña")
         }else if(contrasenia.value != confirmarContrasenia.value){
@@ -62,8 +69,9 @@ window.onload = function () {
         }else{
             setSuccess(confirmarContrasenia) 
         }
+    }
 
-        
+    if(fotos != null){       
         if (fotos != undefined && fotos.length > 0) {
             let foto = fotos[0];
             const extensions = ['.jpg', '.png', '.gif', '.jpeg'];
@@ -76,6 +84,7 @@ window.onload = function () {
                 setSuccess(document.getElementById("user_foto"),  `Las extensiones permitidas son : ${extensions.join(", ")}`)
             }        
         }
+    }
 
 
         function isEmail(email){
@@ -83,9 +92,10 @@ window.onload = function () {
         }
         function setError(input, message) {
             const formControl = input.parentElement;
-            const small = formControl.querySelector('small');
+            console.log(formControl);
+            const p = formControl.querySelector('p.form-error');
             input.className = 'input-form-no-aceptado';
-            small.innerText = message;
+            p.innerText = message;
             errores.push(message)
         }
         function setSuccess(input, message) {

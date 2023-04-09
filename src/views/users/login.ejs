@@ -18,19 +18,13 @@
                             <%= (locals.errors && errors.email) ? 'class=input-form-no-aceptado' : "" %>
                             value="<%= (locals.oldData && oldData.email) ? oldData.email : "" %>"  
                         >
-                        <small class="form-error"></small>
-                        <% if (locals.errors && errors.email) { %>
-                            <p class="form-error"><%= errors.email.msg %> </p>
-                        <% } %>
+                        <p class="form-error"><%= (locals.errors && errors.email) ? errors.email.msg : "" %></p>
                     </div>
                     <div>
                         <input type="password" name="contrasenia" id="contrasenia" placeholder="Elija una contraseña"
                             <%= (locals.errors && errors.contrasenia) ? 'class=input-form-no-aceptado' : "" %>
                         >
-                        <small class="form-error"></small>
-                        <% if (locals.errors && errors.contrasenia) { %>
-                            <p class="form-error"><%= errors.contrasenia.msg %> </p>
-                        <% } %>
+                        <p class="form-error"><%= (locals.errors && errors.contrasenia) ? errors.contrasenia.msg : "" %></p>
                     </div>
                     <div>
                         <button class="<%= (locals.errors) ? "boton-form-error" : "" %>" type="submit">Iniciar sesión</button>
