@@ -3,10 +3,11 @@ const router = express.Router();
 
 // CONTROLLER
 const userController = require('../controllers/apiUserController');
+const adminPermission = require('../middlewares/adminPermission');
 
 // RUTAS
 
-router.get('/listUsers', userController.listUsers);
+router.get('/', adminPermission, userController.listUsers);
 
 
 module.exports = router;

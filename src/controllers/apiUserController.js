@@ -9,16 +9,16 @@ const controller = {
         try {
             let users = await Usuario.findAll({            
                 include: [{association: 'rol'}],
-                attributes: ["nombre", "email", "img"],
+                attributes: ["id", "nombre", "email", "img"],
                 paranoid: false
             })
 
             response.info = {
                 status: 200,
-                quantity: users.length
+                count: users.length
             }
     
-            response.data = users;
+            response.users = users;
         } catch (error) {
             response.info = {
                 status: 500,

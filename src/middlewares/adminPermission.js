@@ -1,7 +1,3 @@
-// Tablas de la base de datos
-const db = require('../database/models');
-const Rol = db.Rol;
-
 const adminPermission = async (req, res, next)=>{     
     if (req.session.usuarioLogueado) {
          const rolUser = req.session.usuarioLogueado.rol.nombre

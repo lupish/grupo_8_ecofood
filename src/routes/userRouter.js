@@ -13,40 +13,6 @@ const validarRegistro = require('../modulos/validaciones/validacionesUsuario');
 
 
 const { body } = require('express-validator');
-const validationRegister = [
-    body("nombre").notEmpty().withMessage("Debe ingresar un nombre"),
-    body("email").isEmail().withMessage("Debe ingresar un mail válido"),
-    body("contrasenia").notEmpty().withMessage("Debe ingresar una contraseña"),
-    body("confirmarContrasenia").notEmpty().withMessage("Debe confirmar la contraseña"),
-    body("user_foto").custom((value, { req }) => {
-        if (req.file) {
-            const extensions = ['.jpg', '.png', '.gif', '.webp', '.jpeg']
-            let fileExt = path.extname(req.file.originalname);
-
-            if (!extensions.includes(fileExt)) {
-                throw new Error(`Las extensiones permitidas son : ${extensions.join(", ")}`)
-            }
-        }
-
-        return true;
-    })
-];
-
-const validationEdit = [
-    body("nombre").notEmpty().withMessage("Debe ingresar un nombre"),
-    body("user_foto").custom((value, { req }) => {
-        if (req.file) {
-            const extensions = ['.jpg', '.png', '.gif', '.webp', '.jpeg']
-            let fileExt = path.extname(req.file.originalname);
-
-            if (!extensions.includes(fileExt)) {
-                throw new Error(`Las extensiones permitidas son : ${extensions.join(", ")}`)
-            }
-        }
-
-        return true;
-    })
-];
 
 //CONTROLADOR
 const userController = require('../controllers/userController');

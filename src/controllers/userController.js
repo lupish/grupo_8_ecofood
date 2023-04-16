@@ -168,9 +168,11 @@ const controller = {
     }, 
     processEdit: async (req, res) => {
         const t = await sequelize.transaction();
+        console.log("**************************** EDITANDO USUARIO ****************************")
         try{
             let userId = req.params.id;
             let oldUser = await Usuario.findByPk(userId, {paranoid: false});
+            
 
             if (req.session.usuarioLogueado) {
                 rolUser = await Rol.findByPk(req.session.usuarioLogueado.rol_id);
@@ -180,6 +182,7 @@ const controller = {
             const roles = await Rol.findAll();
 
             const valRes = validationResult(req);
+            console.log(valRes)
             if (req.session.usuarioLogueado.id == userId && valRes.errors.length > 0) {
                 let userData = oldUser
                 userData.nombre =req.body.nombre

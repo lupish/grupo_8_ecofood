@@ -11,7 +11,7 @@ window.onload = function () {
         const email = document.getElementById('email');
         const contrasenia = document.getElementById('contrasenia');
         const confirmarContrasenia = document.getElementById('confirmar-contrasenia');
-        const fotos = document.getElementById("user_foto").files;
+        const fotosElement = document.getElementById("user_foto");
         const contraseniaValida =  /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/
         for (let i = 0; i <  document.querySelectorAll('p.form-error').length; i++) {
             document.querySelectorAll('p.form-error')[i].innerText = ''
@@ -71,18 +71,22 @@ window.onload = function () {
         }
     }
 
-    if(fotos != null){       
-        if (fotos != undefined && fotos.length > 0) {
-            let foto = fotos[0];
-            const extensions = ['.jpg', '.png', '.gif', '.jpeg'];
-            if (
-                !(foto.type.includes("jpg")  || foto.type.includes("jpeg")
-                || foto.type.includes("gif") || foto.type.includes("png"))
-            ) {
-                setError(document.getElementById("user_foto"),  `Las extensiones permitidas son : ${extensions.join(", ")}`)
-            }else{
-                setSuccess(document.getElementById("user_foto"),  `Las extensiones permitidas son : ${extensions.join(", ")}`)
-            }        
+    if (fotosElement != null ) {
+        const fotos = fotosElement.files;
+    
+        if(fotos != null){       
+            if (fotos != undefined && fotos.length > 0) {
+                let foto = fotos[0];
+                const extensions = ['.jpg', '.png', '.gif', '.jpeg'];
+                if (
+                    !(foto.type.includes("jpg")  || foto.type.includes("jpeg")
+                    || foto.type.includes("gif") || foto.type.includes("png"))
+                ) {
+                    setError(document.getElementById("user_foto"),  `Las extensiones permitidas son : ${extensions.join(", ")}`)
+                }else{
+                    setSuccess(document.getElementById("user_foto"),  `Las extensiones permitidas son : ${extensions.join(", ")}`)
+                }        
+            }
         }
     }
 
