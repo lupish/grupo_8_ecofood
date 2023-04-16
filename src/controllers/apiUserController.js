@@ -69,12 +69,16 @@ const controller = {
             })
 
             if (userBase) {
+                let host = "";
+                if (req.rawHeaders.length > 1) {
+                    host = req.rawHeaders[1]
+                }
                 response.info = {
                     status: 200,
                     id: userBase.id,
                     nombre: userBase.nombre,
                     email: userBase.email,
-                    img: userBase.img,
+                    img: `${host}${userBase.img}`,
                     created_at: userBase.created_at,
                     updated_at: userBase.updated_at,
                     deleted_at: userBase.deleted_at,
