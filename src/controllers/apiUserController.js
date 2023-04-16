@@ -7,28 +7,106 @@ const controller = {
     listUsers: async (req, res) => {
         let response = {}
         try {
-            let users = await Usuario.findAll({            
-                include: [{association: 'rol'}],
-                attributes: ["id", "nombre", "email", "img"],
+            let users = await Usuario.findAll({
+                attributes: ["id", "nombre", "email", "img", "deleted_at"],
                 paranoid: false
             })
 
-            response.info = {
-                status: 200,
-                count: users.length
+            if (users.length > 1) {
+                let host = "";
+                if (req.rawHeaders.length > 1) {
+                    host = req.rawHeaders[1]
+                }
+
+                let usersDetail = users.map(elem => {
+                    let active = true;
+                    if (elem.deleted_at) {
+                        active = false
+                    }
+                    
+                    let user = {
+                        id: elem.id,
+                        nombre: elem.nombre,
+                        email: elem.email,
+                        img: elem.img,
+                        detail: `${host}/users/userDetail/${elem.id}`,
+                        active: active
+                    }
+                    return user
+                })
+        
+                response.info = {
+                    status: 200,
+                    count: users.length
+                }
+                response.users = usersDetail;
+            } else {
+                response.info = {
+                    status: 404,
+                    description: "No existen usuarios"
+                }
             }
-    
-            response.users = users;
         } catch (error) {
             response.info = {
                 status: 500,
                 description: error
             }
 
-            console.log(error)
+            console.log(error);
         }
 
-        res.json(response)
+        res.json(response);
+    },
+    userDetail: async (req, res) => {
+        let response = {}
+
+        try {
+            const userId = req.params.id;
+
+            let userBase = await Usuario.findByPk(userId, {
+                attributes: ["id", "nombre", "email", "img", "created_at", "updated_at", "deleted_at"],
+                paranoid: false
+            })
+
+            if (userBase) {
+                response.info = {
+                    status: 200,
+                    id: userBase.id,
+                    nombre: userBase.nombre,
+                    email: userBase.email,
+                    img: userBase.img,
+                    created_at: userBase.created_at,
+                    updated_at: userBase.updated_at,
+                    deleted_at: userBase.deleted_at,
+                    filters: [
+                        {
+                            field: `Usuario id`,
+                            value: userId
+                        }
+                    ]
+                }
+            } else {
+                response.info = {
+                    status: 404,
+                    description: "No existe el usuario seleccionado",
+                    filters: [
+                        {
+                            field: `Usuario id`,
+                            value: userId
+                        }
+                    ]
+                }
+            }
+        } catch (error) {
+            response.info = {
+                status: 500,
+                description: error
+            }
+
+            console.log(error);
+        }
+
+        res.json(response);
     }
 }
 module.exports = controller;

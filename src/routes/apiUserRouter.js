@@ -7,7 +7,8 @@ const adminPermission = require('../middlewares/adminPermission');
 
 // RUTAS
 
-router.get('/', adminPermission, userController.listUsers);
+router.get('/', userController.listUsers);
+router.get('/:id', userController.userDetail);
 
 
 module.exports = router;
