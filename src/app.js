@@ -50,12 +50,12 @@ app.use('/', mainRouter, );
 const userRouter = require('./routes/userRouter');
 app.use('/users', userRouter);
 const apiUserRouter = require('./routes/apiUserRouter');
-app.use('/api/users', apiUserRouter)
+app.use('/api/users', apiUserRouter);
 
 const productRouter = require('./routes/productRouter');
 app.use('/products', productRouter);
-
-//ERROR 404
+const apiProductRouter = require('./routes/apiProductRouter');
+app.use('/api/products', apiProductRouter);
 
 const panelRouter = require('./routes/panelRouter');
 app.use('/panels', panelRouter);
@@ -65,6 +65,7 @@ app.use('/brands', brandRouter);
 
 const lifeStylesRouter = require('./routes/lifeStylesRouter');
 app.use('/lifeStyles', lifeStylesRouter);
+
 const categoria = require('./routes/categoriasRouter');
 app.use('/categoria', categoria);
 

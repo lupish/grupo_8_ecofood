@@ -47,7 +47,7 @@ const controller = {
     edit: async (req, res) => {
         const t = await sequelize.transaction();
         try{
-        let estiloVida = await EstiloVida.findByPk(req.params.id,{transaction: t})
+        let estiloVida = await EstiloVida.findByPk(req.params.id,{transaction: t, paranoid: false})
         if (estiloVida) {
             await t.commit();
             return res.render('lifeStyles/edit', {estiloVida: estiloVida})
