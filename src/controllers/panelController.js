@@ -75,9 +75,9 @@ const controller = {
     manageUsers: async (req, res) => {
         const t = await sequelize.transaction();
         try{
-        const users = await Usuario.findAll({paranoid: false},{transaction: t});
-        await t.commit();
-        res.render('panels/manageUsers', {users: users})
+            const users = await Usuario.findAll({paranoid: false},{transaction: t});
+            await t.commit();
+            res.render('panels/manageUsers', {users: users})
         }
         catch (error){
             await t.rollback();

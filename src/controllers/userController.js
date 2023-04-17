@@ -168,7 +168,6 @@ const controller = {
     }, 
     processEdit: async (req, res) => {
         const t = await sequelize.transaction();
-        console.log("**************************** EDITANDO USUARIO ****************************")
         try{
             let userId = req.params.id;
             let oldUser = await Usuario.findByPk(userId, {paranoid: false});

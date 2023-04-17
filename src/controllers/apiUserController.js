@@ -19,18 +19,13 @@ const controller = {
                 }
 
                 let usersDetail = users.map(elem => {
-                    let active = true;
-                    if (elem.deleted_at) {
-                        active = false
-                    }
-                    
                     let user = {
                         id: elem.id,
                         nombre: elem.nombre,
                         email: elem.email,
                         img: elem.img,
                         detail: `${host}/users/userDetail/${elem.id}`,
-                        active: active
+                        deleted_at: elem.deleted_at
                     }
                     return user
                 })

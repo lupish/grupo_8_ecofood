@@ -35,14 +35,14 @@ window.onload = function () {
             setError(email, "Debe igresar un email válido (Ej: usuario@dominio.com)")
         }else{
             // chequear unicidad del mail via api
-            const response = await fetch("/api/users/listUsers", {
+            const response = await fetch("/api/users/", {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json"
                 }
             })
             const users = await response.json()
-            const userEmail = users.data.find(elem => elem.email == email.value)
+            const userEmail = (users.users).find(elem => elem.email == email.value)
             if (userEmail) {
                 setError(email, "Ya existe un usuario con el mail ingresado");
             } else {
