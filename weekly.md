@@ -56,7 +56,7 @@ Se propuso una nueva fecha para las reuniones dado que Jorge comienza inglés y 
 # WEEKLY STANDUPS SPRINT 8
 
 ## __Reunión n°1__
-> Fecha = 05/02/2023 - Participantes = Sheine Sirota y Luciana Vidal.
+18/04/2023 - Participantes = Sheine Sirota y Luciana Vidal.
 
 Trabajamos en conjunto sobre el campo de cantidad por categoría que pedía la API de productos, y al resolverlo aplicamos el mismo procedimiento para agrupar por estilo de vida y marca ya que podría ser una buena feature en el futuro dashboard de React.
 
