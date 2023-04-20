@@ -13,9 +13,6 @@ const { productDetail } = require('./productController');
  // bd marcas
  const Marca = db.Marca;
  
-
-
-
 const controller = {
     listAllProducts: async (req, res) => {
         let response = {}

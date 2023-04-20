@@ -222,6 +222,11 @@ const controller = {
             let userId = req.params.id;
             let user = await Usuario.destroy({where: {id: userId}},{transaction: t})
             await t.commit();
+            if (req.session.usuarioLogueado.id == userId) {
+            res.clearCookie('email')
+            req.session.destroy();
+            return res.redirect('/')
+            }
             return res.redirect('/panels/manageUsers/');
         }
         catch (error){
