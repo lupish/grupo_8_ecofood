@@ -52,3 +52,15 @@ Llevamos a cabo la planning, primero leyendo la tarea y luego generenado tarjeti
 - Permitir una única imagen para el usuario: Luciana.
 
 Se propuso una nueva fecha para las reuniones dado que Jorge comienza inglés y el horario actual no le queda bien: jueves a las 19hs.
+
+# WEEKLY STANDUPS SPRINT 8
+
+## __Reunión n°1__
+> Fecha = 05/02/2023 - Participantes = Sheine Sirota y Luciana Vidal.
+
+Trabajamos en conjunto sobre el campo de cantidad por categoría que pedía la API de productos, y al resolverlo aplicamos el mismo procedimiento para agrupar por estilo de vida y marca ya que podría ser una buena feature en el futuro dashboard de React.
+
+Luego, llevamos a cabo la planning:
+- Generamos nuevas tarjetas en Trello para las tareas obligatorias y opcionales.
+- Reordenamos las tarjetas en Trello, dejando las tareas que vamos a realizar en el sprint en TO DO y el resto en Backlog.
+- Revisamos las sugerencias de Aylu dadas en el feedback del Sprint 6, e incorporamos las tarjetas necesarias para trabajar con esas sugerencias. Además, arreglamos el problema de que un usuario Administrador eliminaba su cuenta y seguía logueado en el sitio (eliminamos los datos de la sesión y cookie). 
