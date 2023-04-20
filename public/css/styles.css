@@ -47,11 +47,14 @@ header {
 header div {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 header .logo {
     max-width: 5%;
-    padding: 10px;
+    /*padding: 10px;*/
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 header .logo img {
@@ -63,8 +66,8 @@ header .buscador {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    padding-left: 10px;
+    width: 60%;
+    /*padding-left: 10px;*/
 }
 
 header .buscador form {
@@ -90,11 +93,10 @@ header .buscador i:hover {
 }
 
 header .iconos {
-   
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 15%;
+    width: 25%;
 }
 
 header .iconos div{
@@ -110,12 +112,11 @@ header .iconos i:hover {
 }
 
 header .iconos img.img-perfil{
-   width: 60px;
-height: 60px;
-   border-radius: 50%;
-   box-sizing: border-box;
-  margin-left: 15px;
-  
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    /*margin-left: 15px;*/ 
 }
 header .iconos a{
     text-decoration: none;
@@ -124,7 +125,7 @@ header .iconos h6{
    color: #96AB61;
    text-align: center;
    text-decoration: none;
-
+   display: none;
 }
 
 header .iconos #estrella, #usuario {
@@ -183,21 +184,53 @@ a.icon-cart p {
 /****** MEDIA QUERY ******/
 
 @media (min-width: 769px) {
+    header .iconos h6{
+        display: block;
+     }
+    
+    /*header .buscador {
+        width: 80%;
+    }*/
+    
+    header .iconos img.img-perfil{
+        width: 60px;
+        height: 60px;  
+    }
 
+    header .iconos {
+        width: 15%;
+    }
 }
 
 @media (min-width: 1280px) {
     /* fin header */
     header .iconos {
         font-size: 1.5em;
+        width: 20%;
     }
     
+    header .iconos img.img-perfil{
+        width: 60px;
+        height: 60px;  
+    }
+
     header .iconos #menu {
         display: none;
     }
 
     header .iconos #estrella, #usuario {
         display: block;
+    }
+
+    header #header-user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header .buscador {
+        width: 70%;
     }
 
     header nav {

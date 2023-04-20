@@ -15,14 +15,14 @@
             <a class="icon-cart" href="/products/productCart"><i class="fa-solid fa-solid fa-cart-shopping"></i> <p id="p-icon-cart"></p></a>
           
             <% if (locals.isLogged) { %>
-                <a href="/users/userDetail/<%= locals.usuarioLogueado.id %>">
+                <a id="header-user" href="/users/userDetail/<%= locals.usuarioLogueado.id %>">
                 <img class="img-perfil" src="<%= locals.usuarioLogueado.img %>" alt="<%= locals.usuarioLogueado.img %>">
                 <h6>Hola <%= locals.usuarioLogueado.nombre%></h6></a>
-             <%} else {%>
-           <a href="/users/login"><i id="usuario" class="fa-solid fa-user"></i></a>
+            <%} else {%>
+                <a href="/users/login"><i id="usuario" class="fa-solid fa-user"></i></a>
             <%}%>
-            </div>  
         </div>
+    </div>
     <nav>
         <ul>
             <li type="none"><a href="">Categorías</a></li>
