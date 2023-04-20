@@ -79,7 +79,9 @@ body.detalle-usuario main div.container div.box .name_job{
   display: flex;
   justify-content: space-between;
   width: 100%;
+  flex-wrap: wrap;
 }
+
 .btns button{
   background: #96AB61;
   width: 100%;
@@ -92,14 +94,16 @@ body.detalle-usuario main div.container div.box .name_job{
   font-weight: 400;
   color: #96AB61;
   transition: all 0.3s linear;
+  margin: 5px;
 }
+
 .btns button:first-child{
   background: none;
-  margin-right: 5px;
+  /*margin-right: 5px;*/
 }
 .btns button:last-child{
   color: #fff;
-  margin-left: 5px;
+  /*margin-left: 5px;*/
 }
 .btns button:first-child:hover{
   background: #96AB61;
@@ -118,4 +122,19 @@ a.link-boton-1:hover{
 a.link-boton-2:hover{
   background: #96AB61;
   color: #fff;
+}
+
+/****** MEDIA QUERY ******/
+
+@media (min-width: 769px) {
+  .btns{
+    width: 80%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .btns{
+    width: 100%;
+    flex-wrap: nowrap;
+  }
 }
