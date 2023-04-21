@@ -13,18 +13,13 @@ const controller = {
             })
 
             if (users.length > 1) {
-                let host = "";
-                if (req.rawHeaders.length > 1) {
-                    host = req.rawHeaders[1]
-                }
-
                 let usersDetail = users.map(elem => {
                     let user = {
                         id: elem.id,
                         nombre: elem.nombre,
                         email: elem.email,
                         img: elem.img,
-                        detail: `${host}/users/userDetail/${elem.id}`,
+                        detail: `/api/users/${elem.id}`,
                         deleted_at: elem.deleted_at
                     }
                     return user
@@ -64,16 +59,12 @@ const controller = {
             })
 
             if (userBase) {
-                let host = "";
-                if (req.rawHeaders.length > 1) {
-                    host = req.rawHeaders[1]
-                }
                 response.info = {
                     status: 200,
                     id: userBase.id,
                     nombre: userBase.nombre,
                     email: userBase.email,
-                    img: `${host}${userBase.img}`,
+                    img: userBase.img,
                     created_at: userBase.created_at,
                     updated_at: userBase.updated_at,
                     deleted_at: userBase.deleted_at,
