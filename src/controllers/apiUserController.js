@@ -25,19 +25,19 @@ const controller = {
                     return user
                 })
         
-                response.info = {
+                response = {
                     status: 200,
                     count: users.length
                 }
                 response.users = usersDetail;
             } else {
-                response.info = {
+                response = {
                     status: 404,
                     description: "No existen usuarios"
                 }
             }
         } catch (error) {
-            response.info = {
+            response = {
                 status: 500,
                 description: error
             }
@@ -58,16 +58,12 @@ const controller = {
                 paranoid: false
             })
 
+            console.log(userBase)
+
             if (userBase) {
-                response.info = {
+                response = {
                     status: 200,
-                    id: userBase.id,
-                    nombre: userBase.nombre,
-                    email: userBase.email,
-                    img: userBase.img,
-                    created_at: userBase.created_at,
-                    updated_at: userBase.updated_at,
-                    deleted_at: userBase.deleted_at,
+                    ...userBase.dataValues,
                     filters: [
                         {
                             field: `Usuario id`,

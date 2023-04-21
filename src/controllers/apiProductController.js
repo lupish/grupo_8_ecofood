@@ -31,55 +31,49 @@ const controller = {
                 paranoid: false
             })
             if(prods.length > 1){
-                let host = "";
-                if (req.rawHeaders.length > 1) {
-                    host = req.rawHeaders[1]
-                }
-            let detail = prods.map(elem =>{
-                let product = {
-                id: elem.id,
-                nombre: elem.nombre,
-                categoria: elem.Categoria.nombre,
-                marca: elem.Marca.nombre,
-                precio: elem.precio,
-                estiloVida: elem.EstiloVida.map(elem => elem.nombre),
-                descripcionCorta: elem.descripcionCorta,
-                descripcionLarga: elem.descripcionLarga,
-                detail: `${host}/products/productDetail/${elem.id}`, 
-                deleted_at: elem.deleted_at
-                }
-                return product
-            })
-            let categorias = await Categoria.findAll({include: [{association: 'Producto'}]})
-            let categs = {}
-            categorias.map(elem => {
-                
-                categs[elem.nombre] =  elem.Producto.length
-            })
-            let estilosVida = await EstiloVida.findAll({include: [{association: 'Producto'}]})
-            let estilos = {}
-            estilosVida.map(elem => {
-                estilos[elem.nombre] =  elem.Producto.length
-            })
-            let marcas = await Marca.findAll({include: [{association: 'Producto'}]})
-            let brands = {}
-            marcas.map(elem => {
-                brands[elem.nombre] =  elem.Producto.length
-            })
+                let detail = prods.map(elem =>{
+                    let product = {
+                        id: elem.id,
+                        nombre: elem.nombre,
+                        categoria: elem.Categoria.nombre,
+                        marca: elem.Marca.nombre,
+                        precio: elem.precio,
+                        estiloVida: elem.EstiloVida.map(elem => elem.nombre),
+                        descripcionCorta: elem.descripcionCorta,
+                        descripcionLarga: elem.descripcionLarga,
+                        detail: `/api/products/${elem.id}`, 
+                        deleted_at: elem.deleted_at
+                    }
+                    return product
+                })
+                let categorias = await Categoria.findAll({include: [{association: 'Producto'}]})
+                let categs = {}
+                categorias.forEach(elem => {
+                    categs[elem.nombre] =  elem.Producto.length
+                })
+                let estilosVida = await EstiloVida.findAll({include: [{association: 'Producto'}]})
+                let estilos = {}
+                estilosVida.forEach(elem => {
+                    estilos[elem.nombre] =  elem.Producto.length
+                })
+                let marcas = await Marca.findAll({include: [{association: 'Producto'}]})
+                let brands = {}
+                marcas.forEach(elem => {
+                    brands[elem.nombre] =  elem.Producto.length
+                })
 
-            response.info = {
-                status: 200,
-                quantity: prods.length, 
-                categorias: categs,
-                estilosVida: estilos,
-                marcas: brands
-                
-            }
-            response.data = detail;
+                response = {
+                    status: 200,
+                    quantity: prods.length, 
+                    countByCategories: categs,
+                    countByLifeStyles: estilos,
+                    countByBrands: brands
+                }
+                response.data = detail;
         }
     
         } catch (error) {
-            response.info = {
+            response = {
                 status: 500,
                 description: error
             }
@@ -105,7 +99,7 @@ const controller = {
                     attributes: ["id", "nombre", "precio", "descripcionCorta", "descripcionLarga"],
                 })
 
-                response.info = {
+                response = {
                     status: 200,
                     quantity: prods.length,
                     filters: [
@@ -117,7 +111,7 @@ const controller = {
                 }
                 response.data = prods;
             } else {
-                response.info = {
+                response = {
                     status: 404,
                     description: "No existe el estilo de vida seleccionado",
                     filters: [
@@ -130,7 +124,7 @@ const controller = {
             }
             
         } catch (error) {
-            response.info = {
+            response = {
                 status: 500,
                 description: error
             }
@@ -143,47 +137,50 @@ const controller = {
     detail: async (req, res) =>{
         let response = {};
         try{
-        const productId = req.params.id;
-        let productDB = await Producto.findByPk(productId, {
-            include:[{association: 'ProductoImagen', attributes: ['id', 'img']},{association: 'Categoria', attributes: ['nombre']}, {association: 'Marca', attributes: ['nombre']}, {association: 'EstiloVida', attributes: ['nombre']}],
-        
-            attributes: ['id', 'nombre', 'precio', 'descripcionCorta', 'descripcionLarga', 'created_at', 'updated_at', 'deleted_at'],
-            paranoid: false
-        })
-        if(productDB){
-            let host = "";
-                if (req.rawHeaders.length > 1) {
-                    host = req.rawHeaders[1]
-                }
-            response.info = {
-                status: 200,
-                id: productDB.id,
-                nombre: productDB.nombre,
-                categoria: productDB.Categoria.nombre,
-                marca: productDB.Marca.nombre,
-                precio: productDB.precio,
-                estiloVida: productDB.EstiloVida.map(elem => elem.nombre),
-                descripcionCorta: productDB.descripcionCorta,
-                descripcionLarga: productDB.descripcionLarga,
-                img: productDB.ProductoImagen.map(elem => `${host}${elem.img}`),
-                created_at: productDB.created_at,
-                updated_at: productDB.updated_at,
-                deleted_at: productDB.deleted_at
-            }
-        }else{
-            response.info = {
-             status: 404,
-             description: 'El producto buscado no existe'   
-            }
-        }  
+            const productId = req.params.id;
+            let productDB = await Producto.findByPk(productId, {
+                include:[
+                    {association: 'ProductoImagen', attributes: ['id', 'img']},
+                    {association: 'Categoria', attributes: ['nombre']},
+                    {association: 'Marca', attributes: ['nombre']},
+                    {association: 'EstiloVida', attributes: ['nombre']}
+                ],
+                attributes: ['id', 'nombre', 'precio', 'descripcionCorta', 'descripcionLarga', 'created_at', 'updated_at', 'deleted_at'],
+                paranoid: false
+            })
 
-        }catch(error){
-            response.info = {
+            if (productDB) {
+                response = {
+                    status: 200,
+                    ...productDB.dataValues
+                }
+
+                response.Categoria = undefined;
+                response.categoria = productDB.Categoria.nombre;
+
+                response.ProductoImagen = undefined;
+                response.img = productDB.ProductoImagen.map(elem => elem.img);
+
+                response.Marca = undefined;
+                response.marca = productDB.Marca.nombre;
+
+                response.EstiloVida = undefined;
+                response.estiloVida = productDB.EstiloVida.map(elem => elem.nombre);
+
+            } else {
+                response = {
+                status: 404,
+                description: 'El producto buscado no existe'   
+            }
+        }
+        } catch(error) {
+            response = {
                 status: 500,
                 description: error
             }
             console.log(error);
         }
+
         res.json(response)
     }
 }
