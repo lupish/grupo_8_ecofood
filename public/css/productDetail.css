@@ -11,9 +11,14 @@
         margin: 30px 10%;
         
     }
+
+    #main-detalle-prod {
+        padding: 5px;
+    }
+
     /* FOTO-PROD */
     main section.prod-carrusel {
-        width: 95%;
+        /*width: 95%; */
         box-sizing: border-box;
         position: relative;
         border: 2px solid #ebebeb;
