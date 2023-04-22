@@ -10,3 +10,4 @@ const productController = require('../controllers/apiProductController');
 router.get('/', productController.listAllProducts);
 router.get('/listProductsByLifeStyle/:estiloVidaId', productController.listProductsByLifeStyle);
 router.get('/:id', productController.detail);
+

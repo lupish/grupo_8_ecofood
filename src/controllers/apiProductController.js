@@ -1,25 +1,61 @@
 // Tablas de la base de datos
 const db = require('../database/models');
-const { productDetail } = require('./productController');
- // bd productos
- const Producto = db.Producto;
+// bd productos
+const Producto = db.Producto;
 
- // bd categorias
- const Categoria = db.Categoria;
- 
- // bd estilosVida
- const EstiloVida = db.EstiloVida;
- 
- // bd marcas
- const Marca = db.Marca;
- 
+// bd categorias
+const Categoria = db.Categoria;
 
+// bd estilosVida
+const EstiloVida = db.EstiloVida;
 
+// bd marcas
+const Marca = db.Marca;
 
 const controller = {
     listAllProducts: async (req, res) => {
         let response = {}
+        let prodsPage = 0
         try {
+            // obtener campos de paginacion
+            const size = parseInt(req.query.size) || 10;
+            const page = parseInt(req.query.page) || 1;
+            let offset = size * (page-1);
+            const sortField = req.query.sortField || "id";
+            const sortType = req.query.sortType || "ASC";
+            console.log(sortField)
+            
+            if (!(sortField == "id" | sortField == "nombre" || sortField == "precio")) {
+                    return res.json({
+                        status: 400,
+                        description: "El campo sortField debe ser: id o nombre o precio",
+                        paginado: {
+                            page: page,
+                            size: size,
+                            count: prodsPage,
+                            sortField: sortField
+                        }
+                    })
+            }
+            
+            if (!(sortType == "ASC" || sortType == "DESC")) {
+                return res.json({
+                    status: 400,
+                    description: "El campo sortType debe ser: ASC o DESC",
+                    paginado: {
+                        page: page,
+                        size: size,
+                        count: prodsPage,
+                        sortField: sortField,
+                        sortType: sortType
+                    }
+                })
+            }
+
+            let order = [sortField, sortType]
+            
+            // querar la tabla
+            const prodsCount = await Producto.findAll({paranoid: false})
             const prods = await Producto.findAll( {
                 include:[
                     {association: 'ProductoImagen', attributes: ['id', 'img']}
@@ -28,9 +64,19 @@ const controller = {
                     ,{association: 'Categoria', attributes: ['nombre']}
                 ],
                 attributes: ["id", "nombre", "precio", "descripcionCorta", "descripcionLarga"],
-                paranoid: false
+                paranoid: false,
+                limit: size,
+                offset: offset,
+                order: [order]
             })
-            if(prods.length > 1){
+
+            prodsPage = prods.length;
+
+            if(prods.length > 0){
+                let categorias = await Categoria.findAll({include: [{association: 'Producto'}]});
+                let estilosVida = await EstiloVida.findAll({include: [{association: 'Producto'}]});
+                let marcas = await Marca.findAll({include: [{association: 'Producto'}]});
+
                 let detail = prods.map(elem =>{
                     let product = {
                         id: elem.id,
@@ -46,17 +92,15 @@ const controller = {
                     }
                     return product
                 })
-                let categorias = await Categoria.findAll({include: [{association: 'Producto'}]})
+                
                 let categs = {}
                 categorias.forEach(elem => {
                     categs[elem.nombre] =  elem.Producto.length
                 })
-                let estilosVida = await EstiloVida.findAll({include: [{association: 'Producto'}]})
                 let estilos = {}
                 estilosVida.forEach(elem => {
                     estilos[elem.nombre] =  elem.Producto.length
                 })
-                let marcas = await Marca.findAll({include: [{association: 'Producto'}]})
                 let brands = {}
                 marcas.forEach(elem => {
                     brands[elem.nombre] =  elem.Producto.length
@@ -64,14 +108,33 @@ const controller = {
 
                 response = {
                     status: 200,
-                    quantity: prods.length, 
+                    quantity: prodsCount.length, 
                     countByCategories: categs,
                     countByLifeStyles: estilos,
-                    countByBrands: brands
+                    countByBrands: brands,
+                    products: detail
                 }
-                response.data = detail;
-        }
-    
+            } else {
+                response = {
+                    status: 404,
+                    description: "No existen productos"
+                }
+            }
+
+            // paginado
+            response.paging = {
+                page: page,
+                size: size,
+                count: prodsPage,
+                order: order
+            }
+
+            if (prodsPage > 0 && page > 1) {
+                response.paging.prev = `/api/products/?page=${page - 1}&size=${size}&sortField=${sortField}&sortType=${sortType}`
+            }
+            if (prodsPage > 0 && prodsCount.length > (offset+size)) {
+                response.paging.next = `/api/products/?page=${page + 1}&size=${size}&sortField=${sortField}&sortType=${sortType}`
+            }
         } catch (error) {
             response = {
                 status: 500,
