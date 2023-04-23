@@ -16,43 +16,43 @@ const controller = {
     listAllProducts: async (req, res) => {
         let response = {}
         let prodsPage = 0
-        try {
-            // obtener campos de paginacion
-            const size = parseInt(req.query.size) || 10;
-            const page = parseInt(req.query.page) || 1;
-            let offset = size * (page-1);
-            const sortField = req.query.sortField || "id";
-            const sortType = req.query.sortType || "ASC";
-            console.log(sortField)
-            
-            if (!(sortField == "id" | sortField == "nombre" || sortField == "precio")) {
-                    return res.json({
-                        status: 400,
-                        description: "El campo sortField debe ser: id o nombre o precio",
-                        paginado: {
-                            page: page,
-                            size: size,
-                            count: prodsPage,
-                            sortField: sortField
-                        }
-                    })
-            }
-            
-            if (!(sortType == "ASC" || sortType == "DESC")) {
+
+        // obtener campos de paginacion
+        const size = parseInt(req.query.size) || 10;
+        const page = parseInt(req.query.page) || 1;
+        let offset = size * (page-1);
+        const sortField = req.query.sortField || "id";
+        const sortType = req.query.sortType || "ASC";
+        const order = [sortField, sortType]
+        
+        if (!(sortField == "id" | sortField == "nombre" || sortField == "precio")) {
                 return res.json({
                     status: 400,
-                    description: "El campo sortType debe ser: ASC o DESC",
-                    paginado: {
+                    description: "El campo sortField debe ser: id o nombre o precio",
+                    paging: {
                         page: page,
                         size: size,
-                        count: prodsPage,
                         sortField: sortField,
                         sortType: sortType
                     }
                 })
-            }
+        }
+        
+        if (!(sortType == "ASC" || sortType == "DESC")) {
+            return res.json({
+                status: 400,
+                description: "El campo sortType debe ser: ASC o DESC",
+                paging: {
+                    page: page,
+                    size: size,
+                    sortField: sortField,
+                    sortType: sortType
+                }
+            })
+        }
 
-            let order = [sortField, sortType]
+        try {
+            
             
             // querar la tabla
             const prodsCount = await Producto.findAll({paranoid: false})
