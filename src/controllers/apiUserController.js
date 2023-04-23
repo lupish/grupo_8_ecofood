@@ -115,8 +115,6 @@ const controller = {
                 paranoid: false
             })
 
-            console.log(userBase)
-
             if (userBase) {
                 response = {
                     status: 200,

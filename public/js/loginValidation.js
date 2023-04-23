@@ -47,7 +47,6 @@ window.onload = function () {
         if (errores.length === 0) {
             form.submit()
         }
-        console.log(errores)
     }
 )
 

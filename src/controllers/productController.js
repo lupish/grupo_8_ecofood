@@ -66,8 +66,9 @@ const controller = {
             console.log(error);
         }
     },
-    processCreate: async (req, res) => { 
+    processCreate: async (req, res) => {
         const t = await sequelize.transaction();
+
         try{
             let errores = validationResult(req);
             if(errores.errors.length === 0) {

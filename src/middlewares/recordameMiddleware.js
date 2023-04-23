@@ -12,7 +12,6 @@ const recordameMiddleware = async (req, res, next) => {
                 include: [{association: 'rol'}]
             });
           req.session.usuarioLogueado = user;
-          console.log("Usuario recordado en session") 
         }
     }
     

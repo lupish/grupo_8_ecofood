@@ -23,7 +23,6 @@ window.onload = function () {
         if (nombre.value.length < 2) {
             setError(nombre, "El nombre debe tener al menos 2 caracteres")
         }else{
-            console.log(nombre.value);
             setSuccess(nombre)
         }
     }
@@ -96,7 +95,6 @@ window.onload = function () {
         }
         function setError(input, message) {
             const formControl = input.parentElement;
-            console.log(formControl);
             const p = formControl.querySelector('p.form-error');
             input.className = 'input-form-no-aceptado';
             p.innerText = message;

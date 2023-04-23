@@ -181,7 +181,6 @@ const controller = {
             const roles = await Rol.findAll();
 
             const valRes = validationResult(req);
-            console.log(valRes)
             if (req.session.usuarioLogueado.id == userId && valRes.errors.length > 0) {
                 let userData = oldUser
                 userData.nombre =req.body.nombre

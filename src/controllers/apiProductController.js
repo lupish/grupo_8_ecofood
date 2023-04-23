@@ -1,16 +1,14 @@
 // Tablas de la base de datos
 const db = require('../database/models');
-// bd productos
 const Producto = db.Producto;
-
-// bd categorias
 const Categoria = db.Categoria;
-
-// bd estilosVida
 const EstiloVida = db.EstiloVida;
-
-// bd marcas
 const Marca = db.Marca;
+const ProductoImagen = db.ProductoImagen
+
+const sequelize = db.sequelize;
+// validator
+const {validationResult}=require("express-validator");
 
 const controller = {
     listAllProducts: async (req, res) => {
@@ -245,7 +243,130 @@ const controller = {
         }
 
         res.json(response)
+    },
+    processCreate: async (req, res) => {
+        let response = {}
+
+        const t = await sequelize.transaction();
+        try {
+            let errores = validationResult(req);
+            if(errores.errors.length === 0) {
+                let newProduct = await Producto.create({
+                    nombre: req.body.prod_nombre,
+                    categoria_id: req.body.prod_categoria,
+                    marca_id: req.body.prod_marca,
+                    precio: req.body.prod_precio,
+                    descripcionCorta: req.body.prod_descripcion_corta,
+                    descripcionLarga: req.body.prod_descripcion_larga,
+                }, {transaction: t})
+         
+                let idEstiloVida = req.body.prod_estilosVida
+                for(let i = 0; i < idEstiloVida.length; i++){
+                    await newProduct.addEstiloVida(idEstiloVida[i],{transaction: t})
+                }
+            
+                let imagenes = req.files
+                for(let i = 0; i < imagenes.length; i++){
+                    await ProductoImagen.create({
+                        img: "/img/products/" + imagenes[i].filename,
+                        producto_id: newProduct.id
+                    },{transaction: t})
+                }
+                await t.commit();
+
+                // producto creado
+                response.status = 201;
+                response.product = newProduct;
+            } else{
+                response.status = 400;
+                response.errors = errores.mapped();
+            }
+        }
+        catch (error){
+            await t.rollback();
+            console.log(error);
+
+            response.status = 500;
+        }
+
+        return res.json(response);
+    },
+    processDelete: async (req, res) => {
+        let response = {}
+
+        let id = req.params.id;
+
+        try {
+            let existeProd = await Producto.findByPk(id, {paranoid: false});
+            if (existeProd) {
+                const t = await sequelize.transaction();
+                try {
+                    let cantProdsActivados = await Producto.destroy({where:{id:id}, transaction: t})
+                    await t.commit();
+
+                    if (cantProdsActivados == 0) {
+                        response.status = 400;
+                        response.description = "El producto seleccionado ya está eliminado"
+                    } else {
+                        response.status = 200;
+                    }
+                } catch (error) {
+                    await t.rollback();
+                    console.log(error);
+
+                    response.status = 500;
+                }
+            } else {
+                response.status = 404;
+                response.description = "No existe el producto seleccionado";
+            }
+        }
+        catch (error) {
+            console.log(error);
+
+            response.status = 500;
+        }
+
+        return res.json(response)
+    },
+    processActivate: async (req, res) => {
+        let response = {}
+        let id = req.params.id;
+
+        try {
+            let existeProd = await Producto.findByPk(id, {paranoid: false});
+            if (existeProd) {
+                const t = await sequelize.transaction();
+                try {
+                    let cantProdsActivados = await Producto.restore({where:{id:id}, transaction: t})
+                    await t.commit();
+
+                    if (cantProdsActivados == 0) {
+                        response.status = 400;
+                        response.description = "El producto seleccionado ya está activo"
+                    } else {
+                        response.status = 200;
+                    }
+                } catch (error) {
+                    await t.rollback();
+                    console.log(error);
+
+                    response.status = 500;
+                }
+            } else {
+                response.status = 404;
+                response.description = "No existe el producto seleccionado";
+            }
+        }
+        catch (error) {
+            console.log(error);
+
+            response.status = 500;
+        }
+
+        return res.json(response)
     }
+
 }
 
 module.exports = controller;
