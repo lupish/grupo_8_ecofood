@@ -26,7 +26,7 @@
 
                 <p id="p-prod-categoria" class="form-error"><%= (locals.errores && errores.prod_categoria) ? errores.prod_categoria.msg : "" %></p>
 
-                <a class="crear-nueva-categoria" href="">Crear nueva categoria</a>
+                <a class="crear-nueva-categoria" href="/categoria/create">Crear nueva categoria</a>
             </div>
             <div id="div-prod-estilosVida" class="div-prod-estilosVida <%if(locals.errores && errores.prod_estilosVida){%><%="input-form-no-aceptado"%><%}%>">
                 <p>Estilos de vida acorde al producto:</p>
@@ -44,7 +44,7 @@
                 
                 <p id="p-prod-estilosVida" class="form-error"><%= (locals.errores && errores.prod_estilosVida) ? errores.prod_estilosVida.msg : "" %></p>
                 
-                <a class="crear-nuevo-estiloVida" href="">Crear nuevo estilo de vida</a>
+                <a class="crear-nuevo-estiloVida" href="/lifeStyles/create">Crear nuevo estilo de vida</a>
             </div>
             <div id="div-prod-marca" class="div-prod-radio <%if(locals.errores && errores.prod_marca){%><%="input-form-no-aceptado"%><%}%>">
                 <p>Marca del producto:</p>
@@ -58,7 +58,7 @@
 
                 <p id="p-prod-marca" class="form-error"><%= (locals.errores && errores.prod_marca) ? errores.prod_marca.msg : "" %></p>
 
-                <a class="crear-nueva-marca" href="">Crear nueva marca</a>
+                <a class="crear-nueva-marca" href="/brands/create">Crear nueva marca</a>
             </div>
             
             <div class="div-prod-precio">
