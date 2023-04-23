@@ -291,6 +291,75 @@ const controller = {
 
         return res.json(response);
     },
+    processEdit: async (req, res) => {
+        let response = {}
+
+        let idProd = req.params.id;
+        let errores = validationResult(req);
+
+        if (errores.errors.length > 0) {
+            return res.json({
+                status: 400,
+                errors: errores.mapped()
+            })
+        }
+
+        try {
+            const t = await sequelize.transaction();
+            let prodUpdate = await Producto.update(
+                {
+                    nombre: req.body.prod_nombre,
+                    categoria_id: req.body.prod_categoria,
+                    marca_id: req.body.prod_marca,
+                    precio: req.body.prod_precio,
+                    descripcionCorta: req.body.prod_descripcion_corta,
+                    descripcionLarga: req.body.prod_descripcion_larga, 
+                },
+                {where: {id:idProd}, paranoid: false},
+                {transaction: t}
+            );
+            console.log(prodUpdate)
+            if (prodUpdate == 0) {
+                response.status = 404;
+                response.description = "No existe el producto seleccionado";
+
+                return res.json(response);
+            }
+
+            let prodNuevo = await Producto.findByPk(idProd, {transaction: t, paranoid: false});
+
+            // reemplazar estilos de vida con los nuevos
+            let prodEstilosVida = req.body.prod_estilosVida;
+            await prodNuevo.setEstiloVida(prodEstilosVida)
+            
+            /*** Imagenes ***/
+            let prodImagenes = req.files;
+            // agregar nuevas fotos
+            for(let i = 0; i < prodImagenes.length; i++){
+                await ProductoImagen.create(
+                    {
+                        producto_id: idProd,
+                        img: "/img/products/" + prodImagenes[i].filename
+                    }, 
+                    {transaction: t}
+                )
+            }
+            
+            await t.commit();
+
+            response.status = 200;
+            response.product = prodNuevo;
+        } catch (error) {
+            console.log(error);
+
+            response.status = 500;
+        }
+
+        return res.json(response)
+    
+
+
+    },
     processDelete: async (req, res) => {
         let response = {}
 
