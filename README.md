@@ -11,7 +11,6 @@ Personas que necesiten o que eligen dietas especiales.
 <br />
 
 ### __Integrantes__
-- **Jorge Martin Dominguez Diaz:** tengo 29 años, soy programador Java del ministerio de educación y de Pronto Pago  SA.
 - **Sheine Sirota:** tengo 20 años y me quiero dedicar a la programación, trabajo manejando el instagram de una institución.
 - **Luciana Vidal:** tengo 29 años y soy ingeniera en computación, además soy escritora y publiqué un libro.
 

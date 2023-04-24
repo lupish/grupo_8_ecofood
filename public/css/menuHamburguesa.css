@@ -1,0 +1,106 @@
+div.padre-menu-hamburguesa {
+    display: flex;
+}
+
+#opaco-menu-hamburguesa {
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 10;
+    background-color: #00000047;
+    display: none;
+}
+
+#menu-hamburguesa {
+    position: fixed;
+    z-index: 20;
+    top: 0px;
+    left: 0px;
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    display: none;
+}
+
+#menu-hamburguesa i {
+    color: #96AB61;
+}
+
+.menu-hamburguesa-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid 1px gray;
+    box-shadow: 0px 0px 8px rgba(150, 171, 97,.7);
+    padding: 10px;
+}
+
+.menu-hamburguesa-iconos {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.menu-hamburguesa-iconos div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.menu-hamburguesa-iconos a {
+    width: 60px;
+}
+.menu-hamburguesa-iconos i {
+    padding: 10px;
+    font-size: 20px;
+}
+
+#menu-hamburguesa img.menu-hamburguesa-logo {
+    width: 65%;
+}
+
+.menu-hamburguesa-estilosVida {
+    margin-top: 50px;
+}
+
+.menu-hamburguesa-estilosVida h3 {
+    margin: 10px;
+    text-align: center;
+}
+
+.menu-hamburguesa-estilosVida div {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.menu-hamburguesa-estilosVida div div {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-hamburguesa-estilosVida div div img {
+    width: 40px;
+}
+
+@media (min-width: 769px) {
+    #menu-hamburguesa h2 {
+        font-size: 30px;
+    }
+    
+    .menu-hamburguesa-estilosVida h3 {
+        font-size: 20px;
+    }
+
+    .menu-hamburguesa-estilosVida div div {
+        width: 20%;
+        
+    }
+}

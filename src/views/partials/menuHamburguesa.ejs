@@ -1,0 +1,83 @@
+<div id="opaco-menu-hamburguesa">
+
+</div>
+<div id="menu-hamburguesa">
+    <div class= "menu-hamburguesa-header">
+        <img class="menu-hamburguesa-logo" src="/img/EcoFood Logo Curvas web.jpg" alt="">
+
+        <a href="/">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </a>
+    </div>
+
+    <% if (locals.usuarioLogueado) { %>
+        <h2>¡Bienvenido <%= locals.usuarioLogueado.nombre%>!</h2>
+    <%} else {%>
+        <h2>¡Bienvenido!</h2>
+    <%}%>
+
+    <div class="menu-hamburguesa-iconos">
+        <% if (!locals.usuarioLogueado) { %>
+            <div>
+                <a href="/users/login">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <p>Iniciá sesión o registrate</p>
+            </div>
+
+            <div>
+                <a href="/users/login">
+                    <i class="fa-solid fa-solid fa-cart-shopping"></i>
+                </a>
+                <p>Finalizá tu compra</p>
+            </div>
+        <%} else {%>
+            <div>
+                <a href="/users/login">
+                    <i class="fa-solid fa-solid fa-cart-shopping"></i>
+                </a>
+                <p>Finalizá tu compra</p>
+            </div>
+            <div>
+                <a href="/users/logout/<%= usuarioLogueado.id %>">
+                    <i class="fa-solid fa-user-pen"></i>
+                </a>
+                <p>Editá tu perfil</p>
+            </div>
+
+            <% if (locals.usuarioLogueado.rol.nombre == "Administrador") { %>
+                <div>
+                    <a href="/users/logout/<%= usuarioLogueado.id %>">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </a>
+                    <p>Gestioná el sitio</p>
+                </div>
+            <%}%>
+
+            <div>
+                <a href="/users/logout/<%= usuarioLogueado.id %>">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+                <p>Cerrá sesión</p>
+            </div>
+        <%}%>
+    </div>
+
+    <div class="menu-hamburguesa-estilosVida">
+        <h3>Recorré los distintos estilos de vida</h3>
+
+        <div>
+            <% for(let i = 0; i < estilosVida.length; i ++) { %>
+                <% if (!estilosVida[i].delete) { %> 
+                    <div>
+                        <a href="/products/listProducts/<%= estilosVida[i].id %>">
+                            <img src="<%= estilosVida[i].img %>" alt="<%= estilosVida[i].alt %>">    
+                        </a>
+                        <p><%= estilosVida[i].nombre %></p>
+                </div>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+    
+</div>
