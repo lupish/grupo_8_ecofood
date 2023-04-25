@@ -85,6 +85,7 @@ const controller = {
                         estiloVida: elem.EstiloVida.map(elem => elem.nombre),
                         descripcionCorta: elem.descripcionCorta,
                         descripcionLarga: elem.descripcionLarga,
+                        imagen: elem.ProductoImagen[0].img,
                         detail: `/api/products/${elem.id}`, 
                         deleted_at: elem.deleted_at
                     }

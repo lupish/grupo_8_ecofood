@@ -12,8 +12,8 @@
             <% } else { %> 
                 <h2>Productos</h2>
             <% } %> 
-            <div class="contenedor-productos">
-                <% for(let i = 0; i < prods.length; i++) { %>
+            <div id="contenedor-productos" class="contenedor-productos">
+                <!-- <% for(let i = 0; i < prods.length; i++) { %>
                     <article class="article-prod">
                         <a href="/products/productDetail/<%= prods[i].id %>">
                             <div class="info-de-producto">
@@ -27,18 +27,11 @@
                             </div>
                         </a>
                     </article>
-                <% } %>
+                <% } %> -->
             </div>
         </section>
     </main>
-    <footer>
-        <h3>Avenida Olivos 4109</h3>
-        <div class="iconos-footer">
-            <i class="fa-brands fa-whatsapp"></i> 
-            <i class="fa-regular fa-envelope"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook-f"></i>
-        </div>
-    </footer>
+    <script src="/js/products.js"></script>
+    <%- include('../partials/footer') %> 
 </body>
 </html>
