@@ -27,6 +27,7 @@ async function readyDoc(){
 
 function displayProds(products){
      let container = document.getElementById('contenedor-productos')
+     console.log(container);
      container.innerHTML = ``
      for (let i = 0; i < products.length; i++) {
      container.innerHTML += `

@@ -20,7 +20,7 @@
         
         <section>
             <h2>Nuestros productos</h2>
-            <div class="contenedor-productos">
+            <div  id="contenedor-productos" class="contenedor-productos">
                 <% for(let i = 0; i < prodsEcoFood.length; i++) { %>
                     <article>
                         <a href="/products/productDetail/<%= prodsEcoFood[i].id %>">
@@ -42,6 +42,7 @@
         <!-- fin productos     -->
       
     </main>
+    <script src="/js/products.js"></script>
     <%- include('./partials/footer') %> 
     <%- include('./partials/menuHamburguesa') %> 
 </body>
