@@ -23,10 +23,10 @@ const controller = {
         const sortType = req.query.sortType || "ASC";
         const order = [sortField, sortType]
         
-        if (!(sortField == "id" | sortField == "nombre" || sortField == "precio")) {
+        if (!(sortField == "id" | sortField == "nombre" || sortField == "precio" || sortField == "created_at")) {
                 return res.json({
                     status: 400,
-                    description: "El campo sortField debe ser: id o nombre o precio",
+                    description: "El campo sortField debe ser: id o nombre o precio o created_at",
                     paging: {
                         page: page,
                         size: size,
@@ -61,7 +61,7 @@ const controller = {
                     ,{association: 'EstiloVida', attributes: ['nombre']}
                     ,{association: 'Categoria', attributes: ['nombre']}
                 ],
-                attributes: ["id", "nombre", "precio", "descripcionCorta", "descripcionLarga"],
+                attributes: ["id", "nombre", "precio", "descripcionCorta", "descripcionLarga", "created_at", "deleted_at"],
                 paranoid: false,
                 limit: size,
                 offset: offset,
@@ -87,6 +87,7 @@ const controller = {
                         descripcionLarga: elem.descripcionLarga,
                         imagen: elem.ProductoImagen[0].img,
                         detail: `/api/products/${elem.id}`, 
+                        created_at: elem.created_at,
                         deleted_at: elem.deleted_at
                     }
                     return product
