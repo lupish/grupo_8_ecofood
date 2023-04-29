@@ -63,21 +63,8 @@
         <%}%>
     </div>
 
-    <div class="menu-hamburguesa-estilosVida">
-        <h3>Recorré los distintos estilos de vida</h3>
-
-        <div>
-            <% for(let i = 0; i < estilosVida.length; i ++) { %>
-                <% if (!estilosVida[i].delete) { %> 
-                    <div>
-                        <a href="/products/listProducts/<%= estilosVida[i].id %>">
-                            <img src="<%= estilosVida[i].img %>" alt="<%= estilosVida[i].alt %>">    
-                        </a>
-                        <p><%= estilosVida[i].nombre %></p>
-                </div>
-                <% } %>
-            <% } %>
-        </div>
+    <div id="menu-hamburguesa-estilosVida" class="menu-hamburguesa-estilosVida">
+        
     </div>
     
 </div>

@@ -3,15 +3,15 @@ const router = express.Router();
 const validar = require('../modulos/validaciones/validacionesProducto');
 const multerExport = require('../modulos/multer')
 
-module.exports = router;
-
 // CONTROLLER
 const productController = require('../controllers/apiProductController');
 
 // RUTAS
 router.get('/', productController.listAllProducts);
 router.get('/listProductsByLifeStyle/:estiloVidaId', productController.listProductsByLifeStyle);
+router.get('/listLyfeStyles', productController.listLyfeStyles);
 router.get('/:id', productController.detail);
+
 
 // crear
 router.post(
@@ -35,3 +35,4 @@ router.delete('/delete/:id', productController.processDelete);
 // activar
 router.patch('/activate/:id', productController.processActivate);
 
+module.exports = router;

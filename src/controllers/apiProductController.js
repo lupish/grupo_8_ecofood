@@ -12,6 +12,8 @@ const {validationResult}=require("express-validator");
 
 const controller = {
     listAllProducts: async (req, res) => {
+        console.log("EN LA APIIIIIIII")
+
         let response = {}
         let prodsPage = 0
 
@@ -197,7 +199,34 @@ const controller = {
 
         res.json(response);
     },
+    listLyfeStyles: async (req, res) => {
+        let response = {}
+        try {
+            let estilosVida = await EstiloVida.findAll();
+            if (estilosVida.length > 0) {
+                response = {
+                    status: 200,
+                    data: estilosVida
+                }
+            } else {
+                response = {
+                    status: 404,
+                    description: "No existen estilos de vida"
+                }
+            }
+        } catch (error) {
+            console.log(error);
+
+            response = {
+                status: 500,
+                description: error
+            }
+        }
+        res.json(response);
+    },
     detail: async (req, res) =>{
+        console.log(req)
+        
         let response = {};
         try{
             const productId = req.params.id;
@@ -231,6 +260,7 @@ const controller = {
                 response.estiloVida = productDB.EstiloVida.map(elem => elem.nombre);
 
             } else {
+                console.log("ENTRAAAAAAAA")
                 response = {
                 status: 404,
                 description: 'El producto buscado no existe'   
@@ -437,6 +467,22 @@ const controller = {
 
         return res.json(response)
     }
+    /*,
+    searchProducts: async (req, res) => {
+        const busqueda = req.params.busqueda;
+        const productosFiltrados = Producto.findAll({
+            where: {
+                $or: [
+                    sequelize.where(
+                        sequelize.fn('lower', sequelize.col('nombre')),
+                        {
+                          $like: 'abcd%'
+                        }
+                      )
+                ]
+            }
+        })
+    }*/
 
 }
 
