@@ -12,6 +12,7 @@ router.get('/listProductsByLifeStyle/:estiloVidaId', productController.listProdu
 router.get('/listLyfeStyles', productController.listLyfeStyles);
 router.get('/listBrands', productController.listBrands);
 router.get('/listCategories', productController.listCategories);
+router.post('/filterProducts', productController.filterProducts);
 router.get('/:id', productController.detail);
 
 

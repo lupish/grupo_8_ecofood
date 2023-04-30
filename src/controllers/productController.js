@@ -118,9 +118,12 @@ const controller = {
                 ]
             },{transaction: t})
             let listaEstilosVida = await EstiloVida.findAll();
+            let marcas = await Marca.findAll();
+            let categorias = await Categoria.findAll();
             
             if (req.params.idEstiloVida){
                 let estilo = await EstiloVida.findByPk(req.params.idEstiloVida,{transaction: t})
+                
                 let prods = await Producto.findAll({
                     include:[
                             {association: 'ProductoImagen'}
@@ -129,7 +132,7 @@ const controller = {
                         ]
                 },{transaction: t})
                 await t.commit();
-                res.render('products/listProducts', {prods: prods, estiloFiltrado: estilo, estilosVida: listaEstilosVida})
+                res.render('products/listProducts', {prods: prods, estiloFiltrado: estilo, estilosVida: listaEstilosVida, marcas:marcas, categorias:categorias})
             } else {
                 prods = await Producto.findAll({
                     include:[
@@ -139,7 +142,7 @@ const controller = {
                     ]
                 },{transaction: t});
                 await t.commit();
-                res.render('products/listProducts', {prods: prods,  estilosVida: listaEstilosVida})
+                res.render('products/listProducts', {prods: prods,  estilosVida: listaEstilosVida, marcas:marcas, categorias:categorias})
             }
         }
         catch (error){

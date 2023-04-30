@@ -17,3 +17,68 @@
     color: #EB947A;
     transition: all 0.3s;
 }
+
+.div-filtros-listado-prods {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.filtros-listado-prods {
+    border: 2px solid #ebebeb;
+    border-radius: 15px;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.div-ordenar-prod {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.div-ordenar-prod i {
+    padding: 1px;
+    font-size: 1em;
+}
+
+.flecha-seleccionada {
+    color: #EB947A;
+    transition: all 0.3s
+}
+
+.flecha-no-seleccionada {
+    color: gray;
+    transition: all 0.3s
+}
+
+.div-filtros {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.div-filtros div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filtro-texto-buscado label {
+    margin: 10px;
+}
+
+.aplicar-filtros {
+    color: #96AB61;
+    font-weight: bold;
+}
+
+.aplicar-filtros:hover {
+    color: #EB947A;
+    transition: all 0.3s;
+    font-weight: bold;
+}

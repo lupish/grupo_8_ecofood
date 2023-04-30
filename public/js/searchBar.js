@@ -42,9 +42,10 @@ function filter(busqueda, productos){
         if (filtro.length == 0) {
             window.location.replace("/products/product-not-found")
         } else {
+            sessionStorage.setItem("busqueda", busqueda);
             sessionStorage.setItem("productosFiltrados", JSON.stringify(filtro));
 
-            window.location.replace("/products/listProducts")
+            window.location.replace("/products/listProducts");
         }
         
     }

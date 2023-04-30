@@ -5,6 +5,7 @@ const Categoria = db.Categoria;
 const EstiloVida = db.EstiloVida;
 const Marca = db.Marca;
 const ProductoImagen = db.ProductoImagen
+const { Op } = require("sequelize");
 
 const sequelize = db.sequelize;
 // validator
@@ -274,6 +275,89 @@ const controller = {
             }
         }
         res.json(response);
+    },
+    filterProducts: async (req, res) => {
+        console.log(req.body)
+
+        let response = {};
+
+        let whereMarca = {}
+        if (req.body.marca != "all") {
+            whereMarca = {"id": req.body.marca}
+        }
+
+        let whereEstiloVida = {}
+        if (req.body.estiloVida != "all") {
+            whereEstiloVida = {"id": req.body.estiloVida}
+        }
+
+        let whereCategoria = {}
+        if (req.body.categoria != "all") {
+            whereCategoria = {"id": req.body.categoria}
+        }
+
+        let order = []
+        if (req.body.campoOrden) {
+            order[0] = req.body.campoOrden.toLowerCase()
+            order[1] = req.body.orden
+        }
+
+        let whereTexto = {}
+        if (req.body.texto) {
+            whereTexto = {
+                [Op.or]: [
+                    { nombre: { [Op.like]: `%${req.body.texto.toLowerCase()}%` } },
+                    { descripcionCorta: { [Op.like]: `%${req.body.texto.toLowerCase()}%` } },
+                    { descripcionLarga: { [Op.like]: `%${req.body.texto.toLowerCase()}%` } }
+                ]
+            }
+        }
+        
+        try {
+
+            let prods = await Producto.findAll( {
+                include:[
+                    {association: 'ProductoImagen', attributes: ['id', 'img']}
+                    ,{association: 'Marca', attributes: ['nombre'], where: whereMarca}
+                    ,{association: 'EstiloVida', attributes: ['nombre'], where: whereEstiloVida}
+                    ,{association: 'Categoria', attributes: ['nombre'], where: whereCategoria}
+                ],
+                attributes: ["id", "nombre", "precio", "descripcionCorta", "descripcionLarga"],
+                where : whereTexto,
+                order: [order]
+            })
+
+            let prodFiltrados = prods.map( elem => {
+                let prod = {
+                    id: elem.id,
+                    nombre: elem.nombre,
+                    precio: elem.precio,
+                    marca: elem.Marca.nombre,
+                    imagen: elem.ProductoImagen[0].img
+                }
+                return prod
+            })
+
+
+            if (prodFiltrados) {
+                response = {
+                    status: 200,
+                    count: prods.length,
+                    data: prodFiltrados
+                }
+            }
+
+        } catch (error) {
+            console.log(error);
+
+            response = {
+                status: 500,
+                description: error
+            }
+        }
+
+        res.json(response);
+
     },
     detail: async (req, res) =>{
         let response = {};

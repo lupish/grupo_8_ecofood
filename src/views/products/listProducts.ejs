@@ -4,14 +4,60 @@
 <body>
     <%- include('../partials/header') %>
     <main>
-        <%- include('../partials/listEstilosVida') %> 
         
+        <div class="div-filtros-listado-prods">
+            <div class="filtros-listado-prods">
+                <div class="div-filtros">
+                    <div class="filtro-texto-buscado">
+                        <label class="label-texto-buscado" for="texto-buscado">Texto: </label>
+                        <input type="text" id="texto-buscado" name="texto_buscado">
+                    </div>
+                    <div>
+                        <p>Estilos de vida: </p>
+                        <select id="estiloVida_prod" name="estiloVida_prod">
+                            <option value="all">Todos</option>
+                            <% for(let i = 0; i < estilosVida.length; i ++) { %> 
+                                <option value="<%= estilosVida[i].id %>" <%= locals.estiloFiltrado && estilosVida[i].id == estiloFiltrado.id ? "selected" : "" %>><%= estilosVida[i].nombre %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Marcas: </p>
+                        <select id="marca-prod" name="marca_prod">
+                            <option value="all">Todos</option>
+                            <% for(let i = 0; i < marcas.length; i ++) { %>
+                                <option value="<%= marcas[i].id %>"><%= marcas[i].nombre %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Categorías: </p>
+                        <select id="categoria-prod" name="categoria_prod">
+                            <option value="all">Todos</option>
+                            <% for(let i = 0; i < categorias.length; i ++) { %>
+                                <option value="<%= categorias[i].id %>"><%= categorias[i].nombre %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="div-ordenar-prod">
+                    <p>Ordenar por</p>
+                    <select id="ordenar_prod" name="ordenar_prod">
+                        <option value="id">Id</option>
+                        <option value="created_at">Fecha</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="precio">Precio</option>
+                    </select>
+                    <i id="orden-flecha-arriba" class="flecha fa-solid fa-arrow-up flecha-seleccionada" onclick="seleccionarFlecha('orden-flecha-arriba')"></i>
+                    <i id="orden-flecha-abajo" class="flecha fa-solid fa-arrow-down flecha-no-seleccionada" onclick="seleccionarFlecha('orden-flecha-abajo')"></i>
+                </div>
+                <div>
+                    <p id="aplicar-filtros" class="aplicar-filtros" onclick="filtrarProductos()">Aplicar filtros</p>
+                </div>
+            </div>
+        </div>
         <section>
-            <% if (locals.estiloFiltrado) {%> 
-                <h2>Productos - <%= estiloFiltrado.nombre %> </h2>
-            <% } else { %> 
-                <h2>Productos</h2>
-            <% } %> 
             <div id="contenedor-productos" class="contenedor-productos">
                 <% for(let i = 0; i < prods.length; i++) { %>
                     <article class="article-prod">
@@ -32,6 +78,6 @@
         </section>
     </main>
     <script src="/js/products.js"></script>
-    <%- include('../partials/footer') %> 
+    <%- include('../partials/footer') %>
 </body>
 </html>
