@@ -6,12 +6,9 @@ if (document.readyState == "loading") {
 }
 
 async function readyDoc(){
-    console.log("products - readyDoc");
     const productosFiltrados = JSON.parse(sessionStorage.getItem("productosFiltrados"))
-    console.log(productosFiltrados);
 
     if (productosFiltrados != null && productosFiltrados.length > 0){
-        console.log("VA A MOSTRAR LO GUARDADO");
         displayProds(productosFiltrados)
         sessionStorage.setItem("productosFiltrados", JSON.stringify([]))
     }

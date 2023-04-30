@@ -36,7 +36,6 @@ async function mostrarEstilosVida() {
         divEstilosVida.innerHTML += "<div>"
         let divIconos = "<div>"
         for(let i = 0; i < estilosVida.length; i++) {
-            console.log(estilosVida[i])
             divIconos += `
                 <div>
                     <a href="/products/listProducts/${estilosVida[i].id}">

@@ -11,9 +11,7 @@ const sequelize = db.sequelize;
 const {validationResult}=require("express-validator");
 
 const controller = {
-    listAllProducts: async (req, res) => {
-        console.log("EN LA APIIIIIIII")
-
+    listActiveProducts: async (req, res) => {
         let response = {}
         let prodsPage = 0
 
@@ -52,10 +50,8 @@ const controller = {
         }
 
         try {
-            
-            
-            // querar la tabla
-            const prodsCount = await Producto.findAll({paranoid: false})
+            // querear la tabla
+            const prodsCount = await Producto.findAll()
             const prods = await Producto.findAll( {
                 include:[
                     {association: 'ProductoImagen', attributes: ['id', 'img']}
@@ -64,7 +60,6 @@ const controller = {
                     ,{association: 'Categoria', attributes: ['nombre']}
                 ],
                 attributes: ["id", "nombre", "precio", "descripcionCorta", "descripcionLarga", "created_at", "deleted_at"],
-                paranoid: false,
                 limit: size,
                 offset: offset,
                 order: [order]
@@ -281,8 +276,6 @@ const controller = {
         res.json(response);
     },
     detail: async (req, res) =>{
-        console.log(req)
-        
         let response = {};
         try{
             const productId = req.params.id;
@@ -316,7 +309,6 @@ const controller = {
                 response.estiloVida = productDB.EstiloVida.map(elem => elem.nombre);
 
             } else {
-                console.log("ENTRAAAAAAAA")
                 response = {
                 status: 404,
                 description: 'El producto buscado no existe'   
@@ -406,7 +398,6 @@ const controller = {
                 {where: {id:idProd}, paranoid: false},
                 {transaction: t}
             );
-            console.log(prodUpdate)
             if (prodUpdate == 0) {
                 response.status = 404;
                 response.description = "No existe el producto seleccionado";

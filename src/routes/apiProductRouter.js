@@ -7,7 +7,7 @@ const multerExport = require('../modulos/multer')
 const productController = require('../controllers/apiProductController');
 
 // RUTAS
-router.get('/', productController.listAllProducts);
+router.get('/', productController.listActiveProducts);
 router.get('/listProductsByLifeStyle/:estiloVidaId', productController.listProductsByLifeStyle);
 router.get('/listLyfeStyles', productController.listLyfeStyles);
 router.get('/listBrands', productController.listBrands);
