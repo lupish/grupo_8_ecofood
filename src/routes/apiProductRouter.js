@@ -10,6 +10,8 @@ const productController = require('../controllers/apiProductController');
 router.get('/', productController.listAllProducts);
 router.get('/listProductsByLifeStyle/:estiloVidaId', productController.listProductsByLifeStyle);
 router.get('/listLyfeStyles', productController.listLyfeStyles);
+router.get('/listBrands', productController.listBrands);
+router.get('/listCategories', productController.listCategories);
 router.get('/:id', productController.detail);
 
 

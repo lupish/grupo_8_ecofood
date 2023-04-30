@@ -68,3 +68,7 @@ Tiene un diseño que nos pareció intuitivo, y el home nos pareció muy bien log
 ### __Trello__
 Link de trello del equipo:  
 https://trello.com/b/yjbdtPOq/dhgrupo8
+
+### __Dashboard de React__
+Link al repositorio del dashboard de React:
+https://github.com/lupish/grupo_8_ecofood_react

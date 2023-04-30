@@ -206,12 +206,68 @@ const controller = {
             if (estilosVida.length > 0) {
                 response = {
                     status: 200,
+                    count: estilosVida.length,
                     data: estilosVida
                 }
             } else {
                 response = {
                     status: 404,
+                    count: 0,
                     description: "No existen estilos de vida"
+                }
+            }
+        } catch (error) {
+            console.log(error);
+
+            response = {
+                status: 500,
+                description: error
+            }
+        }
+        res.json(response);
+    },
+    listBrands: async (req, res) => {
+        let response = {}
+        try {
+            let brands = await Marca.findAll();
+            if (brands.length > 0) {
+                response = {
+                    status: 200,
+                    count: brands.length,
+                    data: brands
+                }
+            } else {
+                response = {
+                    status: 404,
+                    count: 0,
+                    description: "No existen marcas"
+                }
+            }
+        } catch (error) {
+            console.log(error);
+
+            response = {
+                status: 500,
+                description: error
+            }
+        }
+        res.json(response);
+    },
+    listCategories: async (req, res) => {
+        let response = {}
+        try {
+            let categorias = await Categoria.findAll();
+            if (categorias.length > 0) {
+                response = {
+                    status: 200,
+                    count: categorias.length,
+                    data: categorias
+                }
+            } else {
+                response = {
+                    status: 404,
+                    count: 0,
+                    description: "No existen categorías"
                 }
             }
         } catch (error) {
