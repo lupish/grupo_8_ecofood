@@ -74,6 +74,11 @@ const controller = {
                 let marcas = await Marca.findAll({include: [{association: 'Producto'}]});
 
                 let detail = prods.map(elem =>{
+                    let imagen = undefined;
+                    if (elem.ProductoImagen && elem.ProductoImagen.length > 0) {
+                        imagen = elem.ProductoImagen[0].img
+                    }
+                    
                     let product = {
                         id: elem.id,
                         nombre: elem.nombre,
@@ -83,7 +88,7 @@ const controller = {
                         estiloVida: elem.EstiloVida.map(elem => elem.nombre),
                         descripcionCorta: elem.descripcionCorta,
                         descripcionLarga: elem.descripcionLarga,
-                        imagen: elem.ProductoImagen[0].img,
+                        imagen: imagen,
                         detail: `/api/products/${elem.id}`, 
                         created_at: elem.created_at,
                         deleted_at: elem.deleted_at
