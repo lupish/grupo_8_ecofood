@@ -56,7 +56,7 @@ function displayProds(products){
         container.innerHTML += `
             <article class="article-prod">
                     <div class="info-de-producto">
-                    <i id="estrella" class="fa-solid fa-star ${claseEstrella}" onClick="addFavoritos(${products[i].id})"></i>
+                    <i id="estrella-${products[i].id}" class="fa-solid fa-star estrella ${claseEstrella}" onClick="addFavoritos(${products[i].id})"></i>
                     <a href="/products/productDetail/${products[i].id}">
                         
                             <img src="${products[i].imagen}" alt="" width="360">

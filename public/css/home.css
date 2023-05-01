@@ -67,7 +67,7 @@ section article .info-de-producto img {
     transition: all 0.3s;
 }
 
-.info-de-producto #estrella {
+.info-de-producto .estrella {
     position: absolute;
     right: 5px;
     top:5px;
@@ -84,7 +84,7 @@ section article .info-de-producto img {
     color: #96AB61;
 }
 
-.info-de-producto #estrella:hover {
+.info-de-producto .estrella:hover {
     color: #EB947A;
     transition: all 0.3s;
 }

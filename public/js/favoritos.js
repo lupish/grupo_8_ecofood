@@ -23,6 +23,12 @@ function addFavoritos(prodId) {
         
     }
 
+    // seleccionar estrella
+    let idEstrella = `estrella-${prodId}`
+    console.log(idEstrella)
+    document.getElementById(idEstrella).classList.remove("estrella-no-seleccionada");
+    document.getElementById(idEstrella).classList.remove("estrella-seleccionada");
+
     localStorage.setItem("favoritos", JSON.stringify(favoritos))
 }
 

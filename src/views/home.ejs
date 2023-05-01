@@ -23,18 +23,18 @@
             <div  id="contenedor-productos" class="contenedor-productos">
                 <% for(let i = 0; i < prodsEcoFood.length; i++) { %>
                     <article>
-                        <a href="/products/productDetail/<%= prodsEcoFood[i].id %>">
-                            <div class="info-de-producto">
-                                <i id ="estrella" class="fa-solid fa-star"></i>
-                                <% if (prodsEcoFood[i].ProductoImagen.length > 0) { %>
-                                    <img src="<%= prodsEcoFood[i].ProductoImagen[0].img %>" alt="<%= prodsEcoFood[i].ProductoImagen[0].img %>" width="360">    
-                                <% } else { %>
-                                    <img src="/img/products/img-not-found.webp" alt="Producto sin imagen" width="360">
-                                <% } %>
-                                <div><p><%= prodsEcoFood[i].nombre %> - <%= prodsEcoFood[i].Marca.nombre %></p></div> 
-                                <div><p>$<%= prodsEcoFood[i].precio %></p></div>
-                            </div>
-                        </a>
+                        <div class="info-de-producto">
+                            <i id="estrella-<%= prodsEcoFood[i].id %>" class="fa-solid fa-star estrella estrella-no-seleccionada" onClick="addFavoritos('<%= prodsEcoFood[i].id %>')"></i>
+                            <a href="/products/productDetail/<%= prodsEcoFood[i].id %>"></a>
+                            <% if (prodsEcoFood[i].ProductoImagen.length > 0) { %>
+                                <img src="<%= prodsEcoFood[i].ProductoImagen[0].img %>" alt="<%= prodsEcoFood[i].ProductoImagen[0].img %>" width="360">    
+                            <% } else { %>
+                                <img src="/img/products/img-not-found.webp" alt="Producto sin imagen" width="360">
+                            <% } %>
+                            <div><p><%= prodsEcoFood[i].nombre %> - <%= prodsEcoFood[i].Marca.nombre %></p></div> 
+                            <div><p>$<%= prodsEcoFood[i].precio %></p></div>
+                            </a>
+                        </div>
                     </article>
                 <% } %>
             </div>
