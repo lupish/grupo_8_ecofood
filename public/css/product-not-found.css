@@ -6,16 +6,34 @@ main.error404 {
     padding: 10px;
 }
 main.error404 section{
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 40px;
+    align-items: center;
+}
+main.error404 section div{
+    width: 100%;
+    text-align: justify;
+    display: flex;
+    align-items: center;
 }
 main.error404 section div i{
     border: 3px solid #96AB61;
     border-radius: 50px;
     padding: 10px; 
     color: #96AB61;
+    
 }
 
+
+@media (min-width: 769px) { 
+    main.error404 section {
+    justify-content: space-around;
+    }
+    main.error404 section div {
+        width: 20%;
+    }
+   
+}

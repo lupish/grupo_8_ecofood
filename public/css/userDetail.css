@@ -22,7 +22,7 @@ body.detalle-usuario main div.container{
 
 }
 body.detalle-usuario main div.container div.box{
-  width: calc(50% - 10px);
+  width: 50vw;
   background: #fff;
   display: flex;
   flex-direction: column;

@@ -75,3 +75,11 @@ En el último Sprint manejamos muy bien los tiempos, logrando terminar antes de 
 # RETROSPECTIVA SPRINT 6
 En el comienzo del Sprint, un integrante del grupo abandonó el proyecto por lo que, dividiendo las tareas entre dos personas, fue más carga de trabajo para cada una, además de ser un Sprint largo y complejo. De todas formas nos organizamos y logramos la entrega en fecha. 
 En el siguiente Sprint vamos a lograr mejor organización ya que desde un principio sabemos cómo trbajar entre dos personas.
+
+# RETROSPECTIVA SPRINT 7
+En este Sprint logramos mejorar la organización del trabajo apoyándonos en trello. La idea es poder seguir trabajando de la misma forma. 
+Tuvimos que priorizar tareas y dejar de lado funcionalidades que nos hubiera gustado agregar para poder entregar en fecha: 
+- Pasarela de pagos.
+- Costo de envío.
+- Olvidé mi contraseña.
+- Token de seguridad para el uso de APIs.

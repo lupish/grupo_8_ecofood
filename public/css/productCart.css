@@ -67,6 +67,7 @@ div.carrito-info {
     justify-content: center;
     align-items: center;
     align-content: center;
+    margin: 0px;
 }
 .carrito-articulo-imagen{
     display: flex;
