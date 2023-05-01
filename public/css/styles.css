@@ -223,7 +223,7 @@ a.icon-cart p {
         display: none;
     }
 
-    header .iconos .estrella, #usuario {
+    header .iconos #estrella, #usuario {
         display: block;
     }
 
