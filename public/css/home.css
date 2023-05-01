@@ -71,9 +71,17 @@ section article .info-de-producto img {
     position: absolute;
     right: 5px;
     top:5px;
-    color:#96AB61;
+    /*color:#96AB61;*/
     font-size: 25px;
     z-index: 1;
+}
+
+.estrella-seleccionada {
+    color:#EB947A;
+}
+
+.estrella-no-seleccionada {
+    color: #96AB61;
 }
 
 .info-de-producto #estrella:hover {

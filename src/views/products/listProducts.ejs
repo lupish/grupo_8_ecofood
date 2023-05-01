@@ -65,21 +65,6 @@
         </div>
         <section>
             <div id="contenedor-productos" class="contenedor-productos">
-                <% for(let i = 0; i < prods.length; i++) { %>
-                    <article class="article-prod">
-                        <a href="/products/productDetail/<%= prods[i].id %>">
-                            <div class="info-de-producto">
-                                <i id="estrella" class="fa-solid fa-star"></i>
-                                
-                                <% if (prods[i].ProductoImagen.length > 0) { %>
-                                    <img src="<%= prods[i].ProductoImagen[0].img %>" alt="" width="360">
-                                <% } %>
-                                <div><p><%= prods[i].nombre %> - <%= prods[i].Marca.nombre %></p></div> 
-                                <div><p>$<%= prods[i].precio %></p></div>
-                            </div>
-                        </a>
-                    </article>
-                <% } %>
             </div>
         </section>
     </main>

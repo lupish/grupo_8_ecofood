@@ -13,18 +13,22 @@ function addFavoritos(prodId) {
     let favoritos = JSON.parse(localStorage.getItem("favoritos"))
 
     if (favoritos == null || favoritos.length == 0) {
-        console.log("Favoritos vacios");
         favoritos = []
-        favoritos.push(prodId)
+        favoritos.push(parseInt(prodId))
     } else {
         let prodEnFavoritos = favoritos.find(elem => elem == prodId)
         if (!prodEnFavoritos) {
-            favoritos.push(prodId)
+            favoritos.push(parseInt(prodId))
         }
         
     }
 
     localStorage.setItem("favoritos", JSON.stringify(favoritos))
-    console.log(favoritos);
+}
+
+function mostrarFavoritos() {
+    sessionStorage.setItem("mostrarFavoritos", "mostrarFavoritos")
+
+    window.location.replace("/products/listProducts");
 }
 
