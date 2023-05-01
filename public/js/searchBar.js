@@ -17,7 +17,7 @@ async function fetchApi(endpoint){
 }
 
 async function readyDoc(){
-    let productos = await fetchApi('/api/products')
+    let productos = await fetchApi('/api/products?size=-1')
     let searchBar = document.getElementById("buscador")
 
     searchBar.addEventListener('change', (e) => {

@@ -129,7 +129,7 @@ header .iconos h6{
    display: none;
 }
 
-header .iconos .estrella, #usuario {
+header .iconos #estrella, #usuario {
     display: none;
 }
 

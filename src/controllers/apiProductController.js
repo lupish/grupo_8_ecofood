@@ -17,7 +17,7 @@ const controller = {
         let prodsPage = 0
 
         // obtener campos de paginacion
-        const size = parseInt(req.query.size) || 10;
+        let size = parseInt(req.query.size) || 10;
         const page = parseInt(req.query.page) || 1;
         let offset = size * (page-1);
         const sortField = req.query.sortField || "id";
@@ -53,6 +53,13 @@ const controller = {
         try {
             // querear la tabla
             const prodsCount = await Producto.findAll()
+
+            if (size == -1) {
+                // sin paginado
+                size = prodsCount.length
+            }
+            console.log(size)
+
             const prods = await Producto.findAll( {
                 include:[
                     {association: 'ProductoImagen', attributes: ['id', 'img']}
@@ -282,8 +289,6 @@ const controller = {
         res.json(response);
     },
     filterProducts: async (req, res) => {
-        console.log(req.body)
-
         let response = {};
 
         let whereMarca = {}
@@ -308,7 +313,6 @@ const controller = {
         }
 
         let whereFavoritos = {}
-        console.log(req.body.listaFavoritos)
         if (req.body.listaFavoritos) {
             whereFavoritos = {
                 id: {[Op.in]: req.body.listaFavoritos}
@@ -347,12 +351,16 @@ const controller = {
             })
 
             let prodFiltrados = prods.map( elem => {
+                let imagen = undefined;
+                if (elem.ProductoImagen && elem.ProductoImagen.length > 0) {
+                    imagen = elem.ProductoImagen[0].img
+                }
                 let prod = {
                     id: elem.id,
                     nombre: elem.nombre,
                     precio: elem.precio,
                     marca: elem.Marca.nombre,
-                    imagen: elem.ProductoImagen[0].img
+                    imagen: imagen
                 }
                 return prod
             })

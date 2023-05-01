@@ -84,10 +84,10 @@ section article .info-de-producto img {
     color: #96AB61;
 }
 
-.info-de-producto .estrella:hover {
+/*.info-de-producto .estrella:hover {
     color: #EB947A;
     transition: all 0.3s;
-}
+}*/
 
 .info-de-producto div {
     width: 100%;

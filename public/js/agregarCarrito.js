@@ -12,10 +12,30 @@ function readyDoc() {
         localStorage.setItem("carrito", JSON.stringify(carrito))
     }
 
+    estrellaClase()
+
     // agarro el boton de agergar al carrito
     let agregarCarrito = document.getElementById("agregar-carrito")
     
     agregarCarrito.addEventListener("click", agregarElemCarrito)
+}
+
+function estrellaClase() {
+    const prodId = parseInt(document.getElementById("prod-id").innerText);
+    const idEstrella = `estrella-${prodId}`;
+
+    let favoritos = JSON.parse(localStorage.getItem("favoritos"))
+
+    if (favoritos) {
+        if (favoritos.find(elem => elem == prodId)) {
+            document.getElementById(idEstrella).classList.remove("estrella-no-seleccionada");
+            document.getElementById(idEstrella).classList.add("estrella-seleccionada");
+        } else {
+            document.getElementById(idEstrella).classList.remove("estrella-seleccionada");
+            document.getElementById(idEstrella).classList.add("estrella-no-seleccionada");
+        }
+    }
+
 }
 
 function agregarElemCarrito() {

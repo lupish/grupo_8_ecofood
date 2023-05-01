@@ -9,9 +9,6 @@ async function readyDoc(){
     const productosFiltrados = JSON.parse(sessionStorage.getItem("productosFiltrados"))
     const busqueda = sessionStorage.getItem("busqueda");
     const mostrarFavoritos = sessionStorage.getItem("mostrarFavoritos");
-    const productosFavoritos = JSON.parse(localStorage.getItem("favoritos"));
-
-    console.log(productosFiltrados);
     
     // limpiar storage
     sessionStorage.setItem("mostrarFavoritos", "")
@@ -25,22 +22,12 @@ async function readyDoc(){
         }
     }
 
-    console.log("productos...");
     if (productosFiltrados != null && productosFiltrados.length > 0){
-        console.log("Va a mostrar productos filtrados");
         displayProds(productosFiltrados)
         sessionStorage.setItem("productosFiltrados", JSON.stringify([]))
     } else {
-        console.log("Va a filtrar productos");
         filtrarProductos()
     }
-    
-    
-    /*else if (productosFavoritos != null && productosFavoritos.length > 0){
-        filtrarProductos()
-    } else {
-
-    }*/
 }
 
 function displayProds(products){
@@ -58,8 +45,7 @@ function displayProds(products){
                     <div class="info-de-producto">
                     <i id="estrella-${products[i].id}" class="fa-solid fa-star estrella ${claseEstrella}" onClick="addFavoritos(${products[i].id})"></i>
                     <a href="/products/productDetail/${products[i].id}">
-                        
-                            <img src="${products[i].imagen}" alt="" width="360">
+                        <img src="${products[i].imagen}" alt="${products[i].imagen}" width="360">
                         <div><p>${products[i].nombre} - ${products[i].marca}</p></div> 
                         <div><p>$${products[i].precio}</p></div>
                         </a>

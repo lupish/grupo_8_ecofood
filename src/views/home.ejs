@@ -25,7 +25,7 @@
                     <article>
                         <div class="info-de-producto">
                             <i id="estrella-<%= prodsEcoFood[i].id %>" class="fa-solid fa-star estrella estrella-no-seleccionada" onClick="addFavoritos('<%= prodsEcoFood[i].id %>')"></i>
-                            <a href="/products/productDetail/<%= prodsEcoFood[i].id %>"></a>
+                            <a href="/products/productDetail/<%= prodsEcoFood[i].id %>">
                             <% if (prodsEcoFood[i].ProductoImagen.length > 0) { %>
                                 <img src="<%= prodsEcoFood[i].ProductoImagen[0].img %>" alt="<%= prodsEcoFood[i].ProductoImagen[0].img %>" width="360">    
                             <% } else { %>
@@ -42,7 +42,7 @@
         <!-- fin productos     -->
       
     </main>
-    <!--<script src="/js/products.js"></script> -->
+    <script src="/js/home.js"></script>
     <%- include('./partials/footer') %> 
     <!--<%- include('./partials/menuHamburguesa') %> -->
 </body>

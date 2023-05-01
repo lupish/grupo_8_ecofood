@@ -46,13 +46,12 @@
         position: absolute;
         right: 10px;
         top: 10px;
-        color: #96AB61;
         font-size: 25px;
     }
-    main section.prod-carrusel .estrella:hover{
+    /*main section.prod-carrusel .estrella:hover{
         color: #EB947A;
         transition: all 0.3s;
-    }
+    }*/
     /* INFO-PROD */
     main section.prod-info{
         width: 100%;
@@ -139,10 +138,10 @@
     main section.prod-carrusel {
         width: 45%; 
     }
-    main section.prod-carrusel .estrella:hover{
+    /*main section.prod-carrusel .estrella:hover{
         color: #EB947A;
         transition: all 0.3s;
-    }
+    }*/
     /* INFO-PROD */
     main section.prod-info{
         width: 45%;

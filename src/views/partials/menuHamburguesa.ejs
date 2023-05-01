@@ -24,22 +24,9 @@
                 </a>
                 <p>Iniciá sesión o registrate</p>
             </div>
-
-            <div>
-                <a href="/users/login">
-                    <i class="fa-solid fa-solid fa-cart-shopping"></i>
-                </a>
-                <p>Finalizá tu compra</p>
-            </div>
         <%} else {%>
             <div>
-                <a href="/users/login">
-                    <i class="fa-solid fa-solid fa-cart-shopping"></i>
-                </a>
-                <p>Finalizá tu compra</p>
-            </div>
-            <div>
-                <a href="/users/logout/<%= usuarioLogueado.id %>">
+                <a href="/users/edit/<%= usuarioLogueado.id %>">
                     <i class="fa-solid fa-user-pen"></i>
                 </a>
                 <p>Editá tu perfil</p>
@@ -47,7 +34,7 @@
 
             <% if (locals.usuarioLogueado.rol.nombre == "Administrador") { %>
                 <div>
-                    <a href="/users/logout/<%= usuarioLogueado.id %>">
+                    <a href="panels/manageEcoFood">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                     </a>
                     <p>Gestioná el sitio</p>
@@ -61,6 +48,20 @@
                 <p>Cerrá sesión</p>
             </div>
         <%}%>
+
+        <div>
+            <a href="/products/productCart">
+                <i class="fa-solid fa-solid fa-cart-shopping"></i>
+            </a>
+            <p>Finalizá tu compra</p>
+        </div>
+
+        <div>
+            <a id="mirar-favoritos" href="">
+                <i class="fa-solid fa-star"></i>
+            </a>
+            <p>Mirá tus favoritos</p>
+        </div>
     </div>
 
     <div id="menu-hamburguesa-estilosVida" class="menu-hamburguesa-estilosVida">
