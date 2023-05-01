@@ -1,5 +1,3 @@
-const session = require("express-session");
-
 if (document.readyState == "loading") {
     // documento cargando
     document.addEventListener("DOMContentLoaded", readyDoc)
@@ -10,31 +8,62 @@ if (document.readyState == "loading") {
 async function readyDoc(){
     const productosFiltrados = JSON.parse(sessionStorage.getItem("productosFiltrados"))
     const busqueda = sessionStorage.getItem("busqueda");
+    const mostrarFavoritos = sessionStorage.getItem("mostrarFavoritos");
+    const productosFavoritos = JSON.parse(localStorage.getItem("favoritos"));
+
+    console.log(productosFiltrados);
+    
+    // limpiar storage
+    sessionStorage.setItem("mostrarFavoritos", "")
+    sessionStorage.setItem("busqueda", "")
 
     if (busqueda) {
         document.getElementById("texto-buscado").value = busqueda;
+    } else {
+        if (mostrarFavoritos && mostrarFavoritos == "mostrarFavoritos") {
+            document.getElementById("agregar_favoritos").checked = true;
+        }
     }
 
+    console.log("productos...");
     if (productosFiltrados != null && productosFiltrados.length > 0){
+        console.log("Va a mostrar productos filtrados");
         displayProds(productosFiltrados)
         sessionStorage.setItem("productosFiltrados", JSON.stringify([]))
+    } else {
+        console.log("Va a filtrar productos");
+        filtrarProductos()
     }
+    
+    
+    /*else if (productosFavoritos != null && productosFavoritos.length > 0){
+        filtrarProductos()
+    } else {
+
+    }*/
 }
 
 function displayProds(products){
     let container = document.getElementById('contenedor-productos')
     container.innerHTML = ``
+    let favoritos = JSON.parse(localStorage.getItem("favoritos"))
     for (let i = 0; i < products.length; i++) {
+        let claseEstrella = "estrella-no-seleccionada"
+        if (JSON.parse(localStorage.getItem("favoritos"))) {
+            claseEstrella = favoritos.includes(products[i].id) ? "estrella-seleccionada": "estrella-no-seleccionada"
+        }
+
         container.innerHTML += `
             <article class="article-prod">
-                <a href="/products/productDetail/${products[i].id}">
                     <div class="info-de-producto">
-                        <i id="estrella" class="fa-solid fa-star"></i>
+                    <i id="estrella" class="fa-solid fa-star ${claseEstrella}" onClick="addFavoritos(${products[i].id})"></i>
+                    <a href="/products/productDetail/${products[i].id}">
+                        
                             <img src="${products[i].imagen}" alt="" width="360">
                         <div><p>${products[i].nombre} - ${products[i].marca}</p></div> 
                         <div><p>$${products[i].precio}</p></div>
+                        </a>
                     </div>
-                </a>
             </article>
         `
     }
@@ -49,7 +78,6 @@ async function filtrarProductos() {
     const categoriaBuscada = document.getElementById("categoria-prod").value;
     const campoOrden = document.getElementById("ordenar_prod").value;
     const favoritos = document.getElementById("agregar_favoritos").checked;
-    console.log(favoritos)
 
     let listaFavoritos = undefined
     if (favoritos) {
@@ -58,8 +86,6 @@ async function filtrarProductos() {
             listaFavoritos = []
         }
     }
-
-    console.log(listaFavoritos)
 
     const filtrado = {
         texto: textoBuscado,
@@ -82,7 +108,7 @@ async function filtrarProductos() {
     const infoAPI = await response.json();
 
     if (infoAPI.status != 500) {
-        sessionStorage.setItem("productosFiltrados", JSON.stringify(infoAPI.data));
+        // sessionStorage.setItem("productosFiltrados", JSON.stringify(infoAPI.data));
         displayProds(infoAPI.data)
     }
 }
