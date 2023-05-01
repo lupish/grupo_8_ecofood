@@ -302,6 +302,14 @@ const controller = {
             order[1] = req.body.orden
         }
 
+        let whereFavoritos = {}
+        console.log(req.body.listaFavoritos)
+        if (req.body.listaFavoritos) {
+            whereFavoritos = {
+                id: {[Op.in]: req.body.listaFavoritos}
+            }
+        }
+
         let whereTexto = {}
         if (req.body.texto) {
             whereTexto = {
@@ -311,6 +319,12 @@ const controller = {
                     { descripcionLarga: { [Op.like]: `%${req.body.texto.toLowerCase()}%` } }
                 ]
             }
+        }
+
+        let where = {
+            [Op.and]: [
+                whereFavoritos, whereTexto
+            ]
         }
         
         try {
@@ -323,7 +337,7 @@ const controller = {
                     ,{association: 'Categoria', attributes: ['nombre'], where: whereCategoria}
                 ],
                 attributes: ["id", "nombre", "precio", "descripcionCorta", "descripcionLarga"],
-                where : whereTexto,
+                where : where,
                 order: [order]
             })
 

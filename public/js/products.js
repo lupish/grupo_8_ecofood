@@ -48,14 +48,27 @@ async function filtrarProductos() {
     const marcaBuscada = document.getElementById("marca-prod").value;
     const categoriaBuscada = document.getElementById("categoria-prod").value;
     const campoOrden = document.getElementById("ordenar_prod").value;
+    const favoritos = document.getElementById("agregar_favoritos").checked;
+    console.log(favoritos)
+
+    let listaFavoritos = undefined
+    if (favoritos) {
+        listaFavoritos = JSON.parse(localStorage.getItem("favoritos"));
+        if (listaFavoritos == null) {
+            listaFavoritos = []
+        }
+    }
+
+    console.log(listaFavoritos)
 
     const filtrado = {
-        "texto": textoBuscado,
-        "estiloVida": estiloBuscado,
-        "marca": marcaBuscada,
-        "categoria": categoriaBuscada,
-        "campoOrden": campoOrden,
-        "orden": orden
+        texto: textoBuscado,
+        estiloVida: estiloBuscado,
+        marca: marcaBuscada,
+        categoria: categoriaBuscada,
+        campoOrden: campoOrden,
+        orden: orden,
+        listaFavoritos: listaFavoritos
     }
 
     const response = await fetch("/api/products/filterProducts", {

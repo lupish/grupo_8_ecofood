@@ -10,7 +10,7 @@
                 <img id="prod-img-<%= i %>" src="<%= prod.ProductoImagen[i].img %>" alt="<%= prod.ProductoImagen[i].img %>">
                 <% } %>         
             </div>
-            <i id ="estrella" class="fa-solid fa-star"></i>
+            <i id ="estrella" class="fa-solid fa-star" onClick="addFavoritos('<%= prod.id %>')"></i>
         </section>
 
         <section class="prod-info">
