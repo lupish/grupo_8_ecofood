@@ -126,3 +126,44 @@ function botonRemover(id) {
         displayCarritoVacio()
     }
 }
+
+function displayCompraExitosa() {
+    let padre = document.getElementById("carrito-padre")
+
+    padre.innerHTML = `
+    <h4>¡Compra finalizada con éxito!</h4>
+    <img src="/img/products/empty-cart.png">
+    `
+
+    calcularFooter([])
+    actualizarIconoCarrito()
+}
+
+async function finalizarCompra() {
+    const carrito = JSON.parse(localStorage.getItem("carrito"))
+
+    if (carrito && carrito.length > 0) {
+        let data = {
+            carrito: carrito,
+            total: document.getElementById("carrito-footer-total").innerText
+        }
+        
+        const response = await fetch("/api/products/purchase/complete", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(data),
+        });
+        const infoAPI = await response.json()
+
+        if (infoAPI.status == 201) {
+            // vaciar el carrito
+            localStorage.setItem("carrito", JSON.stringify([]))
+            displayCompraExitosa()
+        }
+
+    }
+
+
+}

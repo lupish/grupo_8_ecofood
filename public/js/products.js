@@ -87,8 +87,8 @@ async function filtrarProductos() {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
-          },
-          body: JSON.stringify(filtrado), // body data type must match "Content-Type" header
+        },
+        body: JSON.stringify(filtrado),
     });
 
     const infoAPI = await response.json();

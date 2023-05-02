@@ -56,6 +56,7 @@ module.exports = (sequelize, dataTypes) => {
             otherKey: 'estiloVida_id',
             timestamps: false
         });
+        // falta poner factura
     }
 
     return Producto

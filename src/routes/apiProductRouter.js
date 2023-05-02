@@ -38,4 +38,7 @@ router.delete('/delete/:id', productController.processDelete);
 // activar
 router.patch('/activate/:id', productController.processActivate);
 
+// finalizar compra
+router.post('/purchase/complete', productController.finalizarCompra);
+
 module.exports = router;

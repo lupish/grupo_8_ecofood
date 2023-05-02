@@ -5,6 +5,8 @@ const Categoria = db.Categoria;
 const EstiloVida = db.EstiloVida;
 const Marca = db.Marca;
 const ProductoImagen = db.ProductoImagen
+const Factura = db.Factura
+const ProductoFactura = db.ProductoFactura
 const { Op } = require("sequelize");
 
 const sequelize = db.sequelize;
@@ -58,7 +60,6 @@ const controller = {
                 // sin paginado
                 size = prodsCount.length
             }
-            console.log(size)
 
             const prods = await Producto.findAll( {
                 include:[
@@ -148,7 +149,7 @@ const controller = {
         } catch (error) {
             response = {
                 status: 500,
-                description: error
+                description: error.message
             }
 
             console.log(error);
@@ -199,7 +200,7 @@ const controller = {
         } catch (error) {
             response = {
                 status: 500,
-                description: error
+                description: error.message
             }
 
             console.log(error);
@@ -229,7 +230,7 @@ const controller = {
 
             response = {
                 status: 500,
-                description: error
+                description: error.message
             }
         }
         res.json(response);
@@ -256,7 +257,7 @@ const controller = {
 
             response = {
                 status: 500,
-                description: error
+                description: error.message
             }
         }
         res.json(response);
@@ -283,7 +284,7 @@ const controller = {
 
             response = {
                 status: 500,
-                description: error
+                description: error.message
             }
         }
         res.json(response);
@@ -379,7 +380,7 @@ const controller = {
 
             response = {
                 status: 500,
-                description: error
+                description: error.message
             }
         }
 
@@ -428,7 +429,7 @@ const controller = {
         } catch(error) {
             response = {
                 status: 500,
-                description: error
+                description: error.message
             }
             console.log(error);
         }
@@ -624,23 +625,53 @@ const controller = {
         }
 
         return res.json(response)
-    }
-    /*,
-    searchProducts: async (req, res) => {
-        const busqueda = req.params.busqueda;
-        const productosFiltrados = Producto.findAll({
-            where: {
-                $or: [
-                    sequelize.where(
-                        sequelize.fn('lower', sequelize.col('nombre')),
-                        {
-                          $like: 'abcd%'
-                        }
-                      )
-                ]
+    },
+    finalizarCompra: async (req, res) => {
+        const carrito = req.body.carrito;
+        const total = parseFloat(req.body.total.replace("$", ""))
+
+        let response = {}
+        if (!req.session.usuarioLogueado) {
+            response = {
+                status: 400,
+                description: "El usuario debe estar logueado"
             }
-        })
-    }*/
+            return res.json(response)
+        }
+        
+        const t = await sequelize.transaction();
+        try {
+            const fecha = new Date();
+            let compra = await Factura.create({
+                usuario_id: req.session.usuarioLogueado.id,
+                fecha_factura: fecha,
+                total: total
+            }, {transaction: t})
+
+            for(let i = 0; i < carrito.length; i ++) {
+                await ProductoFactura.create({
+                    factura_id: compra.id,
+                    producto_id: carrito[i].id,
+                    cantidad: carrito[i].cantidad,
+                    precio: carrito[i].precio
+                }, {transaction: t})
+            }
+
+            response.status = 201;
+            response.purchase = compra;
+            await t.commit();
+
+        } catch (error) {
+            console.log(error)
+            await t.rollback();
+            response = {
+                status: 500,
+                description: error.message
+            }
+        }
+        
+        return res.json(response)
+    }
 
 }
 

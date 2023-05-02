@@ -96,7 +96,7 @@ const controller = {
         } catch (error) {
             response = {
                 status: 500,
-                description: error
+                description: error.message
             }
 
             console.log(error);
@@ -141,7 +141,7 @@ const controller = {
         } catch (error) {
             response.info = {
                 status: 500,
-                description: error
+                description: error.message
             }
 
             console.log(error);
