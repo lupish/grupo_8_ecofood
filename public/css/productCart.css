@@ -191,6 +191,7 @@ div.carrito-info {
    width: 100%; 
    gap: 20px;
    margin-bottom: 10px;
+   flex-wrap: wrap;
    
 }
 .carrito-footer-calcular div input[type=number]{
@@ -230,6 +231,18 @@ div.carrito-info {
 
 div.carrito-footer-comprar {
     padding-top: 10px;
+}
+
+.compra-existosa {
+    margin: 10px;
+    color: #96AB61;
+    text-align: center;
+}
+
+.compra-error {
+    margin: 10px;
+    color: #EB8A52;
+    text-align: center;
 }
 
 

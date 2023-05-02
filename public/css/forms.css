@@ -81,6 +81,13 @@ main a:hover {
     text-align: left;
 }
 
+.form-success {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: #96AB61;
+    text-align: left;
+}
+
 .form-valid {
     margin-top: 0px;
     margin-bottom: 5px;

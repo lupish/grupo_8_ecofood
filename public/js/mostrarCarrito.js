@@ -10,6 +10,8 @@ function readyDoc() {
     } else {
         displayCarrito();
     }
+
+    document.getElementById("aviso-compra").innerText = ""
 }
 
 function displayCarritoVacio() {
@@ -128,6 +130,9 @@ function botonRemover(id) {
 }
 
 function displayCompraExitosa() {
+    document.getElementById("aviso-compra").innerText = "¡Compra finalizada con éxito!"
+
+
     let padre = document.getElementById("carrito-padre")
 
     padre.innerHTML = `
@@ -157,10 +162,17 @@ async function finalizarCompra() {
         });
         const infoAPI = await response.json()
 
+        let avisoCompra = document.getElementById("aviso-compra")
         if (infoAPI.status == 201) {
             // vaciar el carrito
             localStorage.setItem("carrito", JSON.stringify([]))
-            displayCompraExitosa()
+            
+            avisoCompra.innerText = "¡Compra finalizada con éxito!"
+            avisoCompra.className = "compra-existosa"
+            displayCarritoVacio()
+        } else {
+            avisoCompra.innerText = "Su compra no se pudo finalizar, intentalo más tarde o contactanos"
+            avisoCompra.className = "compra-error"
         }
 
     }
