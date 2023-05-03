@@ -679,16 +679,21 @@ const controller = {
             const ventas = await Factura.findAll({
                 include:[
                     {association: 'Producto'},
-                    {association: 'Usuario', attributes: ['nombre', 'img']},
-                    {association: 'Detalles'}
+                    {association: 'Usuario', attributes: ['nombre', 'img']}
                 ]
             })
             
             let detail = ventas.map(elem => {
                 let prods = []
                 elem.Producto.forEach(p => {
-                    let detalle = elem.Detalles.find(d => d.producto_id == p.id)
-                    prods.push({id: p.id, nombre: p.nombre, precio: detalle.precio, cant: detalle.cantidad, subtotal: (detalle.precio * detalle.cantidad), detalle_prod:`/api/products/${p.id}`})
+                    prods.push({
+                        id: p.id,
+                        nombre: p.nombre,
+                        precio: p.ProductoFactura.precio,
+                        cant: p.ProductoFactura.cantidad,
+                        subtotal: (p.ProductoFactura.precio * p.ProductoFactura.cantidad),
+                        detalle_prod: `/api/products/${p.id}`
+                    })
                 });
 
                 return {
@@ -700,12 +705,35 @@ const controller = {
                     prods: prods
                 }
             })
+
+            let prods = await Producto.findAll({
+                include:[
+                    {association: 'Factura'}
+                ]
+            })
+
+            let countByProducts = {}
+            prods.forEach(elem => {
+                let cant = 0;
+                let total = 0;
+
+                elem.Factura.forEach(f => {
+                    cant += f.ProductoFactura.cantidad;
+                    total += (f.ProductoFactura.cantidad * f.ProductoFactura.precio)
+                })
+
+                countByProducts[elem.nombre] = {
+                    cant: cant,
+                    total: total
+                }
+            })
         
             if (ventas.length > 0) {
                 response = {
                     status: 200,
                     count: ventas.length,
-                    data: detail
+                    data: detail,
+                    countByProducts: countByProducts
                 }
             } else {
                 response = {
