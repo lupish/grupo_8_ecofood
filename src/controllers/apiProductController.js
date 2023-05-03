@@ -704,11 +704,13 @@ const controller = {
             if (ventas.length > 0) {
                 response = {
                     status: 200,
+                    count: ventas.length,
                     data: detail
                 }
             } else {
                 response = {
                     status: 404,
+                    count: 0,
                     description: "No existen ventas"
                 }
             }
