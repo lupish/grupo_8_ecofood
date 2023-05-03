@@ -24,6 +24,9 @@ const controller = {
      },
     nosotros: (req, res) => {
         res.render('nosotros');
+    },
+    contacto: (req, res) => {
+        res.render('contacto');
     }
 }
 
