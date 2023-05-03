@@ -170,7 +170,11 @@ async function finalizarCompra() {
             avisoCompra.innerText = "¡Compra finalizada con éxito!"
             avisoCompra.className = "compra-existosa"
             displayCarritoVacio()
-        } else {
+        } else if(infoAPI.status == 400){
+            avisoCompra.innerText = "Su compra no se pudo finalizar, debe estar logueado"
+            avisoCompra.className = "compra-error"
+
+        }else{
             avisoCompra.innerText = "Su compra no se pudo finalizar, intentalo más tarde o contactanos"
             avisoCompra.className = "compra-error"
         }
