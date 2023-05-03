@@ -43,7 +43,14 @@ const controller = {
         let usersPage = 0;
 
         try {
-            const usersCount = await Usuario.findAll({paranoid: false})
+            const usersCount = await Usuario.findAll({paranoid: false});
+
+            if (size == -1) {
+                // sin paginado
+                size = usersCount.length
+            }
+
+
             let users = await Usuario.findAll({
                 attributes: ["id", "nombre", "email", "img", "deleted_at"],
                 paranoid: false,
