@@ -40,5 +40,6 @@ router.patch('/activate/:id', productController.processActivate);
 
 // finalizar compra
 router.post('/purchase/complete', productController.finalizarCompra);
+router.get('/purchase/listSales', productController.listadoVentas)
 
 module.exports = router;

@@ -671,6 +671,57 @@ const controller = {
         }
         
         return res.json(response)
+    },
+    listadoVentas: async (req, res) => {
+        response = {}
+
+        try {
+            const ventas = await Factura.findAll({
+                include:[
+                    {association: 'Producto'},
+                    {association: 'Usuario', attributes: ['nombre', 'img']},
+                    {association: 'Detalles'}
+                ]
+            })
+            
+            let detail = ventas.map(elem => {
+                let prods = []
+                elem.Producto.forEach(p => {
+                    let detalle = elem.Detalles.find(d => d.producto_id == p.id)
+                    prods.push({id: p.id, nombre: p.nombre, precio: detalle.precio, cant: detalle.cantidad, subtotal: (detalle.precio * detalle.cantidad), detalle_prod:`/api/products/${p.id}`})
+                });
+
+                return {
+                    id: elem.id,
+                    fecha_factura: elem.fecha_factura,
+                    usuario: elem.Usuario.nombre,
+                    usuario_avatar: elem.Usuario.img,
+                    total: elem.total,
+                    prods: prods
+                }
+            })
+        
+            if (ventas.length > 0) {
+                response = {
+                    status: 200,
+                    data: detail
+                }
+            } else {
+                response = {
+                    status: 404,
+                    description: "No existen ventas"
+                }
+            }
+        } catch (error) {
+            response = {
+                status: 500,
+                description: error.message
+            }
+
+            console.log(error);
+        }
+
+        return res.json(response)
     }
 
 }

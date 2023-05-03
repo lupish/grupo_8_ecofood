@@ -56,6 +56,13 @@ module.exports = (sequelize, dataTypes) => {
             otherKey: 'estiloVida_id',
             timestamps: false
         });
+        Producto.belongsToMany(models.Producto, {
+            as: 'Factura',
+            through: 'ProductoFactura',
+            foreignKey: 'producto_id',
+            otherKey: 'factura_id',
+            timestamps: false
+        });
         // falta poner factura
     }
 
