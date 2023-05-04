@@ -136,7 +136,7 @@ header .iconos #estrella, #usuario {
 header nav {
     display: none;
     background-color: rgba(150, 171, 97, 0.9);
-    height: 32px;
+    /*height: 32px;*/
 	box-shadow: 0px 0px 3px #96ab61ff;
 	width: 100%
 }
@@ -247,7 +247,7 @@ a.icon-cart p {
         justify-content: space-around;
         font-size: 20px;
         align-items: center;
-	    height: 100%;
+	    /*height: 100%;*/
     }
 
     header nav ul li a {

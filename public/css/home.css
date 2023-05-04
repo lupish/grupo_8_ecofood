@@ -224,7 +224,9 @@ div.estilosVida-imgs img:hover + p {
     .menu .submenu {
         list-style: none;
         padding: 0px;
-        margin: 0px
+        margin: 0px;
+        flex-direction: column;
+        
     }
     .menu__link:hover{
         background-color: #96AB61;
@@ -234,27 +236,35 @@ div.estilosVida-imgs img:hover + p {
     }
     .submenu .menu__link{
         background-color: #96AB61 ;
-        padding-left: 20%;
+        padding-left: 5%;
+        display: block;
+        width: 100%;
     }
     .container-submenu{
-    position: relative;
-    }
-    .submenu{
-    position: absolute;
-    top: 28px;
-    width: 100%;
-    overflow: visible;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    }
-    .submenu div{
-        display: flex;
+        position: relative;
+        width: 10%;
         
     }
+    .div-submenu {
+        position: relative;
+    }
+    .submenu{
+        position: absolute;
+        /*top: 28px;*/
+        width: 100%;
+        overflow: visible;
+        z-index: 10;
+        font-size: 15px;
+        
+        opacity: 0;
+        visibility: hidden;
+    }
+    .submenu li {
+        width: 100%;
+    }
     .container-submenu:hover .submenu{  
-    opacity: 1;
-    visibility: visible;
+        opacity: 1;
+        visibility: visible;
     }
 
 }
