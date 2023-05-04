@@ -69,6 +69,8 @@ header .buscador {
     justify-content: center;
     align-items: center;
     width: 60%;
+
+    position: relative;
     /*padding-left: 10px;*/
 }
 
@@ -84,7 +86,7 @@ header .buscador input {
 }
 
 header .buscador i {
-    position: relative;
+    position: absolute;
     right: 7%;
     color: #96AB61
 }
@@ -164,6 +166,10 @@ footer h3 {
 
 .iconos-footer{
     color: white;
+}
+
+.iconos-footer i {
+    color: white
 }
 
 footer .iconos-footer i:hover {

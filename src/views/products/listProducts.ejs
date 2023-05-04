@@ -45,22 +45,26 @@
                         <input class="checkbox-recordar-usuario" type="checkbox" name="agregar_favoritos" id="agregar_favoritos" value="agregar_favoritos">
                         
                     </div>
+                    <div class="div-ordenar-prod">
+                        <p>Ordenar por</p>
+                        <select id="ordenar_prod" name="ordenar_prod">
+                            <option value="id">Id</option>
+                            <option value="created_at">Fecha</option>
+                            <option value="nombre">Nombre</option>
+                            <option value="precio">Precio</option>
+                        </select>
+                        <i id="orden-flecha-arriba" class="flecha fa-solid fa-arrow-up flecha-seleccionada" onclick="seleccionarFlecha('orden-flecha-arriba')"></i>
+                        <i id="orden-flecha-abajo" class="flecha fa-solid fa-arrow-down flecha-no-seleccionada" onclick="seleccionarFlecha('orden-flecha-abajo')"></i>
+                    </div>
+                    <div class="div-aplicar-filtros">
+                        <p id="aplicar-filtros" class="aplicar-filtros" onclick="filtrarProductos()">Aplicar filtros</p>
+                    </div>
                 </div>
 
-                <div class="div-ordenar-prod">
-                    <p>Ordenar por</p>
-                    <select id="ordenar_prod" name="ordenar_prod">
-                        <option value="id">Id</option>
-                        <option value="created_at">Fecha</option>
-                        <option value="nombre">Nombre</option>
-                        <option value="precio">Precio</option>
-                    </select>
-                    <i id="orden-flecha-arriba" class="flecha fa-solid fa-arrow-up flecha-seleccionada" onclick="seleccionarFlecha('orden-flecha-arriba')"></i>
-                    <i id="orden-flecha-abajo" class="flecha fa-solid fa-arrow-down flecha-no-seleccionada" onclick="seleccionarFlecha('orden-flecha-abajo')"></i>
-                </div>
-                <div>
-                    <p id="aplicar-filtros" class="aplicar-filtros" onclick="filtrarProductos()">Aplicar filtros</p>
-                </div>
+                
+
+                
+                
             </div>
         </div>
         <section>
