@@ -242,13 +242,15 @@ div.estilosVida-imgs img:hover + p {
     }
     .container-submenu{
         position: relative;
-        width: 10%;
+        width: 15%;
+        text-align: center;
         
     }
     .div-submenu {
         position: relative;
     }
     .submenu{
+        text-align: left;
         position: absolute;
         /*top: 28px;*/
         width: 100%;

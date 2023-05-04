@@ -714,16 +714,19 @@ const controller = {
 
             let countByProducts = {}
             prods.forEach(elem => {
-                let cant = 0;
+                let cantPorFactura = 0;
+                let cant = 0
                 let total = 0;
 
                 elem.Factura.forEach(f => {
+                    cantPorFactura += 1;
                     cant += f.ProductoFactura.cantidad;
                     total += (f.ProductoFactura.cantidad * f.ProductoFactura.precio)
                 })
 
                 countByProducts[elem.nombre] = {
-                    cant: cant,
+                    cantPorFactura: cantPorFactura,
+                    cantPorDetalle: cant,
                     total: total
                 }
             })
